@@ -1,0 +1,33 @@
+Để phân quyền cho một người dùng có quyền kết nối PowerShell đến các máy tính trên domain, bạn có thể thực hiện các bước sau:
+
+Mở Group Policy Management Console trên máy chủ Active Directory.
+
+Tạo một GPO mới hoặc chỉnh sửa GPO hiện có mà bạn muốn áp dụng phân quyền.
+
+Trong Group Policy Management Editor, điều hướng đến "Computer Configuration" > "Policies" > "Windows Settings" > "Security Settings" > "Restricted Groups".
+
+Nhấp chuột phải vào "Restricted Groups" và chọn "Add Group".
+
+Trong hộp thoại "Add Group", nhập "Remote Management Users" (hoặc tên nhóm bạn muốn) và nhấp vào "OK".
+
+Nhấp chuột phải vào nhóm "Remote Management Users" vừa tạo và chọn "Properties".
+
+Trong cửa sổ "Properties", chọn "Members" và nhấp vào nút "Add".
+
+Trong "Select Users, Computers, or Groups", nhập tên người dùng mà bạn muốn phân quyền kết nối PowerShell và nhấp vào "OK".
+
+Đóng cửa sổ "Properties" của nhóm "Remote Management Users".
+
+Tiếp theo, trong Group Policy Management Editor, điều hướng đến "Computer Configuration" > "Policies" > "Administrative Templates" > "Windows Components" > "Windows PowerShell".
+
+Nhấp vào "Turn on Script Execution" và chọn "Enabled".
+
+Chọn "Allow all scripts" hoặc "Allow local scripts and remote signed scripts" (tùy theo yêu cầu của bạn) trong cài đặt "Execution Policy".
+
+Đóng Group Policy Management Editor và lưu GPO.
+
+Áp dụng GPO cho các thiết bị trong domain bằng cách kéo và thả GPO vào container hoặc OU tương ứng.
+
+Khi GPO được áp dụng, người dùng được thêm vào nhóm "Remote Management Users" sẽ có quyền kết nối PowerShell đến các máy tính trên domain và có thể thực thi các tập lệnh PowerShell trên các máy tính đó.
+
+Lưu ý rằng quá trình tạo GPO và áp dụng nó có thể yêu cầu quyền quản trị trên máy chủ Active Directory và quyền chỉnh sửa Group Policy Objects.

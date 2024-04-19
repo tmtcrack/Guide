@@ -1,0 +1,276 @@
+Download the latest Kafka release and extract it: 
+
+wget https://dlcdn.apache.org/kafka/3.5.0/kafka_2.13-3.5.0.tgz
+
+$ tar -xzf kafka_2.13-3.5.0.tgz
+$ cd kafka_2.13-3.5.0
+
+Run the following commands in order to start all services in the correct order:
+
+# Start the ZooKeeper service
+
+bin/zookeeper-server-start.sh config/zookeeper.properties
+
+export KAFKA_OPTS="-Djava.security.auth.login.config=/opt/kafka/config/zookeeper_jaas.conf"
+/opt/kafka/bin/zookeeper-server-start.sh /opt/kafka/config/zookeeper.properties
+
+
+Open another terminal session and run:
+
+# Start the Kafka broker service
+
+bin/kafka-server-start.sh config/server.properties
+
+export KAFKA_OPTS="-Djava.security.auth.login.config=/opt/kafka/config/kafka_server_jaas.conf"
+/opt/kafka/bin/kafka-server-start.sh /opt/kafka/config/server.properties
+
+===============================================================================================
+# Create topic
+bin/kafka-topics.sh --bootstrap-server localhost:9093 --create --topic mytopic --command-config config/client-ssl.properties
+
+export KAFKA_OPTS="-Djava.security.auth.login.config=/opt/kafka/config/kafka_client_jaas.conf"
+bin/kafka-topics.sh --bootstrap-server localhost:9094 --create --topic topic_sasl --command-config config/client-ssl-sasl.properties
+bin/kafka-topics.sh --bootstrap-server 192.168.100.242:9094 --create --topic test_cluster --command-config config/client-ssl-sasl.properties
+
+Producer
+export KAFKA_OPTS="-Djava.security.auth.login.config=/opt/kafka/config/kafka_client_jaas.conf"
+bin/kafka-console-producer.sh --broker-list localhost:9094 --topic test --producer.config config/client-ssl-sasl.properties
+
+bin/kafka-console-producer.sh --bootstrap-server localhost:9094 --topic test21082023 --producer.config config/client-ssl-sasl.properties 
+
+Consumer
+export KAFKA_OPTS="-Djava.security.auth.login.config=/opt/kafka/config/kafka_client_jaas.conf"
+bin/kafka-console-consumer --bootstrap-server localhost:9094 --topic test --consumer.config client-ssl-sasl.properties --from-beginning
+
+List toppic
+export KAFKA_OPTS="-Djava.security.auth.login.config=/opt/kafka/config/kafka_client_jaas.conf"
+/opt/kafka/bin/kafka-topics.sh --list --bootstrap-server 192.168.100.243:9094 --command-config /opt/kafka/config/client-ssl-sasl.properties
+
+bin/kafka-topics.sh --list --bootstrap-server 192.168.100.201:9092
+bin/kafka-topics.sh --list --bootstrap-server 192.168.100.240:9092
+===============================================================================================
+
+export KAFKA_OPTS="-Djava.security.auth.login.config=/usr/local/kafka/config/zookeeper_jaas.conf"
+/usr/local/kafka/bin/zookeeper-server-start.sh /usr/local/kafka/config/zookeeper.properties
+
+export KAFKA_OPTS="-Djava.security.auth.login.config=/opt/kafka_2.13-3.5.0/config/zookeeper_jaas.conf"
+/opt/kafka_2.13-3.5.0/bin/zookeeper-server-start.sh /opt/kafka_2.13-3.5.0/config/zookeeper.properties
+-------------------=---------------------------------------------------------------------
+export KAFKA_OPTS="-Djava.security.auth.login.config=/usr/local/kafka/config/kafka_server_jaas.conf"
+/usr/local/kafka/bin/kafka-server-start.sh /usr/local/kafka/config/server.properties
+
+export KAFKA_OPTS="-Djava.security.auth.login.config=/opt/kafka_2.13-3.5.0/config/kafka_server_jaas.conf"
+/opt/kafka_2.13-3.5.0/bin/kafka-server-start.sh /opt/kafka_2.13-3.5.0/config/server.properties
+
+export KAFKA_OPTS="-Djava.security.auth.login.config=/opt/kafka_2.13-3.6.0/config/client_jaas.conf"
+--------------------------------------------------------------------------
+
+# Create topic
+docker-compose exec kafka kafka-topics.sh --create --topic baeldung_linux
+ --partitions 1 --replication-factor 1 --bootstrap-server 192.168.100.239:9092
+ 
+docker-compose exec kafka kafka-topics.sh --create --topic baeldung_linux --bootstrap-server 192.168.100.239:9092
+
+bin/kafka-topics.sh --bootstrap-server localhost:9093 --create --topic mytopic --command-config config/client-ssl.properties
+bin/kafka-topics.sh --bootstrap-server localhost:9093 --create --topic test --command-config config/client-ssl.properties
+bin/kafka-topics.sh --bootstrap-server 192.168.100.240:19092 --create --topic test --command-config config/client-ssl.properties
+bin/kafka-topics.sh --bootstrap-server 192.168.100.242:29094 --create --topic test --command-config config/client-ssl-sasl.properties
+bin/kafka-topics.sh --bootstrap-server 192.168.100.242:29097 --create --topic test --command-config config/client-ssl-sasl.properties
+bin/kafka-topics.sh --bootstrap-server 192.168.100.240:19090 --create --topic test --command-config config/client-ssl-sasl.properties
+
+bin/kafka-topics.sh --create --topic test_ssl --bootstrap-server 192.168.100.244:9094
+
+bin/kafka-topics.sh --create --topic master3_t1 --bootstrap-server 192.168.100.243:9091
+
+bin/kafka-topics.sh --create --topic master4_docker1 --bootstrap-server 192.168.100.244:9091
+
+bin/kafka-topics.sh --create --topic master4_clus1 --bootstrap-server master4:9091
+
+bin/kafka-topics.sh --create --topic test --bootstrap-server master3:9093
+
+bin/kafka-topics.sh --create --topic test08 --bootstrap-server 192.168.100.201:9091
+
+bin/kafka-topics.sh --create --topic test_topic --bootstrap-server kafka:9092
+
+bin/kafka-topics.sh --create --topic test_ssl --bootstrap-server 10.80.7.145:9093
+
+bin/kafka-topics.sh --create --topic test --bootstrap-server localhost:9093 config/client-ssl.properties
+
+bin/kafka-topics.sh --create --topic test --bootstrap-server 192.168.100.240:9092
+
+bin/kafka-topics.sh --create --topic test-cluster-01 --bootstrap-server 192.168.100.201:9092 --replication-factor 3 --partitions 3
+
+bin/kafka-topics.sh --create --zookeeper 192.168.100.201:2181 --replication-factor 2 --partitions 2 --topic test2
+----------
+export KAFKA_OPTS="-Djava.security.auth.login.config=/usr/local/kafka/config/kafka_client_jaas.conf"
+/usr/local/kafka/bin/kafka-topics.sh --create --topic testSAL --bootstrap-server localhost:9094 /usr/local/kafka/config/client-ssl-sasl.properties
+
+export KAFKA_OPTS="-Djava.security.auth.login.config=/opt/kafka_2.13-3.5.0/config/kafka_client_jaas.conf"
+/opt/kafka_2.13-3.5.0/bin/kafka-topics.sh --create --topic test-sasl --bootstrap-server 127.0.0.1:9094 /opt/kafka_2.13-3.5.0/config/client-ssl-sasl.properties
+---------
+
+# Describe Topic
+bin/kafka-topics.sh --describe --topic master3_t1 --bootstrap-server 192.168.100.243:9091
+
+bin/kafka-topics.sh --describe --topic test --bootstrap-server 192.168.100.239:9093 config/client-ssl.properties
+bin/kafka-topics.sh --bootstrap-server localhost:9093 --describe --topic test --command-config config/client-ssl.properties
+bin/kafka-topics.sh --bootstrap-server 192.168.100.240:19093 --describe --topic test --command-config config/client-ssl.properties
+
+
+bin/kafka-topics.sh --describe --topic master4_docker1 --bootstrap-server master4:9091
+
+bin/kafka-topics.sh --describe --topic master4_test1 --bootstrap-server master4:9092
+
+bin/kafka-topics.sh --describe --topic master4_p91 --bootstrap-server master4:9091
+
+# List topics
+
+docker-compose exec kafka kafka-topics.sh --list --bootstrap-server 192.168.100.240:9092
+
+/opt/kafka_2.13-3.5.0/bin/kafka-topics.sh --list  --bootstrap-server 10.80.7.145:9093
+/opt/kafka_2.13-3.5.0/bin/kafka-topics.sh --list --bootstrap-server 10.80.7.145:9093 config/client-ssl.properties
+
+/opt/kafka_2.13-3.5.0/bin/kafka-topics.sh --list --bootstrap-server 192.168.100.239:9093 config/client-ssl.properties
+bin/kafka-topics.sh --list --bootstrap-server 192.168.100.239:9093 config/client-ssl.properties
+
+bin/kafka-topics.sh --bootstrap-server 192.168.100.240:19092 --list --command-config config/client-ssl.properties
+bin/kafka-topics.sh --bootstrap-server 192.168.100.242:29094 --list --command-config config/client-ssl-sasl.properties
+bin/kafka-topics.sh --bootstrap-server 192.168.100.240:9090 --list --command-config config/client-ssl-sasl.properties
+
+export KAFKA_OPTS="-Djava.security.auth.login.config=/opt/kafka_2.13-3.6.0/config/kafka_client_jaas.conf"
+bin/kafka-topics.sh --list  --bootstrap-server 192.168.100.243:9094 /usr/local/kafka/config/client-ssl-sasl.properties
+
+bin/kafka-topics.sh --list  --bootstrap-server 192.168.100.240:29094 /opt/kafka_2.13-3.6.0/config/client-ssl-sasl.properties
+bin/kafka-topics.sh --list  --bootstrap-server 192.168.100.240:9090 --command-config /opt/kafka_2.13-3.6.0/config/client-ssl-sasl.properties
+
+# Write topic
+bin/kafka-console-producer.sh --topic master3_t1 --bootstrap-server 192.168.100.243:9091
+
+bin/kafka-console-producer.sh --topic master3_topic2 --bootstrap-server 192.168.100.243:9091
+
+bin/kafka-console-producer.sh --topic master4_docker1 --bootstrap-server master4:9091
+
+bin/kafka-console-producer.sh --topic master4_p91 --bootstrap-server master4:9091
+
+bin/kafka-console-producer.sh --broker-list localhost:9093 --topic test --producer.config config/client-ssl.properties
+bin/kafka-console-producer.sh --broker-list localhost:29094 --topic test --producer.config config/client-ssl.properties
+
+# Read topic
+bin/kafka-console-consumer.sh --topic master3_t1 --from-beginning --bootstrap-server 192.168.100.243:9091
+
+bin/kafka-console-consumer.sh --topic master4_docker1 --from-beginning --bootstrap-server master4:9091
+
+bin/kafka-console-consumer.sh --topic master4_test1 --from-beginning --bootstrap-server master4:9092
+
+bin/kafka-console-consumer.sh --topic master4_p91 --from-beginning --bootstrap-server master4:9091
+
+bin/kafka-console-consumer.sh --bootstrap-server localhost:9093 --topic test --consumer.config config/client-ssl.properties --from-beginning
+
+===================================================================
+Producer
+export KAFKA_OPTS="-Djava.security.auth.login.config=/usr/local/kafka/config/kafka_client_jaas.conf"
+bin/kafka-console-producer --broker-list localhost:9094 --topic test --producer.config client-ssl-sasl.properties
+bin/kafka-console-producer.sh --broker-list 192.168.100.240:19092 --topic test --producer.config config/client-ssl.properties
+bin/kafka-console-producer.sh --bootstrap-server 192.168.100.240:19092 --topic test --producer.config config/client-ssl.properties
+bin/kafka-console-producer.sh --bootstrap-server 192.168.100.242:29094 --topic test --producer.config config/client-ssl-sasl.properties
+bin/kafka-console-producer.sh --bootstrap-server 192.168.100.240:19090 --topic test --producer.config config/client-ssl-sasl.properties
+
+export KAFKA_OPTS="-Djava.security.auth.login.config=/opt/kafka_2.13-3.5.0/config/kafka_client_jaas.conf"
+/opt/kafka_2.13-3.5.0/bin/kafka-console-producer.sh --broker-list localhost:9094 --topic test --producer.config /opt/kafka_2.13-3.5.0/config/client-ssl-sasl.properties
+
+Consumer
+export KAFKA_OPTS="-Djava.security.auth.login.config=/opt/kafka_2.13-3.5.0/config/kafka_client_jaas.conf"
+bin/kafka-console-consumer --bootstrap-server localhost:9094 --topic test --consumer.config client-ssl-sasl.properties --from-beginning
+
+export KAFKA_OPTS="-Djava.security.auth.login.config=/usr/local/kafka/config/kafka_client_jaas.conf"
+/opt/kafka_2.13-3.5.0/bin/kafka-console-consumer.sh --bootstrap-server localhost:9094 --topic test --consumer.config /opt/kafka_2.13-3.5.0/config/client-ssl-sasl.properties --from-beginning
+
+bin/kafka-console-consumer.sh --bootstrap-server 192.168.100.240:19092 --topic test --consumer.config config/client-ssl.properties --from-beginning
+bin/kafka-console-consumer.sh --bootstrap-server 192.168.100.242:29094 --topic test --consumer.config config/client-ssl-sasl.properties --from-beginning
+bin/kafka-console-consumer.sh --bootstrap-server 192.168.100.240:19090 --topic test --consumer.config config/client-ssl-sasl.properties --from-beginning
+================================================================================
+
+
+Producer
+bin/kafka-console-producer --broker-list kafka1:9093 --topic test --producer.config client-ssl.properties
+
+Consumer
+bin/kafka-console-consumer --bootstrap-server kafka1:9093 --topic test --consumer.config client-ssl.properties --from-beginning
+
+
+bin/kafka-topic.sh --create --topic test_ssl --bootstrap-server localhost --create topic.config client-ssl.properties
+
+bin/kafka-topics.sh --zookeeper <zookeeper_host>:<zookeeper_port> --create --topic <topic_name> --partitions <num_partitions> --replication-factor <num_replicas>
+
+bin/kafka-topics.sh --bootstrap-server <kafka_broker>:<kafka_port> --create --topic <topic_name> --partitions <num_partitions> --replication-factor <num_replicas> --command-config <ssl_properties_file>
+
+bin/kafka-topics.sh --bootstrap-server 192.168.100.243:9093 --create --topic --command-config config/client-ssl.properties
+
+bin/kafka-topics.sh --bootstrap-server localhost:9093 --create --topic mytopic --partitions 3 --replication-factor 2 --command-config config/client-ssl.properties
+bin/kafka-topics.sh --bootstrap-server localhost:9093 --create --topic mytopic --command-config config/client-ssl.properties
+
+
+######################################
+
+bin/kafka-topics.sh --bootstrap-server 192.168.100.240:19242 --create --topic test --command-config config/client-ssl-sasl.properties
+bin/kafka-topics.sh --list  --bootstrap-server 192.168.100.240:19242 --command-config /opt/kafka_2.13-3.6.0/config/client-ssl-sasl.properties
+
+bin/kafka-console-producer.sh --bootstrap-server 192.168.100.240:19242 --topic test --producer.config config/client-ssl-sasl.properties
+
+bin/kafka-console-consumer.sh --bootstrap-server 192.168.100.240:19242 --topic test --consumer.config config/client-ssl-sasl.properties --from-beginning
+
+bin/kafka-topics.sh --bootstrap-server 192.168.100.242:19240 --create --topic test
+bin/kafka-console-producer.sh --bootstrap-server 192.168.100.242:19240 --topic test
+bin/kafka-console-consumer.sh --bootstrap-server 192.168.100.242:19240 --topic test --from-beginning
+bin/kafka-console-consumer.sh --bootstrap-server 192.168.100.240:9094 --topic test --from-beginning
+
+######################################
+bin/kafka-topics.sh --bootstrap-server 192.168.100.239:19239 --list --command-config config/client-ssl-sasl.properties
+bin/kafka-topics.sh --bootstrap-server 192.168.100.241:29092 --create --topic test
+bin/kafka-topics.sh --bootstrap-server 192.168.100.241:29100 --create --topic test --command-config config/client-ssl-sasl.properties
+bin/kafka-topics.sh --bootstrap-server 192.168.100.239:19239 --create --topic test01 --command-config config/client-ssl-sasl.properties
+bin/kafka-topics.sh --broker-list 192.168.100.239:19239 --create --topic test02 --command-config config/client-ssl-sasl.properties
+
+bin/kafka-console-producer.sh --bootstrap-server 192.168.100.241:29100 --topic test --producer.config config/client-ssl-sasl.properties
+bin/kafka-console-producer.sh --bootstrap-server 192.168.100.239:19239 --topic test --producer.config config/client-ssl-sasl.properties
+bin/kafka-console-producer.sh --bootstrap-server 192.168.100.239:19239 --topic test01 --producer.config config/client-ssl-sasl.properties
+
+bin/kafka-console-consumer.sh --bootstrap-server 192.168.100.241:29097 --topic test --consumer.config config/client-ssl-sasl.properties --from-beginning
+bin/kafka-console-consumer.sh --bootstrap-server 192.168.100.239:19239 --topic test --consumer.config config/client-ssl-sasl.properties --from-beginning
+bin/kafka-console-consumer.sh --bootstrap-server 192.168.100.239:19239 --topic test01 --consumer.config config/client-ssl-sasl.properties --from-beginning
+
+bin/kafka-topics.sh --list  --bootstrap-server 192.168.100.239:19239 --command-config /opt/kafka_2.13-3.6.0/config/client-ssl-sasl.properties
+
+bin/kafka-topics.sh --bootstrap-server 192.168.100.191:31092 --create --topic test
+bin/kafka-topics.sh --bootstrap-server 192.168.100.239:19239 --list --command-config config/client-ssl-sasl.properties
+
+bin/kafka-topics.sh --bootstrap-server 192.168.100.239:19239 --describe --topic test --command-config config/client-ssl-sasl.properties
+
+bin/kafka-topics.sh --bootstrap-server 192.168.100.239:19239 --partitions 3 --replication-factor 3 --create --topic test --command-config config/client-ssl-sasl.properties
+
+bin/kafka-topics.sh --bootstrap-server 192.168.100.239:19239 --partitions 3 --replication-factor 3 --create --topic test02 --command-config config/client-ssl-sasl.properties
+
+bin/kafka-topics.sh --bootstrap-server 192.168.100.239:19239 --create --topic test-ha --replication-factor 1 --partitions 5 --command-config config/client-ssl-sasl.properties
+bin/kafka-topics.sh --bootstrap-server 192.168.100.241:29094 --create --topic test --replication-factor 1 --partitions 5 --command-config config/client-ssl-sasl.properties
+
+kafka-topics --bootstrap-server kafka1:29094 --create --topic test --replication-factor 1 --partitions 5 --command-config /etc/kafka/client-ssl-sasl.properties
+kafka-topics --bootstrap-server kafka1:29094 --list --command-config /etc/kafka/client-ssl-sasl.properties
+
+kafka-console-producer --bootstrap-server kafka1:29094 --topic test --producer.config /etc/kafka/client-ssl-sasl.properties
+kafka-console-consumer --bootstrap-server kafka1:29094 --topic test --consumer.config /etc/kafka/client-ssl-sasl.properties --from-beginning
+
+kafka-console-producer --broker-list kafka1:29094 --topic test --producer.config /etc/kafka/client-ssl-sasl.properties
+kafka-console-consumer --broker-list kafka1:29094 --topic test --consumer.config /etc/kafka/client-ssl-sasl.properties --from-beginning
+
+####################
+kafka-topics --bootstrap-server kafka1:29092 --create --topic test
+kafka-topics --bootstrap-server kafka1:29092 --list
+
+kafka-console-producer --bootstrap-server kafka1:29092 --topic test
+kafka-console-consumer --bootstrap-server kafka1:29092 --topic test --from-beginning
+
+
+
+
+
+

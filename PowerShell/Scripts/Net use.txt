@@ -1,0 +1,19 @@
+net use \\192.168.12.244\Share /user:TT\tuantm 
+
+net use \\192.168.12.244\Share /user:.\jenkins 123456a@
+
+net use \\192.168.12.244\Share /user:192.168.12.244\jenkins 123456a@
+
+
+Lỗi "System error 1219 has occurred" xảy ra khi bạn cố gắng thiết lập kết nối mạng đến một máy chủ hoặc tài nguyên chia sẻ từ xa bằng cách sử dụng nhiều tên người dùng khác nhau. Hệ điều hành Windows không cho phép nhiều kết nối đồng thời từ cùng một người dùng sử dụng nhiều tên người dùng.
+
+Để khắc phục lỗi này, bạn cần ngắt tất cả các kết nối trước đó đến máy chủ hoặc tài nguyên chia sẻ từ xa và sau đó thử lại. Bạn có thể sử dụng lệnh net use để ngắt kết nối trước đó bằng cách chỉ định tên máy tính hoặc tài nguyên chia sẻ.
+
+Ví dụ, để ngắt tất cả các kết nối trước đó đến máy tính từ xa có tên REMOTE_PC, bạn có thể sử dụng lệnh sau:
+
+powershell
+Copy
+
+net use \\REMOTE_PC /delete /yes
+
+net use \\192.168.12.244\Share /delete /yes

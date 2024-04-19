@@ -1,0 +1,1051 @@
+Wed Feb 28 09:41:42 2024   Switch0   Switch>enable
+Wed Feb 28 09:41:53 2024   Switch0   Switch#show vlan
+Wed Feb 28 09:42:11 2024   Switch0   Switch#show int status
+Wed Feb 28 09:42:58 2024   MTT   Router>enable
+Wed Feb 28 09:43:17 2024   MTT   Router#hostname MTT
+Wed Feb 28 09:43:33 2024   MTT   Router#conf t
+Wed Feb 28 09:43:36 2024   MTT   Router(config)#hostname MTT
+Wed Feb 28 09:44:31 2024   MTT   MTT(config)#int f0/0
+Wed Feb 28 09:44:53 2024   MTT   MTT(config-if)#ip address 1.1.1.2 255.255.255.0
+Wed Feb 28 09:45:00 2024   MTT   MTT(config-if)#no shutdown
+Wed Feb 28 09:45:20 2024   GELEXIMCO   Router>enable
+Wed Feb 28 09:45:22 2024   GELEXIMCO   Router#conf t
+Wed Feb 28 09:45:30 2024   GELEXIMCO   Router(config)#hostname GELE
+Wed Feb 28 09:45:40 2024   GELEXIMCO   GELE(config)#hostname GELEXIMCO
+Wed Feb 28 09:45:46 2024   GELEXIMCO   GELEXIMCO(config)#int f0/0
+Wed Feb 28 09:45:58 2024   GELEXIMCO   GELEXIMCO(config-if)#ip address 1.1.1.3 255.255.255.0
+Wed Feb 28 09:46:03 2024   GELEXIMCO   GELEXIMCO(config-if)#no shutdown
+Wed Feb 28 09:46:07 2024   GELEXIMCO   GELEXIMCO(config-if)#exit
+Wed Feb 28 09:46:10 2024   GELEXIMCO   GELEXIMCO(config)#exit
+Wed Feb 28 09:46:14 2024   GELEXIMCO   GELEXIMCO#ping 1.1.1.2
+Wed Feb 28 09:46:20 2024   GELEXIMCO   GELEXIMCO#ping 1.1.1.2
+Wed Feb 28 09:46:32 2024   MTT   MTT(config-if)#exit
+Wed Feb 28 09:46:33 2024   MTT   MTT(config)#exit
+Wed Feb 28 09:46:38 2024   MTT   MTT#ping 1.1.1.3
+Wed Feb 28 09:46:52 2024   MTT   MTT#int f0/1
+Wed Feb 28 09:47:13 2024   MTT   MTT#ip address 172.16.1.1 255.255.255.0
+Wed Feb 28 09:47:19 2024   MTT   MTT#conf t
+Wed Feb 28 09:47:24 2024   MTT   MTT(config)#int f0/1
+Wed Feb 28 09:47:35 2024   MTT   MTT(config-if)#ip address 172.16.1.1 255.255.255.0
+Wed Feb 28 09:47:39 2024   MTT   MTT(config-if)#no shutdown
+Wed Feb 28 09:57:54 2024   MTT   MTT(config-if)#ip dhcp mtt-user
+Wed Feb 28 09:58:01 2024   MTT   MTT(config-if)#exit
+Wed Feb 28 09:58:23 2024   MTT   MTT(config)#ip dhcp pool mtt-user
+Wed Feb 28 09:58:46 2024   MTT   MTT(dhcp-config)#network 172.16.1.0 255.255.255.0
+Wed Feb 28 09:58:52 2024   MTT   MTT(dhcp-config)#default 172.16.1.1
+Wed Feb 28 09:58:56 2024   MTT   MTT(dhcp-config)#dns 8.8.8.8
+Wed Feb 28 09:58:58 2024   MTT   MTT(dhcp-config)#exit
+Wed Feb 28 09:59:31 2024   MTT   MTT(config)#ip dhcp excluded-address 172.16.1.1 172.16.1.50
+Wed Feb 28 09:59:32 2024   MTT   MTT(config)#end
+Wed Feb 28 09:59:40 2024   MTT   MTT#show run
+Wed Feb 28 10:00:09 2024   MTT   MTT#copy running-config startup-config
+Wed Feb 28 10:00:19 2024   MTT   MTT#write memory
+Wed Feb 28 10:00:24 2024   MTT   MTT#enable
+Wed Feb 28 10:04:36 2024   GELEXIMCO   GELEXIMCO>enable
+Wed Feb 28 10:04:38 2024   GELEXIMCO   GELEXIMCO#show run
+Wed Feb 28 10:04:54 2024   GELEXIMCO   GELEXIMCO#ping 1.1.1.2
+Wed Feb 28 10:42:01 2024   GELEXIMCO   GELEXIMCO>enable
+Wed Feb 28 10:44:28 2024   MTT   MTT>ennable
+Wed Feb 28 10:50:01 2024   MTT   MTT>enable
+Wed Feb 28 10:50:05 2024   MTT   MTT#conf
+Wed Feb 28 10:50:13 2024   MTT   MTT(config)#exit
+Wed Feb 28 10:50:19 2024   MTT   MTT#conf t
+Wed Feb 28 10:50:45 2024   MTT   MTT(config)#int f0/1
+Wed Feb 28 10:50:51 2024   MTT   MTT(config-if)#ip nat inside
+Wed Feb 28 10:51:07 2024   MTT   MTT(config-if)#end
+Wed Feb 28 10:51:44 2024   MTT   MTT#int f0/0
+Wed Feb 28 10:51:48 2024   MTT   MTT#conf t
+Wed Feb 28 10:51:53 2024   MTT   MTT(config)#int f0/0
+Wed Feb 28 10:52:05 2024   MTT   MTT(config-if)#ip nat inside
+Wed Feb 28 10:52:07 2024   MTT   MTT(config-if)#end
+Wed Feb 28 10:54:52 2024   MTT   MTT#conf t
+Wed Feb 28 10:55:00 2024   MTT   MTT(config)#int f0/1
+Wed Feb 28 10:55:19 2024   MTT   MTT(config-if)#ip route add 0.0.0.0 0.0.0.0 1.1.1.3
+Wed Feb 28 10:58:12 2024   MTT   MTT(config-if)#ip nat outside
+Wed Feb 28 10:58:14 2024   MTT   MTT(config-if)#exit
+Wed Feb 28 10:58:44 2024   MTT   MTT(config)#ip route 0.0.0.0 0.0.0.0 1.1.1.3
+Wed Feb 28 10:59:13 2024   MTT   MTT(config)#reboot
+Wed Feb 28 10:59:16 2024   MTT   MTT(config)#exit
+Wed Feb 28 10:59:19 2024   MTT   MTT#reboot
+Wed Feb 28 11:08:00 2024   MTT   MTT>enable
+Wed Feb 28 11:08:03 2024   MTT   MTT#conf t
+Wed Feb 28 11:08:30 2024   MTT   MTT(config)#ip route 0.0.0.0 0.0.0.0 1.1.1.3
+Wed Feb 28 11:08:46 2024   MTT   MTT(config)#exit
+Wed Feb 28 11:08:49 2024   MTT   MTT#show run
+Wed Feb 28 11:09:03 2024   MTT   MTT#conf t
+Wed Feb 28 11:09:59 2024   MTT   MTT(config)#int f0/0
+Wed Feb 28 11:11:03 2024   MTT   MTT(config-if)#ip route 1.1.1.0 255.255.255.0 1.1.1.3
+Wed Feb 28 11:11:22 2024   MTT   MTT(config)#ip route 1.1.1.0 255.255.255.0 1.1.1.3
+Wed Feb 28 11:11:36 2024   GELEXIMCO   GELEXIMCO>enable
+Wed Feb 28 11:11:43 2024   GELEXIMCO   GELEXIMCO#conf t
+Wed Feb 28 11:12:01 2024   GELEXIMCO   GELEXIMCO(config)#ip route 172.16.1.0 255.255.255.0 1.1.1.2
+Wed Feb 28 11:12:10 2024   GELEXIMCO   GELEXIMCO(config)#end
+Wed Feb 28 11:12:18 2024   GELEXIMCO   GELEXIMCO#ping 172.16.1.51
+Wed Feb 28 11:12:24 2024   GELEXIMCO   GELEXIMCO#ping 172.16.1.51
+Wed Feb 28 11:12:47 2024   GELEXIMCO   GELEXIMCO#show ru
+Wed Feb 28 11:12:53 2024   GELEXIMCO   GELEXIMCO#show run
+Wed Feb 28 11:17:21 2024   MTT   MTT>enable
+Wed Feb 28 11:17:24 2024   MTT   MTT#show run
+Wed Feb 28 11:18:04 2024   MTT   MTT#ip route 0.0.0.0 0.0.0.0 1.1.1.3
+Wed Feb 28 11:18:11 2024   MTT   MTT#conf t
+Wed Feb 28 11:18:21 2024   MTT   MTT(config)#ip route 0.0.0.0 0.0.0.0 1.1.1.3
+Wed Feb 28 11:18:37 2024   GELEXIMCO   Router>enable
+Wed Feb 28 11:18:38 2024   GELEXIMCO   Router#show run
+Wed Feb 28 11:18:50 2024   GELEXIMCO   Router#conf t
+Wed Feb 28 11:18:54 2024   GELEXIMCO   Router(config)#int f0/0
+Wed Feb 28 11:19:07 2024   GELEXIMCO   Router(config-if)#ip address 1.1.1.3 255.255.255.0
+Wed Feb 28 11:19:22 2024   GELEXIMCO   Router(config-if)#no shut
+Wed Feb 28 11:19:25 2024   GELEXIMCO   Router(config-if)#exit
+Wed Feb 28 11:19:34 2024   GELEXIMCO   Router(config)#exit
+Wed Feb 28 11:19:42 2024   GELEXIMCO   Router#copy running-config startup-config
+Wed Feb 28 11:19:56 2024   GELEXIMCO   Router#conf t
+Wed Feb 28 11:20:07 2024   GELEXIMCO   Router(config)#ip route 0.0.0.0 0.0.0.0 1.1.1.2
+Wed Feb 28 11:21:01 2024   GELEXIMCO   Router(config)#exit
+Wed Feb 28 11:21:08 2024   GELEXIMCO   Router#ping 172.16.1.51
+Wed Feb 28 11:21:11 2024   GELEXIMCO   Router#ping 172.16.1.52
+Wed Feb 28 11:21:15 2024   GELEXIMCO   Router#ping 172.16.1.52
+Wed Feb 28 11:21:36 2024   GELEXIMCO   Router#conf t
+Wed Feb 28 11:21:40 2024   GELEXIMCO   Router(config)#int f0/1
+Wed Feb 28 11:22:17 2024   GELEXIMCO   Router(config-if)#ip address 10.0.0.1 255.255.255.0
+Wed Feb 28 11:22:22 2024   GELEXIMCO   Router(config-if)#no shut
+Wed Feb 28 11:22:31 2024   GELEXIMCO   Router(config-if)#end
+Wed Feb 28 11:44:27 2024   PC0   C:\>curl 
+Wed Feb 28 11:44:33 2024   PC0   C:\>curl 10.0.0.8
+Thu Feb 29 09:10:20 2024   Multilayer Switch0   Switch>enable
+Thu Feb 29 09:10:46 2024   Multilayer Switch0   Switch#hostname core
+Thu Feb 29 09:10:52 2024   Multilayer Switch0   Switch#conf t
+Thu Feb 29 09:10:57 2024   Multilayer Switch0   Switch(config)#hostname core
+Thu Feb 29 09:13:23 2024   Multilayer Switch0   core(config)#vlan 10
+Thu Feb 29 09:14:08 2024   Multilayer Switch0   core(config-vlan)#name VLAN10
+Thu Feb 29 09:14:19 2024   Multilayer Switch0   core(config-vlan)#vlan 20
+Thu Feb 29 09:14:24 2024   Multilayer Switch0   core(config-vlan)#name VLAN20
+Thu Feb 29 09:14:29 2024   Multilayer Switch0   core(config-vlan)#vlan 30
+Thu Feb 29 09:14:33 2024   Multilayer Switch0   core(config-vlan)#name VLAN30
+Thu Feb 29 09:14:43 2024   Multilayer Switch0   core(config-vlan)#vlan 40
+Thu Feb 29 09:14:50 2024   Multilayer Switch0   core(config-vlan)#name VLAN40
+Thu Feb 29 09:15:45 2024   Multilayer Switch0   core(config-vlan)#int range g0/1-5
+Thu Feb 29 09:16:00 2024   Multilayer Switch0   core(config)#int range g 0/1-5
+Thu Feb 29 09:16:11 2024   Multilayer Switch0   core(config)#int range g1/0/1-5
+Thu Feb 29 09:16:52 2024   Multilayer Switch0   core(config-if-range)#switchport access vlan 10
+Thu Feb 29 09:17:23 2024   Multilayer Switch0   core(config-if-range)#int range g1/0/6-10
+Thu Feb 29 09:17:40 2024   Multilayer Switch0   core(config-if-range)#switchport access vlan 20
+Thu Feb 29 09:18:19 2024   Multilayer Switch0   core(config-if-range)#int range g1/0/11-15
+Thu Feb 29 09:18:30 2024   Multilayer Switch0   core(config-if-range)#switchport access vlan 30
+Thu Feb 29 09:19:27 2024   Multilayer Switch0   core(config-if-range)#int range g1/0/16-23
+Thu Feb 29 09:19:35 2024   Multilayer Switch0   core(config-if-range)#switchport access vlan 40
+Thu Feb 29 09:28:32 2024   Multilayer Switch0   core(config-if-range)#int range g1/0/1-5
+Thu Feb 29 09:28:47 2024   Multilayer Switch0   core(config-if-range)#switchport mode trunk
+Thu Feb 29 09:28:58 2024   Multilayer Switch0   core(config-if-range)#o shutdown
+Thu Feb 29 09:29:05 2024   Multilayer Switch0   core(config-if-range)#no shutdown
+Thu Feb 29 09:29:07 2024   Multilayer Switch0   core(config-if-range)#end
+Thu Feb 29 09:29:13 2024   Multilayer Switch0   core#conft
+Thu Feb 29 09:32:05 2024   Multilayer Switch0   core#conf t
+Thu Feb 29 09:32:20 2024   Multilayer Switch0   core(config)#int range g1/0/6-10
+Thu Feb 29 09:32:29 2024   Multilayer Switch0   core(config-if-range)#switchport mode trunk
+Thu Feb 29 09:32:33 2024   Multilayer Switch0   core(config-if-range)#no shut
+Thu Feb 29 09:32:39 2024   Multilayer Switch0   core(config-if-range)#no shutdown
+Thu Feb 29 09:32:52 2024   Multilayer Switch0   core(config-if-range)#end
+Thu Feb 29 09:32:56 2024   Multilayer Switch0   core#conf t
+Thu Feb 29 09:33:50 2024   Multilayer Switch0   core(config)#int range g1/0/1-5
+Thu Feb 29 09:33:58 2024   Multilayer Switch0   core(config-if-range)#ip address 10.0.0.2 255.255.0
+Thu Feb 29 09:41:15 2024   Multilayer Switch0   core(config-if-range)#int VLAN10
+Thu Feb 29 09:41:28 2024   Multilayer Switch0   core(config-if)#ip address 10.0.0.2 255.255.255.0
+Thu Feb 29 09:41:33 2024   Multilayer Switch0   core(config-if)#exit
+Thu Feb 29 09:41:41 2024   Multilayer Switch0   core(config)#int VLAN20
+Thu Feb 29 09:41:52 2024   Multilayer Switch0   core(config-if)#ip address 10.0.1.2 255.255.255.0
+Thu Feb 29 09:43:48 2024   Multilayer Switch0   core(config-if)#exit
+Thu Feb 29 09:43:50 2024   Multilayer Switch0   core(config)#exit
+Thu Feb 29 09:43:55 2024   Multilayer Switch0   core#ping 10.0.0.2
+Thu Feb 29 09:44:01 2024   Multilayer Switch0   core#ping 10.0.0.50
+Thu Feb 29 09:46:03 2024   Multilayer Switch0   core#ping 10.0.0.50
+Thu Feb 29 09:47:19 2024   Multilayer Switch0   core#int range g1/0/1-5
+Thu Feb 29 09:47:24 2024   Multilayer Switch0   core#conf t
+Thu Feb 29 09:47:32 2024   Multilayer Switch0   core(config)#int range g1/0/1-5
+Thu Feb 29 09:47:38 2024   Multilayer Switch0   core(config-if-range)#switchport mode trunk
+Thu Feb 29 09:47:56 2024   Multilayer Switch0   core(config-if-range)#switchport trunk allowed vlan 10
+Thu Feb 29 09:47:59 2024   Multilayer Switch0   core(config-if-range)#exit
+Thu Feb 29 09:48:14 2024   Multilayer Switch0   core(config)#int range g1/0/6-10
+Thu Feb 29 09:48:21 2024   Multilayer Switch0   core(config-if-range)#switchport mode trunk
+Thu Feb 29 09:48:30 2024   Multilayer Switch0   core(config-if-range)#switchport trunk allowed vlan 20
+Thu Feb 29 09:48:33 2024   Multilayer Switch0   core(config-if-range)#exit
+Thu Feb 29 09:48:59 2024   Multilayer Switch0   core(config)#ip routing
+Thu Feb 29 09:52:10 2024   Multilayer Switch0   core(config)#int range g1/0-5
+Thu Feb 29 09:53:40 2024   Multilayer Switch0   core(config)#switchport mode access
+Thu Feb 29 09:54:01 2024   Multilayer Switch0   core(config)#switchport mode access
+Thu Feb 29 09:54:15 2024   Multilayer Switch0   core(config)#int range g1/0/1-5
+Thu Feb 29 09:54:19 2024   Multilayer Switch0   core(config-if-range)#switchport mode access
+Thu Feb 29 09:54:25 2024   Multilayer Switch0   core(config-if-range)#switchport access vlan 10
+Thu Feb 29 09:54:30 2024   Multilayer Switch0   core(config-if-range)#no shutdown
+Thu Feb 29 09:54:40 2024   Multilayer Switch0   core(config-if-range)#int VLAN10
+Thu Feb 29 09:54:55 2024   Multilayer Switch0   core(config-if)#ip address 10.0.0.2 255.255.255.0
+Thu Feb 29 09:54:59 2024   Multilayer Switch0   core(config-if)#no shutdown
+Thu Feb 29 09:55:20 2024   Multilayer Switch0   core(config-if)#int g1/0/6-10
+Thu Feb 29 09:55:25 2024   Multilayer Switch0   core(config-if)#int range g1/0/6-10
+Thu Feb 29 09:55:34 2024   Multilayer Switch0   core(config-if-range)#switchport mode access
+Thu Feb 29 09:55:40 2024   Multilayer Switch0   core(config-if-range)#switchport access vlan 20
+Thu Feb 29 09:55:46 2024   Multilayer Switch0   core(config-if-range)#no shutdown
+Thu Feb 29 09:55:55 2024   Multilayer Switch0   core(config-if-range)#int VLAN20
+Thu Feb 29 09:56:01 2024   Multilayer Switch0   core(config-if)#ip address 10.0.1.2 255.255.255.0
+Thu Feb 29 09:56:05 2024   Multilayer Switch0   core(config-if)#no shutdown
+Thu Feb 29 10:02:04 2024   Multilayer Switch0   core(config-if)#exit
+Thu Feb 29 10:02:11 2024   Multilayer Switch0   core(config)#vlan 40
+Thu Feb 29 10:02:17 2024   Multilayer Switch0   core(config-vlan)#name VLAN40
+Thu Feb 29 10:02:21 2024   Multilayer Switch0   core(config-vlan)#exit
+Thu Feb 29 10:02:35 2024   Multilayer Switch0   core(config)#int range g1/0/16-23
+Thu Feb 29 10:02:43 2024   Multilayer Switch0   core(config-if-range)#switchport mode access
+Thu Feb 29 10:02:47 2024   Multilayer Switch0   core(config-if-range)#switchport access vlan 40
+Thu Feb 29 10:02:55 2024   Multilayer Switch0   core(config-if-range)#no shutdown
+Thu Feb 29 10:03:01 2024   Multilayer Switch0   core(config-if-range)#interface VLAN40
+Thu Feb 29 10:03:07 2024   Multilayer Switch0   core(config-if)#ip address 192.168.12.2 255.255.255.0
+Thu Feb 29 10:03:13 2024   Multilayer Switch0   core(config-if)#no shutdown
+Thu Feb 29 10:03:20 2024   Multilayer Switch0   core(config-if)#exit
+Thu Feb 29 10:05:02 2024   Multilayer Switch0   core(config)#ip route 0.0.0.0 0.0.0.0 192.168.12.2
+Thu Feb 29 10:06:37 2024   Multilayer Switch0   core(config)#ip route 10.0.0.0 255.255.255.0 10.0.0.2
+Thu Feb 29 10:07:48 2024   Multilayer Switch0   core(config)#ip routing
+Thu Feb 29 10:07:51 2024   Multilayer Switch0   core(config)#exit
+Thu Feb 29 10:07:55 2024   Multilayer Switch0   core#conf t
+Thu Feb 29 10:10:22 2024   Multilayer Switch0   core(config)#ip access-list extended ALLOW-PING
+Thu Feb 29 10:10:45 2024   Multilayer Switch0   core(config-ext-nacl)#permit icmp any any
+Thu Feb 29 10:10:51 2024   Multilayer Switch0   core(config-ext-nacl)#int VLAN10
+Thu Feb 29 10:11:02 2024   Multilayer Switch0   core(config-if)#ip access-group ALLOW-PING in
+Thu Feb 29 10:11:06 2024   Multilayer Switch0   core(config-if)#int VLAN20
+Thu Feb 29 10:11:14 2024   Multilayer Switch0   core(config-if)#ip access-group ALLOW-PING in
+Thu Feb 29 10:12:17 2024   Multilayer Switch0   core(config-if)#exit
+Thu Feb 29 10:12:24 2024   Multilayer Switch0   core(config)#ip routing
+Thu Feb 29 10:12:26 2024   Multilayer Switch0   core(config)#exit
+Thu Feb 29 10:12:31 2024   Multilayer Switch0   core#ping 10.0.1.50
+Thu Feb 29 10:12:46 2024   Multilayer Switch0   core#ping 10.0.0.50
+Thu Feb 29 10:14:16 2024   Switch1   Switch>ennable
+Thu Feb 29 10:16:44 2024   Multilayer Switch0   core#conf t
+Thu Feb 29 10:16:55 2024   Multilayer Switch0   core(config)#int range g1/0/1-5
+Thu Feb 29 10:17:04 2024   Multilayer Switch0   core(config-if-range)#switchport mode trunk
+Thu Feb 29 10:17:23 2024   Multilayer Switch0   core(config-if-range)#switchport trunk encapsulation dot1q
+Thu Feb 29 10:17:58 2024   Multilayer Switch0   core(config)#switchport trunk encapsulation dot1q
+Thu Feb 29 10:19:05 2024   Multilayer Switch0   core(config)#int range g1/0/1-23
+Thu Feb 29 10:19:15 2024   Multilayer Switch0   core(config-if-range)#switchport mode trunk
+Thu Feb 29 10:19:27 2024   Multilayer Switch0   core(config-if-range)#switchport trunk encapsulation dot1q
+Thu Feb 29 10:20:12 2024   Multilayer Switch0   core(config)#switchport trunk encapsulation dot1q
+Thu Feb 29 10:20:16 2024   Multilayer Switch0   core(config)#int range g1/0/1-23
+Thu Feb 29 10:20:20 2024   Multilayer Switch0   core(config-if-range)#switchport mode trunk
+Thu Feb 29 10:20:23 2024   Multilayer Switch0   core(config-if-range)#switchport trunk encapsulation dot1q
+Thu Feb 29 10:21:11 2024   Multilayer Switch0   core(config)#ip routing
+Thu Feb 29 10:24:12 2024   Multilayer Switch0   core(config)#int g1/0/1-5
+Thu Feb 29 10:24:18 2024   Multilayer Switch0   core(config)#int range g1/0/1-5
+Thu Feb 29 10:24:26 2024   Multilayer Switch0   core(config-if-range)#switchport mode access
+Thu Feb 29 10:24:36 2024   Multilayer Switch0   core(config-if-range)#switch access vlan 10
+Thu Feb 29 10:25:02 2024   Multilayer Switch0   core(config-if-range)#int range g1/0/6-10
+Thu Feb 29 10:25:08 2024   Multilayer Switch0   core(config-if-range)#switchport mode access
+Thu Feb 29 10:25:17 2024   Multilayer Switch0   core(config-if-range)#switch access vlan 20
+Thu Feb 29 10:29:55 2024   Multilayer Switch0   core(config-if-range)#exit
+Thu Feb 29 10:30:06 2024   Multilayer Switch0   core(config)#int range g1/0/1-23
+Thu Feb 29 10:30:29 2024   Multilayer Switch0   core#conft
+Thu Feb 29 10:32:07 2024   Multilayer Switch0   core#conf t
+Thu Feb 29 10:32:12 2024   Multilayer Switch0   core(config)#int range g1/0/1-23
+Thu Feb 29 10:32:18 2024   Multilayer Switch0   core(config-if-range)#switchport mode trunk
+Thu Feb 29 10:32:25 2024   Multilayer Switch0   core(config-if-range)#switchport trunk encapsulation dot1q
+Thu Feb 29 10:32:38 2024   Multilayer Switch0   core(config)#ip Routing
+Thu Feb 29 10:32:54 2024   Multilayer Switch0   core(config)#ip routing
+Thu Feb 29 10:41:03 2024   Router0   Router>enable
+Thu Feb 29 10:41:05 2024   Router0   Router#conf t
+Thu Feb 29 10:41:12 2024   Router0   Router(config)#int f0/0
+Thu Feb 29 10:41:23 2024   Router0   Router(config-if)#ip address 192.168.12.8 255.255.255.0
+Thu Feb 29 10:41:33 2024   Router0   Router(config-if)#no shut
+Thu Feb 29 10:41:58 2024   Multilayer Switch0   core(config)#ip route 0.0.0.0 0.0.0.0 192.168.12.8
+Thu Feb 29 10:42:09 2024   Multilayer Switch0   core(config)#ip routing
+Thu Feb 29 10:43:22 2024   Multilayer Switch0   core(config)#int range g1/0/1-5
+Thu Feb 29 10:43:31 2024   Multilayer Switch0   core(config-if-range)#switchport access vlann 10
+Thu Feb 29 10:43:36 2024   Multilayer Switch0   core(config-if-range)#switchport access vlan 10
+Thu Feb 29 10:43:59 2024   Multilayer Switch0   core(config-if-range)#no shut
+Thu Feb 29 10:44:01 2024   Multilayer Switch0   core(config-if-range)#exit
+Thu Feb 29 10:44:14 2024   Multilayer Switch0   core(config)#int range g1/0/6-10
+Thu Feb 29 10:44:34 2024   Multilayer Switch0   core(config-if-range)#switchport access vlan 20
+Thu Feb 29 10:44:52 2024   Multilayer Switch0   core(config-if-range)#int range g1/0/16-23
+Thu Feb 29 10:45:01 2024   Multilayer Switch0   core(config-if-range)#switchport access vlann 40
+Thu Feb 29 10:45:07 2024   Multilayer Switch0   core(config-if-range)#switchport access vlan 40
+Thu Feb 29 10:48:38 2024   Multilayer Switch0   core(config-if-range)#interface range g1/0/1-5
+Thu Feb 29 10:48:44 2024   Multilayer Switch0   core(config-if-range)#switchport mode access
+Thu Feb 29 10:48:49 2024   Multilayer Switch0   core(config-if-range)#switchport access vlan 10
+Thu Feb 29 10:48:58 2024   Multilayer Switch0   core(config-if-range)#no shut
+Thu Feb 29 10:49:05 2024   Multilayer Switch0   core(config-if-range)#interface range g1/0/6-10
+Thu Feb 29 10:49:09 2024   Multilayer Switch0   core(config-if-range)#switchport mode access
+Thu Feb 29 10:49:14 2024   Multilayer Switch0   core(config-if-range)#switchport access vlan 20
+Thu Feb 29 10:49:17 2024   Multilayer Switch0   core(config-if-range)#no shut
+Thu Feb 29 10:49:24 2024   Multilayer Switch0   core(config-if-range)#interface range g1/0/16-23
+Thu Feb 29 10:49:30 2024   Multilayer Switch0   core(config-if-range)#switchport mode access
+Thu Feb 29 10:49:35 2024   Multilayer Switch0   core(config-if-range)#switchport access vlan 40
+Thu Feb 29 10:49:38 2024   Multilayer Switch0   core(config-if-range)#no shut
+Thu Feb 29 10:49:45 2024   Multilayer Switch0   core(config-if-range)#exit
+Thu Feb 29 10:49:48 2024   Multilayer Switch0   core(config)#ip routing
+Thu Feb 29 10:58:55 2024   Multilayer Switch0   core(config)#exit
+Thu Feb 29 10:59:01 2024   Multilayer Switch0   core#ping 10.0.1.50
+Thu Feb 29 11:00:50 2024   Router0   Router>enable
+Thu Feb 29 11:00:54 2024   Router0   Router#ping 192.168.12.2
+Thu Feb 29 11:01:06 2024   Multilayer Switch0   core#ping 192.168.12.8
+Thu Feb 29 11:01:47 2024   Multilayer Switch0   core#ping 192.168.12.2
+Thu Feb 29 11:01:53 2024   Multilayer Switch0   core#ping 10.0.0.50
+Thu Feb 29 11:01:57 2024   Multilayer Switch0   core#ping 10.0.1.50
+Thu Feb 29 11:04:43 2024   Multilayer Switch0   core#show run
+Thu Feb 29 11:06:16 2024   Multilayer Switch0   core#int VLAN40
+Thu Feb 29 11:06:19 2024   Multilayer Switch0   core#conf t
+Thu Feb 29 11:06:23 2024   Multilayer Switch0   core(config)#int VLAN40
+Thu Feb 29 11:06:32 2024   Multilayer Switch0   core(config-if)#ip access-group ALLOW-PING in
+Thu Feb 29 11:07:16 2024   Multilayer Switch0   core(config-if)#no shut
+Thu Feb 29 11:07:22 2024   Multilayer Switch0   core(config-if)#ip routing
+Thu Feb 29 11:07:32 2024   Multilayer Switch0   core(config)#int VLAN10
+Thu Feb 29 11:07:35 2024   Multilayer Switch0   core(config-if)#ip routing
+Thu Feb 29 11:07:46 2024   Multilayer Switch0   core(config)#int VLAN 20 ip routing
+Thu Feb 29 11:07:52 2024   Multilayer Switch0   core(config)#int VLAN20
+Thu Feb 29 11:07:55 2024   Multilayer Switch0   core(config-if)#ip routinng
+Thu Feb 29 11:07:57 2024   Multilayer Switch0   core(config-if)#ip routing
+Thu Feb 29 11:08:06 2024   Multilayer Switch0   core(config)#int VLAN30 ip routing
+Thu Feb 29 11:08:10 2024   Multilayer Switch0   core(config)#int VLAN30
+Thu Feb 29 11:08:19 2024   Multilayer Switch0   core(config-if)#ip routing
+Thu Feb 29 11:11:29 2024   Multilayer Switch0   core(config)#ip route 0.0.0.0 0.0.0.0 192.168.12.8
+Thu Feb 29 11:14:44 2024   Multilayer Switch0   core(config)#int range g1/0/1-5
+Thu Feb 29 11:14:55 2024   Multilayer Switch0   core(config-if-range)#switchport access vlan 10
+Thu Feb 29 11:14:58 2024   Multilayer Switch0   core(config-if-range)#exit
+Thu Feb 29 11:15:08 2024   Multilayer Switch0   core(config)#int range g1/0/6-10
+Thu Feb 29 11:15:15 2024   Multilayer Switch0   core(config-if-range)#switchport access vlan 20
+Thu Feb 29 11:15:17 2024   Multilayer Switch0   core(config-if-range)#exit
+Thu Feb 29 11:15:29 2024   Multilayer Switch0   core(config)#int range g1/0/11-15
+Thu Feb 29 11:15:35 2024   Multilayer Switch0   core(config-if-range)#switchport access vlan 30
+Thu Feb 29 11:15:37 2024   Multilayer Switch0   core(config-if-range)#exit
+Thu Feb 29 11:15:48 2024   Multilayer Switch0   core(config)#int g1/0/16-23
+Thu Feb 29 11:15:56 2024   Multilayer Switch0   core(config)#int range g1/0/16-23
+Thu Feb 29 11:16:04 2024   Multilayer Switch0   core(config-if-range)#switchport access vlan 40
+Thu Feb 29 11:16:06 2024   Multilayer Switch0   core(config-if-range)#exit
+Thu Feb 29 11:16:17 2024   Multilayer Switch0   core(config)#ip routing
+Thu Feb 29 11:16:25 2024   Multilayer Switch0   core(config)#show vlan brief
+Thu Feb 29 11:16:29 2024   Multilayer Switch0   core(config)#exit
+Thu Feb 29 11:16:37 2024   Multilayer Switch0   core#show vlan brief
+Thu Feb 29 11:16:58 2024   Multilayer Switch0   core#show ip route
+Thu Feb 29 11:17:52 2024   Multilayer Switch0   core#ip route delete 0.0.0.0 0.0.0.0 192.168.12.8
+Thu Feb 29 11:18:01 2024   Multilayer Switch0   core#conf t
+Thu Feb 29 11:18:09 2024   Multilayer Switch0   core(config)#ip route delete 0.0.0.0 0.0.0.0 192.168.12.8
+Thu Feb 29 11:18:23 2024   Multilayer Switch0   core(config)#route delete 0.0.0.0 0.0.0.0 192.168.12.8
+Thu Feb 29 11:19:13 2024   Multilayer Switch0   core(config)#no ip route 0.0.0.0 0.0.0.0 192.168.12.8
+Thu Feb 29 11:19:16 2024   Multilayer Switch0   core(config)#end
+Thu Feb 29 11:19:21 2024   Multilayer Switch0   core#show ip route
+Thu Feb 29 11:22:32 2024   Router0   Router>enable
+Thu Feb 29 11:23:07 2024   Router0   Router#vlan 40
+Thu Feb 29 11:23:10 2024   Router0   Router#conf t
+Thu Feb 29 11:23:13 2024   Router0   Router(config)#vlan 40
+Thu Feb 29 11:23:36 2024   Router0   Router(config)#vlan 40
+Thu Feb 29 11:24:27 2024   Router0   Router(config)#int f0/0
+Thu Feb 29 11:24:40 2024   Router0   Router(config-if)#encapsulation dot1Q 40
+Thu Feb 29 11:25:21 2024   Router0   Router(config-if)#exit
+Thu Feb 29 11:25:23 2024   Router0   Router(config)#]show vlan
+Thu Feb 29 11:25:25 2024   Router0   Router(config)#exit
+Thu Feb 29 11:25:29 2024   Router0   Router#show vlan
+Thu Feb 29 11:25:42 2024   Router0   Router#show ip route
+Thu Feb 29 11:25:49 2024   Router0   Router#show run
+Thu Feb 29 11:26:19 2024   Router0   Router#show route
+Thu Feb 29 11:26:34 2024   Router0   Router#show ip route
+Thu Feb 29 11:26:44 2024   Router0   Router#vlan
+Thu Feb 29 11:26:46 2024   Router0   Router#show vlan
+Thu Feb 29 11:28:58 2024   Multilayer Switch0   Switch>enable
+Thu Feb 29 11:29:30 2024   Multilayer Switch0   Switch#conf t
+Thu Feb 29 11:29:38 2024   Multilayer Switch0   Switch(config)#int g1/0/1
+Thu Feb 29 11:30:18 2024   Multilayer Switch0   Switch(config)#int f0/1
+Thu Feb 29 11:31:13 2024   Multilayer Switch0   Switch(config-if)#exit
+Thu Feb 29 11:31:17 2024   Multilayer Switch0   Switch(config)#vlan 10
+Thu Feb 29 11:31:23 2024   Multilayer Switch0   Switch(config-vlan)#name VLAN10
+Thu Feb 29 11:31:28 2024   Multilayer Switch0   Switch(config-vlan)#ext
+Thu Feb 29 11:31:30 2024   Multilayer Switch0   Switch(config-vlan)#exit
+Thu Feb 29 11:31:33 2024   Multilayer Switch0   Switch(config)#vlan 20
+Thu Feb 29 11:31:36 2024   Multilayer Switch0   Switch(config-vlan)#nname VLAN20
+Thu Feb 29 11:31:41 2024   Multilayer Switch0   Switch(config-vlan)#name VLAN20
+Thu Feb 29 11:31:43 2024   Multilayer Switch0   Switch(config-vlan)#exit
+Thu Feb 29 11:31:47 2024   Multilayer Switch0   Switch(config)#vlann 30
+Thu Feb 29 11:31:50 2024   Multilayer Switch0   Switch(config)#vlan 30
+Thu Feb 29 11:31:53 2024   Multilayer Switch0   Switch(config-vlan)#name VLAN30
+Thu Feb 29 11:31:55 2024   Multilayer Switch0   Switch(config-vlan)#exit
+Thu Feb 29 11:31:58 2024   Multilayer Switch0   Switch(config)#vlan 40
+Thu Feb 29 11:32:02 2024   Multilayer Switch0   Switch(config-vlan)#name VLAN40
+Thu Feb 29 11:32:05 2024   Multilayer Switch0   Switch(config-vlan)#exit
+Thu Feb 29 11:32:31 2024   Multilayer Switch0   Switch(config)#int f0/1 switchport access vlan 10
+Thu Feb 29 11:32:36 2024   Multilayer Switch0   Switch(config)#int f0/1
+Thu Feb 29 11:32:44 2024   Multilayer Switch0   Switch(config-if)#switchport access vlan 10
+Thu Feb 29 11:32:55 2024   Multilayer Switch0   Switch(config-if)#exit
+Thu Feb 29 11:33:01 2024   Multilayer Switch0   Switch(config)#int f0/6
+Thu Feb 29 11:33:11 2024   Multilayer Switch0   Switch(config-if)#switchport access vlan 20
+Thu Feb 29 11:33:17 2024   Multilayer Switch0   Switch(config-if)#exit
+Thu Feb 29 11:33:26 2024   Multilayer Switch0   Switch(config)#int f0/11
+Thu Feb 29 11:33:37 2024   Multilayer Switch0   Switch(config-if)#switchport access vlan 30
+Thu Feb 29 11:33:39 2024   Multilayer Switch0   Switch(config-if)#exit
+Thu Feb 29 11:33:43 2024   Multilayer Switch0   Switch(config)#int f0/16
+Thu Feb 29 11:33:56 2024   Multilayer Switch0   Switch(config-if)#switchport access vlan 40
+Thu Feb 29 11:34:01 2024   Multilayer Switch0   Switch(config-if)#exit
+Thu Feb 29 11:34:09 2024   Multilayer Switch0   Switch(config)#int vlan 10
+Thu Feb 29 11:34:24 2024   Multilayer Switch0   Switch(config-if)#ip address 10.0.0.1 255.255.255.0
+Thu Feb 29 11:34:27 2024   Multilayer Switch0   Switch(config-if)#no shut
+Thu Feb 29 11:34:28 2024   Multilayer Switch0   Switch(config-if)#exit
+Thu Feb 29 11:34:32 2024   Multilayer Switch0   Switch(config)#int vlan 20
+Thu Feb 29 11:35:00 2024   Multilayer Switch0   Switch(config-if)#ip address 10.0.1.2 255.255.255.0
+Thu Feb 29 11:35:05 2024   Multilayer Switch0   Switch(config-if)#nno shu
+Thu Feb 29 11:35:10 2024   Multilayer Switch0   Switch(config-if)#no shut
+Thu Feb 29 11:35:11 2024   Multilayer Switch0   Switch(config-if)#exit
+Thu Feb 29 11:35:15 2024   Multilayer Switch0   Switch(config)#int vlan 30
+Thu Feb 29 11:35:25 2024   Multilayer Switch0   Switch(config-if)#ip address 10.0.2.2 255.255.255.0
+Thu Feb 29 11:35:28 2024   Multilayer Switch0   Switch(config-if)#no shut
+Thu Feb 29 11:35:30 2024   Multilayer Switch0   Switch(config-if)#exit
+Thu Feb 29 11:35:46 2024   Multilayer Switch0   Switch(config)#int vlan 40
+Thu Feb 29 11:35:59 2024   Multilayer Switch0   Switch(config-if)#ip address 192.168.12.2 255.255.255.0
+Thu Feb 29 11:36:01 2024   Multilayer Switch0   Switch(config-if)#no shut
+Thu Feb 29 11:36:03 2024   Multilayer Switch0   Switch(config-if)#exit
+Thu Feb 29 11:36:16 2024   Multilayer Switch0   Switch(config)#ip routing
+Thu Feb 29 11:36:23 2024   Multilayer Switch0   Switch(config)#show vlan brief
+Thu Feb 29 11:36:27 2024   Multilayer Switch0   Switch(config)#exit
+Thu Feb 29 11:36:32 2024   Multilayer Switch0   Switch#show vlan brief
+Thu Feb 29 11:36:42 2024   Multilayer Switch0   Switch#show ip route
+Thu Feb 29 11:39:11 2024   Multilayer Switch0   Switch#ping 10.0.0.2
+Thu Feb 29 11:39:29 2024   Multilayer Switch0   Switch#show ip
+Thu Feb 29 11:39:36 2024   Multilayer Switch0   Switch#show run
+Thu Feb 29 11:40:05 2024   Multilayer Switch0   Switch#int vlan 10
+Thu Feb 29 11:40:08 2024   Multilayer Switch0   Switch#conf t
+Thu Feb 29 11:40:12 2024   Multilayer Switch0   Switch(config)#int vlann 10
+Thu Feb 29 11:40:17 2024   Multilayer Switch0   Switch(config)#int vlan 10
+Thu Feb 29 11:40:28 2024   Multilayer Switch0   Switch(config-if)#ip address 10.0.0.2 255.255.255.0
+Thu Feb 29 11:40:30 2024   Multilayer Switch0   Switch(config-if)#no shut
+Thu Feb 29 11:41:49 2024   Multilayer Switch0   Switch(config-if)#show run
+Thu Feb 29 11:41:56 2024   Multilayer Switch0   Switch(config-if)#exit
+Thu Feb 29 11:42:02 2024   Multilayer Switch0   Switch(config)#int vlan 30
+Thu Feb 29 11:42:12 2024   Multilayer Switch0   Switch(config-if)#ip address 10.0.2.2 255.255.255.0
+Thu Feb 29 11:42:14 2024   Multilayer Switch0   Switch(config-if)#no shut
+Thu Feb 29 11:42:15 2024   Multilayer Switch0   Switch(config-if)#exit
+Thu Feb 29 11:43:10 2024   Multilayer Switch0   Switch(config)#int f0/11
+Thu Feb 29 11:43:27 2024   Multilayer Switch0   Switch(config-if)#switchport access vlan 30
+Thu Feb 29 11:43:30 2024   Multilayer Switch0   Switch(config-if)#exit
+Thu Feb 29 11:43:38 2024   Multilayer Switch0   Switch(config)#innt f0/16
+Thu Feb 29 11:43:46 2024   Multilayer Switch0   Switch(config)#int f0/16
+Thu Feb 29 11:44:08 2024   Multilayer Switch0   Switch(config-if)#switchport access vlan 40
+Thu Feb 29 11:44:13 2024   Multilayer Switch0   Switch(config-if)#exit
+Thu Feb 29 11:44:39 2024   Multilayer Switch0   Switch(config)#ip routing
+Thu Feb 29 11:44:43 2024   Multilayer Switch0   Switch(config)#show vlan
+Thu Feb 29 11:44:47 2024   Multilayer Switch0   Switch(config)#exit
+Thu Feb 29 11:44:51 2024   Multilayer Switch0   Switch#show vlan 
+Thu Feb 29 11:51:43 2024   Multilayer Switch0   Switch#show ip route
+Thu Feb 29 11:52:13 2024   Multilayer Switch0   Switch#conf t
+Thu Feb 29 11:52:20 2024   Multilayer Switch0   Switch(config)#int range f0/1-5
+Thu Feb 29 11:52:34 2024   Multilayer Switch0   Switch(config-if-range)#switchport access vlan 10
+Thu Feb 29 11:52:37 2024   Multilayer Switch0   Switch(config-if-range)#exit
+Thu Feb 29 11:52:47 2024   Multilayer Switch0   Switch(config)#int range f0/6-10
+Thu Feb 29 11:52:58 2024   Multilayer Switch0   Switch(config-if-range)#switchport access vlan 20
+Thu Feb 29 11:53:00 2024   Multilayer Switch0   Switch(config-if-range)#exit
+Thu Feb 29 11:53:13 2024   Multilayer Switch0   Switch(config)#int range f0/11-15
+Thu Feb 29 11:53:34 2024   Multilayer Switch0   Switch(config-if-range)#switchport access vlan 30
+Thu Feb 29 11:53:36 2024   Multilayer Switch0   Switch(config-if-range)#exit
+Thu Feb 29 11:53:50 2024   Multilayer Switch0   Switch(config)#int range f0/16-23
+Thu Feb 29 11:53:57 2024   Multilayer Switch0   Switch(config-if-range)#switchport access vlan 40
+Thu Feb 29 11:53:59 2024   Multilayer Switch0   Switch(config-if-range)#exit
+Thu Feb 29 13:24:27 2024   Multilayer Switch0   Switch>enable
+Thu Feb 29 13:24:29 2024   Multilayer Switch0   Switch#conf t
+Thu Feb 29 13:24:52 2024   Multilayer Switch0   Switch(config)#ip dhcp pool vlan10-user
+Thu Feb 29 13:25:08 2024   Multilayer Switch0   Switch(dhcp-config)#network 10.0.0.0 255.255.255.0
+Thu Feb 29 13:25:15 2024   Multilayer Switch0   Switch(dhcp-config)#default 10.0.0.2
+Thu Feb 29 13:25:25 2024   Multilayer Switch0   Switch(dhcp-config)#exit
+Thu Feb 29 13:25:57 2024   Multilayer Switch0   Switch(config)#ip dhcp excluded-address 10.0.0.1 10.0.0.50
+Thu Feb 29 13:26:12 2024   Multilayer Switch0   Switch(config)#ip dhcp vlan20-user
+Thu Feb 29 13:26:23 2024   Multilayer Switch0   Switch(config)#ip dhcp pool vlan20-user
+Thu Feb 29 13:26:37 2024   Multilayer Switch0   Switch(dhcp-config)#network 10.0.1.0 255.255.255.0
+Thu Feb 29 13:26:44 2024   Multilayer Switch0   Switch(dhcp-config)#default 10.0.1.2
+Thu Feb 29 13:26:52 2024   Multilayer Switch0   Switch(dhcp-config)#exit
+Thu Feb 29 13:27:16 2024   Multilayer Switch0   Switch(config)#ip dhcp excluded-address 10.0.1.1 10.0.1.50
+Thu Feb 29 13:28:08 2024   Multilayer Switch0   Switch(config)#ip dhcp pool vlan30-user
+Thu Feb 29 13:28:19 2024   Multilayer Switch0   Switch(dhcp-config)#network 10.0.2.0 255.255.255.0
+Thu Feb 29 13:28:25 2024   Multilayer Switch0   Switch(dhcp-config)#default 10.0.2.2
+Thu Feb 29 13:28:27 2024   Multilayer Switch0   Switch(dhcp-config)#exit
+Thu Feb 29 13:28:47 2024   Multilayer Switch0   Switch(config)#ip dhcp excluded-address 10.0.2.1 10.0.2.50
+Thu Feb 29 13:28:59 2024   Multilayer Switch0   Switch(config)#ip dhcp pool vlan40-user
+Thu Feb 29 13:29:14 2024   Multilayer Switch0   Switch(dhcp-config)#network 192.168.12.0 255.255.255.0
+Thu Feb 29 13:29:21 2024   Multilayer Switch0   Switch(dhcp-config)#default 192.168.12.2
+Thu Feb 29 13:29:23 2024   Multilayer Switch0   Switch(dhcp-config)#exit
+Thu Feb 29 13:29:41 2024   Multilayer Switch0   Switch(config)#ip dhcp excluded-address 192.168.12.1 192.168.12.8
+Thu Feb 29 13:30:28 2024   Multilayer Switch0   Switch(config)#ip dhcp excluded-address 192.168.12.1 192.168.12.50
+Thu Feb 29 13:32:33 2024   Router0   Router>enable
+Thu Feb 29 13:32:39 2024   Router0   Router#conf t
+Thu Feb 29 13:32:44 2024   Router0   Router(config)#int f0/0
+Thu Feb 29 13:33:04 2024   Router0   Router(config-if)#ip address 192.168.12.8 255.255.255.0
+Thu Feb 29 13:33:25 2024   Router0   Router(config-if)#no shut
+Thu Feb 29 13:33:29 2024   Router0   Router(config-if)#exit
+Thu Feb 29 13:33:39 2024   Router0   Router(config)#int f0/1
+Thu Feb 29 13:34:00 2024   Router0   Router(config-if)#ip address 1.1.1.1 255.255.255.0
+Thu Feb 29 13:34:02 2024   Router0   Router(config-if)#no shut
+Thu Feb 29 13:34:09 2024   Router0   Router(config-if)#exit
+Thu Feb 29 13:34:10 2024   Router0   Router(config)#exit
+Thu Feb 29 13:34:18 2024   Router0   Router#ping 192.168.12.51
+Thu Feb 29 13:34:23 2024   Router0   Router#ping 192.168.12.51
+Thu Feb 29 13:34:33 2024   Router0   Router#ping 10.0.0.2
+Thu Feb 29 13:34:55 2024   Router0   Router#conf t
+Thu Feb 29 13:34:58 2024   Router0   Router(config)#int f0/0
+Thu Feb 29 13:35:04 2024   Router0   Router(config-if)#default 192.168.12.2
+Thu Feb 29 13:36:39 2024   Router0   Router(config-if)#exit
+Thu Feb 29 13:37:02 2024   Router0   Router(config)#ip route 192.168.12.0 255.255.255.0 192.168.12.2
+Thu Feb 29 13:37:22 2024   Router0   Router(config)#ip route 10.0.0.0 255.255.255.0 10.0.0.2
+Thu Feb 29 13:37:24 2024   Router0   Router(config)#exit
+Thu Feb 29 13:37:29 2024   Router0   Router#ping 192.168.12.51
+Thu Feb 29 13:37:36 2024   Router0   Router#ping 10.0.0.51
+Thu Feb 29 13:38:23 2024   Router0   Router#conf t
+Thu Feb 29 13:38:39 2024   Router0   Router(config)#no route 10.0.0.0 255.255.255.0 10.0.0.2
+Thu Feb 29 13:39:46 2024   Router0   Router(config)#no ip route 10.0.0.0 255.255.255.0 10.0.0.2
+Thu Feb 29 13:40:08 2024   Router0   Router(config)#ip route 10.0.0.0 255.255.255.0 192.168.12.2
+Thu Feb 29 13:40:10 2024   Router0   Router(config)#exit
+Thu Feb 29 13:40:14 2024   Router0   Router#ping 10.0.0.2
+Thu Feb 29 13:40:26 2024   Router0   Router#ping 10.0.0.51
+Thu Feb 29 13:53:14 2024   Router0   Router>enable
+Thu Feb 29 13:58:46 2024   Router0   Router#conf t
+Thu Feb 29 13:58:52 2024   Router0   Router(config)#int 0/1
+Thu Feb 29 13:58:58 2024   Router0   Router(config)#int f0/1
+Thu Feb 29 13:59:05 2024   Router0   Router(config-if)#exit
+Thu Feb 29 13:59:13 2024   Router0   Router(config)#exit
+Thu Feb 29 13:59:14 2024   Router0   Router#s
+Thu Feb 29 13:59:16 2024   Router0   Router#show ip
+Thu Feb 29 13:59:20 2024   Router0   Router#show ip route
+Thu Feb 29 13:59:32 2024   Router0   Router#show run
+Thu Feb 29 13:59:51 2024   Router1   Router>enable
+Thu Feb 29 13:59:53 2024   Router1   Router#conf t
+Thu Feb 29 14:00:00 2024   Router1   Router(config)#int f0/0
+Thu Feb 29 14:00:11 2024   Router1   Router(config-if)#ip address 1.1.1.2 255.255.255.0
+Thu Feb 29 14:00:14 2024   Router1   Router(config-if)#no shut
+Thu Feb 29 14:00:31 2024   Router1   Router(config-if)#exit
+Thu Feb 29 14:00:34 2024   Router1   Router(config)#int f0/1
+Thu Feb 29 14:00:56 2024   Router1   Router(config-if)#ip address 172.16.1.2 255.255.255.0
+Thu Feb 29 14:01:03 2024   Router1   Router(config-if)#no shut
+Thu Feb 29 14:01:05 2024   Router1   Router(config-if)#exit
+Thu Feb 29 15:19:27 2024   PC5   C:\>pinng 192.168.12.8
+Thu Feb 29 15:19:57 2024   Multilayer Switch0   Switch>enable
+Thu Feb 29 15:20:00 2024   Multilayer Switch0   Switch#ping 1.1.1.1
+Thu Feb 29 15:20:38 2024   Router0   Router>enable
+Thu Feb 29 15:20:45 2024   Router0   Router#show ip config
+Thu Feb 29 15:20:48 2024   Router0   Router#show run
+Thu Feb 29 15:21:13 2024   Router0   Router#ping 1.1.1.2
+Thu Feb 29 15:21:44 2024   Router1   Router>enable
+Thu Feb 29 15:21:47 2024   Router1   Router#conf t
+Thu Feb 29 15:22:08 2024   Router1   Router(config)#ip route 0.0.0.0 0.0.0.0 1.1.1.1
+Thu Feb 29 15:23:04 2024   Router1   Router(config)#exit
+Thu Feb 29 15:23:08 2024   Router1   Router#show run
+Thu Feb 29 15:26:54 2024   Router0   Router#ping 1.1.1.2
+Thu Feb 29 15:27:01 2024   Router0   Router#ping 172.16.1.2
+Thu Feb 29 15:27:16 2024   Router0   Router#conf t
+Thu Feb 29 15:27:36 2024   Router0   Router(config)#ip route 0.0.0.0 0.0.0.0 1.1.1.2
+Thu Feb 29 15:27:38 2024   Router0   Router(config)#exit
+Thu Feb 29 15:27:45 2024   Router0   Router#ping 172.16.1.2
+Thu Feb 29 15:27:59 2024   Router0   Router#ping 172.16.1.10
+Thu Feb 29 15:28:08 2024   Server1   C:\>ip config
+Thu Feb 29 15:28:11 2024   Server1   C:\>iipconfig
+Thu Feb 29 15:30:03 2024   Multilayer Switch0   Switch#enable
+Thu Feb 29 15:30:06 2024   Multilayer Switch0   Switch#conf t
+Thu Feb 29 15:30:19 2024   Multilayer Switch0   Switch(config)#ip route 0.0.0.0 0.0.0.0 192.168.12.8
+Thu Feb 29 15:30:22 2024   Multilayer Switch0   Switch(config)#exit
+Thu Feb 29 15:30:34 2024   Multilayer Switch0   Switch#ping 172.16.1.10
+Thu Feb 29 15:43:14 2024   Multilayer Switch0   Switch>enable
+Thu Feb 29 15:43:18 2024   Multilayer Switch0   Switch#show ip route
+Thu Feb 29 15:44:40 2024   Router0   Router>enable
+Thu Feb 29 15:44:43 2024   Router0   Router#show ip route
+Thu Feb 29 15:45:41 2024   Router0   Router#conf t
+Thu Feb 29 15:46:08 2024   Router0   Router(config)#ip route 10.0.1.0 255.255.255.0 192.168.12.2
+Thu Feb 29 15:46:23 2024   Router0   Router(config)#ip route 10.0.2.0 255.255.255.0 192.168.12.2
+Thu Feb 29 16:44:24 2024   Router0   Router>en
+Thu Feb 29 16:44:33 2024   Router0   Router#show ip route
+Thu Feb 29 16:45:39 2024   Router1   Router>en
+Thu Feb 29 16:45:42 2024   Router1   Router#show ip route
+Thu Feb 29 16:55:49 2024   Router0   Router>en
+Thu Feb 29 16:55:51 2024   Router0   Router#show ip route
+Thu Feb 29 17:10:04 2024   Multilayer Switch0   Switch>en
+Thu Feb 29 17:10:18 2024   Multilayer Switch0   Switch#show ip route
+Thu Feb 29 17:10:31 2024   Multilayer Switch0   Switch#show ip route
+Thu Feb 29 17:11:04 2024   Router0   Router>en
+Thu Feb 29 17:11:08 2024   Router0   Router#show ip route
+Thu Feb 29 17:11:41 2024   Multilayer Switch0   Switch#en
+Thu Feb 29 17:11:43 2024   Multilayer Switch0   Switch#conf t
+Thu Feb 29 17:13:06 2024   Multilayer Switch0   Switch(config)#ip route 10.0.0.0 255.255.255.0 
+Thu Feb 29 17:13:21 2024   Multilayer Switch0   Switch(config)#ip route
+Thu Feb 29 17:13:25 2024   Multilayer Switch0   Switch(config)#exit
+Thu Feb 29 17:13:30 2024   Multilayer Switch0   Switch#show ip route
+Thu Feb 29 17:17:08 2024   Multilayer Switch0   Switch#no service dhcp
+Thu Feb 29 17:17:13 2024   Multilayer Switch0   Switch#conf t
+Thu Feb 29 17:17:19 2024   Multilayer Switch0   Switch(config)#no service dhcp
+Fri Mar 1 11:56:54 2024   Multilayer Switch0   Switch>en
+Fri Mar 1 11:57:03 2024   Multilayer Switch0   Switch#show ip route
+Fri Mar 1 13:40:45 2024   DHCP - 192.168.12.10   C:\>route add 10.0.0.0 MASK 255.255.255.0 10.0.0.2
+Fri Mar 1 13:41:00 2024   DHCP - 192.168.12.10   C:\>route add 10.0.0.0 255.255.255.0 10.0.0.2
+Fri Mar 1 13:44:09 2024   DHCP - 192.168.12.10   C:\>route
+Fri Mar 1 13:44:11 2024   DHCP - 192.168.12.10   C:\>route add
+Fri Mar 1 13:50:10 2024   DHCP - 192.168.12.10   C:\>route
+Fri Mar 1 22:09:32 2024   VLAN40 - 192.168.12.0/24   Switch>en
+Fri Mar 1 22:09:35 2024   VLAN40 - 192.168.12.0/24   Switch#show vlan
+Fri Mar 1 22:11:23 2024   Multilayer Switch0   Switch>en
+Fri Mar 1 22:11:25 2024   Multilayer Switch0   Switch#show vlan
+Sat Mar 2 08:51:15 2024   Multilayer Switch0   Switch>en
+Sat Mar 2 08:51:17 2024   Multilayer Switch0   Switch#show route
+Sat Mar 2 08:51:22 2024   Multilayer Switch0   Switch#show ip route
+Sat Mar 2 08:51:31 2024   Multilayer Switch0   Switch#enable
+Sat Mar 2 08:51:33 2024   Multilayer Switch0   Switch#conf t
+Sat Mar 2 08:52:02 2024   Multilayer Switch0   Switch#conf t
+Sat Mar 2 08:52:14 2024   Multilayer Switch0   Switch(config)#ip route 10.0.2.0 255.255.255.0 10.0.2.2
+Sat Mar 2 08:57:16 2024   Multilayer Switch0   Switch(config)#int range f0/11-15
+Sat Mar 2 08:57:28 2024   Multilayer Switch0   Switch(config-if-range)#switchport mode trunk
+Sat Mar 2 08:59:33 2024   Multilayer Switch0   Switch>en
+Sat Mar 2 09:00:41 2024   Multilayer Switch0   Switch#show ip route
+Sat Mar 2 09:00:53 2024   Multilayer Switch0   Switch#hostname core
+Sat Mar 2 09:01:08 2024   Multilayer Switch0   Switch#conf t
+Sat Mar 2 09:01:46 2024   Multilayer Switch0   Switch(config)#hostname core
+Sat Mar 2 09:02:02 2024   Multilayer Switch0   core(config)#int g1/0/1-5
+Sat Mar 2 09:02:08 2024   Multilayer Switch0   core(config)#int rannge g1/0/1-5
+Sat Mar 2 09:02:12 2024   Multilayer Switch0   core(config)#int range g1/0/1-5
+Sat Mar 2 09:02:20 2024   Multilayer Switch0   core(config-if-range)#switchport mode access
+Sat Mar 2 09:02:34 2024   Multilayer Switch0   core(config-if-range)#exit
+Sat Mar 2 09:02:39 2024   Multilayer Switch0   core(config)#vlan 10
+Sat Mar 2 09:02:44 2024   Multilayer Switch0   core(config-vlan)#name VLAN10
+Sat Mar 2 09:02:47 2024   Multilayer Switch0   core(config-vlan)#ext
+Sat Mar 2 09:02:49 2024   Multilayer Switch0   core(config-vlan)#exit
+Sat Mar 2 09:02:51 2024   Multilayer Switch0   core(config)#vlan 40
+Sat Mar 2 09:02:55 2024   Multilayer Switch0   core(config-vlan)#name VLAN40
+Sat Mar 2 09:02:57 2024   Multilayer Switch0   core(config-vlan)#exit
+Sat Mar 2 09:03:11 2024   Multilayer Switch0   core(config)#int range g1/0/1-5
+Sat Mar 2 09:03:18 2024   Multilayer Switch0   core(config-if-range)#switchport mode access
+Sat Mar 2 09:03:24 2024   Multilayer Switch0   core(config-if-range)#switchport access vlan 10
+Sat Mar 2 09:03:26 2024   Multilayer Switch0   core(config-if-range)#exit
+Sat Mar 2 09:03:37 2024   Multilayer Switch0   core(config)#int range g1/0/16-23
+Sat Mar 2 09:03:47 2024   Multilayer Switch0   core(config-if-range)#switchport mode access
+Sat Mar 2 09:03:52 2024   Multilayer Switch0   core(config-if-range)#switchport access vlan 40
+Sat Mar 2 09:03:57 2024   Multilayer Switch0   core(config-if-range)#exit
+Sat Mar 2 09:04:18 2024   Multilayer Switch0   core(config)#int range g1/0/1-5, g1/0/16-23
+Sat Mar 2 09:04:25 2024   Multilayer Switch0   core(config-if-range)#switchport mode trunk
+Sat Mar 2 09:04:46 2024   Multilayer Switch0   core(config-if-range)#switchport trunk allowed vlan 10,40
+Sat Mar 2 09:04:47 2024   Multilayer Switch0   core(config-if-range)#exit
+Sat Mar 2 09:06:22 2024   Multilayer Switch0   core(config)#int vlan 10
+Sat Mar 2 09:06:33 2024   Multilayer Switch0   core(config-if)#ip add 10.0.0.2 255.255.255.0
+Sat Mar 2 09:06:39 2024   Multilayer Switch0   core(config-if)#exit
+Sat Mar 2 09:06:43 2024   Multilayer Switch0   core(config)#int vlann 40
+Sat Mar 2 09:06:46 2024   Multilayer Switch0   core(config)#int vlan 40
+Sat Mar 2 09:07:05 2024   Multilayer Switch0   core(config-if)#ip add 192.168.12.2 255.255.255.0
+Sat Mar 2 09:07:07 2024   Multilayer Switch0   core(config-if)#exit
+Sat Mar 2 09:10:17 2024   Multilayer Switch0   core(config)#ip routing
+Sat Mar 2 09:12:32 2024   Multilayer Switch0   core(config)#exit
+Sat Mar 2 09:12:38 2024   Multilayer Switch0   core#show vlan brief
+Sat Mar 2 09:14:52 2024   Multilayer Switch0   core#show vlan
+Sat Mar 2 09:15:24 2024   Multilayer Switch0   core#conf t
+Sat Mar 2 09:15:41 2024   Multilayer Switch0   core(config)#int range g1/0/1-5
+Sat Mar 2 09:16:23 2024   Multilayer Switch0   core(config-if-range)#switchport access vlan 10
+Sat Mar 2 09:16:26 2024   Multilayer Switch0   core(config-if-range)#exit
+Sat Mar 2 09:16:35 2024   Multilayer Switch0   core(config)#int rannge g1/0/16-23
+Sat Mar 2 09:16:42 2024   Multilayer Switch0   core(config)#int range g1/0/16-23
+Sat Mar 2 09:16:51 2024   Multilayer Switch0   core(config-if-range)#switchport access vlan 40
+Sat Mar 2 09:16:53 2024   Multilayer Switch0   core(config-if-range)#exit
+Sat Mar 2 09:17:17 2024   Multilayer Switch0   core(config)#exit
+Sat Mar 2 09:17:20 2024   Multilayer Switch0   core#show run
+Sat Mar 2 09:18:02 2024   Multilayer Switch0   core#conf t
+Sat Mar 2 09:19:07 2024   Multilayer Switch0   core(config)#int range g1/0/1-5
+Sat Mar 2 09:19:14 2024   Multilayer Switch0   core(config-if-range)#switchport mode access
+Sat Mar 2 09:19:21 2024   Multilayer Switch0   core(config-if-range)#switchport access vlan 10
+Sat Mar 2 09:19:23 2024   Multilayer Switch0   core(config-if-range)#exit
+Sat Mar 2 09:19:32 2024   Multilayer Switch0   core(config)#int range g1/0/16-23
+Sat Mar 2 09:19:53 2024   Multilayer Switch0   core(config-if-range)#switchport mode access
+Sat Mar 2 09:20:02 2024   Multilayer Switch0   core(config-if-range)#switchport access vlan 40
+Sat Mar 2 09:20:05 2024   Multilayer Switch0   core(config-if-range)#exit
+Sat Mar 2 09:20:09 2024   Multilayer Switch0   core(config)#ip routing
+Sat Mar 2 09:20:16 2024   Multilayer Switch0   core(config)#int vlan 10
+Sat Mar 2 09:20:24 2024   Multilayer Switch0   core(config-if)#ip add 10.0.0.2 255.255.255.0
+Sat Mar 2 09:20:26 2024   Multilayer Switch0   core(config-if)#exit
+Sat Mar 2 09:20:28 2024   Multilayer Switch0   core(config)#int vlann 40
+Sat Mar 2 09:20:31 2024   Multilayer Switch0   core(config)#int vlan 40
+Sat Mar 2 09:20:42 2024   Multilayer Switch0   core(config-if)#ip add 192.168.12.2 255.255.255.0
+Sat Mar 2 09:20:45 2024   Multilayer Switch0   core(config-if)#exit
+Sat Mar 2 09:20:52 2024   Multilayer Switch0   core(config)#ping 192.168.12.10
+Sat Mar 2 09:20:55 2024   Multilayer Switch0   core(config)#ping 192.168.12.10
+Sat Mar 2 09:20:56 2024   Multilayer Switch0   core(config)#exit
+Sat Mar 2 09:21:00 2024   Multilayer Switch0   core#ping 192.168.12.10
+Sat Mar 2 09:21:06 2024   Multilayer Switch0   core#ping 192.168.12.10
+Sat Mar 2 09:21:37 2024   Multilayer Switch0   core#conf t
+Sat Mar 2 09:22:19 2024   Multilayer Switch0   core(config)#int g1/0/1,g1/0/23
+Sat Mar 2 09:22:28 2024   Multilayer Switch0   core(config)#int range g1/0/1,g1/0/23
+Sat Mar 2 09:22:46 2024   Multilayer Switch0   core(config-if-range)#switchport mode trunk
+Sat Mar 2 09:23:03 2024   Multilayer Switch0   core(config-if-range)#switchport trunk allowed vlan 10,40
+Sat Mar 2 09:23:05 2024   Multilayer Switch0   core(config-if-range)#exit
+Sat Mar 2 09:23:08 2024   Multilayer Switch0   core(config)#exit
+Sat Mar 2 09:33:11 2024   Sw1   Switch>enable
+Sat Mar 2 09:33:11 2024   Sw1   Switch#configure terminal
+Sat Mar 2 09:33:11 2024   Sw1   Switch(config)#hostname sw1
+Sat Mar 2 09:33:11 2024   Sw1   sw1(config)#end
+Sat Mar 2 09:33:11 2024   Sw1   sw1#copy running-config startup-config
+Sat Mar 2 09:43:12 2024   Sw1   sw1#conf t
+Sat Mar 2 09:43:23 2024   Sw1   sw1(config)#int g1/0/1
+Sat Mar 2 09:43:38 2024   Sw1   sw1(config-if)#switchport trunk encapsulation dot1q
+Sat Mar 2 09:44:01 2024   Sw1   sw1(config-if)#switchport trunk encapsulation dot1q
+Sat Mar 2 09:46:12 2024   Sw1   sw1(config-if)#exit
+Sat Mar 2 09:46:15 2024   Sw1   sw1(config)#vlan 10
+Sat Mar 2 09:46:19 2024   Sw1   sw1(config-vlan)#name VLAN10
+Sat Mar 2 09:46:37 2024   Sw1   sw1(config-vlan)#int range g1/0/10-15
+Sat Mar 2 09:46:47 2024   Sw1   sw1(config-if-range)#switchport mode access
+Sat Mar 2 09:47:03 2024   Sw1   sw1(config-if-range)#switchport access vlan 10
+Sat Mar 2 09:47:05 2024   Sw1   sw1(config-if-range)#exit
+Sat Mar 2 09:49:32 2024   Sw2   Switch>en
+Sat Mar 2 09:49:34 2024   Sw2   Switch#conf t
+Sat Mar 2 09:49:43 2024   Sw2   Switch(config)#int g1/0/10-15
+Sat Mar 2 09:50:03 2024   Sw2   Switch(config)#vlan 20
+Sat Mar 2 09:50:07 2024   Sw2   Switch(config-vlan)#name VLAN20
+Sat Mar 2 09:50:10 2024   Sw2   Switch(config-vlan)#exit
+Sat Mar 2 09:50:32 2024   Sw2   Switch(config)#int g1/0/10-15
+Sat Mar 2 09:50:37 2024   Sw2   Switch(config)#int range g1/0/10-15
+Sat Mar 2 09:50:44 2024   Sw2   Switch(config-if-range)#switchport mode access
+Sat Mar 2 09:50:52 2024   Sw2   Switch(config-if-range)#switchport access vlan 20
+Sat Mar 2 09:50:54 2024   Sw2   Switch(config-if-range)#exit
+Sat Mar 2 09:51:06 2024   Sw3   Switch>en
+Sat Mar 2 09:51:07 2024   Sw3   Switch#conf t
+Sat Mar 2 09:51:11 2024   Sw3   Switch(config)#vlan 30
+Sat Mar 2 09:51:17 2024   Sw3   Switch(config-vlan)#name VLAN30
+Sat Mar 2 09:51:26 2024   Sw3   Switch(config-vlan)#int range g1/0/10-15
+Sat Mar 2 09:51:34 2024   Sw3   Switch(config-if-range)#switchport mode access
+Sat Mar 2 09:51:41 2024   Sw3   Switch(config-if-range)#switchport access vlan 30
+Sat Mar 2 09:51:43 2024   Sw3   Switch(config-if-range)#exit
+Sat Mar 2 09:52:56 2024   Sw3   Switch(config)#int g1/0/1
+Sat Mar 2 09:53:13 2024   Sw3   Switch(config-if)#switchport trunk encapsulation dot1q
+Sat Mar 2 09:53:24 2024   Sw3   Switch(config-if)#switchport trunk encapsulation dot1q
+Sat Mar 2 09:53:35 2024   Sw3   Switch(config-if)#switchport trunk encapsulation dot1q
+Sat Mar 2 09:56:21 2024   Sw3   Switch#conf t
+Sat Mar 2 09:56:36 2024   Sw3   Switch(config)#int g1/0/1
+Sat Mar 2 09:56:44 2024   Sw3   Switch(config-if)#switchport mode trunk
+Sat Mar 2 09:56:49 2024   Sw3   Switch(config-if)#exit
+Sat Mar 2 09:57:23 2024   Sw1   sw1(config)#int g1/0/1
+Sat Mar 2 09:57:32 2024   Sw1   sw1(config-if)#switchport mode trunk
+Sat Mar 2 09:57:36 2024   Sw1   sw1(config-if)#end
+Sat Mar 2 09:57:41 2024   Sw1   sw1#conf t
+Sat Mar 2 09:57:49 2024   Sw2   Switch(config)#int g1/0/1
+Sat Mar 2 09:57:56 2024   Sw2   Switch(config-if)#switchport mode trunk
+Sat Mar 2 09:58:28 2024   Sw2   Switch(config-if)#end
+Sat Mar 2 09:58:28 2024   Sw2   Switch#configure terminal
+Sat Mar 2 09:58:28 2024   Sw2   Switch(config)#hostname sw2
+Sat Mar 2 09:58:29 2024   Sw2   sw2(config)#end
+Sat Mar 2 09:58:29 2024   Sw2   sw2#copy running-config startup-config
+Sat Mar 2 09:58:45 2024   Sw3   Switch(config)#hostname sw3
+Sat Mar 2 09:58:45 2024   Sw3   sw3(config)#end
+Sat Mar 2 09:58:45 2024   Sw3   sw3#copy running-config startup-config
+Sat Mar 2 09:59:16 2024   Sw1   sw1(config)#vtp mode client
+Sat Mar 2 09:59:23 2024   Sw2   sw2#conf t
+Sat Mar 2 09:59:28 2024   Sw2   sw2(config)#vtp mode server
+Sat Mar 2 09:59:34 2024   Sw3   sw3#conf t
+Sat Mar 2 09:59:41 2024   Sw3   sw3(config)#vtp mode transparent
+Sat Mar 2 10:00:36 2024   Sw3   sw3(config)#exit
+Sat Mar 2 10:00:40 2024   Sw3   sw3#show vlan
+Sat Mar 2 10:01:48 2024   Sw1   sw1(config)#vtp domain mt
+Sat Mar 2 10:01:55 2024   Sw1   sw1(config)#vtp pass 123
+Sat Mar 2 10:02:02 2024   Sw1   sw1(config)#vtp mode client
+Sat Mar 2 10:02:15 2024   Sw2   sw2(config)#vtp domain mt
+Sat Mar 2 10:02:20 2024   Sw2   sw2(config)#vtp pass 123
+Sat Mar 2 10:02:25 2024   Sw2   sw2(config)#vtp mode server
+Sat Mar 2 10:02:33 2024   Sw3   sw3#conf t
+Sat Mar 2 10:02:37 2024   Sw3   sw3(config)#vtp domain mt
+Sat Mar 2 10:02:41 2024   Sw3   sw3(config)#vtp pass 123
+Sat Mar 2 10:02:48 2024   Sw3   sw3(config)#vtp mode transparent
+Sat Mar 2 10:03:06 2024   Sw3   sw3(config)#show vtp status
+Sat Mar 2 10:03:08 2024   Sw3   sw3(config)#exit
+Sat Mar 2 10:03:12 2024   Sw3   sw3#show vtp status
+Sat Mar 2 10:03:24 2024   Sw1   sw1(config)#exit
+Sat Mar 2 10:03:30 2024   Sw1   sw1#show vtp statua
+Sat Mar 2 10:03:31 2024   Sw1   sw1#show vtp status
+Sat Mar 2 10:03:47 2024   Sw2   sw2(config)#exit
+Sat Mar 2 10:03:50 2024   Sw2   sw2#show vtp status
+Sat Mar 2 10:14:32 2024   Sw3   sw3>en
+Sat Mar 2 10:14:34 2024   Sw3   sw3#conf t
+Sat Mar 2 10:15:19 2024   Sw3   sw3(config)#int vlan 20
+Sat Mar 2 10:41:28 2024   SW1   Switch>en
+Sat Mar 2 10:41:38 2024   SW1   Switch#hostname sw1
+Sat Mar 2 10:41:40 2024   SW1   Switch#cnf t
+Sat Mar 2 10:41:44 2024   SW1   Switch#conf t
+Sat Mar 2 10:41:52 2024   SW1   Switch(config)#hostname sw1
+Sat Mar 2 10:48:27 2024   SW1   sw1(config)#vlan 10
+Sat Mar 2 10:48:35 2024   SW1   sw1(config-vlan)#name vlan10
+Sat Mar 2 10:48:40 2024   SW1   sw1(config-vlan)#exit
+Sat Mar 2 10:48:44 2024   SW1   sw1(config)#vlan 20
+Sat Mar 2 10:48:50 2024   SW1   sw1(config-vlan)#name vlan20
+Sat Mar 2 10:48:51 2024   SW1   sw1(config-vlan)#exit
+Sat Mar 2 10:53:01 2024   SW1   sw1(config)#int range f0/2-12
+Sat Mar 2 10:53:11 2024   SW1   sw1(config-if-range)#switchport mode access
+Sat Mar 2 10:53:20 2024   SW1   sw1(config-if-range)#switchport access vlan 10
+Sat Mar 2 10:53:23 2024   SW1   sw1(config-if-range)#exit
+Sat Mar 2 10:53:34 2024   SW1   sw1(config)#int range f0/13-24
+Sat Mar 2 10:53:43 2024   SW1   sw1(config-if-range)#switchport mode access
+Sat Mar 2 10:53:50 2024   SW1   sw1(config-if-range)#switchport access vlan 20
+Sat Mar 2 10:53:52 2024   SW1   sw1(config-if-range)#exit
+Sat Mar 2 10:54:11 2024   SW2   Switch>en
+Sat Mar 2 10:54:13 2024   SW2   Switch#conf t
+Sat Mar 2 10:54:18 2024   SW2   Switch(config)#hostname sw2
+Sat Mar 2 11:10:43 2024   SW2   sw2>en
+Sat Mar 2 11:10:45 2024   SW2   sw2#conf t
+Sat Mar 2 11:11:00 2024   SW2   sw2(config)#int f0/3-12
+Sat Mar 2 11:11:07 2024   SW2   sw2(config)#switchport mode access
+Sat Mar 2 11:11:18 2024   SW2   sw2(config)#int range f0/3-12
+Sat Mar 2 11:11:23 2024   SW2   sw2(config-if-range)#switchport mode access
+Sat Mar 2 11:11:36 2024   SW2   sw2(config-if-range)#switchport access vlan 10
+Sat Mar 2 11:11:47 2024   SW2   sw2(config-if-range)#exit
+Sat Mar 2 11:11:55 2024   SW2   sw2(config)#vlan 10
+Sat Mar 2 11:12:04 2024   SW2   sw2(config-vlan)#name vlan10
+Sat Mar 2 11:12:05 2024   SW2   sw2(config-vlan)#exit
+Sat Mar 2 11:12:12 2024   SW2   sw2(config)#vlan 20 name vlan20
+Sat Mar 2 11:12:16 2024   SW2   sw2(config)#vlan 20
+Sat Mar 2 11:12:19 2024   SW2   sw2(config-vlan)#name vlan20
+Sat Mar 2 11:12:21 2024   SW2   sw2(config-vlan)#exit
+Sat Mar 2 11:12:23 2024   SW2   sw2(config)#vlan 30
+Sat Mar 2 11:12:30 2024   SW2   sw2(config-vlan)#name vlan30
+Sat Mar 2 11:12:31 2024   SW2   sw2(config-vlan)#exit
+Sat Mar 2 11:12:38 2024   SW2   sw2(config)#int range f0/3-12
+Sat Mar 2 11:12:44 2024   SW2   sw2(config-if-range)#switchport mode access
+Sat Mar 2 11:12:52 2024   SW2   sw2(config-if-range)#switchport access vlan 10
+Sat Mar 2 11:12:58 2024   SW2   sw2(config-if-range)#exit
+Sat Mar 2 11:13:01 2024   SW2   sw2(config)#vlan 30
+Sat Mar 2 11:13:07 2024   SW2   sw2(config-vlan)#name vlan30
+Sat Mar 2 11:13:08 2024   SW2   sw2(config-vlan)#exit
+Sat Mar 2 11:13:18 2024   SW2   sw2(config)#int f0/13-24
+Sat Mar 2 11:13:23 2024   SW2   sw2(config)#int rannge f0/13-24
+Sat Mar 2 11:13:27 2024   SW2   sw2(config)#int range f0/13-24
+Sat Mar 2 11:13:33 2024   SW2   sw2(config-if-range)#switchport mode access
+Sat Mar 2 11:13:42 2024   SW2   sw2(config-if-range)#switchport access vlan 30
+Sat Mar 2 11:13:44 2024   SW2   sw2(config-if-range)#exit
+Sat Mar 2 11:14:01 2024   SW2   sw2(config)#int f0/1
+Sat Mar 2 11:14:08 2024   SW2   sw2(config-if)#switchport mode trunk
+Sat Mar 2 11:14:28 2024   SW2   sw2(config-if)#exit
+Sat Mar 2 11:14:33 2024   SW2   sw2(config)#int f0/2
+Sat Mar 2 11:14:41 2024   SW2   sw2(config-if)#switchport mode trunk
+Sat Mar 2 11:15:04 2024   Router0   Router>en
+Sat Mar 2 11:15:07 2024   Router0   Router#conf t
+Sat Mar 2 11:15:12 2024   Router0   Router(config)#int f0/0
+Sat Mar 2 11:15:16 2024   Router0   Router(config-if)#no shut
+Sat Mar 2 11:15:29 2024   Router0   Router(config-if)#int f0/0.10
+Sat Mar 2 11:15:46 2024   Router0   Router(config-subif)#encapsulation dot1q 10
+Sat Mar 2 11:16:40 2024   Router0   Router(config-subif)#ip add 192.168.10.1 255.255.255.0
+Sat Mar 2 11:16:46 2024   Router0   Router(config-subif)#int f0/0.20
+Sat Mar 2 11:16:56 2024   Router0   Router(config-subif)#encapsulation dot1q 20
+Sat Mar 2 11:17:07 2024   Router0   Router(config-subif)#ip address 192.168.20.1 255.255.255.0
+Sat Mar 2 11:17:19 2024   Router0   Router(config-subif)#int f0/0.30
+Sat Mar 2 11:17:32 2024   Router0   Router(config-subif)#encapsulation dot1q 30
+Sat Mar 2 11:17:52 2024   Router0   Router(config-subif)#ip add 192.168.30.1 255.255.255.0
+Sat Mar 2 11:23:38 2024   VLAN10 - T1   C:\>pinng 192.168.20.5
+Mon Mar 25 09:10:51 2024   Router0   Router>show run
+Mon Mar 25 09:10:53 2024   Router0   Router>en
+Mon Mar 25 09:10:55 2024   Router0   Router#show run
+Mon Mar 25 09:14:00 2024   SW1   sw1>en
+Mon Mar 25 09:14:03 2024   SW1   sw1#show run
+Mon Mar 25 09:26:19 2024   SW1   Switch>enable
+Mon Mar 25 09:26:19 2024   SW1   Switch#configure terminal
+Mon Mar 25 09:26:23 2024   SW1   Switch(config)#hostname SW1
+Mon Mar 25 09:26:24 2024   SW1   SW1(config)#end
+Mon Mar 25 09:26:24 2024   SW1   SW1#copy running-config startup-config
+Mon Mar 25 09:26:40 2024   SW2   Switch>enable
+Mon Mar 25 09:26:40 2024   SW2   Switch#configure terminal
+Mon Mar 25 09:26:40 2024   SW2   Switch(config)#hostname SW2
+Mon Mar 25 09:26:40 2024   SW2   SW2(config)#end
+Mon Mar 25 09:26:40 2024   SW2   SW2#copy running-config startup-config
+Mon Mar 25 09:29:59 2024   SW1   SW1#conf t
+Mon Mar 25 09:33:32 2024   SW2   SW2#conf t
+Mon Mar 25 09:33:40 2024   SW2   SW2(config)#vlan 10
+Mon Mar 25 09:33:47 2024   SW2   SW2(config-vlan)#name VLAN10
+Mon Mar 25 09:33:51 2024   SW2   SW2(config-vlan)#vlan 20
+Mon Mar 25 09:33:55 2024   SW2   SW2(config-vlan)#name VLAN20
+Mon Mar 25 09:33:59 2024   SW2   SW2(config-vlan)#vlan 30
+Mon Mar 25 09:34:04 2024   SW2   SW2(config-vlan)#name VLAN30
+Mon Mar 25 09:34:07 2024   SW2   SW2(config-vlan)#exit
+Mon Mar 25 09:34:21 2024   SW1   SW1(config)#vlan 10
+Mon Mar 25 09:34:25 2024   SW1   SW1(config-vlan)#name VLAN10
+Mon Mar 25 09:34:27 2024   SW1   SW1(config-vlan)#vlan 20
+Mon Mar 25 09:34:31 2024   SW1   SW1(config-vlan)#name VLAN20
+Mon Mar 25 09:34:35 2024   SW1   SW1(config-vlan)#vlan 30
+Mon Mar 25 09:34:38 2024   SW1   SW1(config-vlan)#name VLAN30
+Mon Mar 25 09:35:11 2024   SW1   SW1(config-vlan)#exit
+Mon Mar 25 09:35:30 2024   SW1   SW1(config)#int range f0/3-12
+Mon Mar 25 09:35:43 2024   SW1   SW1(config-if-range)#switchport mode access
+Mon Mar 25 09:36:07 2024   SW1   SW1(config-if-range)#switchport access vlan 30
+Mon Mar 25 09:36:12 2024   SW1   SW1(config-if-range)#exit
+Mon Mar 25 09:36:25 2024   SW1   SW1(config)#int range f0/13-24
+Mon Mar 25 09:36:30 2024   SW1   SW1(config-if-range)#switchport mode access
+Mon Mar 25 09:36:40 2024   SW1   SW1(config-if-range)#switchport access vlan 20
+Mon Mar 25 09:36:42 2024   SW1   SW1(config-if-range)#exit
+Mon Mar 25 09:37:03 2024   SW2   SW2(config)#int range f0/3-12
+Mon Mar 25 09:37:12 2024   SW2   SW2(config-if-range)#switchport mode access
+Mon Mar 25 09:37:25 2024   SW2   SW2(config-if-range)#switchport access vlan 10
+Mon Mar 25 09:37:28 2024   SW2   SW2(config-if-range)#exit
+Mon Mar 25 09:37:37 2024   SW2   SW2(config)#int range f0/13-24
+Mon Mar 25 09:37:47 2024   SW2   SW2(config-if-range)#switchport mode access
+Mon Mar 25 09:39:25 2024   SW2   SW2(config-if-range)#switchport access vlan 30
+Mon Mar 25 09:39:26 2024   SW2   SW2(config-if-range)#exit
+Mon Mar 25 09:40:06 2024   SW2   SW2(config)#int range f0/1-2
+Mon Mar 25 09:40:16 2024   SW2   SW2(config-if-range)#switchport mode trunk
+Mon Mar 25 09:40:49 2024   SW1   SW1(config)#int range f0/1
+Mon Mar 25 09:40:52 2024   SW1   SW1(config-if-range)#int range f0/1
+Mon Mar 25 09:40:59 2024   SW1   SW1(config-if-range)#switchport mode trunk
+Mon Mar 25 09:41:24 2024   Router1   Router>en
+Mon Mar 25 09:41:29 2024   Router1   Router#conf t
+Mon Mar 25 09:41:36 2024   Router1   Router(config)#int f0/0
+Mon Mar 25 09:41:39 2024   Router1   Router(config-if)#no shut
+Mon Mar 25 09:41:51 2024   Router1   Router(config-if)#int f0/0.10
+Mon Mar 25 09:42:01 2024   Router1   Router(config-subif)#encapsulationn dot1q 10
+Mon Mar 25 09:42:14 2024   Router1   Router(config-subif)#encapsulation dot1q 10
+Mon Mar 25 09:42:29 2024   Router1   Router(config-subif)#ip a 192.168.10.1 255.255.255.0
+Mon Mar 25 09:42:39 2024   Router1   Router(config-subif)#ip add 192.168.10.1 255.255.255.0
+Mon Mar 25 09:42:50 2024   Router1   Router(config-subif)#int f0/0.20
+Mon Mar 25 09:43:02 2024   Router1   Router(config-subif)#encapsulation dot1q 20
+Mon Mar 25 09:43:11 2024   Router1   Router(config-subif)#ip add 192.168.20.1 255.255.255.0
+Mon Mar 25 09:43:21 2024   Router1   Router(config-subif)#int f0/0.30
+Mon Mar 25 09:43:30 2024   Router1   Router(config-subif)#encapsulation dot1q 30
+Mon Mar 25 09:43:44 2024   Router1   Router(config-subif)#ip add 192.168.30.1 255.255.255.0
+Mon Mar 25 09:45:38 2024   Router1   Router(config-subif)#exit
+Mon Mar 25 09:45:53 2024   Router1   Router(config)#int f0/0
+Mon Mar 25 09:45:58 2024   Router1   Router(config-if)#no shut
+Mon Mar 25 09:46:00 2024   Router1   Router(config-if)#exit
+Mon Mar 25 09:46:01 2024   Router1   Router(config)#exit
+Mon Mar 25 09:46:08 2024   Router1   Router#ping 192.168.10.1
+Mon Mar 25 09:46:11 2024   Router1   Router#ping 192.168.10.5
+Mon Mar 25 09:49:54 2024   SW1   SW1(config-if-range)#exit
+Mon Mar 25 14:46:50 2024   Layer3   Switch>en
+Mon Mar 25 14:47:20 2024   Layer3   Switch#conf t
+Mon Mar 25 14:47:39 2024   Layer3   Switch(config)#vlan 10
+Mon Mar 25 14:47:45 2024   Layer3   Switch(config-vlan)#name VLAN10
+Mon Mar 25 14:47:47 2024   Layer3   Switch(config-vlan)#vlan 20
+Mon Mar 25 14:47:52 2024   Layer3   Switch(config-vlan)#name VLAN20
+Mon Mar 25 14:47:55 2024   Layer3   Switch(config-vlan)#vlan 30
+Mon Mar 25 14:47:59 2024   Layer3   Switch(config-vlan)#name VLAN30
+Mon Mar 25 14:48:04 2024   Layer3   Switch(config-vlan)#vlan 40
+Mon Mar 25 14:48:09 2024   Layer3   Switch(config-vlan)#name VLAN40
+Mon Mar 25 14:48:12 2024   Layer3   Switch(config-vlan)#exit
+Mon Mar 25 14:48:18 2024   Layer3   Switch(config)#int range f0/1-5
+Mon Mar 25 14:48:30 2024   Layer3   Switch(config-if-range)#switchport mode access
+Mon Mar 25 14:48:44 2024   Layer3   Switch(config-if-range)#switchport access vlan 10
+Mon Mar 25 14:48:54 2024   Layer3   Switch(config-if-range)#int range f0/6-10
+Mon Mar 25 14:49:24 2024   Layer3   Switch(config-if-range)#switchport mode access
+Mon Mar 25 14:49:35 2024   Layer3   Switch(config-if-range)#switch port access vlan 20
+Mon Mar 25 14:49:41 2024   Layer3   Switch(config-if-range)#switchport access vlan 20
+Mon Mar 25 14:50:14 2024   Layer3   Switch(config-if-range)#int range f
+Mon Mar 25 14:50:16 2024   Layer3   Switch(config-if-range)#exit
+Mon Mar 25 14:50:26 2024   Layer3   Switch(config)#int range f0/11-15
+Mon Mar 25 14:50:32 2024   Layer3   Switch(config-if-range)#switchport mode access
+Mon Mar 25 14:50:46 2024   Layer3   Switch(config-if-range)#switchport access vlan 30
+Mon Mar 25 14:50:48 2024   Layer3   Switch(config-if-range)#exit
+Mon Mar 25 14:50:59 2024   Layer3   Switch(config)#int range f0/16-23
+Mon Mar 25 14:51:04 2024   Layer3   Switch(config-if-range)#switchport mode access
+Mon Mar 25 14:51:27 2024   Layer3   Switch(config-if-range)#switchport access vlan 40
+Mon Mar 25 14:51:32 2024   Layer3   Switch(config-if-range)#exit
+Mon Mar 25 14:51:38 2024   Layer3   Switch(config)#int vlan 10
+Mon Mar 25 14:51:47 2024   Layer3   Switch(config-if)#ip add 10.0.0.2 255.255.255.0
+Mon Mar 25 14:51:53 2024   Layer3   Switch(config-if)#no shut
+Mon Mar 25 14:51:59 2024   Layer3   Switch(config-if)#exit
+Mon Mar 25 14:52:17 2024   Layer3   Switch(config)#int vlan 20
+Mon Mar 25 14:52:32 2024   Layer3   Switch(config-if)#ip add 10.0.1.2 255.255.255.0
+Mon Mar 25 14:52:35 2024   Layer3   Switch(config-if)#no shut
+Mon Mar 25 14:52:40 2024   Layer3   Switch(config-if)#exit
+Mon Mar 25 14:52:43 2024   Layer3   Switch(config)#int vlan 30
+Mon Mar 25 14:52:56 2024   Layer3   Switch(config-if)#ip add 10.0.2.2 255.255.255.0
+Mon Mar 25 14:53:00 2024   Layer3   Switch(config-if)#no shut
+Mon Mar 25 14:53:03 2024   Layer3   Switch(config-if)#exit
+Mon Mar 25 14:53:08 2024   Layer3   Switch(config)#int vlan 40
+Mon Mar 25 14:53:26 2024   Layer3   Switch(config-if)#ip add 192.168.12.2 255.255.255.0
+Mon Mar 25 14:53:29 2024   Layer3   Switch(config-if)#ip add 192.168.12.2 255.255.255.0
+Mon Mar 25 14:53:31 2024   Layer3   Switch(config-if)#no shut
+Mon Mar 25 14:54:03 2024   Layer3   Switch(config-if)#exit
+Mon Mar 25 14:55:51 2024   Layer3   Switch(config)#ip route 0.0.0.0 0.0.0.0 192.168.12.8
+Mon Mar 25 14:56:05 2024   Router0   Router>en
+Mon Mar 25 14:56:07 2024   Router0   Router#conf t
+Mon Mar 25 14:56:41 2024   Router0   Router(config)#int f0/0
+Mon Mar 25 14:56:55 2024   Router0   Router(config-if)#ip add 192.168.12.8 255.255.255.0
+Mon Mar 25 14:56:57 2024   Router0   Router(config-if)#no shut
+Mon Mar 25 14:57:09 2024   Router0   Router(config-if)#exit
+Mon Mar 25 15:00:45 2024   Router0   Router(config)#ip route 10.0.0.0 255.255.255.0 10.0.0.2
+Mon Mar 25 15:01:02 2024   Router0   Router(config)#ip route 10.0.1.0 255.255.255.0 10.0.1.2
+Mon Mar 25 15:01:14 2024   Router0   Router(config)#ip route 10.0.2.0 255.255.255.0 10.0.2.2
+Mon Mar 25 15:01:28 2024   Router0   Router(config)#ip route 192.168.12.0 255.255.255.0 192.168.12.2
+Mon Mar 25 15:04:14 2024   10.0.20.5   C:\>192.168.12.5
+Mon Mar 25 15:06:16 2024   Router0   Router(config)#exit
+Mon Mar 25 15:06:22 2024   Router0   Router#ping 192.168.12.2
+Mon Mar 25 15:07:21 2024   Router0   Router#ping 192.168.12.2
+Mon Mar 25 15:07:31 2024   Layer3   Switch>en
+Mon Mar 25 15:07:37 2024   Layer3   Switch#ping 192.168.12.8
+Mon Mar 25 15:07:51 2024   Router0   Router#ping 192.168.12.2
+Mon Mar 25 15:12:37 2024   VLAN40   Switch>en
+Mon Mar 25 15:12:44 2024   VLAN40   Switch#ping 10.0.0.2
+Mon Mar 25 15:15:25 2024   VLAN40   Switch#show vlan
+Mon Mar 25 15:15:37 2024   VLAN40   Switch#conf t
+Mon Mar 25 15:15:49 2024   VLAN40   Switch(config)#int f0/1-24
+Mon Mar 25 15:16:02 2024   VLAN40   Switch(config)#vlan 40
+Mon Mar 25 15:16:06 2024   VLAN40   Switch(config-vlan)#name VLAN40
+Mon Mar 25 15:16:09 2024   VLAN40   Switch(config-vlan)#exit
+Mon Mar 25 15:16:18 2024   VLAN40   Switch(config)#int range f0/1-24
+Mon Mar 25 15:16:26 2024   VLAN40   Switch(config-if-range)#switchport mode access
+Mon Mar 25 15:16:44 2024   VLAN40   Switch(config-if-range)#switchport access vlan 40
+Mon Mar 25 15:16:48 2024   VLAN40   Switch(config-if-range)#no shut
+Mon Mar 25 15:16:49 2024   VLAN40   Switch(config-if-range)#exit
+Mon Mar 25 15:16:51 2024   VLAN40   Switch(config)#exit
+Mon Mar 25 15:17:47 2024   VLAN30   Switch>en
+Mon Mar 25 15:17:49 2024   VLAN30   Switch#conf t
+Mon Mar 25 15:17:55 2024   VLAN30   Switch(config)#vlan 30
+Mon Mar 25 15:17:59 2024   VLAN30   Switch(config-vlan)#name VLAN30
+Mon Mar 25 15:18:01 2024   VLAN30   Switch(config-vlan)#exit
+Mon Mar 25 15:18:08 2024   VLAN30   Switch(config)#int range f0/1-24
+Mon Mar 25 15:18:18 2024   VLAN30   Switch(config-if-range)#switchport mode access
+Mon Mar 25 15:18:25 2024   VLAN30   Switch(config-if-range)#switchport access vlan 30
+Mon Mar 25 15:18:27 2024   VLAN30   Switch(config-if-range)#no shut
+Mon Mar 25 15:18:29 2024   VLAN30   Switch(config-if-range)#exit
+Mon Mar 25 15:19:33 2024   VLAN30   Switch(config)#exit
+Mon Mar 25 15:19:50 2024   VLAN10   Switch>en
+Mon Mar 25 15:19:53 2024   VLAN10   Switch#conf t
+Mon Mar 25 15:20:01 2024   VLAN10   Switch(config)#vlan 10
+Mon Mar 25 15:20:04 2024   VLAN10   Switch(config-vlan)#name VLAN10
+Mon Mar 25 15:20:06 2024   VLAN10   Switch(config-vlan)#exit
+Mon Mar 25 15:20:11 2024   VLAN10   Switch(config)#int range f0/1-24
+Mon Mar 25 15:20:27 2024   VLAN10   Switch(config-if-range)#switchport mode access
+Mon Mar 25 15:20:34 2024   VLAN10   Switch(config-if-range)#switchport access vlan 10
+Mon Mar 25 15:20:36 2024   VLAN10   Switch(config-if-range)#no shut
+Mon Mar 25 15:20:37 2024   VLAN10   Switch(config-if-range)#exit
+Mon Mar 25 15:20:39 2024   VLAN10   Switch(config)#exit
+Mon Mar 25 15:20:52 2024   VLAN20   Switch>en
+Mon Mar 25 15:20:53 2024   VLAN20   Switch#conf t
+Mon Mar 25 15:20:56 2024   VLAN20   Switch(config)#vlan 20
+Mon Mar 25 15:21:01 2024   VLAN20   Switch(config-vlan)#name VLAN20
+Mon Mar 25 15:21:02 2024   VLAN20   Switch(config-vlan)#exit
+Mon Mar 25 15:21:08 2024   VLAN20   Switch(config)#int range f0/1-24
+Mon Mar 25 15:21:21 2024   VLAN20   Switch(config-if-range)#switchport mode access
+Mon Mar 25 15:21:28 2024   VLAN20   Switch(config-if-range)#switchport access vlan 20
+Mon Mar 25 15:21:30 2024   VLAN20   Switch(config-if-range)#no shut
+Mon Mar 25 15:21:31 2024   VLAN20   Switch(config-if-range)#exit
+Mon Mar 25 15:21:33 2024   VLAN20   Switch(config)#exit
+Mon Mar 25 15:23:37 2024   Router0   Router>enn
+Mon Mar 25 15:29:15 2024   Layer3   Switch>en
+Mon Mar 25 15:30:50 2024   Router0   Router>en
+Mon Mar 25 15:30:58 2024   Router0   Router#ping 10.0.0.2
+Mon Mar 25 15:31:22 2024   Router0   Router#ping 192.168.12.2
+Mon Mar 25 15:31:26 2024   Router0   Router#ping 192.168.12.8
+Mon Mar 25 15:31:38 2024   Router0   Router#ping 10.0.2.2
+Mon Mar 25 15:35:28 2024   Multilayer Switch0   Switch>en
+Mon Mar 25 15:35:31 2024   Multilayer Switch0   Switch#conf t
+Mon Mar 25 15:35:33 2024   Multilayer Switch0   Switch(config)#vlan 10
+Mon Mar 25 15:35:36 2024   Multilayer Switch0   Switch(config-vlan)#name VLAN10
+Mon Mar 25 15:35:39 2024   Multilayer Switch0   Switch(config-vlan)#vlan 20
+Mon Mar 25 15:35:43 2024   Multilayer Switch0   Switch(config-vlan)#name VLAN20
+Mon Mar 25 15:36:00 2024   Multilayer Switch0   Switch(config-vlan)#int range g1/0/1-5
+Mon Mar 25 15:36:13 2024   Multilayer Switch0   Switch(config-if-range)#switchport mode access
+Mon Mar 25 15:36:50 2024   Multilayer Switch0   Switch(config-if-range)#switchport access vlan 10
+Mon Mar 25 15:37:07 2024   Multilayer Switch0   Switch(config-if-range)#ip add 10.0.0.2 255.255.255.0
+Mon Mar 25 15:37:19 2024   Multilayer Switch0   Switch(config-if-range)#exit
+Mon Mar 25 15:37:23 2024   Multilayer Switch0   Switch(config)#int
+Mon Mar 25 15:37:30 2024   Multilayer Switch0   Switch(config)#int vlan 10
+Mon Mar 25 15:37:41 2024   Multilayer Switch0   Switch(config-if)#ip add 10.0.0.2 255.255.255.0
+Mon Mar 25 15:37:44 2024   Multilayer Switch0   Switch(config-if)#no shut
+Mon Mar 25 15:37:52 2024   Multilayer Switch0   Switch(config-if)#exit
+Mon Mar 25 15:38:08 2024   Multilayer Switch0   Switch(config)#int range g1/0/6-10
+Mon Mar 25 15:38:15 2024   Multilayer Switch0   Switch(config-if-range)#switchport mode access
+Mon Mar 25 15:38:23 2024   Multilayer Switch0   Switch(config-if-range)#switchport access vlan 20
+Mon Mar 25 15:38:25 2024   Multilayer Switch0   Switch(config-if-range)#switchport access vlan 20
+Mon Mar 25 15:38:31 2024   Multilayer Switch0   Switch(config-if-range)#no shut
+Mon Mar 25 15:38:32 2024   Multilayer Switch0   Switch(config-if-range)#exit
+Mon Mar 25 15:38:38 2024   Multilayer Switch0   Switch(config)#int vlan 20
+Mon Mar 25 15:38:47 2024   Multilayer Switch0   Switch(config-if)#ip add 10.0.1.2 255.255.255.0
+Mon Mar 25 15:38:49 2024   Multilayer Switch0   Switch(config-if)#no shut
+Mon Mar 25 15:38:53 2024   Multilayer Switch0   Switch(config-if)#exit
+Mon Mar 25 15:39:21 2024   Multilayer Switch0   Switch(config)#int vlan 10
+Mon Mar 25 15:39:43 2024   Multilayer Switch0   Switch(config-if)#ip route 10.0.1.0 255.255.255.0 10.0.1.2
+Mon Mar 25 15:39:55 2024   Multilayer Switch0   Switch(config)#ip route 10.0.1.0 255.255.255.0 10.0.1.2
+Mon Mar 25 15:39:57 2024   Multilayer Switch0   Switch(config)#exit
+Mon Mar 25 15:40:01 2024   Multilayer Switch0   Switch#ip route 10.0.1.0 255.255.255.0 10.0.1.2
+Mon Mar 25 15:40:04 2024   Multilayer Switch0   Switch#conf t
+Mon Mar 25 15:40:08 2024   Multilayer Switch0   Switch(config)#ip route 10.0.1.0 255.255.255.0 10.0.1.2
+Mon Mar 25 15:43:12 2024   Multilayer Switch0   Switch(config)#ip route 10.0.0.0 255.255.255.0
+Mon Mar 25 15:43:24 2024   Multilayer Switch0   Switch(config)#ip route 10.0.0.0 255.255.255.0 10.0.0.2
+Mon Mar 25 15:50:53 2024   Multilayer Switch0   Switch(config)#ip routing

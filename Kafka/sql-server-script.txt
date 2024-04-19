@@ -1,0 +1,66 @@
+
+
+## Update the repos
+sudo apt-get update -y
+## Install Java JDK 8 or 11
+##sudo apt-get install openjdk-8-jdk -y
+sudo apt-get install openjdk-11-jre-headless
+## Download the Kafka files and extract
+wget https://dlcdn.apache.org/kafka/3.5.0/kafka_2.13-3.5.0.tgz
+tar -xvzf kafka_2.13-3.5.0.tgz
+## Download the Debezium files and extract
+wget https://repo1.maven.org/maven2/io/debezium/debezium-connector-sqlserver/1.1.1.Final/debezium-connector-sqlserver-1.1.1.Final-plugin.tar.gz
+tar -xvzf debezium-connector-sqlserver-1.1.1.Final-plugin.tar.gz
+## Copy extracted files into an "/etc" directory
+#sudo mkdir /etc/kafka
+#sudo chown -R ubuntu /etc/kafka
+#cp -r kafka_2.13-3.5.0/* /etc/kafka/
+mkdir kafka_2.13-3.5.0/conns
+cp -r debezium-connector-sqlserver kafka_2.13-3.5.0/conns/
+## Add a config so Kafka Connect can find the Debezium files
+echo "plugin.path=/etc/kafka/conns" >> kafka_2.13-3.5.0/config/connect-distributed.properties
+## OPTIONAL: Install MSSQL Tools for testing purposes
+curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+curl https://packages.microsoft.com/config/ubuntu/22.04/prod.list | sudo tee /etc/apt/sources.list.d/msprod.list
+sudo apt-get update -y
+sudo apt-get install mssql-tools -y
+echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
+source ~/.bashrc
+
+
+
+=================================================
+
+- Start the Zookeeper by running the below command.It will start the Zookeeper with default properties in the background and save output to a file.
+
+/etc/kafka/bin/zookeeper-server-start.sh /etc/kafka/config/zookeeper.properties &> zookeeper_log &
+
+bin/zookeeper-server-start.sh config/zookeeper.properties
+
+- Start the Broker by running:
+
+/etc/kafka/bin/kafka-server-start.sh /etc/kafka/config/server.properties &> broker_log &
+
+bin/kafka-server-start.sh config/server.properties
+
+- Start Kafka Connect by running:
+
+/etc/kafka/bin/connect-distributed.sh /etc/kafka/config/connect-distributed.properties &> connect_log &
+
+bin/connect-distributed.sh config/connect-distributed.properties
+
+- List all topics by typing the below command. If the following two topics are created, the steps have passed successfully.
+
+/etc/kafka/bin/kafka-topics.sh --list -zookeeper localhost:2181
+
+bin/kafka-topics.sh --list -zookeeper localhost:2181
+
+=======================================================
+
+Create the consumer by typing:
+
+/etc/kafka/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic testDB.dbo.fruit --from-beginning
+
+bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic testDB.dbo.fruit --from-beginning
+
+

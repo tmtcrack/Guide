@@ -1,0 +1,39 @@
+User
+admin
+
+Token
+2wpAqR8gizTdN_Z3cJ2NfRDedjUngJTrjmiM3BOZcozCH_DqyS-xD0K3jkbCVIv5X0OXgl_iUYB8aJkCsTVwjw==
+
+
+Token
+"2wpAqR8gizTdN_Z3cJ2NfRDedjUngJTrjmiM3BOZcozCH_DqyS-xD0K3jkbCVIv5X0OXgl_iUYB8aJkCsTVwjw=="
+
+export INFLUX_TOKEN=2wpAqR8gizTdN_Z3cJ2NfRDedjUngJTrjmiM3BOZcozCH_DqyS-xD0K3jkbCVIv5X0OXgl_iUYB8aJkCsTVwjw==
+
+##############################################
+
+In v2 you have to add your token.
+‘influx user list -t “YourToken”’
+
+influx v1 shell -t “YourToken”
+
+influx v1 shell -t 2wpAqR8gizTdN_Z3cJ2NfRDedjUngJTrjmiM3BOZcozCH_DqyS-xD0K3jkbCVIv5X0OXgl_iUYB8aJkCsTVwjw==
+##############################################
+
+1. Install the Latest Telegraf
+You can install the latest Telegraf by visiting the InfluxData Downloads page. 
+If you already have Telegraf installed on your system, make sure it's up to date. You will need version 1.9.2 or higher.
+
+2. Configure your API Token
+Your API token is required for pushing data into InfluxDB. 
+You can copy the following command to your terminal window to set an environment variable with your API token.
+
+export INFLUX_TOKEN=SxAhukVsnsfIhi115ZRONtSCpx_3YIHOM9ovcj-GdU4jnHQD4ppJHTnbcvGzkvCaqR2zV4oDjFsq6wgIjNJIqg==
+
+3. Start Telegraf
+Finally, you can run the following command to start the Telegraf agent running on your machine.
+
+telegraf --config http://192.168.100.189:8086/api/v2/telegrafs/0c3524921aca9000
+
+#######################################################################
+

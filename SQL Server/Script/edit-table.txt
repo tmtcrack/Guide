@@ -1,0 +1,43 @@
+Create table Fruits (
+  Id int primary key,
+  Name Varchar(32),
+  Kg int
+);
+
+Insert into Fruits (Id,Name,Kg) values (4 , 'Pineapple' , 23)
+Insert into Fruits (Id,Name,Kg)values (5 , 'Waterlemon' , 65)
+       
+
+
+Select * From Fruits
+
+
+update Fruits
+set Kg = 28
+where Id = 1;
+
+
+update Fruits
+set Kg = case
+	when Id = 1 then 21
+	when Id = 2 then 32
+	else Kg
+  end
+where Id = 1 or Id = 2;
+
+===============================
+Select * From Fruits
+
+update Fruits
+set Kg = 28
+where Id = 1;
+
+update Fruits
+set Kg = case
+	when Id = 1 then 1
+	when Id = 2 then 1
+	when Id = 3 then 1
+	else Kg
+  end
+where Id = 1 or Id = 2 or Id = 3;
+==============================

@@ -1,0 +1,7 @@
+
+Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\w32time\Parameters" -Name "NtpServer" -Value "vn.pool.ntp.org,0x8"
+
+
+w32tm /config /manualpeerlist:”DC22.BIBOMART.LOCAL,0x1″ /syncfromflags:manual /reliable:yes /update
+
+w32tm /resync /rediscover

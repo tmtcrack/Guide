@@ -1,0 +1,100 @@
+Mon Apr 25 20:35:24 2022   PNH1   Router>en
+Mon Apr 25 20:35:25 2022   PNH1   Router#config t
+Mon Apr 25 20:35:30 2022   PNH1   Router(config)#hostname PNH1
+Mon Apr 25 20:35:37 2022   PNH1   PNH1(config)#int g0/0
+Mon Apr 25 20:35:59 2022   PNH1   PNH1(config-if)#ip add 10.0.0.1 255.255.255.248
+Mon Apr 25 20:36:01 2022   PNH1   PNH1(config-if)#no shut
+Mon Apr 25 20:36:04 2022   PNH1   PNH1(config-if)#int g0/1
+Mon Apr 25 20:36:26 2022   PNH1   PNH1(config-if)#ip add 6.6.6.1 255.255.255.252
+Mon Apr 25 20:36:28 2022   PNH1   PNH1(config-if)#no shut
+Mon Apr 25 20:37:54 2022   PNH2   Router>en
+Mon Apr 25 20:37:56 2022   PNH2   Router#config t
+Mon Apr 25 20:38:00 2022   PNH2   Router(config)#hostname PNH2
+Mon Apr 25 20:38:07 2022   PNH2   PNH2(config)#int g0/0
+Mon Apr 25 20:38:21 2022   PNH2   PNH2(config-if)#ip add 172.16.0.1 255.255.255.0
+Mon Apr 25 20:38:25 2022   PNH2   PNH2(config-if)#no shut
+Mon Apr 25 20:38:37 2022   PNH2   PNH2(config-if)#int g0/1
+Mon Apr 25 20:38:50 2022   PNH2   PNH2(config-if)#ip add 172.16.1.1 255.255.255.0
+Mon Apr 25 20:38:54 2022   PNH2   PNH2(config-if)#no shut
+Mon Apr 25 20:38:59 2022   PNH2   PNH2(config-if)#int g0/2
+Mon Apr 25 20:39:09 2022   PNH2   PNH2(config-if)#ip add 10.0.0.2 255.255.255.248
+Mon Apr 25 20:39:13 2022   PNH2   PNH2(config-if)#no shut
+Mon Apr 25 20:41:36 2022   PNH2   PNH2(config-if)#do ping 10.0.0.1
+Mon Apr 25 20:41:40 2022   PNH2   PNH2(config-if)#do ping 10.0.0.1
+Mon Apr 25 20:43:24 2022   PNH3   Router>en
+Mon Apr 25 20:43:26 2022   PNH3   Router#config t
+Mon Apr 25 20:43:29 2022   PNH3   Router(config)#hostname PNH3
+Mon Apr 25 20:43:33 2022   PNH3   PNH3(config)#int g0/0
+Mon Apr 25 20:43:43 2022   PNH3   PNH3(config-if)#ip add 192.168.0.1 255.255.255.0
+Mon Apr 25 20:43:49 2022   PNH3   PNH3(config-if)#no shut
+Mon Apr 25 20:43:54 2022   PNH3   PNH3(config-if)#int g0/1
+Mon Apr 25 20:44:04 2022   PNH3   PNH3(config-if)#ip add 10.0.0.3 255.255.255.248
+Mon Apr 25 20:44:07 2022   PNH3   PNH3(config-if)#no shut
+Mon Apr 25 20:45:41 2022   PNH3   PNH3(config-if)#do ping 10.0.0.1
+Mon Apr 25 20:45:52 2022   PNH3   PNH3(config-if)#do ping 10.0.0.2
+Mon Apr 25 20:47:12 2022   ISP   Router>en
+Mon Apr 25 20:47:13 2022   ISP   Router#config t
+Mon Apr 25 20:47:18 2022   ISP   Router(config)#hostname ISP
+Mon Apr 25 20:47:21 2022   ISP   ISP(config)#int g0/0
+Mon Apr 25 20:47:29 2022   ISP   ISP(config-if)#ip add 8.8.8.1 255.255.255.0
+Mon Apr 25 20:47:39 2022   ISP   ISP(config-if)#no shut
+Mon Apr 25 20:47:42 2022   ISP   ISP(config-if)#int g0/1
+Mon Apr 25 20:47:50 2022   ISP   ISP(config-if)#ip add 7.7.7.1 255.255.255.0
+Mon Apr 25 20:47:52 2022   ISP   ISP(config-if)#no shut
+Mon Apr 25 20:47:55 2022   ISP   ISP(config-if)#int g0/2
+Mon Apr 25 20:48:02 2022   ISP   ISP(config-if)#ip add 6.6.6.2 255.255.255.252
+Mon Apr 25 20:48:04 2022   ISP   ISP(config-if)#no shut
+Mon Apr 25 20:49:12 2022   ISP   ISP(config-if)#do ping 6.6.6.1
+Mon Apr 25 20:49:18 2022   ISP   ISP(config-if)#do ping 6.6.6.1
+Mon Apr 25 20:51:23 2022   ISP   ISP(config-if)#ip route 0.0.0.0 0.0.0.0 6.6.6.1
+Mon Apr 25 20:51:28 2022   ISP   ISP(config)#end
+Mon Apr 25 20:51:35 2022   ISP   ISP#show ip route
+Mon Apr 25 20:52:27 2022   PNH1   PNH1>en
+Mon Apr 25 20:52:28 2022   PNH1   PNH1#config t
+Mon Apr 25 20:52:42 2022   PNH1   PNH1(config)#ip route 0.0.0.0 0.0.0.0 6.6.6.2
+Mon Apr 25 20:55:15 2022   PNH1   PNH1(config)#interface loopback 1
+Mon Apr 25 20:55:28 2022   PNH1   PNH1(config-if)#ip add 1.1.1.1 255.255.255.255
+Mon Apr 25 20:55:46 2022   PNH1   PNH1(config-if)#router ospf 1
+Mon Apr 25 20:57:00 2022   PNH1   PNH1(config-router)#network 10.0.0.0 0.0.0.7 area 0
+Mon Apr 25 20:57:08 2022   PNH1   PNH1(config-router)#exit
+Mon Apr 25 20:57:23 2022   PNH1   PNH1(config)#exit
+Mon Apr 25 20:57:36 2022   PNH1   PNH1#show protocol
+Mon Apr 25 20:57:48 2022   PNH1   PNH1#show ip protocol
+Mon Apr 25 20:58:41 2022   PNH1   PNH1#show ip ospf interface g0/0
+Mon Apr 25 20:59:54 2022   PNH1   PNH1#show ip ospf database 
+Mon Apr 25 21:00:07 2022   PNH1   PNH1#show ip ospf neighbor 
+Mon Apr 25 21:00:20 2022   PNH2   PNH2>en
+Mon Apr 25 21:00:23 2022   PNH2   PNH2#config t
+Mon Apr 25 21:00:35 2022   PNH2   PNH2(config)#int loopback 1
+Mon Apr 25 21:00:44 2022   PNH2   PNH2(config-if)#ip add 2.2.2.2 255.255.255.255
+Mon Apr 25 21:00:57 2022   PNH2   PNH2(config-if)#router ospf 1
+Mon Apr 25 21:01:24 2022   PNH2   PNH2(config-router)#network 172.16.0.0 0.0.0.255 area 1
+Mon Apr 25 21:01:33 2022   PNH2   PNH2(config-router)#network 172.16.1.0 0.0.0.255 area 2
+Mon Apr 25 21:02:01 2022   PNH2   PNH2(config-router)#network 10.0.0.0 0.0.0.7 area 0
+Mon Apr 25 21:02:27 2022   PNH2   PNH2(config-router)#end
+Mon Apr 25 21:02:34 2022   PNH2   PNH2#show ip ospf neighbor
+Mon Apr 25 21:03:17 2022   PNH1   PNH1#show ip route
+Mon Apr 25 21:17:57 2022   PNH3   PNH3>en
+Mon Apr 25 21:18:07 2022   PNH3   PNH3#config t
+Mon Apr 25 21:18:17 2022   PNH3   PNH3(config)#interface loopback 1
+Mon Apr 25 21:18:34 2022   PNH3   PNH3(config-if)#ip add 3.3.3.3 255.255.255.255
+Mon Apr 25 21:19:57 2022   PNH3   PNH3(config-if)#router ospf 1
+Mon Apr 25 21:20:11 2022   PNH3   PNH3(config-router)#network 192.168.0.0 0.0.0.255 area 3
+Mon Apr 25 21:20:41 2022   PNH3   PNH3(config-router)#network 10.0.0.0 0.0.0.7 area 0
+Mon Apr 25 21:21:09 2022   PNH3   PNH3(config-router)#end
+Mon Apr 25 21:21:40 2022   PNH3   PNH3#show ip route
+Mon Apr 25 21:22:08 2022   PNH2   PNH2>en
+Mon Apr 25 21:22:12 2022   PNH2   PNH2#show ip route
+Mon Apr 25 21:25:18 2022   PNH3   PNH3#config t
+Mon Apr 25 21:25:22 2022   PNH3   PNH3(config)#int g0/0
+Mon Apr 25 21:25:51 2022   PNH3   PNH3(config-if)#ip helper-address 172.16.0.20
+Mon Apr 25 21:28:58 2022   PNH3   PNH3(config-if)#end
+Mon Apr 25 21:29:04 2022   PNH3   PNH3#show ip route
+Mon Apr 25 21:29:56 2022   PNH1   PNH1>en
+Mon Apr 25 21:30:02 2022   PNH1   PNH1#ping 8.8.8.1
+Mon Apr 25 21:30:12 2022   PNH3   PNH3#ping 8.8.8.1
+Mon Apr 25 21:30:47 2022   PNH1   PNH1#config t
+Mon Apr 25 21:31:02 2022   PNH1   PNH1(config)#router ospf 1
+Mon Apr 25 21:31:25 2022   PNH1   PNH1(config-router)#default-information originate
+Mon Apr 25 21:31:38 2022   PNH3   PNH3#show ip route
+Mon Apr 25 21:31:56 2022   PNH3   PNH3#ping 8.8.8.1

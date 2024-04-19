@@ -1,0 +1,7 @@
+USE master;
+GO
+-- Xem tất cả các phiên làm việc đang kết nối đến cơ sở dữ liệu
+SELECT * FROM sys.dm_exec_sessions WHERE database_id = DB_ID('SQLTestDB');
+BACKUP DATABASE [SQLTestDB] 
+TO DISK = 'G:\Backup\backup_SQLTestDB.bak' 
+WITH INIT

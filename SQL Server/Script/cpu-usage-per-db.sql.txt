@@ -1,0 +1,15 @@
+WITH cte as (
+SELECT SDEPA.DatabaseID
+, SUM (SDEQS.total_worker_time) AS CPUTimeInMiliSeconds
+FROM sys.dm_exec_query_stats SDEQS
+CROSS APPLY 
+(SELECT CAST(value as int) AS [DatabaseID]
+FROM sys.dm_exec_plan_attributes(SDEQS.plan_handle)
+WHERE attribute = N'dbid') SDEPA
+GROUP BY
+SDEPA.DatabaseID)
+SELECT COALESCE(DB_NAME(DatabaseID), '{Overhead Processes}') as [Database]
+, CAST ([CPUTimeInMiliSeconds] * 1.0 / SUM ([CPUTimeInMiliSeconds]) OVER () * 100.0 as DECIMAL(6, 3)) AS [CPUTime%]
+FROM cte
+ORDER BY
+CAST ([CPUTimeInMiliSeconds] * 1.0 / SUM ([CPUTimeInMiliSeconds]) OVER () * 100.0 as DECIMAL(6, 3)) DESC;

@@ -1,0 +1,151 @@
+Wed May 4 20:29:50 2022   Viettel2   Router>en
+Wed May 4 20:29:51 2022   Viettel2   Router#config t
+Wed May 4 20:29:58 2022   Viettel2   Router(config)#hostname Viettel2
+Wed May 4 20:30:01 2022   Viettel2   Viettel2(config)#int g0/0
+Wed May 4 20:30:10 2022   Viettel2   Viettel2(config-if)#ip add 50.0.0.1 255.255.255.0
+Wed May 4 20:30:12 2022   Viettel2   Viettel2(config-if)#no shut
+Wed May 4 20:30:16 2022   Viettel2   Viettel2(config-if)#int g0/1
+Wed May 4 20:30:24 2022   Viettel2   Viettel2(config-if)#ip add 50.1.1.1 255.255.255.252
+Wed May 4 20:30:26 2022   Viettel2   Viettel2(config-if)#no shut
+Wed May 4 20:30:40 2022   Viettel2   Viettel2(config-if)#ip dhcp pool viettel-user
+Wed May 4 20:30:49 2022   Viettel2   Viettel2(dhcp-config)#net 50.0.0.0 255.255.255.0
+Wed May 4 20:31:10 2022   Viettel2   Viettel2(dhcp-config)#default 50.0.0.1
+Wed May 4 20:31:26 2022   Viettel2   Viettel2(dhcp-config)#dns 8.8.8.8
+Wed May 4 20:34:54 2022   Viettel1   Router>en
+Wed May 4 20:34:55 2022   Viettel1   Router#config t
+Wed May 4 20:35:04 2022   Viettel1   Router(config)#hostname Viettel1
+Wed May 4 20:35:08 2022   Viettel1   Viettel1(config)#int g0/0
+Wed May 4 20:35:25 2022   Viettel1   Viettel1(config-if)#ip add 50.1.1.2 255.255.255.252
+Wed May 4 20:35:29 2022   Viettel1   Viettel1(config-if)#no shut
+Wed May 4 20:35:37 2022   Viettel1   Viettel1(config-if)#int g0/1
+Wed May 4 20:35:51 2022   Viettel1   Viettel1(config-if)#ip add 100.1.1.1 255.255.255.252
+Wed May 4 20:35:53 2022   Viettel1   Viettel1(config-if)#no shut
+Wed May 4 20:35:59 2022   Viettel1   Viettel1(config-if)#exit
+Wed May 4 20:36:06 2022   Viettel1   Viettel1(config)#do ping 50.1.1.1
+Wed May 4 20:36:10 2022   Viettel1   Viettel1(config)#do ping 50.1.1.1
+Wed May 4 20:37:29 2022   VNNIX   Router>en
+Wed May 4 20:37:30 2022   VNNIX   Router#config t
+Wed May 4 20:37:35 2022   VNNIX   Router(config)#hostname VNIX
+Wed May 4 20:37:39 2022   VNNIX   VNIX(config)#int g0/0
+Wed May 4 20:38:08 2022   VNNIX   VNIX(config-if)#ip add 100.1.1.2 255.255.255.252
+Wed May 4 20:38:10 2022   VNNIX   VNIX(config-if)#no shut
+Wed May 4 20:38:16 2022   VNNIX   VNIX(config-if)#int g0/1
+Wed May 4 20:38:25 2022   VNNIX   VNIX(config-if)#ip add 100.2.2.2 255.255.255.252
+Wed May 4 20:38:27 2022   VNNIX   VNIX(config-if)#no shut
+Wed May 4 20:38:30 2022   VNNIX   VNIX(config-if)#int g0/2
+Wed May 4 20:38:41 2022   VNNIX   VNIX(config-if)#ip add 6.6.6.1 255.255.255.252
+Wed May 4 20:38:43 2022   VNNIX   VNIX(config-if)#no shut
+Wed May 4 20:38:46 2022   VNNIX   VNIX(config-if)#exit
+Wed May 4 20:38:52 2022   VNNIX   VNIX(config)#do ping 100.1.1.1
+Wed May 4 20:41:01 2022   ISP-EXT   Router>en
+Wed May 4 20:41:02 2022   ISP-EXT   Router#config t
+Wed May 4 20:41:13 2022   ISP-EXT   Router(config)#hostname ISP-EXT
+Wed May 4 20:41:21 2022   ISP-EXT   ISP-EXT(config)#int g0/0
+Wed May 4 20:41:31 2022   ISP-EXT   ISP-EXT(config-if)#ip add 7.7.7.1 255.255.255.0
+Wed May 4 20:41:33 2022   ISP-EXT   ISP-EXT(config-if)#no shut
+Wed May 4 20:41:36 2022   ISP-EXT   ISP-EXT(config-if)#int g0/1
+Wed May 4 20:41:53 2022   ISP-EXT   ISP-EXT(config-if)#ip add 8.8.8.1 255.255.255.0
+Wed May 4 20:42:03 2022   ISP-EXT   ISP-EXT(config-if)#no shut
+Wed May 4 20:42:10 2022   ISP-EXT   ISP-EXT(config-if)#int g0/2
+Wed May 4 20:42:47 2022   ISP-EXT   ISP-EXT(config-if)#ip add 6.6.6.2 255.255.255.252
+Wed May 4 20:42:49 2022   ISP-EXT   ISP-EXT(config-if)#no shut
+Wed May 4 20:42:53 2022   ISP-EXT   ISP-EXT(config-if)#exit
+Wed May 4 20:42:58 2022   ISP-EXT   ISP-EXT(config)#do ping 6.6.6.1
+Wed May 4 20:48:52 2022   CMC1   Router>en
+Wed May 4 20:48:54 2022   CMC1   Router#config t
+Wed May 4 20:49:03 2022   CMC1   Router(config)#hostname CMC1
+Wed May 4 20:49:45 2022   CMC1   CMC1(config)#int g0/0
+Wed May 4 20:49:56 2022   CMC1   CMC1(config-if)#ip add 60.1.1.2 255.255.255.252
+Wed May 4 20:49:58 2022   CMC1   CMC1(config-if)#no shut
+Wed May 4 20:50:05 2022   CMC1   CMC1(config-if)#int g0/1
+Wed May 4 20:52:01 2022   CMC1   CMC1(config-if)#ip add 100.2.2.1 255.255.255.252
+Wed May 4 20:52:03 2022   CMC1   CMC1(config-if)#no shut
+Wed May 4 20:52:09 2022   CMC1   CMC1(config-if)#exit
+Wed May 4 20:52:21 2022   CMC1   CMC1(config)#do ping 100.2.2.2
+Wed May 4 20:53:40 2022   CMC2   Router>en
+Wed May 4 20:53:42 2022   CMC2   Router#config t
+Wed May 4 20:54:20 2022   CMC2   Router(config)#hostname CMC2
+Wed May 4 20:54:25 2022   CMC2   CMC2(config)#int g0/0
+Wed May 4 20:54:35 2022   CMC2   CMC2(config-if)#ip add 60.0.0.1 255.255.255.0
+Wed May 4 20:54:37 2022   CMC2   CMC2(config-if)#no shut
+Wed May 4 20:54:49 2022   CMC2   CMC2(config-if)#int g0/1
+Wed May 4 20:55:09 2022   CMC2   CMC2(config-if)#ip add 60.1.1.1 255.255.255.252
+Wed May 4 20:55:12 2022   CMC2   CMC2(config-if)#no shut
+Wed May 4 20:56:22 2022   CMC2   CMC2(config-if)#exit
+Wed May 4 20:56:39 2022   CMC2   CMC2(config)#do ping 60.1.1.2
+Wed May 4 20:57:49 2022   ISP-EXT   ISP-EXT>en
+Wed May 4 20:57:51 2022   ISP-EXT   ISP-EXT#config t
+Wed May 4 20:58:14 2022   ISP-EXT   ISP-EXT(config)#ip route 0.0.0.0 0.0.0.0 6.6.6.1
+Wed May 4 20:58:35 2022   VNNIX   VNIX>en
+Wed May 4 20:58:37 2022   VNNIX   VNIX#config t
+Wed May 4 20:59:04 2022   VNNIX   VNIX(config)#ip route 0.0.0.0 0.0.0.0 6.6.6.2
+Wed May 4 20:59:20 2022   VNNIX   VNIX(config)#router bgp 100
+Wed May 4 21:00:02 2022   VNNIX   VNIX(config-router)#neighbor 100.1.1.1 remote-as 50
+Wed May 4 21:00:19 2022   VNNIX   VNIX(config-router)#neighbor 100.2.2.1 remote-as 60
+Wed May 4 21:00:31 2022   VNNIX   VNIX(config-router)#redistribute static
+Wed May 4 21:00:45 2022   VNNIX   VNIX(config-router)#end
+Wed May 4 21:00:50 2022   VNNIX   VNIX#show ip route
+Wed May 4 21:00:56 2022   VNNIX   VNIX#ping 8.8.8.1
+Wed May 4 21:01:33 2022   VNNIX   VNIX#ping 8.8.8.8
+Wed May 4 21:01:37 2022   VNNIX   VNIX#ping 8.8.8.8
+Wed May 4 21:02:35 2022   Viettel1   Viettel1>en
+Wed May 4 21:02:37 2022   Viettel1   Viettel1#config t
+Wed May 4 21:02:54 2022   Viettel1   Viettel1(config)#router bgp 50
+Wed May 4 21:03:19 2022   Viettel1   Viettel1(config-router)#neighbor 100.1.1.2 remote-as 100
+Wed May 4 21:04:03 2022   Viettel1   Viettel1(config-router)#redistribute ospf 1
+Wed May 4 21:04:09 2022   Viettel1   Viettel1(config-router)#exit
+Wed May 4 21:04:22 2022   Viettel1   Viettel1(config)#router ospf 1
+Wed May 4 21:04:29 2022   Viettel1   Viettel1(config-router)#router-id 1.1.1.1
+Wed May 4 21:04:36 2022   Viettel1   Viettel1(config-router)#exit
+Wed May 4 21:04:46 2022   Viettel1   Viettel1(config)#int g0/0
+Wed May 4 21:04:57 2022   Viettel1   Viettel1(config-if)#ip ospf 1 area 0
+Wed May 4 21:05:00 2022   Viettel1   Viettel1(config-if)#exit
+Wed May 4 21:05:18 2022   Viettel1   Viettel1(config)#router ospf 1
+Wed May 4 21:05:52 2022   Viettel1   Viettel1(config-router)#redistribute bgp 50 metric 5 subnet
+Wed May 4 21:06:05 2022   Viettel1   Viettel1(config-router)#end
+Wed May 4 21:06:10 2022   Viettel1   Viettel1#show ip route
+Wed May 4 21:06:24 2022   Viettel1   Viettel1#ping 8.8.8.8
+Wed May 4 21:11:51 2022   Viettel2   Viettel2>en
+Wed May 4 21:11:53 2022   Viettel2   Viettel2#config t
+Wed May 4 21:12:06 2022   Viettel2   Viettel2(config)#router ospf 1
+Wed May 4 21:12:15 2022   Viettel2   Viettel2(config-router)#router-id 2.2.2.2
+Wed May 4 21:12:19 2022   Viettel2   Viettel2(config-router)#exit
+Wed May 4 21:12:23 2022   Viettel2   Viettel2(config)#int g0/0
+Wed May 4 21:12:37 2022   Viettel2   Viettel2(config-if)#ip ospf 1 area 1
+Wed May 4 21:12:42 2022   Viettel2   Viettel2(config-if)#int g0/1
+Wed May 4 21:12:50 2022   Viettel2   Viettel2(config-if)#ip ospf 1 area 0
+Wed May 4 21:13:04 2022   Viettel2   Viettel2(config-if)#end
+Wed May 4 21:13:08 2022   Viettel2   Viettel2#show ip route
+Wed May 4 21:13:27 2022   Viettel2   Viettel2#ping 8.8.8.8
+Wed May 4 21:20:06 2022   Viettel2   Viettel2#ping 8.8.8.8
+Wed May 4 21:21:02 2022   CMC1   CMC1>en
+Wed May 4 21:21:04 2022   CMC1   CMC1#config t
+Wed May 4 21:21:18 2022   CMC1   CMC1(config)#int loopback 1
+Wed May 4 21:21:24 2022   CMC1   CMC1(config-if)#ip add 3.3.3.3
+Wed May 4 21:21:30 2022   CMC1   CMC1(config-if)#ip add 3.3.3.3 255.255.255.255
+Wed May 4 21:21:42 2022   CMC1   CMC1(config-if)#exit
+Wed May 4 21:21:51 2022   CMC1   CMC1(config)#router bgp 60
+Wed May 4 21:22:07 2022   CMC1   CMC1(config-router)#neighbor 100.2.2.2 remote-as 100
+Wed May 4 21:22:19 2022   CMC1   CMC1(config-router)#redistribute eigrp 100
+Wed May 4 21:22:28 2022   CMC1   CMC1(config-router)#exit
+Wed May 4 21:22:36 2022   CMC1   CMC1(config)#router eigrp 100
+Wed May 4 21:22:58 2022   CMC1   CMC1(config-router)#network 60.1.1.0 0.0.0.3
+Wed May 4 21:23:36 2022   CMC1   CMC1(config-router)#redistribute bgp 60 metric ?
+Wed May 4 21:23:50 2022   CMC1   CMC1(config-router)#redistribute bgp 60 metric 100000 ?
+Wed May 4 21:24:02 2022   CMC1   CMC1(config-router)#redistribute bgp 60 metric 100000 10 ?
+Wed May 4 21:24:14 2022   CMC1   CMC1(config-router)#redistribute bgp 60 metric 100000 10 255 ?
+Wed May 4 21:24:29 2022   CMC1   CMC1(config-router)#redistribute bgp 60 metric 100000 10 255 100 1500
+Wed May 4 21:30:29 2022   CMC2   CMC2>en
+Wed May 4 21:30:50 2022   CMC2   CMC2#config t
+Wed May 4 21:31:01 2022   CMC2   CMC2(config)#int loopback 1
+Wed May 4 21:31:19 2022   CMC2   CMC2(config-if)#ip add 4.4.4.4 255.255.255.255
+Wed May 4 21:31:21 2022   CMC2   CMC2(config-if)#exit
+Wed May 4 21:31:33 2022   CMC2   CMC2(config)#router eigrp 100
+Wed May 4 21:31:51 2022   CMC2   CMC2(config-router)#network 60.0.0.0 0.0.0.255
+Wed May 4 21:32:05 2022   CMC2   CMC2(config-router)#network 60.1.1.0 0.0.0.3
+Wed May 4 21:35:07 2022   CMC2   CMC2(config-router)#end
+Wed May 4 21:35:11 2022   CMC2   CMC2#show ip route
+Wed May 4 21:36:03 2022   CMC2   CMC2#ping 8.8.8.8
+Wed May 4 21:36:11 2022   CMC2   CMC2#ping 50.0.0.2
+Wed May 4 21:36:30 2022   Viettel2   Viettel2>en
+Wed May 4 21:36:37 2022   Viettel2   Viettel2#show ip route

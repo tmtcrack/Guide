@@ -1,0 +1,8 @@
+If the GitHub repo has seen new commits pushed to it, while you were working locally, I would advise using:
+
+git pull --rebase
+git push
+The full syntax is:
+
+git pull --rebase origin main
+git push origin main

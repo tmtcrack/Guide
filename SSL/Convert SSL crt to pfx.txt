@@ -1,0 +1,19 @@
+Convert Certificate File From CRT to PFX using OpenSSL
+JANUARY 22, 2013LINUX
+This guide will show you how to convert a .crt certificate file and associated private key, and convert it to a .pfx file using OpenSSL. 
+This can be useful if you need to take a certificate file, and load it onto a Windows server for example.
+A PFX file is a way of storing private keys, and certificates in a single encrypted file. 
+It is commonly used to import and export certificates and keys on a Windows PC.
+In the example below, the following files will be used:
+
+domain.name.crt – this is the public certificate file.
+domain.name.key – This is the private encryption key for the above certificate.
+domain.name.pfx – This will be the PFX file outputted from OpenSSL.
+
+Converting the crt certificate and private key to a PFX file
+
+$ openssl pkcs12 -export -out domain.name.pfx -inkey domain.name.key -in domain.name.crt
+
+This will create a pfx output file called “domain.name.pfx”.
+You will be asked for the pass-phrase for the private key if needed, and also to set a pass-phrase for the newly created .pfx file too.
+You can now load this .pfx file onto a Windows machine, or wherever needed.

@@ -1,0 +1,1 @@
+Test-NetConnection -ComputerName test242 -Port 3389

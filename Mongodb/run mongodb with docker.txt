@@ -1,0 +1,73 @@
+
+docker run --rm --name mongo6-jammy -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=VRuAd2Nvmp4ELHh5 -e MONGO_INITDB_DATABASE=test -v /tmp/mongo-data:/data/db mongo:6-jammy
+
+docker exec -it mongo6-jammy mongosh -u admin -p VRuAd2Nvmp4ELHh5 --authenticationDatabase admin
+
+========================
+version: '3.8'
+services:
+  mongodb:
+    image: mongo:6-jammy
+    ports:
+      - '27017:27017'
+    volumes:
+      - dbdata6:/data/db
+volumes:
+  dbdata6:
+
+
+======================
+
+Running MongoDB using docker-compose with a Node.js app
+For the next example, you will run MongoDB with Docker compose. MongoDB will be accessible to an example application built with Node.js and Express. This example application is an API to do CRUD operations for Tutorials. The code for this API is open source on GitHub and you can follow this tutorial to know how this demo REST API app is built.
+
+You will dockerize the Node.js part of the application with the following dockerfile at the root of the project:
+
+
+FROM node:18-alpine
+
+WORKDIR /src
+COPY package.json package-lock.json /src/
+RUN npm install --production
+
+COPY . /src
+
+EXPOSE 8085
+
+CMD ["node", "server.js"]
+
+=========================================================
+You can learn more about how to use Node.js with Docker 
+--------------------
+version: '3.8'
+
+services:
+  node-app:
+    build: .
+    image: node-app
+    environment:
+      - MONGODB_URL=mongodb://mongodb:27017/node-boilerplate
+    ports:
+      - '8085:8085'
+    depends_on:
+      - mongodb
+    volumes:
+      - .:/src
+    networks:
+      - node-network
+
+  mongodb:
+    image: mongo:6-jammy
+    ports:
+      - '27017:27017'
+    volumes:
+      - dbdata6:/data/db
+    networks:
+      - node-network
+
+volumes:
+  dbdata6:
+
+networks:
+  node-network:
+    driver: bridge

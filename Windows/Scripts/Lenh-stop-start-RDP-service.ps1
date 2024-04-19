@@ -1,0 +1,1 @@
+Restart-Service -Force -DisplayName "Remote Desktop Services"

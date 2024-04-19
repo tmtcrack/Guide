@@ -1,0 +1,51 @@
+Wed Apr 6 20:51:49 2022   Router0   Router>?
+Wed Apr 6 20:52:20 2022   Router0   Router>show ?
+Wed Apr 6 20:52:52 2022   Router0   Router>show version
+Wed Apr 6 20:57:31 2022   Router0   Router>show flash
+Wed Apr 6 20:58:59 2022   Router0   Router>show startup-config
+Wed Apr 6 20:59:07 2022   Router0   Router>show ?
+Wed Apr 6 20:59:27 2022   Router0   Router>enable
+Wed Apr 6 20:59:45 2022   Router0   Router#show startup-config
+Wed Apr 6 21:02:00 2022   Router0   Router#config t
+Wed Apr 6 21:02:10 2022   Router0   Router(config)#enable pass cisco
+Wed Apr 6 21:02:27 2022   Router0   Router(config)#exit
+Wed Apr 6 21:02:30 2022   Router0   Router#exit
+Wed Apr 6 21:02:44 2022   Router0   Router>enable
+Wed Apr 6 21:06:51 2022   Router0   Router#config terminal
+Wed Apr 6 21:07:06 2022   Router0   Router(config)#hostname PNH
+Wed Apr 6 21:07:59 2022   Router0   PNH(config)#interface fastethernet 0/0
+Wed Apr 6 21:08:19 2022   Router0   PNH(config-if)#ip address 192.168.0.1 255.255.255.0
+Wed Apr 6 21:08:37 2022   Router0   PNH(config-if)#no shutdown
+Wed Apr 6 21:09:17 2022   Router0   PNH(config-if)#exit
+Wed Apr 6 21:10:22 2022   Router0   PNH(config)#line vty 0 ?
+Wed Apr 6 21:10:39 2022   Router0   PNH(config)#line vty 0 4
+Wed Apr 6 21:10:50 2022   Router0   PNH(config-line)#password ccna
+Wed Apr 6 21:11:00 2022   Router0   PNH(config-line)#login
+Wed Apr 6 21:11:06 2022   Router0   PNH(config-line)#exit
+Wed Apr 6 21:11:43 2022   Router0   PNH(config)#ip dhcp pool pnh-user
+Wed Apr 6 21:12:01 2022   Router0   PNH(dhcp-config)#network 192.168.0.0 255.255.255.0
+Wed Apr 6 21:12:14 2022   Router0   PNH(dhcp-config)#default 192.168.0.1
+Wed Apr 6 21:12:21 2022   Router0   PNH(dhcp-config)#dns 8.8.8.8
+Wed Apr 6 21:12:30 2022   Router0   PNH(dhcp-config)#exit
+Wed Apr 6 21:13:53 2022   Router0   PNH(config)#ip dhcp excluded-address 192.168.0.1 192.168.0.50
+Wed Apr 6 21:15:30 2022   Router0   PNH(config)#end
+Wed Apr 6 21:16:42 2022   Router0   PNH#show running-config 
+Wed Apr 6 21:17:43 2022   Router0   PNH#show startup-config 
+Wed Apr 6 21:18:15 2022   Router0   PNH#copy running-config startup-config
+Wed Apr 6 21:18:25 2022   Router0   PNH#show startup-config 
+Wed Apr 6 21:18:49 2022   Router0   PNH#write memory
+Wed Apr 6 21:23:32 2022   Router0   PNH>enable
+Wed Apr 6 21:23:41 2022   Router0   PNH#show run
+Wed Apr 6 21:23:55 2022   Router0   PNH#config t
+Wed Apr 6 21:24:06 2022   Router0   PNH(config)#ip dhcp pool pnh-user
+Wed Apr 6 21:24:42 2022   Router0   PNH(dhcp-config)#exit
+Wed Apr 6 21:25:16 2022   Router0   PNH(config)#ip dhcp pool pnh-user
+Wed Apr 6 21:25:25 2022   Router0   PNH(dhcp-config)#default 192.168.0.1
+Wed Apr 6 21:26:25 2022   Router0   PNH(dhcp-config)#end
+Wed Apr 6 21:26:31 2022   Router0   PNH#write mem
+Wed Apr 6 21:31:41 2022   Router0   PNH#show ip dhcp binding 
+Wed Apr 6 21:32:35 2022   Router0   PNH#ping 192.168.0.10
+Wed Apr 6 21:32:39 2022   Router0   PNH#ping 192.168.0.10
+Wed Apr 6 21:33:08 2022   Router0   PNH#copy running-config tftp
+Wed Apr 6 21:34:48 2022   Router0   PNH#show flash
+Wed Apr 6 21:35:17 2022   Router0   PNH#copy flash tftp

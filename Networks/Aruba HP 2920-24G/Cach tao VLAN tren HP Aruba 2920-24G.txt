@@ -1,0 +1,72 @@
+Để tạo một VLAN (Virtual Local Area Network) trên switch Aruba HP 2920-24G, bạn có thể sử dụng các bước sau:
+
+Truy cập vào giao diện điều khiển của switch, thông qua giao diện dòng lệnh hoặc giao diện đồ họa (web GUI).
+
+Chuyển sang chế độ cấu hình ("Configuration Mode") bằng cách nhập lệnh sau:
+
+configure
+
+Tạo VLAN mới bằng cách sử dụng lệnh sau, thay thế <vlan_id> bằng ID VLAN mong muốn và <vlan_name> bằng tên VLAN mong muốn:
+ 
+vlan <vlan_id> name "<vlan_name>"
+
+Ví dụ, để tạo một VLAN có ID là 10 và tên là "VLAN10", bạn có thể sử dụng lệnh sau:
+
+
+vlan 10 name "VLAN10"
+
+Lưu các thay đổi cấu hình bằng cách nhập lệnh sau:
+
+write memory
+
+Lệnh trên sẽ lưu cấu hình đã thay đổi vào bộ nhớ flash của switch để nó được duy trì sau khi khởi động lại.
+
+Lưu ý rằng cú pháp và quy trình trên có thể thay đổi tùy thuộc vào phiên bản firmware cụ thể và cấu hình switch của bạn. 
+Hãy tham khảo tài liệu chính thức hoặc hướng dẫn về lệnh của switch Aruba HP 2920-24G để biết thông tin chính xác 
+cho mô hình switch và phiên bản firmware cụ thể của bạn.
+
+==========================================================================================================================================
+
+Trên switch HP 2920-24G (J9726A), lệnh "untagged" được sử dụng để gán một cổng vào một VLAN và đặt cổng đó thành cổng "untagged" cho VLAN đó. 
+Khi một cổng được gán là "untagged" cho một VLAN, nó sẽ hoạt động như một cổng truy cập (access port) cho VLAN đó.
+
+Khi dữ liệu được gửi ra từ cổng "untagged" thuộc một VLAN, dữ liệu sẽ không được gắn thẻ VLAN (VLAN tag) 
+và được gửi trực tiếp tới các thiết bị kết nối với cổng đó. 
+Điều này giúp các thiết bị kết nối không cần phải hiểu về VLAN và có thể nhận dữ liệu trực tiếp từ cổng "untagged".
+
+Lưu ý rằng trên các switch HP, một cổng chỉ có thể được gán là "untagged" cho một VLAN duy nhất. 
+Tuy nhiên, cổng có thể được gán là "untagged" cho một VLAN và "tagged" (gắn thẻ) cho nhiều VLAN khác (VLAN trunking).
+
+Vì vậy, khi sử dụng lệnh "untagged" trên switch HP 2920-24G, 
+bạn đang gán cổng vào một VLAN cụ thể và đặt cổng đó làm cổng truy cập (access port) cho VLAN đó.
+
+=========================================================================================================================================
+
+Để bỏ cổng 6, 7, và 8 khỏi VLAN 10 và chỉ gán cho VLAN 10 các cổng 2, 3, 4 và 5 trên switch HP 2920-24G, bạn có thể sử dụng các lệnh sau:
+
+---------------
+
+configure
+
+---------------
+
+vlan 10
+
+no untagged 6-8
+
+untagged 2-5
+
+exit
+
+---------------
+
+write memory
+
+---------------
+Trong ví dụ trên, lệnh no untagged 6-8 sẽ gỡ bỏ tính chất "untagged" (truy cập) của cổng 6, 7 và 8 từ VLAN 10. Sau đó, lệnh untagged 2-5 sẽ gán các cổng 2, 3, 4 và 5 làm cổng "untagged" cho VLAN 10.
+
+Sau khi thực hiện các lệnh trên, cổng 6, 7 và 8 sẽ không còn là cổng truy cập (access port) cho VLAN 10 và chỉ cổng 2, 3, 4 và 5 sẽ là những cổng truy cập cho VLAN 10.
+
+Lưu ý rằng cú pháp và các lệnh có thể thay đổi tùy thuộc vào phiên bản firmware cụ thể và cấu hình của switch. Vì vậy, hãy tham khảo tài liệu hướng dẫn chính thức hoặc tài liệu lệnh của switch Aruba HP 2920-24G để biết thông tin chính xác cho phiên bản firmware và cấu hình của bạn.
+
+==========================================================================================================================================

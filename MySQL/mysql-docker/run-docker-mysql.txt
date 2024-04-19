@@ -1,0 +1,23 @@
+
+1. Tạo 1 docker volume tên là sqlvolume trên máy EC2
+2. Khởi chạy 1 container có volume sqlvolume vào container mýql với root password=123456
+
+docker run -d --mount source=sqlvolume,target=/var/lib/mysql --name mysqlsrv1 -e MYSQL_ROOT_PASSWORD=a123456 -e MYSQL_ROOT_HOST=% mysql
+
+docker run -d --mount source=sqlvolume,target=/var/lib/mysql --name mysqlsrv1 -e MYSQL_ROOT_PASSWORD=a123456 -e MYSQL_ROOT_HOST=% -p 3306:3306 mysql
+
+Truy cập /bin/bash của container này và chạy lệnh: mysql sau đó chạy các lệnh sau:
+
+show databases;
+ALTER USER 'root' IDENTIFIED WITH mysql_native_password BY '123456';
+flush privileges;
+exit;	//chú ý có dấu hai chấm;
+
+3. Test: Trên máy EC2:
+
+- Kiểm tra IP container mysql (VD: 172.17.0.2)
+- Cài đặt lệnh mysql sau đó truy cập thử vào mysql trên container bằng lệnh:
+	mysql -h 172.17.0.2 -u root -p
+Sau khi truy cập được, gõ lệnh: show databases;
+sau đó: exits;
+Như vậy server mysql đã sẵn sàng

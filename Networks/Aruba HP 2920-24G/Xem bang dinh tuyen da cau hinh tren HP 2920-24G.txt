@@ -1,0 +1,19 @@
+Lệnh để xem bảng định tuyến trên switch HP 2920-24G (J9726A) là show ip route. 
+Tuy nhiên, phiên bản cụ thể của firmware có thể ảnh hưởng đến cú pháp và các tùy chọn có sẵn. 
+Dưới đây là một số lựa chọn phổ biến cho lệnh show ip route trên switch HP 2920-24G:
+
+Hiển thị tất cả các bản ghi định tuyến:
+
+show ip route
+
+Hiển thị bản ghi định tuyến cho một mạng đích cụ thể:
+
+show ip route <destination_network>
+
+Thay thế <destination_network> bằng địa chỉ mạng đích mà bạn muốn xem thông tin định tuyến.
+
+Hiển thị bản ghi định tuyến cho một VLAN cụ thể:
+ 
+show ip route vlan <vlan_id>
+
+Thay thế <vlan_id> bằng số ID của VLAN mà bạn muốn xem thông tin định tuyến.

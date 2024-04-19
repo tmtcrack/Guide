@@ -1,0 +1,43 @@
+Để thiết lập định tuyến giữa các VLAN trên switch HP 2920-24G (J9726A), 
+bạn có thể sử dụng giao diện VLAN và định tuyến tĩnh (static routing). Dưới đây là các bước cơ bản:
+
+Tạo và cấu hình các VLAN: Đầu tiên, bạn cần tạo và cấu hình các VLAN trên switch. Sử dụng lệnh sau để tạo các VLAN:
+
+
+configure
+vlan <vlan_id> name "<vlan_name>"
+
+Thay thế <vlan_id> bằng số ID của VLAN và <vlan_name> bằng tên của VLAN. Ví dụ:
+
+
+vlan 10 name "VLAN10"
+vlan 20 name "VLAN20"
+
+Gán cổng vào các VLAN: Tiếp theo, bạn cần gán cổng vào từng VLAN. Sử dụng lệnh sau:
+
+
+interface <interface_id>
+untagged vlan <vlan_id>
+
+Thay thế <interface_id> bằng số hiệu của cổng và <vlan_id> bằng ID của VLAN mà bạn muốn gán cho cổng. Ví dụ:
+
+
+interface 1
+untagged vlan 10
+
+Cấu hình định tuyến tĩnh: Bạn cần thiết lập các bước định tuyến tĩnh để cho phép các VLAN giao tiếp với nhau. Sử dụng lệnh sau:
+
+
+ip route <destination_network> <subnet_mask> <next_hop>
+
+Thay thế <destination_network> với địa chỉ mạng đích mà bạn muốn định tuyến, 
+<subnet_mask> với subnet mask tương ứng và <next_hop> với địa chỉ IP của next hop (cổng ra) để đạt được mạng đích đó. Ví dụ:
+
+
+ip route 192.168.2.0 255.255.255.0 192.168.1.2
+
+Trong ví dụ trên, địa chỉ mạng 192.168.2.0/24 được định tuyến thông qua next hop với địa chỉ IP 192.168.1.2.
+
+Lưu cấu hình: Sau khi hoàn thành cấu hình, lưu cấu hình đã thay đổi vào bộ nhớ flash của switch bằng lệnh:
+
+write memory

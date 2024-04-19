@@ -1,0 +1,45 @@
+Để đặt địa chỉ IP cho switch HP 2920-24G (J9726A) trên các VLAN khác nhau, bạn có thể sử dụng các bước sau:
+
+Tạo và cấu hình các VLAN: Đầu tiên, bạn cần tạo và cấu hình các VLAN trên switch. Sử dụng lệnh sau để tạo các VLAN:
+
+
+configure
+vlan <vlan_id> name "<vlan_name>"
+
+Thay thế <vlan_id> bằng số ID của VLAN và <vlan_name> bằng tên của VLAN. Ví dụ:
+
+
+vlan 10 name "VLAN10"
+vlan 20 name "VLAN20"
+
+Gán cổng vào các VLAN: Tiếp theo, bạn cần gán cổng vào từng VLAN. Sử dụng lệnh sau:
+
+interface <interface_id>
+untagged vlan <vlan_id>
+
+Thay thế <interface_id> bằng số hiệu của cổng và <vlan_id> bằng ID của VLAN mà bạn muốn gán cho cổng. Ví dụ:
+
+
+interface 1
+untagged vlan 10
+
+Gán địa chỉ IP cho VLAN: Bạn có thể gán địa chỉ IP cho mỗi VLAN bằng cách sử dụng lệnh sau:
+
+
+vlan <vlan_id>
+ip address <ip_address> <subnet_mask>
+
+Thay thế <vlan_id> bằng số ID của VLAN và <ip_address> và <subnet_mask> bằng địa chỉ IP và subnet mask tương ứng cho VLAN đó. Ví dụ:
+
+
+vlan 10
+ip address 192.168.1.1 255.255.255.0
+
+Lưu cấu hình: Sau khi hoàn thành cấu hình, lưu cấu hình đã thay đổi vào bộ nhớ flash của switch bằng lệnh:
+
+
+write memory
+
+Lưu ý rằng cú pháp và các lệnh có thể thay đổi tùy thuộc vào phiên bản firmware cụ thể và cấu hình của switch. 
+Vì vậy, hãy tham khảo tài liệu hướng dẫn chính thức hoặc tài liệu lệnh của switch HP 2920-24G 
+để biết thông tin chính xác cho phiên bản firmware và cấu hình của bạn.

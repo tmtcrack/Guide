@@ -1,0 +1,36 @@
+cấu hình VIP cho 2 switch cisco nexus 9000
+ChatGPT
+Để cấu hình một VIP (Virtual IP) cho hai switch Cisco Nexus 9000, bạn có thể sử dụng công nghệ HSRP (Hot Standby Router Protocol) hoặc VRRP (Virtual Router Redundancy Protocol). Trong ví dụ này, tôi sẽ hướng dẫn bạn cách cấu hình HSRP, một trong những phương thức phổ biến để tạo một VIP trên các thiết bị Cisco.
+
+Giả sử bạn muốn cấu hình một VIP với địa chỉ IP 192.168.1.1/24 cho hai switch Nexus 9000 có các địa chỉ IP là 192.168.1.2 và 192.168.1.3. Dưới đây là các bước cấu hình HSRP:
+
+Bước 1: Xác định VLAN cụ thể cho VIP:
+Trước tiên, bạn cần chắc chắn rằng VLAN mà bạn muốn gán VIP đã được tạo trên cả hai switch Nexus 9000 và đang hoạt động.
+
+Bước 2: Cấu hình HSRP trên switch Nexus 9000 #1:
+bash
+Copy code
+Nexus9000-1(config)# interface vlan <VLAN_number>
+Nexus9000-1(config-if)# hsrp version 2
+Nexus9000-1(config-if)# hsrp <group_number>
+Nexus9000-1(config-if-hsrp)# ip 192.168.1.1
+Nexus9000-1(config-if-hsrp)# priority <priority_value>
+Nexus9000-1(config-if-hsrp)# preempt
+Bước 3: Cấu hình HSRP trên switch Nexus 9000 #2:
+bash
+Copy code
+Nexus9000-2(config)# interface vlan <VLAN_number>
+Nexus9000-2(config-if)# hsrp version 2
+Nexus9000-2(config-if)# hsrp <group_number>
+Nexus9000-2(config-if-hsrp)# ip 192.168.1.1
+Nexus9000-2(config-if-hsrp)# priority <priority_value>
+Nexus9000-2(config-if-hsrp)# preempt
+Ghi chú:
+<VLAN_number>: Số của VLAN mà bạn muốn gán VIP.
+<group_number>: Số nhóm HSRP (thường là từ 0 đến 255).
+<priority_value>: Độ ưu tiên của switch. Switch có độ ưu tiên cao hơn sẽ trở thành Active router.
+Lưu ý:
+Đảm bảo rằng địa chỉ IP của HSRP VIP (trong ví dụ này là 192.168.1.1) không trùng với bất kỳ địa chỉ IP nào khác trên mạng.
+Priority càng cao thì switch càng được ưu tiên làm Active router.
+Sau khi bạn hoàn thành các bước trên, HSRP sẽ xác định một trong hai switch làm Active router và switch còn lại là Standby router. 
+VIP sẽ được chia sẻ giữa hai switch, và Active router sẽ tiếp nhận lưu lượng gửi đến địa chỉ IP VIP.

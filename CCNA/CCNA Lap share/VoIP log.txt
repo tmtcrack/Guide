@@ -1,0 +1,110 @@
+Tue Mar 15 20:51:53 2022   ISP   Router>en
+Tue Mar 15 20:51:55 2022   ISP   Router#config t
+Tue Mar 15 20:51:59 2022   ISP   Router(config)#hostname ISP
+Tue Mar 15 20:52:20 2022   ISP   ISP(config)#int f0/0
+Tue Mar 15 20:52:29 2022   ISP   ISP(config-if)#ip add 6.6.6.2 255.255.255.252
+Tue Mar 15 20:52:32 2022   ISP   ISP(config-if)#no shut
+Tue Mar 15 20:52:35 2022   ISP   ISP(config-if)#int f0/1
+Tue Mar 15 20:52:43 2022   ISP   ISP(config-if)#ip add 7.7.7.2 255.255.255.252
+Tue Mar 15 20:52:46 2022   ISP   ISP(config-if)#no shut
+Tue Mar 15 20:55:35 2022   PNH-HN   Router>en
+Tue Mar 15 20:55:37 2022   PNH-HN   Router#config t
+Tue Mar 15 20:55:42 2022   PNH-HN   Router(config)#hostname PNH-HN
+Tue Mar 15 20:55:47 2022   PNH-HN   PNH-HN(config)#int f0/0
+Tue Mar 15 20:55:55 2022   PNH-HN   PNH-HN(config-if)#ip add 10.0.0.1 255.255.255.0
+Tue Mar 15 20:56:10 2022   PNH-HN   PNH-HN(config-if)#ip nat inside
+Tue Mar 15 20:56:12 2022   PNH-HN   PNH-HN(config-if)#no shut
+Tue Mar 15 20:56:48 2022   PNH-HN   PNH-HN(config-if)#int f0/1
+Tue Mar 15 20:56:59 2022   PNH-HN   PNH-HN(config-if)#ip add 6.6.6.1 255.255.255.252
+Tue Mar 15 20:57:03 2022   PNH-HN   PNH-HN(config-if)#ip nat out
+Tue Mar 15 20:57:05 2022   PNH-HN   PNH-HN(config-if)#no shut
+Tue Mar 15 20:58:31 2022   PNH-HN   PNH-HN(config-if)#ip route 0.0.0.0 0.0.0.0 6.6.6.2
+Tue Mar 15 20:58:40 2022   PNH-HN   PNH-HN(config)#access-list 1 permit any
+Tue Mar 15 20:59:23 2022   PNH-HN   PNH-HN(config)#ip nat inside source list 1 interface f0/1
+Tue Mar 15 20:59:41 2022   PNH-HN   PNH-HN(config)#ip dhcp pool voice
+Tue Mar 15 20:59:58 2022   PNH-HN   PNH-HN(dhcp-config)#network 10.0.0.0 255.255.255.0
+Tue Mar 15 21:00:07 2022   PNH-HN   PNH-HN(dhcp-config)#default 10.0.0.1
+Tue Mar 15 21:00:14 2022   PNH-HN   PNH-HN(dhcp-config)#option 150 ip ?
+Tue Mar 15 21:00:31 2022   PNH-HN   PNH-HN(dhcp-config)#option 150 ip 10.0.0.1
+Tue Mar 15 21:02:12 2022   PNH-HN   PNH-HN(dhcp-config)#exit
+Tue Mar 15 21:02:33 2022   PNH-HN   PNH-HN(config)#telephony-service 
+Tue Mar 15 21:02:45 2022   PNH-HN   PNH-HN(config-telephony)#max-dn ?
+Tue Mar 15 21:02:55 2022   PNH-HN   PNH-HN(config-telephony)#max-dn 144
+Tue Mar 15 21:03:09 2022   PNH-HN   PNH-HN(config-telephony)#max-ephones ?
+Tue Mar 15 21:03:10 2022   PNH-HN   PNH-HN(config-telephony)#max-ephones 42
+Tue Mar 15 21:03:31 2022   PNH-HN   PNH-HN(config-telephony)#?
+Tue Mar 15 21:03:53 2022   PNH-HN   PNH-HN(config-telephony)#ip ?
+Tue Mar 15 21:03:58 2022   PNH-HN   PNH-HN(config-telephony)#ip source-address ?
+Tue Mar 15 21:04:10 2022   PNH-HN   PNH-HN(config-telephony)#ip source-address 10.0.0.1 port ?
+Tue Mar 15 21:04:17 2022   PNH-HN   PNH-HN(config-telephony)#ip source-address 10.0.0.1 port 9999
+Tue Mar 15 21:04:56 2022   PNH-HN   PNH-HN(config-telephony)#auto assign 1 to 144
+Tue Mar 15 21:05:13 2022   PNH-HN   PNH-HN(config-telephony)#exit
+Tue Mar 15 21:05:44 2022   PNH-HN   PNH-HN(config)#ephone-dn 1
+Tue Mar 15 21:05:51 2022   PNH-HN   PNH-HN(config-ephone-dn)#number 4001
+Tue Mar 15 21:05:56 2022   PNH-HN   PNH-HN(config-ephone-dn)#ephone-dn 2
+Tue Mar 15 21:06:00 2022   PNH-HN   PNH-HN(config-ephone-dn)#number 4002
+Tue Mar 15 21:06:04 2022   PNH-HN   PNH-HN(config-ephone-dn)#ephone-dn 3
+Tue Mar 15 21:06:07 2022   PNH-HN   PNH-HN(config-ephone-dn)#number 4003
+Tue Mar 15 21:06:11 2022   PNH-HN   PNH-HN(config-ephone-dn)#ephone-dn 4
+Tue Mar 15 21:06:15 2022   PNH-HN   PNH-HN(config-ephone-dn)#number 4004
+Tue Mar 15 21:06:19 2022   PNH-HN   PNH-HN(config-ephone-dn)#exit
+Tue Mar 15 21:08:37 2022   PNH-HN   PNH-HN(config)#end
+Tue Mar 15 21:08:40 2022   PNH-HN   PNH-HN#show run
+Tue Mar 15 21:11:22 2022   Switch0   Switch>en
+Tue Mar 15 21:11:24 2022   Switch0   Switch#config t
+Tue Mar 15 21:11:31 2022   Switch0   Switch(config)#int range f0/1-24
+Tue Mar 15 21:11:46 2022   Switch0   Switch(config-if-range)#switchport voice vlan 1
+Tue Mar 15 21:13:40 2022   PNH-HN   PNH-HN#show run
+Tue Mar 15 21:13:53 2022   PNH-HN   PNH-HN#show run
+Tue Mar 15 21:16:41 2022   PNH-HN   PNH-HN#show run
+Tue Mar 15 21:20:31 2022   PNH-HCM   Router>en
+Tue Mar 15 21:20:33 2022   PNH-HCM   Router#config t
+Tue Mar 15 21:20:35 2022   PNH-HCM   Router(config)#hostname PNH-HCM
+Tue Mar 15 21:20:35 2022   PNH-HCM   PNH-HCM(config)#ip dhcp pool voice
+Tue Mar 15 21:20:35 2022   PNH-HCM   PNH-HCM(dhcp-config)#network 10.1.1.0 255.255.255.0
+Tue Mar 15 21:20:35 2022   PNH-HCM   PNH-HCM(dhcp-config)#default-router 10.1.1.1
+Tue Mar 15 21:20:35 2022   PNH-HCM   PNH-HCM(dhcp-config)#option 150 ip 10.1.1.1
+Tue Mar 15 21:20:35 2022   PNH-HCM   PNH-HCM(dhcp-config)#interface FastEthernet0/0
+Tue Mar 15 21:20:35 2022   PNH-HCM   PNH-HCM(config-if)#ip address 10.1.1.1 255.255.255.0
+Tue Mar 15 21:20:35 2022   PNH-HCM   PNH-HCM(config-if)#ip nat inside
+Tue Mar 15 21:20:35 2022   PNH-HCM   PNH-HCM(config-if)#no shut
+Tue Mar 15 21:20:35 2022   PNH-HCM   PNH-HCM(config-if)#interface FastEthernet0/1
+Tue Mar 15 21:20:35 2022   PNH-HCM   PNH-HCM(config-if)#ip address 7.7.7.1 255.255.255.252
+Tue Mar 15 21:20:35 2022   PNH-HCM   PNH-HCM(config-if)#ip nat outside
+Tue Mar 15 21:20:35 2022   PNH-HCM   PNH-HCM(config-if)#no shut
+Tue Mar 15 21:20:35 2022   PNH-HCM   PNH-HCM(config-if)#ip nat inside source list 1 interface FastEthernet0/1 overload
+Tue Mar 15 21:20:35 2022   PNH-HCM   PNH-HCM(config)#ip classless
+Tue Mar 15 21:20:35 2022   PNH-HCM   PNH-HCM(config)#ip route 0.0.0.0 0.0.0.0 7.7.7.2 
+Tue Mar 15 21:20:35 2022   PNH-HCM   PNH-HCM(config)#ip flow-export version 9
+Tue Mar 15 21:20:35 2022   PNH-HCM   PNH-HCM(config)#access-list 1 permit any
+Tue Mar 15 21:20:35 2022   PNH-HCM   PNH-HCM(config)#telephony-service
+Tue Mar 15 21:20:35 2022   PNH-HCM   PNH-HCM(config-telephony)#max-ephones 42
+Tue Mar 15 21:20:35 2022   PNH-HCM   PNH-HCM(config-telephony)#max-dn 144
+Tue Mar 15 21:20:35 2022   PNH-HCM   PNH-HCM(config-telephony)#ip source-address 10.1.1.1 port 9999
+Tue Mar 15 21:20:35 2022   PNH-HCM   PNH-HCM(config-telephony)#auto assign 1 to 144
+Tue Mar 15 21:20:35 2022   PNH-HCM   PNH-HCM(config-telephony)#ephone-dn 1
+Tue Mar 15 21:20:35 2022   PNH-HCM   PNH-HCM(config-ephone-dn)#number 8001
+Tue Mar 15 21:20:35 2022   PNH-HCM   PNH-HCM(config-ephone-dn)#ephone-dn 2
+Tue Mar 15 21:20:35 2022   PNH-HCM   PNH-HCM(config-ephone-dn)#number 8002
+Tue Mar 15 21:20:35 2022   PNH-HCM   PNH-HCM(config-ephone-dn)#ephone-dn 3
+Tue Mar 15 21:20:35 2022   PNH-HCM   PNH-HCM(config-ephone-dn)#number 8003
+Tue Mar 15 21:20:35 2022   PNH-HCM   PNH-HCM(config-ephone-dn)#ephone-dn 4
+Tue Mar 15 21:20:35 2022   PNH-HCM   PNH-HCM(config-ephone-dn)#number 8004
+Tue Mar 15 21:20:42 2022   PNH-HCM   PNH-HCM(config-ephone-dn)#end
+Tue Mar 15 21:20:47 2022   PNH-HCM   PNH-HCM#show run
+Tue Mar 15 21:21:21 2022   Switch1   Switch>en
+Tue Mar 15 21:21:22 2022   Switch1   Switch#config t
+Tue Mar 15 21:21:28 2022   Switch1   Switch(config)#int range f0/1-24
+Tue Mar 15 21:21:36 2022   Switch1   Switch(config-if-range)#switchport voice vlan 1
+Tue Mar 15 21:25:53 2022   PNH-HN   PNH-HN#config t
+Tue Mar 15 21:26:04 2022   PNH-HN   PNH-HN(config)#dial-peer 1 ?
+Tue Mar 15 21:26:10 2022   PNH-HN   PNH-HN(config)#dial-peer 1
+Tue Mar 15 21:26:13 2022   PNH-HN   PNH-HN(config)#dial-peer ?
+Tue Mar 15 21:26:19 2022   PNH-HN   PNH-HN(config)#dial-peer voice ?
+Tue Mar 15 21:26:35 2022   PNH-HN   PNH-HN(config)#dial-peer voice 1 VOIp 
+Tue Mar 15 21:26:51 2022   PNH-HN   PNH-HN(config-dial-peer)#destination-pattern 8...
+Tue Mar 15 21:27:25 2022   PNH-HN   PNH-HN(config-dial-peer)#session target ipv4:7.7.7.1
+Tue Mar 15 21:27:46 2022   PNH-HCM   PNH-HCM#config t
+Tue Mar 15 21:27:56 2022   PNH-HCM   PNH-HCM(config)#dial-peer voice 1 voip 
+Tue Mar 15 21:28:05 2022   PNH-HCM   PNH-HCM(config-dial-peer)#destination-pattern 4...
+Tue Mar 15 21:29:03 2022   PNH-HCM   PNH-HCM(config-dial-peer)#session target ipv4:6.6.6.1

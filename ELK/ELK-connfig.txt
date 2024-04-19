@@ -1,0 +1,64 @@
+=======================
+KIBANA
+
+root@ubuntu240:/etc/elasticsearch# echo "kibanaadmin:`openssl passwd -apr1`" | sudo tee -a /etc/nginx/htpasswd.users
+Password:
+Verifying - Password:
+kibanaadmin:$apr1$9fVsQR.P$nA71rFz5fSfOpemCvY0gR0
+
+-------
+	access_log syslog:server=localhost:5044;
+        error_log syslog:server=localhost:5044;
+        auth_basic "Restricted Access";
+        auth_basic_user_file /etc/nginx/htpasswd.users;
+
+        location / {
+                proxy_pass http://localhost:5601;
+                proxy_http_version 1.1;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection 'upgrade';
+                proxy_set_header Host $host;
+                proxy_cache_bypass $http_upgrade;
+         }
+====================================================
+sudo filebeat setup -E output.logstash.enabled=false -E output.elasticsearch.hosts=['localhost:9200'] -E setup.kibana.host=localhost:5601
+
+sudo filebeat setup --index-management -E output.logstash.enabled=false -E 'output.elasticsearch.hosts=["192.168.12.240:9200"]'
+
+================================================
+/usr/share/logstash/bin/logstash -f logstash-filter.conf
+===========================================
+http://192.168.12.240:9200/_search?pretty
+===========================================
+
+input {
+  beats {
+    port => 5044
+  }
+}
+filter {
+    grok {
+      match => { "message" => "%{COMBINEDAPACHELOG}" }
+    }
+    date {
+    match => [ "timestamp" , "dd/MMM/yyyy:HH:mm:ss Z" ]
+  }
+  geoip {
+      source => "clientip"
+    }
+}
+
+output {
+  elasticsearch {
+    hosts => ["192.168.12.240:9200"]
+    manage_template => false
+    index => "%{[@metadata][beat]}-%{+YYYY.MM.dd}"
+    document_type => "%{[@metadata][type]}"
+  }
+  stdout { codec => rubydebug }
+}
+
+=====================================
+sudo filebeat setup --index-management -E output.logstash.enabled=false -E 'output.elasticsearch.hosts=["192.168.12.240:9200"]'
+-----------------------
+sudo filebeat setup -E output.logstash.enabled=false -E output.elasticsearch.hosts=['192.168.12.240:9200'] -E setup.kibana.host=192.168.12.240:5601

@@ -1,0 +1,158 @@
+Wed May 25 19:17:39 2022   ISP   Router>enable
+Wed May 25 19:17:39 2022   ISP   Router#configure terminal
+Wed May 25 19:17:39 2022   ISP   Router(config)#interface Ethernet0/0/0
+Wed May 25 19:17:44 2022   ISP   Router(config-if)#exit
+Wed May 25 19:17:44 2022   ISP   Router(config)#interface Ethernet0/0/0
+Wed May 25 19:17:49 2022   ISP   Router(config-if)#no shutdown
+Wed May 25 19:18:04 2022   ISP   Router(config-if)#ip address 100.0.0.1 255.0.0.0
+Wed May 25 19:18:57 2022   ISP   Router(config-if)#ip address 100.0.0.1 255.255.255.0
+Wed May 25 19:18:58 2022   ISP   Router(config-if)#exit
+Wed May 25 19:18:58 2022   ISP   Router(config)#interface Ethernet0/1/0
+Wed May 25 19:19:10 2022   ISP   Router(config-if)#no shutdown
+Wed May 25 19:19:21 2022   ISP   Router(config-if)#ip address 192.168.0.1 255.255.255.0
+Wed May 25 19:19:43 2022   ISP   Router(config-if)#ip address 192.168.0.1 255.255.255.0
+Wed May 25 19:19:44 2022   ISP   Router(config-if)#exit
+Wed May 25 19:19:44 2022   ISP   Router(config)#interface Ethernet0/2/0
+Wed May 25 19:19:50 2022   ISP   Router(config-if)#no shutdown
+Wed May 25 19:19:59 2022   ISP   Router(config-if)#ip address 8.8.8.1 255.0.0.0
+Wed May 25 19:21:28 2022   ISP   Router(config-if)#ip address 8.8.8.1 255.255.255.0
+Wed May 25 19:21:29 2022   ISP   Router(config-if)#exit
+Wed May 25 19:21:29 2022   ISP   Router(config)#interface Ethernet0/3/0
+Wed May 25 19:21:31 2022   ISP   Router(config-if)#no shutdown
+Wed May 25 19:21:41 2022   ISP   Router(config-if)#ip address 200.0.0.1 255.255.255.0
+Wed May 25 19:22:36 2022   ISP   Router(config-if)#ip address 200.0.0.1 255.255.255.0
+Wed May 25 20:32:48 2022   SW-CORE   Switch>en
+Wed May 25 20:32:50 2022   SW-CORE   Switch#config t
+Wed May 25 20:33:04 2022   SW-CORE   Switch(config)#hostname SW-CORE
+Wed May 25 20:34:04 2022   SW-CORE   SW-CORE(config)#enable pass ccna
+Wed May 25 20:34:08 2022   SW-CORE   SW-CORE(config)#line vty 0 4
+Wed May 25 20:34:12 2022   SW-CORE   SW-CORE(config-line)#pass cisco
+Wed May 25 20:34:14 2022   SW-CORE   SW-CORE(config-line)#login
+Wed May 25 20:34:17 2022   SW-CORE   SW-CORE(config-line)#exit
+Wed May 25 20:34:58 2022   SW-CORE   SW-CORE(config)#vtp domain pnh.vn
+Wed May 25 20:35:05 2022   SW-CORE   SW-CORE(config)#vtp pass pnh123
+Wed May 25 20:35:11 2022   SW-CORE   SW-CORE(config)#vtp mode server
+Wed May 25 20:36:08 2022   SW-CORE   SW-CORE(config)#vlan 2
+Wed May 25 20:36:12 2022   SW-CORE   SW-CORE(config-vlan)#name system
+Wed May 25 20:36:14 2022   SW-CORE   SW-CORE(config-vlan)#vlan 3
+Wed May 25 20:36:18 2022   SW-CORE   SW-CORE(config-vlan)#name app
+Wed May 25 20:36:20 2022   SW-CORE   SW-CORE(config-vlan)#vlan 4
+Wed May 25 20:36:25 2022   SW-CORE   SW-CORE(config-vlan)#name dmz
+Wed May 25 20:36:27 2022   SW-CORE   SW-CORE(config-vlan)#vlan 5
+Wed May 25 20:36:30 2022   SW-CORE   SW-CORE(config-vlan)#name user
+Wed May 25 20:36:36 2022   SW-CORE   SW-CORE(config-vlan)#exit
+Wed May 25 20:36:56 2022   SW-CORE   SW-CORE(config)#int range g1/0/1-4
+Wed May 25 20:37:07 2022   SW-CORE   SW-CORE(config-if-range)#sw trunk encap dot1q
+Wed May 25 20:37:11 2022   SW-CORE   SW-CORE(config-if-range)#sw mode trunk
+Wed May 25 20:42:52 2022   SW-CORE   SW-CORE(config-if-range)#exit
+Wed May 25 20:42:57 2022   SW-CORE   SW-CORE(config)#int vlan 1
+Wed May 25 20:43:07 2022   SW-CORE   SW-CORE(config-if)#ip add 10.1.1.10 255.255.255.0
+Wed May 25 20:43:09 2022   SW-CORE   SW-CORE(config-if)#no shut
+Wed May 25 20:43:13 2022   SW-CORE   SW-CORE(config-if)#exit
+Wed May 25 20:43:23 2022   SW-CORE   SW-CORE(config)#ip default-gateway 10.1.1.1
+Wed May 25 20:44:41 2022   SW-CORE   SW-CORE(config)#end
+Wed May 25 20:44:52 2022   SW-CORE   SW-CORE#show ip int brief
+Wed May 25 20:45:18 2022   SW-CORE   SW-CORE#show int trunk
+Wed May 25 20:45:41 2022   SW-CORE   SW-CORE#show vlan
+Wed May 25 20:46:06 2022   SW-ACCESS-1   Switch>en
+Wed May 25 20:46:08 2022   SW-ACCESS-1   Switch#config t
+Wed May 25 20:46:19 2022   SW-ACCESS-1   Switch(config)#hostname SW-ACCESS-1
+Wed May 25 20:47:18 2022   SW-ACCESS-1   SW-ACCESS-1(config)#vtp domain pnh.vn
+Wed May 25 20:47:27 2022   SW-ACCESS-1   SW-ACCESS-1(config)#vtp pass pnh123
+Wed May 25 20:47:32 2022   SW-ACCESS-1   SW-ACCESS-1(config)#vtp mode client
+Wed May 25 20:47:59 2022   SW-ACCESS-1   SW-ACCESS-1(config)#do show vlan
+Wed May 25 20:48:39 2022   SW-ACCESS-1   SW-ACCESS-1(config)#int f0/4
+Wed May 25 20:48:43 2022   SW-ACCESS-1   SW-ACCESS-1(config-if)#sw mode access
+Wed May 25 20:48:50 2022   SW-ACCESS-1   SW-ACCESS-1(config-if)#sw access vlan 2
+Wed May 25 20:48:59 2022   SW-ACCESS-1   SW-ACCESS-1(config-if)#int f0/8
+Wed May 25 20:49:02 2022   SW-ACCESS-1   SW-ACCESS-1(config-if)#sw mode access
+Wed May 25 20:49:04 2022   SW-ACCESS-1   SW-ACCESS-1(config-if)#sw access vlan 3
+Wed May 25 20:49:07 2022   SW-ACCESS-1   SW-ACCESS-1(config-if)#exit
+Wed May 25 20:49:12 2022   SW-ACCESS-1   SW-ACCESS-1(config)#int vlan 1
+Wed May 25 20:49:21 2022   SW-ACCESS-1   SW-ACCESS-1(config-if)#ip add 10.1.1.11 255.255.255.0
+Wed May 25 20:49:23 2022   SW-ACCESS-1   SW-ACCESS-1(config-if)#no shut
+Wed May 25 20:49:26 2022   SW-ACCESS-1   SW-ACCESS-1(config-if)#exit
+Wed May 25 20:49:34 2022   SW-ACCESS-1   SW-ACCESS-1(config)#ip default-gateway 10.1.1.1
+Wed May 25 20:50:25 2022   SW-ACCESS-1   SW-ACCESS-1(config)#end
+Wed May 25 20:50:29 2022   SW-ACCESS-1   SW-ACCESS-1#show vlan
+Wed May 25 20:51:05 2022   SW-ACCESS-2   Switch>en
+Wed May 25 20:51:07 2022   SW-ACCESS-2   Switch#config t
+Wed May 25 20:51:24 2022   SW-ACCESS-2   Switch(config)#hostname SW-ACCESS-2
+Wed May 25 20:51:36 2022   SW-ACCESS-2   SW-ACCESS-2(config)#vtp domain pnh.vn
+Wed May 25 20:51:40 2022   SW-ACCESS-2   SW-ACCESS-2(config)#vtp pass pnh123
+Wed May 25 20:51:45 2022   SW-ACCESS-2   SW-ACCESS-2(config)#vtp mode client
+Wed May 25 20:51:56 2022   SW-ACCESS-2   SW-ACCESS-2(config)#int f0/4
+Wed May 25 20:52:00 2022   SW-ACCESS-2   SW-ACCESS-2(config-if)#sw mode access
+Wed May 25 20:52:15 2022   SW-ACCESS-2   SW-ACCESS-2(config-if)#sw access vlan 4
+Wed May 25 20:52:19 2022   SW-ACCESS-2   SW-ACCESS-2(config-if)#exit
+Wed May 25 20:52:25 2022   SW-ACCESS-2   SW-ACCESS-2(config)#int vlan 1
+Wed May 25 20:52:36 2022   SW-ACCESS-2   SW-ACCESS-2(config-if)#ip add 10.1.1.12 255.255.255.0
+Wed May 25 20:52:38 2022   SW-ACCESS-2   SW-ACCESS-2(config-if)#no shut
+Wed May 25 20:52:41 2022   SW-ACCESS-2   SW-ACCESS-2(config-if)#exit
+Wed May 25 20:52:50 2022   SW-ACCESS-2   SW-ACCESS-2(config)#ip default-gateway 10.1.1.1
+Wed May 25 20:59:01 2022   SW-ACCESS-3   Switch>en
+Wed May 25 20:59:03 2022   SW-ACCESS-3   Switch#config t
+Wed May 25 20:59:13 2022   SW-ACCESS-3   Switch(config)#hostname SW-ACCESS-3
+Wed May 25 20:59:20 2022   SW-ACCESS-3   SW-ACCESS-3(config)#vtp domain pnh.vn
+Wed May 25 20:59:25 2022   SW-ACCESS-3   SW-ACCESS-3(config)#vtp pass pnh123
+Wed May 25 20:59:29 2022   SW-ACCESS-3   SW-ACCESS-3(config)#vtp mode client
+Wed May 25 20:59:35 2022   SW-ACCESS-3   SW-ACCESS-3(config)#int f0/8
+Wed May 25 20:59:39 2022   SW-ACCESS-3   SW-ACCESS-3(config-if)#sw mode access
+Wed May 25 20:59:44 2022   SW-ACCESS-3   SW-ACCESS-3(config-if)#sw acc vlan 5
+Wed May 25 20:59:47 2022   SW-ACCESS-3   SW-ACCESS-3(config-if)#exit
+Wed May 25 20:59:51 2022   SW-ACCESS-3   SW-ACCESS-3(config)#int vlan 1
+Wed May 25 20:59:59 2022   SW-ACCESS-3   SW-ACCESS-3(config-if)#ip add 10.1.1.13 255.255.255.0
+Wed May 25 21:00:01 2022   SW-ACCESS-3   SW-ACCESS-3(config-if)#no shut
+Wed May 25 21:00:03 2022   SW-ACCESS-3   SW-ACCESS-3(config-if)#exit
+Wed May 25 21:00:13 2022   SW-ACCESS-3   SW-ACCESS-3(config)#ip default-gateway 10.1.1.1
+Wed May 25 21:00:16 2022   SW-ACCESS-3   SW-ACCESS-3(config)#end
+Wed May 25 21:00:19 2022   SW-ACCESS-3   SW-ACCESS-3#show vlan
+Wed May 25 21:03:33 2022   PNH   Router>en
+Wed May 25 21:03:35 2022   PNH   Router#config t
+Wed May 25 21:03:40 2022   PNH   Router(config)#hostname PNH
+Wed May 25 21:03:50 2022   PNH   PNH(config)#int g0/1
+Wed May 25 21:03:58 2022   PNH   PNH(config-if)#ip add 6.6.6.1 255.255.255.252
+Wed May 25 21:04:02 2022   PNH   PNH(config-if)#ip nat outside
+Wed May 25 21:04:04 2022   PNH   PNH(config-if)#no shut
+Wed May 25 21:04:32 2022   PNH   PNH(config-if)#int g0/0
+Wed May 25 21:04:42 2022   PNH   PNH(config-if)#no shut
+Wed May 25 21:04:56 2022   PNH   PNH(config-if)#int g0/0.1
+Wed May 25 21:05:16 2022   PNH   PNH(config-subif)#encapsulation dot1q 1
+Wed May 25 21:05:24 2022   PNH   PNH(config-subif)#ip add 10.1.1.1 255.255.255.0
+Wed May 25 21:05:31 2022   PNH   PNH(config-subif)#ip nat inside
+Wed May 25 21:07:35 2022   PNH   PNH(config-subif)#int g0/0.2
+Wed May 25 21:07:40 2022   PNH   PNH(config-subif)#encapsulation dot1q 2
+Wed May 25 21:07:47 2022   PNH   PNH(config-subif)#ip add 10.2.2.1 255.255.255.0
+Wed May 25 21:07:50 2022   PNH   PNH(config-subif)#ip nat inside
+Wed May 25 21:07:55 2022   PNH   PNH(config-subif)#int g0/0.3
+Wed May 25 21:07:59 2022   PNH   PNH(config-subif)#encapsulation dot1q 3
+Wed May 25 21:08:08 2022   PNH   PNH(config-subif)#ip add 10.3.3.1 255.255.255.0
+Wed May 25 21:08:10 2022   PNH   PNH(config-subif)#ip nat inside
+Wed May 25 21:08:13 2022   PNH   PNH(config-subif)#int g0/0.4
+Wed May 25 21:08:18 2022   PNH   PNH(config-subif)#encapsulation dot1q 4
+Wed May 25 21:08:25 2022   PNH   PNH(config-subif)#ip add 10.4.4.1 255.255.255.0
+Wed May 25 21:08:27 2022   PNH   PNH(config-subif)#ip nat inside
+Wed May 25 21:08:30 2022   PNH   PNH(config-subif)#int g0/0.5
+Wed May 25 21:08:35 2022   PNH   PNH(config-subif)#encapsulation dot1q 5
+Wed May 25 21:08:43 2022   PNH   PNH(config-subif)#ip add 10.5.5.1 255.255.255.0
+Wed May 25 21:08:45 2022   PNH   PNH(config-subif)#ip nat inside
+Wed May 25 21:08:59 2022   PNH   PNH(config-subif)#ip helper-address 10.2.2.10
+Wed May 25 21:12:46 2022   PNH   PNH(config-subif)#exit
+Wed May 25 21:13:02 2022   PNH   PNH(config)#ip route 0.0.0.0 0.0.0.0 6.6.6.2
+Wed May 25 21:13:13 2022   PNH   PNH(config)#access-list 1 permit any
+Wed May 25 21:13:29 2022   PNH   PNH(config)#ip nat inside source list 1 interface g0/1
+Wed May 25 21:16:18 2022   PNH   PNH(config)#end
+Wed May 25 21:16:20 2022   PNH   PNH#show run
+Wed May 25 21:16:40 2022   PNH   PNH#show ip int brief
+Wed May 25 21:17:11 2022   ISP   Router>en
+Wed May 25 21:17:12 2022   ISP   Router#config t
+Wed May 25 21:17:16 2022   ISP   Router(config)#hostname ISP
+Wed May 25 21:17:20 2022   ISP   ISP(config)#int g0/2
+Wed May 25 21:17:27 2022   ISP   ISP(config-if)#ip add 6.6.6.2 255.255.255.252
+Wed May 25 21:17:29 2022   ISP   ISP(config-if)#no shut
+Wed May 25 21:17:33 2022   ISP   ISP(config-if)#int g0/0
+Wed May 25 21:17:41 2022   ISP   ISP(config-if)#ip add 8.8.8.1 255.255.255.0
+Wed May 25 21:17:43 2022   ISP   ISP(config-if)#no shut
+Wed May 25 21:17:45 2022   ISP   ISP(config-if)#int g0/1
+Wed May 25 21:17:55 2022   ISP   ISP(config-if)#ip add 7.7.7.1 255.255.255.0
+Wed May 25 21:17:57 2022   ISP   ISP(config-if)#no shut

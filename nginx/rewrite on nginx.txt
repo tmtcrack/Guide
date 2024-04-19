@@ -1,0 +1,19 @@
+
+In NGINX, the proxy_pass directive is used to forward client requests to a different server. 
+The rewrite directive can be used in conjunction with proxy_pass to modify the URL before forwarding the request.
+
+Here's an example of how to use rewrite with proxy_pass in NGINX:
+
+Copy code
+location /original {
+    rewrite ^/original/(.*)$ /new/$1 break;   # Rewriting the URL
+    proxy_pass http://backend_server;        # Forwarding the request to the backend server
+}
+In this example, any requests that match the "/original" location will have their URL rewritten using the regular expression `^/original/(.*)$`. 
+The rewritten URL will be in the form of "/new/..." where "..." represents the original captured part of the URL. 
+Then, the modified request will be proxied to the backend_server using proxy_pass.
+
+Note that the "break" flag is used with the rewrite directive to prevent further processing of the rewritten URL by other location blocks. 
+If you want NGINX to continue processing the URL, you can use the "last" flag instead.
+
+Remember to replace "backend_server" with the actual server address or upstream group you want to proxy the request to.

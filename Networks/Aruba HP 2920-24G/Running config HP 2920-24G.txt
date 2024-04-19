@@ -1,0 +1,144 @@
+Running configuration:
+
+; J9726A Configuration Editor; Created on release #WB.15.15.0012
+; Ver #06:0c.18.f3.ff.35.0d:26
+
+hostname "SW02"
+module 1 type j9726a
+mirror-port 23
+timesync sntp
+sntp unicast
+sntp server priority 1 216.239.32.15
+time timezone 420
+ip route 0.0.0.0 0.0.0.0 192.168.12.8
+ip route 10.32.0.0 255.255.255.0 192.168.12.8
+ip route 10.80.0.0 255.255.0.0 172.20.3.17
+ip routing
+interface 1
+   monitor
+   name "10.0.0.0/24"
+   exit
+interface 2
+   monitor
+   name "10.0.0.0/24"
+   exit
+interface 3
+   monitor
+   name "10.0.0.0/24"
+   exit
+interface 4
+   monitor
+   name "10.0.0.0/24"
+   exit
+interface 5
+   monitor
+   name "10.0.0.0/24"
+   exit
+interface 6
+   monitor
+   name "10.0.1.0/24"
+   exit
+interface 7
+   monitor
+   exit
+interface 8
+   monitor
+   exit
+interface 9
+   monitor
+   exit
+interface 10
+   monitor
+   exit
+interface 11
+   monitor
+   exit
+interface 12
+   monitor
+   exit
+interface 13
+   monitor
+   exit
+interface 14
+   monitor
+   exit
+interface 15
+   monitor
+   exit
+interface 16
+   monitor
+   exit
+interface 17
+   monitor
+   exit
+interface 18
+   monitor
+   exit
+interface 19
+   monitor
+   exit
+interface 20
+   monitor
+   exit
+interface 21
+   monitor
+   exit
+interface 22
+   monitor
+   exit
+interface 23
+   name "Port Mirror"
+   exit
+interface 24
+   monitor
+   name "MPLS"
+   exit
+snmp-server community "public" unrestricted
+oobm
+   ip address dhcp-bootp
+   exit
+router rip
+   redistribute connected
+   exit
+vlan 1
+   name "DEFAULT_VLAN"
+   no untagged 1-24
+   untagged A1-A2,B1-B2
+   ip address dhcp-bootp
+   exit
+vlan 10
+   name "VLAN10 - LAN1"
+   untagged 1-5
+   ip address 10.0.0.2 255.255.255.0
+   ip helper-address 192.168.12.5
+   exit
+vlan 20
+   name "VLAN20 - LAN2"
+   untagged 6-10
+   ip address 10.0.1.2 255.255.255.0
+   ip helper-address 192.168.12.5
+   exit
+vlan 30
+   name "VLAN30 - LAN3"
+   untagged 11-15
+   ip address 10.0.2.2 255.255.255.0
+   ip helper-address 192.168.12.5
+   exit
+vlan 40
+   name "VLAN40 - Server"
+   untagged 16-23
+   ip address 192.168.12.2 255.255.255.0
+   exit
+vlan 50
+   name "MPLS"
+   untagged 24
+   ip address 172.20.3.20 255.255.255.248
+   exit
+spanning-tree
+spanning-tree mode rapid-pvst
+no tftp server
+no autorun
+no dhcp config-file-update
+no dhcp image-file-update
+password manager
+password operator

@@ -1,0 +1,262 @@
+########## Import the Elastic stack PGP repository signing Key; Install Elasticsearch; #########
+
+apt install curl gnupg2 -y
+
+curl -sL https://artifacts.elastic.co/GPG-KEY-elasticsearch | gpg --dearmor > /etc/apt/trusted.gpg.d/elastic.gpg
+
+echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | tee /etc/apt/sources.list.d/elastic-7.x.list
+
+apt update
+
+apt install apt-transport-https
+
+apt update
+
+apt install elasticsearch
+
+sed -i '/cluster.name:/s/#//;s/my-application/ubuntu240/' /etc/elasticsearch/elasticsearch.yml
+
+sed -i '/network.host:/s/#//;s/192.168.0.1/192.168.100.240/' /etc/elasticsearch/elasticsearch.yml
+
+sed -i '/http.port:/s/#//' /etc/elasticsearch/elasticsearch.yml
+
+echo 'discovery.type: single-node' >> /etc/elasticsearch/elasticsearch.yml
+
+sed -i '/bootstrap.memory_lock:/s/^#//' /etc/elasticsearch/elasticsearch.yml
+
+sed -i '/4g/s/^## //;s/4g/512m/' /etc/elasticsearch/jvm.options
+
+systemctl enable --now elasticsearch
+
+########### INSTALL KIBANA   ############
+
+apt install kibana
+
+sed -i '/server.port:/s/^#//' /etc/kibana/kibana.yml 
+
+sed -i '/server.host:/s/^#//;s/localhost/192.168.100.240/' /etc/kibana/kibana.yml
+
+sed -i '/elasticsearch.hosts:/s/^#//;s/localhost/192.168.100.240/' /etc/kibana/kibana.yml
+
+systemctl enable --now kibana
+ufw allow 5601/tcp
+################   INSTALL LOGSTASH     ###########################
+
+apt update
+
+apt install logstash
+
+# Configure Logstash Filters
+
+echo 'input {
+  beats {
+    port => 5044
+  }
+}' > /etc/logstash/conf.d/02-beats-input.conf
+
+
+echo 'filter {
+  grok {
+    match => { "message" => "%{SYSLOGTIMESTAMP:timestamp}\s+%{IPORHOST:dst_host}\s+%{WORD:syslog_program}\[\d+\]:\s+(?<status>\w+\s+password)\s+for\s+%{USER:auth_user}\s+from\s+%{SYSLOGHOST:src_host}.*" }
+    add_field => { "activity" => "SSH Logins" }
+    add_tag => "linux_auth"
+    }
+}' > /etc/logstash/conf.d/ssh-auth-filter.conf
+
+# Configure Logstash Filters
+
+echo 'output {
+   elasticsearch {
+     hosts => ["192.168.12.240:9200"]
+     manage_template => false
+     index => "ssh_auth-%{+YYYY.MM}"
+ }
+}' > /etc/logstash/conf.d/elasticsearch-output.conf
+
+# Test Logstash Configuration
+
+sudo -u logstash /usr/share/logstash/bin/logstash --path.settings /etc/logstash -t
+
+# To run Logstash and load a specific configuration file for debugging, you can execute the command below;
+## sudo -u logstash /usr/share/logstash/bin/logstash -f /etc/logstash/conf.d/config-file.conf
+### sudo -u logstash /usr/share/logstash/bin/logstash -f /etc/logstash/conf.d/logs.conf --path.settings /etc/logstash/
+
+sudo /usr/share/logstash/bin/logstash -f /etc/logstash/conf.d/02-beats-input.conf
+sudo /usr/share/logstash/bin/logstash -f /etc/logstash/conf.d/ssh-auth-filter.conf
+sudo /usr/share/logstash/bin/logstash -f /etc/logstash/conf.d/elasticsearch-output.conf
+
+# Running Logstash
+systemctl enable --now kibana
+
+################   Install and Configure Filebeat 7   ##################
+
+apt update && apt install filebeat
+
+apt-cache policy filebeat
+
+systemctl stop filebeat
+
+filebeat -e test output
+
+filebeat -e test config
+
+filebeat modules list
+
+filebeat modules enable system
+
+
+
+vim /etc/filebeat/filebeat.yml
+
+# Configure what output to use when sending the data collected by the beat.
+
+sed -i 's/^output.elasticsearch/#&/' /etc/filebeat/filebeat.yml
+
+sed -i 's/^hosts: ["localhost:9200"]/#&/' /etc/filebeat/filebeat.yml
+
+sed -i 's/^#output.logstash/output.logstash/' /etc/filebeat/filebeat.yml
+
+sed -i '/hosts: ["localhost:5044"]/s/#//;s/localhost/192.168.12.240/' /etc/filebeat/filebeat.yml
+
+
+###### Load the Index Template
+filebeat setup --index-management -E output.logstash.enabled=false -E 'output.elasticsearch.hosts=["192.168.12.240:9200"]'
+
+## To generate the template;
+filebeat export template > filebeat.template.json
+
+##To install the template on Elastic Stack server, copy it and run locally on Elastic Stack server.
+curl -XPUT -H 'Content-Type: application/json' http://192.168.12.240:9200/_template/filebeat-7.0.1 -d@filebeat.template.json
+
+systemctl start filebeat
+systemctl enable filebeat
+
+curl -X GET 192.168.12.240:9200/_cat/indices?v
+
+curl -X GET 192.168.12.240:9200/ssh_auth-*/_search?pretty
+
+
+#-------------------------- Elasticsearch output ------------------------------
+# output.elasticsearch:
+  # Array of hosts to connect to.
+  # hosts: ["localhost:9200"]
+
+  # Optional protocol and basic auth credentials.
+  #protocol: "https"
+  #username: "elastic"
+  #password: "changeme"
+
+#----------------------------- Logstash output --------------------------------
+output.logstash:
+  # The Logstash hosts
+  hosts: ["192.168.12.240:5044"]
+
+
+vim /etc/filebeat/modules.d/system.yml
+
+- module: system
+  # Syslog
+  syslog:
+    enabled: false
+...
+  # Authorization logs
+  auth:
+    enabled: true
+
+    # Set custom paths for the log files. If left empty,
+    # Filebeat will choose the paths depending on your OS.
+    var.paths: ["/var/log/auth.log"]
+
+
+###### Load the Index Template
+filebeat setup --index-management -E output.logstash.enabled=false -E 'output.elasticsearch.hosts=["192.168.12.240:9200"]'
+
+## To generate the template;
+filebeat export template > filebeat.template.json
+
+##To install the template on Elastic Stack server, copy it and run locally on Elastic Stack server.
+curl -XPUT -H 'Content-Type: application/json' http://192.168.12.240:9200/_template/filebeat-7.0.1 -d@filebeat.template.json
+
+systemctl start filebeat
+systemctl enable filebeat
+
+curl -X GET 192.168.12.240:9200/_cat/indices?v
+
+curl -X GET 192.168.12.240:9200/ssh_auth-*/_search?pretty
+
+curl -X GET 192.168.12.240:9200/ssh_auth-*/_search?pretty
+
+
+######################################################
+###########  Install Metricbeat
+
+wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+
+sudo apt-get install apt-transport-https
+
+echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
+
+sudo apt-get update && sudo apt-get install metricbeat
+
+modules.d# metricbeat modules enable system
+
+metricbeat setup -e
+
+metricbeat setup -e -E setup.kibana.host=192.168.12.240:5601
+
+metricbeat setup -e -E output.logstash.enabled=false -E output.elasticsearch.hosts=['192.168.12.240:9200'] -E setup.kibana.host=192.168.12.240:5601
+
+metricbeat test config
+
+metricbeat test modules
+
+metricbeat test output
+
+systemctl enable --now metricbeat
+
+systemctl status metricbeat
+
+#############################################
+vi /etc/logstash/conf.d/sshd.conf
+
+input {
+  file {
+    type => "seucure_log"
+    path => "/var/log/secure"
+  }
+}
+filter {
+  grok {
+    add_tag => [ "sshd_fail" ]
+    match => { "message" => "Failed %{WORD:sshd_auth_type} for %{USERNAME:sshd_invalid_user} from %{IP:sshd_client_ip} port %{NUMBER:sshd_port} %{GREEDYDATA:sshd_protocol}" }
+  }
+}
+
+output {
+  elasticsearch {
+    index => "sshd_fail-%{+YYYY.MM}"
+  }
+}
+
+
+#############################
+apt install curl gnupg2 -y \
+
+ curl -sL https://artifacts.elastic.co/GPG-KEY-elasticsearch | gpg --dearmor > /etc/apt/trusted.gpg.d/elastic.gpg \
+
+ echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | tee /etc/apt/sources.list.d/elastic-7.x.list \
+
+ apt update \
+
+ apt install apt-transport-https \
+
+ apt update
+
+
+
+
+
+
+
+
+

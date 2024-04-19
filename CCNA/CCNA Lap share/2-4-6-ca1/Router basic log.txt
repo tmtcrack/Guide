@@ -1,0 +1,31 @@
+Wed Mar 2 19:13:45 2022   PNH   Router>enable
+Wed Mar 2 19:18:10 2022   PNH   Router#show version
+Wed Mar 2 19:23:27 2022   PNH   Router#show flash
+Wed Mar 2 19:26:57 2022   PNH   Router#show running-config
+Wed Mar 2 19:28:06 2022   PNH   Router#show startup-config
+Wed Mar 2 19:29:42 2022   PNH   Router#copy running-config startup-config
+Wed Mar 2 19:30:39 2022   PNH   Router#show startup-config 
+Wed Mar 2 19:31:00 2022   PNH   Router#config terminal
+Wed Mar 2 19:31:19 2022   PNH   Router(config)#hostname PNH
+Wed Mar 2 19:34:14 2022   PNH   PNH(config)#int f0/0
+Wed Mar 2 19:34:23 2022   PNH   PNH(config-if)#ip address 192.168.0.1 255.255.255.0
+Wed Mar 2 19:34:28 2022   PNH   PNH(config-if)#no shut
+Wed Mar 2 19:34:36 2022   PNH   PNH(config-if)#exit
+Wed Mar 2 19:34:57 2022   PNH   PNH(config)#enable pass ccna
+Wed Mar 2 19:35:09 2022   PNH   PNH(config)#line vty 0 4
+Wed Mar 2 19:35:53 2022   PNH   PNH(config-line)#password cisco
+Wed Mar 2 19:35:57 2022   PNH   PNH(config-line)#login
+Wed Mar 2 19:36:05 2022   PNH   PNH(config-line)#exit
+Wed Mar 2 19:36:26 2022   PNH   PNH(config)#ip dhcp pool pnh-user
+Wed Mar 2 19:36:38 2022   PNH   PNH(dhcp-config)#network 192.168.0.0 255.255.255.0
+Wed Mar 2 19:36:45 2022   PNH   PNH(dhcp-config)#default 192.168.0.1
+Wed Mar 2 19:36:50 2022   PNH   PNH(dhcp-config)#dns 8.8.8.8
+Wed Mar 2 19:36:55 2022   PNH   PNH(dhcp-config)#end
+Wed Mar 2 19:37:16 2022   PNH   PNH#copy running-config startup-config
+Wed Mar 2 19:45:33 2022   PNH   PNH>enable
+Wed Mar 2 19:47:41 2022   PNH   PNH#show run
+Wed Mar 2 19:50:42 2022   PNH   PNH#ping 192.168.0.10
+Wed Mar 2 19:50:50 2022   PNH   PNH#ping 192.168.0.10
+Wed Mar 2 19:51:25 2022   PNH   PNH#copy running-config tftp
+Wed Mar 2 19:53:12 2022   PNH   PNH#show flash
+Wed Mar 2 19:53:36 2022   PNH   PNH#copy flash tftp

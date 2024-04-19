@@ -1,0 +1,52 @@
+Hướng dẫn chỉnh lại ngày giờ trên Linux 6, 7 theo giờ Việt Nam chuẩn
+SAU KHI CÀI ĐẶT CENTOS TRÊN MÁY CHỦ (ĐẶT BIỆT LÀ MÁY CHỦ VÀ VPS CÓ SERVER KHÔNG Ở VIỆT NAM), THƯỜNG NGÀY GIỜ SẼ KHÔNG CHÍNH XÁC, THẬM CHÍ LÀ LỆCH CẢ MÚI GIỜ LÀM CHO VIỆC CẬP NHẬT HỆ THỐNG HAY CÁC WEBSITE TRÊN MÁY CHỦ NÀY SẼ BỊ SỰ CỐ.
+
+Khi đó ta cần kiểm tra và chỉnh lại ngày giờ theo đúng giờ Việt Nam.
+
+Lệnh xem ngày giờ trên Centos
+
+Mã:
+date
+Cách set time zone qua GTM+7 (Asia/Ho_Chi_Minh):
+
+Mã:
+ln -f -s /usr/share/zoneinfo/Asia/Ho_Chi_Minh /etc/localtime
+Đồng bộ giờ về NTP server Viet Nam (ICT)
+
+Mã:
+ntpdate vn.pool.ntp.org
+(Muốn đồng bộ chính xác phải set timezone thành GMT+7 (Asia/Ho_Chi_Minh) )
+
+Nếu xất hiện “ntpdate not found” thì cài thêm dịch vụ ntp:
+
+Mã:
+yum install -y ntp
+Or
+
+Mã:
+yum install -y ntpdate
+(nếu cài rồi)
+
+Chỉnh ngày giờ cho hệ thống Centos
+
+Mã:
+date -s "2016-09-25 11:30:30"
+Trong đó : cú pháp theo thứ tự : date -s “năm-tháng-ngày giờ: phút:giây”
+
+Xem giờ bios:
+
+Mã:
+hwclock -r
+Set giờ system linux qua bios:
+
+Mã:
+hwclock -w
+Set giờ bios qua system linux:
+
+Mã:
+hwclock -s
+Khởi động dịch vụ đồng bộ giờ
+
+Mã:
+sh /etc/rc.d/rc.ntpd start
+Vậy là xong !

@@ -1,0 +1,45 @@
+Fri Apr 8 20:22:44 2022   Router0   PNH>en
+Fri Apr 8 20:22:55 2022   Router0   PNH#show flash
+Fri Apr 8 20:26:11 2022   Router0   PNH#delete flash:c2800nm-advipservicesk9-mz.124-15.T1.bin
+Fri Apr 8 20:26:36 2022   Router0   PNH#show flash
+Fri Apr 8 20:33:04 2022   Router0   rommon 1 > ?
+Fri Apr 8 20:34:32 2022   Router0   rommon 2 > tftpdnld
+Fri Apr 8 20:35:55 2022   Router0   rommon 3 > IP_ADDRESS=192.168.0.1
+Fri Apr 8 20:36:15 2022   Router0   rommon 4 > IP_SUBNET_MASK=255.255.255.0
+Fri Apr 8 20:37:11 2022   Router0   rommon 5 > DEFAULT_GATEWAY=192.16.0.10
+Fri Apr 8 20:37:26 2022   Router0   rommon 6 > TFTP_SERVER=192.168.0.10
+Fri Apr 8 20:37:43 2022   Router0   rommon 7 > TFTP_FILE=pnh-os
+Fri Apr 8 20:50:23 2022   Router0   rommon 8 > set
+Fri Apr 8 20:50:56 2022   Router0   rommon 9 > tftpdnld
+Fri Apr 8 20:52:12 2022   Router0   rommon 10 > reset
+Fri Apr 8 20:52:36 2022   Router0   PNH>en
+Fri Apr 8 20:52:42 2022   Router0   PNH#show run
+Fri Apr 8 20:59:04 2022   Router0   PNH>en
+Fri Apr 8 21:08:39 2022   Router0   PNH#config t
+Fri Apr 8 21:09:03 2022   Router0   PNH(config)#enable password owofjw7^&&$%@(Y$(kbfksbf
+Fri Apr 8 21:09:33 2022   Router0   PNH(config)#service password-encryption
+Fri Apr 8 21:09:58 2022   Router0   PNH(config)#exit
+Fri Apr 8 21:10:02 2022   Router0   PNH#write mem
+Fri Apr 8 21:10:12 2022   Router0   PNH#copy run start
+Fri Apr 8 21:10:33 2022   Router0   PNH#show version
+Fri Apr 8 21:12:36 2022   Router0   PNH#exit
+Fri Apr 8 21:13:06 2022   Router0   PNH>en
+Fri Apr 8 21:20:41 2022   Router0   rommon 1 > ?
+Fri Apr 8 21:20:59 2022   Router0   rommon 2 > confreg 0x2142
+Fri Apr 8 21:23:15 2022   Router0   rommon 3 > reset
+Fri Apr 8 21:24:38 2022   Router0   Router>en
+Fri Apr 8 21:24:50 2022   Router0   Router#show run
+Fri Apr 8 21:25:40 2022   Router0   Router#copy startup-config running-config
+Fri Apr 8 21:25:56 2022   Router0   PNH#show run
+Fri Apr 8 21:26:19 2022   Router0   PNH#config t
+Fri Apr 8 21:26:36 2022   Router0   PNH(config)#enable pass 123
+Fri Apr 8 21:27:13 2022   Router0   PNH(config)#config-register 0x2102
+Fri Apr 8 21:27:22 2022   Router0   PNH(config)#exit
+Fri Apr 8 21:27:27 2022   Router0   PNH#write mem
+Fri Apr 8 21:28:40 2022   Router0   PNH#show version
+Fri Apr 8 21:29:06 2022   Router0   PNH#reload
+Fri Apr 8 21:29:24 2022   Router0   PNH>en
+Fri Apr 8 21:29:31 2022   Router0   PNH#show run
+Fri Apr 8 21:40:35 2022   Router0   PNH#config t
+Fri Apr 8 21:40:39 2022   Router0   PNH(config)#int f0/0
+Fri Apr 8 21:40:42 2022   Router0   PNH(config-if)#no shut

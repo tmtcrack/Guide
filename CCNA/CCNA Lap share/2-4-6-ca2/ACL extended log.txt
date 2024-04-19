@@ -1,0 +1,76 @@
+Fri May 13 20:23:23 2022   PNH   Router>en
+Fri May 13 20:23:24 2022   PNH   Router#config t
+Fri May 13 20:23:29 2022   PNH   Router(config)#hostname PNH
+Fri May 13 20:23:36 2022   PNH   PNH(config)#int e0/0/0
+Fri May 13 20:23:46 2022   PNH   PNH(config-if)#ip add 172.16.0.1 255.255.255.0
+Fri May 13 20:23:48 2022   PNH   PNH(config-if)#no shut
+Fri May 13 20:23:53 2022   PNH   PNH(config-if)#int e0/1/0
+Fri May 13 20:24:01 2022   PNH   PNH(config-if)#ip add 10.1.1.1 255.255.255.0
+Fri May 13 20:24:03 2022   PNH   PNH(config-if)#no shut
+Fri May 13 20:24:09 2022   PNH   PNH(config-if)#int e0/2/0
+Fri May 13 20:24:18 2022   PNH   PNH(config-if)#ip add 10.2.2.1 255.255.255.0
+Fri May 13 20:24:20 2022   PNH   PNH(config-if)#no shut
+Fri May 13 20:24:24 2022   PNH   PNH(config-if)#int e0/3/0
+Fri May 13 20:24:32 2022   PNH   PNH(config-if)#ip add 10.3.3.1 255.255.255.0
+Fri May 13 20:24:34 2022   PNH   PNH(config-if)#no shut
+Fri May 13 20:24:38 2022   PNH   PNH(config-if)#int f0/1
+Fri May 13 20:24:48 2022   PNH   PNH(config-if)#ip add 6.6.6.1 255.255.255.252
+Fri May 13 20:24:50 2022   PNH   PNH(config-if)#no shut
+Fri May 13 20:25:26 2022   PNH   PNH(config-if)#ip route 0.0.0.0 0.0.0.0 6.6.6.2
+Fri May 13 20:25:48 2022   PNH   PNH(config)#ip dhcp pool user-normal
+Fri May 13 20:25:55 2022   PNH   PNH(dhcp-config)#net 10.1.1.0 255.255.255.0
+Fri May 13 20:25:59 2022   PNH   PNH(dhcp-config)#default 10.1.1.1
+Fri May 13 20:26:05 2022   PNH   PNH(dhcp-config)#dns 172.16.0.10
+Fri May 13 20:26:16 2022   PNH   PNH(dhcp-config)#ip dhcp pool user-limit
+Fri May 13 20:26:23 2022   PNH   PNH(dhcp-config)#net 10.2.2.0 255.255.255.0
+Fri May 13 20:26:28 2022   PNH   PNH(dhcp-config)#default 10.2.2.1
+Fri May 13 20:26:34 2022   PNH   PNH(dhcp-config)#dns 172.16.0.10
+Fri May 13 20:26:44 2022   PNH   PNH(dhcp-config)#ip dhcp pool user-guest
+Fri May 13 20:26:51 2022   PNH   PNH(dhcp-config)#net 10.3.3.0 255.255.255.0
+Fri May 13 20:26:58 2022   PNH   PNH(dhcp-config)#default 10.3.3.1
+Fri May 13 20:27:10 2022   PNH   PNH(dhcp-config)#dns 8.8.8.8
+Fri May 13 20:31:22 2022   ISP   Router>en
+Fri May 13 20:31:24 2022   ISP   Router#config t
+Fri May 13 20:31:27 2022   ISP   Router(config)#hostname ISP
+Fri May 13 20:31:33 2022   ISP   ISP(config)#int f1/0
+Fri May 13 20:31:41 2022   ISP   ISP(config-if)#ip add 6.6.6.2 255.255.255.252
+Fri May 13 20:31:43 2022   ISP   ISP(config-if)#no shut
+Fri May 13 20:31:46 2022   ISP   ISP(config-if)#int f0/0
+Fri May 13 20:31:54 2022   ISP   ISP(config-if)#ip add 7.7.7.1 255.255.255.0
+Fri May 13 20:31:56 2022   ISP   ISP(config-if)#no shut
+Fri May 13 20:32:01 2022   ISP   ISP(config-if)#int f0/1
+Fri May 13 20:32:08 2022   ISP   ISP(config-if)#ip add 8.8.8.1 255.255.255.0
+Fri May 13 20:32:10 2022   ISP   ISP(config-if)#no shut
+Fri May 13 20:32:24 2022   ISP   ISP(config-if)#ip route 0.0.0.0 0.0.0.0 6.6.6.1
+Fri May 13 21:01:07 2022   PNH   PNH>en
+Fri May 13 21:01:10 2022   PNH   PNH#config t
+Fri May 13 21:02:05 2022   PNH   PNH(config)#ip access-list extended acl-user-normal
+Fri May 13 21:03:16 2022   PNH   PNH(config-ext-nacl)#permit ip 10.1.1.0 0.0.0.255 172.16.0.0 0.0.0.255
+Fri May 13 21:04:02 2022   PNH   PNH(config-ext-nacl)#permit tcp 10.1.1.0 0.0.0.255 any eq 80
+Fri May 13 21:04:06 2022   PNH   PNH(config-ext-nacl)#permit tcp 10.1.1.0 0.0.0.255 any eq 443
+Fri May 13 21:05:12 2022   PNH   PNH(config-ext-nacl)#permit tcp 10.1.1.0 0.0.0.255 any eq 25
+Fri May 13 21:05:15 2022   PNH   PNH(config-ext-nacl)#permit tcp 10.1.1.0 0.0.0.255 any eq 110
+Fri May 13 21:06:28 2022   PNH   PNH(config-ext-nacl)#exit
+Fri May 13 21:06:38 2022   PNH   PNH(config)#int e0/1/0
+Fri May 13 21:07:07 2022   PNH   PNH(config-if)#ip access-group acl-user-normal in
+Fri May 13 21:07:12 2022   PNH   PNH(config-if)#end
+Fri May 13 21:07:16 2022   PNH   PNH#show run
+Fri May 13 21:11:44 2022   PNH   PNH#config t
+Fri May 13 21:12:00 2022   PNH   PNH(config)#ip access-list extended acl-user-normal
+Fri May 13 21:12:58 2022   PNH   PNH(config-ext-nacl)#permit tcp 10.1.1.0 0.0.0.255 any eq 67
+Fri May 13 21:13:05 2022   PNH   PNH(config-ext-nacl)#permit tcp 10.1.1.0 0.0.0.255 any eq 68
+Fri May 13 21:15:14 2022   PNH   PNH(config-ext-nacl)#permit udp 10.1.1.0 0.0.0.255 any eq 67
+Fri May 13 21:15:18 2022   PNH   PNH(config-ext-nacl)#permit udp 10.1.1.0 0.0.0.255 any eq 68
+Fri May 13 21:17:44 2022   PNH   PNH(config-ext-nacl)#permit udp any eq 68 any eq 67
+Fri May 13 21:20:43 2022   PNH   PNH(config-ext-nacl)#exit
+Fri May 13 21:21:23 2022   PNH   PNH(config)#ip access-list extended acl-user-limit
+Fri May 13 21:21:45 2022   PNH   PNH(config-ext-nacl)#permit udp any eq 68 any eq 67
+Fri May 13 21:22:45 2022   PNH   PNH(config-ext-nacl)#permit ip any 172.16.0.0 0.0.0.255
+Fri May 13 21:23:05 2022   PNH   PNH(config-ext-nacl)#permit tcp any any eq 25
+Fri May 13 21:23:10 2022   PNH   PNH(config-ext-nacl)#permit tcp any any eq 110
+Fri May 13 21:23:19 2022   PNH   PNH(config-ext-nacl)#exit
+Fri May 13 21:23:26 2022   PNH   PNH(config)#int e0/2/0
+Fri May 13 21:23:45 2022   PNH   PNH(config-if)#ip access-group acl-user-limit in
+Fri May 13 21:23:54 2022   PNH   PNH(config-if)#end
+Fri May 13 21:23:56 2022   PNH   PNH#show run
+Fri May 13 21:24:24 2022   PNH   PNH#show access-lists 

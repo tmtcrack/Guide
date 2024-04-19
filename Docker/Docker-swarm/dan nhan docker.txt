@@ -1,0 +1,29 @@
+Trong ví dụ trên, mỗi service được đặt trong một section riêng với tên tương ứng (service-01, service-02, vv.). 
+Đối với mỗi service, ta sử dụng khối deploy để cấu hình triển khai. 
+Trong khối placement, ta sử dụng constraints để chỉ định rằng service đó sẽ chạy trên node cụ thể dựa trên nhãn (label) của node đó.
+
+Để áp dụng các constraints này, bạn cần đảm bảo rằng các node trong Docker Swarm đã được gán nhãn phù hợp. 
+Ví dụ, trên node01, bạn có thể gán nhãn node1=true bằng cách chạy lệnh sau:
+
+Copy
+docker node update --label-add node1=true node01
+Tương tự, bạn cần gán nhãn node2=true cho node02 và node3=true cho node03.
+
+Sau khi bạn đã cấu hình file docker-compose.yml như trên và gán nhãn cho các node, bạn có thể triển khai stack bằng lệnh sau:
+
+Copy
+docker stack deploy -c docker-compose.yml your-stack-name
+Docker Swarm sẽ tự động đảm bảo rằng các services được triển khai trên các node tương ứng với constraints đã chỉ định, 
+và mỗi node sẽ chỉ chạy tối đa 2 container service.
+
+Lưu ý rằng Docker Swarm có thể tự động di chuyển các services khi một node dừng hoặc có sự cố. 
+Để ngăn chặn điều này và đảm bảo rằng các services không được chuyển sang node khác khi node dừng, 
+bạn có thể sử dụng tùy chọn --force khi dừng một node trong Docker Swarm. Ví dụ:
+
+Copy
+docker node update --availability drain --force node01
+Tùy chọn --availability drain sẽ ghi đè chế độ hoạt động mặc định của node và --force sẽ buộc node dừng ngay lập tức 
+mà không chờ các container được điều phối điều chuyển sang node khác.
+
+Lưu ý rằng việc sử dụng tùy chọn --force khi dừng một node có thể làm mất đitrạng thái và dữ liệu của các container đang chạy trên node đó,
+ vì chúng không được chuyển sang node khác. Hãy chắc chắn rằng bạn đã sao lưu và đảm bảo an toàn cho dữ liệu trước khi sử dụng tùy chọn này.

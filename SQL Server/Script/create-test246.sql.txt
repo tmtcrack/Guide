@@ -1,0 +1,28 @@
+USE [master];
+GO
+CREATE DATABASE [test246];
+GO
+USE [test246];
+GO
+Create table Fruits (
+  ID int primary key,
+  Name Varchar(32),
+  Kg int
+);
+GO
+USE [test246];
+GO
+Insert into Fruits (Id,Name,Kg) values (1 , 'Orange' , 8);
+Insert into Fruits (Id,Name,Kg) values (2 , 'Apple' , 5);
+Insert into Fruits (Id,Name,Kg) values (3 , 'Mango' , 7);
+GO
+SELECT * FROM Fruits;
+GO
+
+
+--USE master;
+--GO
+-- Kết thúc các phiên làm việc đang kết nối đến cơ sở dữ liệu
+--ALTER DATABASE [test246] SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+-- Xóa cơ sở dữ liệu
+--DROP DATABASE [test246];

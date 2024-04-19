@@ -1,0 +1,154 @@
+https://www.centlinux.com/2019/01/installing-mariadb-10-server-centos-7.html
+
+============================================================================
+
+How to Install MariaDB 10.3 Server on CentOS 7
+ Ahmer M  January 30, 2019  MySQL
+MariaDB is a famous fork of MySQL relational database management system. Just like it predecessor MariaDB is also free and open source under the GNU GPL license. MariaDB is community-developed and commericially supported. MariaDB is developed by some of the original developers of MySQL.
+
+Since, it’s initial fork from MySQL, MariaDB has been enhanced with many new features. Currently, it’s stable version 10.3.12 is available to use.
+
+In this article, we will install MariaDB 10.3 on CentOS 7 server.
+
+ 
+
+System Specification:
+We have a virtual machine with following specifications:
+
+Hostname - mariadb-01.example.com
+IP Address - 192.168.116.130/24
+Operating System - CentOS 7.6
+MariaDB Server - 10.3.12
+Installing MariaDB 10.3 Server on CentOS 7
+
+Installing MariaDB 10.3 on CentOS 7:
+Connect to mariadb-01.example.com using ssh.
+
+MariaDB packages are available through standard yum repositories. However, we are installing MariaDB 10.3.12 (latest stable version while writing this article) therefore, we have to either download its tarball from MariaDB Downloads or we can add the MariaDB yum repository.
+
+download-mariadb-10.3.12-stable
+We are installing MariaDB yum repository as follows.
+
+# vi /etc/yum.repos.d/mariadb.repo
+Add following directives therein.
+
+[mariadb]
+name=MariaDB
+baseurl=http://yum.mariadb.org/10.3/centos7-amd64
+gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
+gpgcheck=1
+enabled=1
+Before using MariaDB yum repository, we must import the GPG public key to verify the digital signatures of the packages in this repository.
+
+
+Although, it is not necessary to import the GPG public key manually. The GPG public key will be automatically installed by yum, when we install a package from MariaDB yum repository for the first time.
+
+Here, we are importing the GPG public key manually for the sake of demonstration.
+
+# rpm --import https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
+Build yum cache using following command.
+
+# yum makecache fast
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirrors.ges.net.pk
+ * extras: mirrors.ges.net.pk
+ * updates: mirrors.ges.net.pk
+base                                                     | 3.6 kB     00:00
+extras                                                   | 3.4 kB     00:00
+mariadb                                                  | 2.9 kB     00:00
+updates                                                  | 3.4 kB     00:00
+mariadb/primary_db                                         |  50 kB   00:01
+Metadata Cache Created
+Install MariaDB server using yum command.
+
+# yum install -y mariadb-server
+Start and enable MariaDB service.
+
+# systemctl start mariadb
+# systemctl enable mariadb
+Configure MariaDB database instance.
+
+# mysql_secure_installation
+
+NOTE: RUNNING ALL PARTS OF THIS SCRIPT IS RECOMMENDED FOR ALL MariaDB
+      SERVERS IN PRODUCTION USE!  PLEASE READ EACH STEP CAREFULLY!
+
+In order to log into MariaDB to secure it, we'll need the current
+password for the root user.  If you've just installed MariaDB, and
+you haven't set the root password yet, the password will be blank,
+so you should just press enter here.
+
+Enter current password for root (enter for none):
+OK, successfully used password, moving on...
+
+Setting the root password ensures that nobody can log into the MariaDB
+root user without the proper authorisation.
+
+Set root password? [Y/n] Y
+New password:
+Re-enter new password:
+Password updated successfully!
+Reloading privilege tables..
+ ... Success!
+
+
+By default, a MariaDB installation has an anonymous user, allowing anyone
+to log into MariaDB without having to have a user account created for
+them.  This is intended only for testing, and to make the installation
+go a bit smoother.  You should remove them before moving into a
+production environment.
+
+Remove anonymous users? [Y/n] Y
+ ... Success!
+
+Normally, root should only be allowed to connect from 'localhost'.  This
+ensures that someone cannot guess at the root password from the network.
+
+Disallow root login remotely? [Y/n] Y
+ ... Success!
+
+By default, MariaDB comes with a database named 'test' that anyone can
+access.  This is also intended only for testing, and should be removed
+before moving into a production environment.
+
+Remove test database and access to it? [Y/n] Y
+ - Dropping test database...
+ ... Success!
+ - Removing privileges on test database...
+ ... Success!
+
+Reloading the privilege tables will ensure that all changes made so far
+will take effect immediately.
+
+Reload privilege tables now? [Y/n] Y
+ ... Success!
+
+Cleaning up...
+
+All done!  If you've completed all of the above steps, your MariaDB
+installation should now be secure.
+
+Thanks for using MariaDB!
+Login to MariaDB database server.
+
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 16
+Server version: 10.3.12-MariaDB MariaDB Server
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
++--------------------+
+3 rows in set (0.001 sec)
+MariaDB 10.3 server has been installed on CentOS 7.

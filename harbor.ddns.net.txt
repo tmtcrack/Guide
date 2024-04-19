@@ -1,0 +1,8 @@
+ping harbor.ddns.net
+
+Pinging harbor.ddns.net [222.252.101.160] with 32 bytes of data:
+Reply from 222.252.101.160: bytes=32 time=4ms TTL=55
+
+
+=================================================
+222.252.101.160

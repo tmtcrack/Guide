@@ -1,0 +1,56 @@
+Nếu bạn muốn đồng bộ thời gian với một NTP server công cộng bên ngoài Internet trên Windows Server 2012, bạn không cần phải sử dụng giá trị "CrossSiteSyncFlags". 
+Thay vào đó, bạn có thể cấu hình dịch vụ Windows Time (W32Time) để sử dụng NTP làm nguồn thời gian chính.
+
+Dưới đây là các bước để cấu hình dịch vụ Windows Time để đồng bộ thời gian với một NTP server công cộng:
+
+Mở Command Prompt (cmd) với quyền quản trị.
+
+Dừng dịch vụ Windows Time bằng cách gõ lệnh:
+
+net stop w32time
+
+Xóa cấu hình hiện tại của dịch vụ Windows Time bằng cách gõ lệnh:
+
+w32tm /unregister
+
+Cấu hình dịch vụ Windows Time để sử dụng NTP server công cộng bằng cách gõ lệnh:
+
+w32tm /register
+
+Đặt NTP server công cộng bằng cách gõ lệnh:
+
+w32tm /config /syncfromflags:manual /manualpeerlist:"pool.ntp.org"
+
+Trong ví dụ trên, tôi sử dụng "pool.ntp.org" làm NTP server công cộng. 
+Bạn có thể thay thế nó bằng địa chỉ NTP server công cộng khác nếu muốn.
+
+Bật lại dịch vụ Windows Time bằng cách gõ lệnh:
+Copy
+net start w32time
+Sau khi hoàn tất các bước trên, dịch vụ Windows Time sẽ được cấu hình để đồng bộ thời gian với NTP server công cộng bạn đã chỉ định. 
+Hệ thống sẽ tự động cập nhật thời gian từ NTP server đó.
+
+===============================================================
+Configure a PDC to Sync with an External NTP Server
+For this, first you need to find a public NTP server that is close to you. You can check the following URL to find it:
+http://support.ntp.org/bin/view/Servers/WebHome
+
+NOTE: There are several other publicly available sources, so make sure you choose the one that is more convenient to you.
+
+When you choose the public NTP time reference, run the following commands on the PDC:
+
+w32tm /config /manualpeerlist:"public NTP server's FQDN,0x1" /syncfromflags:MANUAL /reliable:yes
+w32tm /config /update
+w32tm /resync
+w32tm /resync /rediscover
+You can then run the following two commands to verify the changes were applied correctly:
+
+w32tm /query /status
+w32tm /query /source
+Configure a DC to Sync with the PDC
+To configure additional DCs to sync with the PDC to obtain NTP information, you need to execute the following commands:
+
+w32tm /config /syncfromflags:DOMHIER /update
+net stop w32time & net start w32time
+w32tm /resync /force
+w32tm /query /source

@@ -1,0 +1,29 @@
+USE master;  
+GO
+-- Xem tất cả các phiên làm việc đang kết nối đến cơ sở dữ liệu
+SELECT * FROM sys.dm_exec_sessions WHERE database_id = DB_ID('SQLTestDB');
+BACKUP DATABASE [SQLTestDB] 
+TO DISK = 'G:\Backup\backup_SQLTestDB.bak' 
+WITH INIT   ------------------- Backup DB ------------
+----------------------------------------------------
+
+USE master;
+GO
+--ALTER DATABASE SQLTestDB SET SINGLE_USER WITH ROLLBACK IMMEDIATE
+--GO
+RESTORE DATABASE SQLTestDB FROM DISK = 'G:\Backup\backup_SQLTestDB.bak' 
+GO   ---------------- Restore DB -----------------
+--------------------------------------------------------
+
+USE master;
+GO
+-- Xem tất cả các phiên làm việc đang kết nối đến cơ sở dữ liệu
+SELECT * FROM sys.dm_exec_sessions WHERE database_id = DB_ID('SQLTestDB');
+------------------- Check DB --------------------------------
+
+USE master;
+GO
+-- Kết thúc các phiên làm việc đang kết nối đến cơ sở dữ liệu
+ALTER DATABASE SQLTestDB SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+-- Xóa cơ sở dữ liệu
+DROP DATABASE SQLTestDB;  ------------ Ddop DB -----------------

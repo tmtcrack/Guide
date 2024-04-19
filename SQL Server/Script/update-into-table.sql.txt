@@ -1,0 +1,11 @@
+update Fruits
+set Kg = case
+	when Id = 1 then 888
+	when Id = 2 then 888
+	when Id = 3 then 888
+	when Id = 4 then 888
+	else Kg
+  end
+where Id = 1 or Id = 2 or Id = 3 or Id = 4;
+
+select * from Fruits

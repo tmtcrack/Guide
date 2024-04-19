@@ -1,0 +1,156 @@
+Wed Mar 30 18:47:34 2022   Viettel2   Router>en
+Wed Mar 30 18:47:36 2022   Viettel2   Router#config t
+Wed Mar 30 18:47:44 2022   Viettel2   Router(config)#hostname Viettel2
+Wed Mar 30 18:47:47 2022   Viettel2   Viettel2(config)#int g0/0
+Wed Mar 30 18:47:58 2022   Viettel2   Viettel2(config-if)#ip add 10.0.0.1 255.255.255.0
+Wed Mar 30 18:48:00 2022   Viettel2   Viettel2(config-if)#no shut
+Wed Mar 30 18:48:08 2022   Viettel2   Viettel2(config-if)#ip dhcp pool pnh-user
+Wed Mar 30 18:48:16 2022   Viettel2   Viettel2(dhcp-config)#net 10.0.0.0 255.255.255.0
+Wed Mar 30 18:48:20 2022   Viettel2   Viettel2(dhcp-config)#default 10.0.0.1
+Wed Mar 30 18:48:31 2022   Viettel2   Viettel2(dhcp-config)#dns 20.0.0.10
+Wed Mar 30 18:48:37 2022   Viettel2   Viettel2(dhcp-config)#exit
+Wed Mar 30 18:48:43 2022   Viettel2   Viettel2(config)#int g0/1
+Wed Mar 30 18:48:59 2022   Viettel2   Viettel2(config-if)#ip add 10.1.1.1 255.255.255.0
+Wed Mar 30 18:49:01 2022   Viettel2   Viettel2(config-if)#no shut
+Wed Mar 30 18:49:14 2022   Viettel1   Router>en
+Wed Mar 30 18:49:15 2022   Viettel1   Router#config t
+Wed Mar 30 18:49:22 2022   Viettel1   Router(config)#hostname Viettel1
+Wed Mar 30 18:49:27 2022   Viettel1   Viettel1(config)#int g0/0
+Wed Mar 30 18:49:39 2022   Viettel1   Viettel1(config-if)#ip add 10.1.1.2 255.255.255.252
+Wed Mar 30 18:49:41 2022   Viettel1   Viettel1(config-if)#no shut
+Wed Mar 30 18:49:46 2022   Viettel1   Viettel1(config-if)#int g0/1
+Wed Mar 30 18:49:55 2022   Viettel1   Viettel1(config-if)#ip add 100.0.0.1 255.255.255.252
+Wed Mar 30 18:49:57 2022   Viettel1   Viettel1(config-if)#no shut
+Wed Mar 30 18:50:01 2022   Viettel1   Viettel1(config-if)#exit
+Wed Mar 30 18:50:10 2022   Viettel1   Viettel1(config)#do ping 10.1.1.1
+Wed Mar 30 18:50:15 2022   Viettel1   Viettel1(config)#do ping 10.1.1.1
+Wed Mar 30 18:50:47 2022   VNIX   Router>en
+Wed Mar 30 18:50:48 2022   VNIX   Router#config t
+Wed Mar 30 18:50:57 2022   VNIX   Router(config)#hostname VNIX
+Wed Mar 30 18:51:06 2022   VNIX   VNIX(config)#int g0/0
+Wed Mar 30 18:51:15 2022   VNIX   VNIX(config-if)#ip add 100.0.0.2 255.255.255.252
+Wed Mar 30 18:51:17 2022   VNIX   VNIX(config-if)#no shut
+Wed Mar 30 18:51:20 2022   VNIX   VNIX(config-if)#int g0/1
+Wed Mar 30 18:51:31 2022   VNIX   VNIX(config-if)#ip add 100.1.1.2 255.255.255.252
+Wed Mar 30 18:51:34 2022   VNIX   VNIX(config-if)#no shut
+Wed Mar 30 18:51:38 2022   VNIX   VNIX(config-if)#int g0/2
+Wed Mar 30 18:51:45 2022   VNIX   VNIX(config-if)#ip add 6.6.6.1 255.255.255.252
+Wed Mar 30 18:51:49 2022   VNIX   VNIX(config-if)#no shut
+Wed Mar 30 18:51:54 2022   VNIX   VNIX(config-if)#exit
+Wed Mar 30 18:52:09 2022   VNIX   VNIX(config)#do ping 100.0.0.1
+Wed Mar 30 18:52:12 2022   VNIX   VNIX(config)#do ping 100.0.0.1
+Wed Mar 30 18:52:45 2022   ISP-EXT   Router>en
+Wed Mar 30 18:52:46 2022   ISP-EXT   Router#config t
+Wed Mar 30 18:52:55 2022   ISP-EXT   Router(config)#hostname ISP-EXT
+Wed Mar 30 18:52:59 2022   ISP-EXT   ISP-EXT(config)#int g0/0
+Wed Mar 30 18:53:07 2022   ISP-EXT   ISP-EXT(config-if)#ip add 8.8.8.1 255.255.255.0
+Wed Mar 30 18:53:09 2022   ISP-EXT   ISP-EXT(config-if)#no shut
+Wed Mar 30 18:53:14 2022   ISP-EXT   ISP-EXT(config-if)#int g0/1
+Wed Mar 30 18:53:26 2022   ISP-EXT   ISP-EXT(config-if)#ip add 7.7.7.1 255.255.255.0
+Wed Mar 30 18:53:28 2022   ISP-EXT   ISP-EXT(config-if)#no shut
+Wed Mar 30 18:53:31 2022   ISP-EXT   ISP-EXT(config-if)#int g0/2
+Wed Mar 30 18:53:41 2022   ISP-EXT   ISP-EXT(config-if)#ip add 6.6.6.2 255.255.255.252
+Wed Mar 30 18:53:43 2022   ISP-EXT   ISP-EXT(config-if)#no shut
+Wed Mar 30 18:53:48 2022   ISP-EXT   ISP-EXT(config-if)#exit
+Wed Mar 30 18:54:01 2022   ISP-EXT   ISP-EXT(config)#do ping 6.6.6.1
+Wed Mar 30 18:54:29 2022   CMC2   Router>en
+Wed Mar 30 18:54:31 2022   CMC2   Router#config t
+Wed Mar 30 18:54:35 2022   CMC2   Router(config)#hostname CMC2
+Wed Mar 30 18:54:40 2022   CMC2   CMC2(config)#int g0/0
+Wed Mar 30 18:54:48 2022   CMC2   CMC2(config-if)#ip add 20.0.0.1 255.255.255.0
+Wed Mar 30 18:54:50 2022   CMC2   CMC2(config-if)#no shut
+Wed Mar 30 18:54:55 2022   CMC2   CMC2(config-if)#int g0/1
+Wed Mar 30 18:55:08 2022   CMC2   CMC2(config-if)#ip add 20.1.1.1 255.255.255.252
+Wed Mar 30 18:55:11 2022   CMC2   CMC2(config-if)#no shut
+Wed Mar 30 18:55:30 2022   CMC1   Router>en
+Wed Mar 30 18:55:31 2022   CMC1   Router#config t
+Wed Mar 30 18:55:35 2022   CMC1   Router(config)#hostname CMC1
+Wed Mar 30 18:55:40 2022   CMC1   CMC1(config)#int g0/0
+Wed Mar 30 18:55:47 2022   CMC1   CMC1(config-if)#ip add 20.1.1.2 255.255.255.252
+Wed Mar 30 18:55:49 2022   CMC1   CMC1(config-if)#no shut
+Wed Mar 30 18:55:53 2022   CMC1   CMC1(config-if)#int g0/1
+Wed Mar 30 18:56:12 2022   CMC1   CMC1(config-if)#ip add 100.1.1.1 255.255.255.252
+Wed Mar 30 18:56:14 2022   CMC1   CMC1(config-if)#no shut
+Wed Mar 30 18:56:17 2022   CMC1   CMC1(config-if)#exit
+Wed Mar 30 18:56:37 2022   CMC1   CMC1(config)#do ping 20.1.1.1
+Wed Mar 30 18:56:51 2022   CMC1   CMC1(config)#do ping 100.1.1.2
+Wed Mar 30 18:57:38 2022   ISP-EXT   ISP-EXT(config)#ip route 0.0.0.0 0.0.0.0 6.6.6.1
+Wed Mar 30 18:57:40 2022   ISP-EXT   ISP-EXT(config)#end
+Wed Mar 30 18:57:43 2022   ISP-EXT   ISP-EXT#show ip route
+Wed Mar 30 18:59:51 2022   VNIX   VNIX(config)#ip route 0.0.0.0 0.0.0.0 6.6.6.2
+Wed Mar 30 19:00:16 2022   VNIX   VNIX(config)#router bgp 100
+Wed Mar 30 19:00:48 2022   VNIX   VNIX(config-router)#neighbor 100.0.0.1 remote-as 10
+Wed Mar 30 19:01:11 2022   VNIX   VNIX(config-router)#neighbor 100.1.1.1 remote-as 20
+Wed Mar 30 19:01:25 2022   VNIX   VNIX(config-router)#redistribute static
+Wed Mar 30 19:01:37 2022   VNIX   VNIX(config-router)#end
+Wed Mar 30 19:01:42 2022   VNIX   VNIX#show ip route
+Wed Mar 30 19:02:15 2022   Viettel1   Viettel1>en
+Wed Mar 30 19:02:19 2022   Viettel1   Viettel1#config t
+Wed Mar 30 19:02:31 2022   Viettel1   Viettel1(config)#int loopback 1
+Wed Mar 30 19:02:44 2022   Viettel1   Viettel1(config-if)#ip add 1.1.1.1 255.255.255.255
+Wed Mar 30 19:02:47 2022   Viettel1   Viettel1(config-if)#exit
+Wed Mar 30 19:03:15 2022   Viettel1   Viettel1(config)#router bgp 10
+Wed Mar 30 19:03:37 2022   Viettel1   Viettel1(config-router)#neighbor 100.0.0.2 remote-as 100
+Wed Mar 30 19:03:54 2022   Viettel1   Viettel1(config-router)#redistribute ospf 1
+Wed Mar 30 19:03:58 2022   Viettel1   Viettel1(config-router)#exit
+Wed Mar 30 19:04:03 2022   Viettel1   Viettel1(config)#router ospf 1
+Wed Mar 30 19:04:19 2022   Viettel1   Viettel1(config-router)#network 10.1.1.0 0.0.0.3 area 0
+Wed Mar 30 19:04:54 2022   Viettel1   Viettel1(config-router)#redistribute bgp 10 ?
+Wed Mar 30 19:05:04 2022   Viettel1   Viettel1(config-router)#redistribute bgp 10 metric 3 subnet
+Wed Mar 30 19:05:08 2022   Viettel1   Viettel1(config-router)#end
+Wed Mar 30 19:05:12 2022   Viettel1   Viettel1#show ip route
+Wed Mar 30 19:05:43 2022   Viettel1   Viettel1#ping 8.8.81
+Wed Mar 30 19:05:52 2022   Viettel1   Viettel1#ping 8.8.8.1
+Wed Mar 30 19:06:23 2022   Viettel1   Viettel1#ping 8.8.8.1
+Wed Mar 30 19:06:49 2022   Viettel1   Viettel1#ping 8.8.8.8
+Wed Mar 30 19:06:53 2022   Viettel1   Viettel1#ping 8.8.8.8
+Wed Mar 30 19:07:14 2022   Viettel2   Viettel2>en
+Wed Mar 30 19:07:17 2022   Viettel2   Viettel2#config t
+Wed Mar 30 19:07:27 2022   Viettel2   Viettel2(config)#int loopback 1
+Wed Mar 30 19:07:44 2022   Viettel2   Viettel2(config-if)#ip add 1.2.2.2 255.255.255.255
+Wed Mar 30 19:07:46 2022   Viettel2   Viettel2(config-if)#exit
+Wed Mar 30 19:07:53 2022   Viettel2   Viettel2(config)#router ospf 1
+Wed Mar 30 19:08:10 2022   Viettel2   Viettel2(config-router)#network 10.0.0.0 0.0.0.255 area 0
+Wed Mar 30 19:08:28 2022   Viettel2   Viettel2(config-router)#network 10.1.1.0 0.0.0.3 area 0
+Wed Mar 30 19:08:30 2022   Viettel2   Viettel2(config-router)#end
+Wed Mar 30 19:10:37 2022   Viettel2   Viettel2#config t
+Wed Mar 30 19:10:43 2022   Viettel2   Viettel2(config)#int g0/1
+Wed Mar 30 19:10:52 2022   Viettel2   Viettel2(config-if)#ip add 10.1.1.1 255.255.255.252
+Wed Mar 30 19:11:09 2022   Viettel2   Viettel2(config-if)#end
+Wed Mar 30 19:11:14 2022   Viettel2   Viettel2#show ip route
+Wed Mar 30 19:11:33 2022   Viettel2   Viettel2#ping 8.8.8.8
+Wed Mar 30 19:13:11 2022   Viettel2   Viettel2#show ip ospf neighbor
+Wed Mar 30 19:16:30 2022   CMC1   CMC1>en
+Wed Mar 30 19:16:31 2022   CMC1   CMC1#config t
+Wed Mar 30 19:16:42 2022   CMC1   CMC1(config)#int loopback 1
+Wed Mar 30 19:16:50 2022   CMC1   CMC1(config-if)#ip add 2.1.1.1 255.255.255.255
+Wed Mar 30 19:16:52 2022   CMC1   CMC1(config-if)#exit
+Wed Mar 30 19:17:03 2022   CMC1   CMC1(config)#router bgp 20
+Wed Mar 30 19:17:30 2022   CMC1   CMC1(config-router)#neighbor 100.1.1.2 remote-as 100
+Wed Mar 30 19:17:49 2022   CMC1   CMC1(config-router)#redistribute eigrp 100
+Wed Mar 30 19:17:51 2022   CMC1   CMC1(config-router)#exit
+Wed Mar 30 19:17:57 2022   CMC1   CMC1(config)#router eigrp 100
+Wed Mar 30 19:18:13 2022   CMC1   CMC1(config-router)#network 20.1.1.0 0.0.0.3
+Wed Mar 30 19:18:30 2022   CMC1   CMC1(config-router)#redistribute bgp 20 metric ?
+Wed Mar 30 19:18:36 2022   CMC1   CMC1(config-router)#redistribute bgp 20 metric 100000 ?
+Wed Mar 30 19:18:47 2022   CMC1   CMC1(config-router)#redistribute bgp 20 metric 100000 10 ?
+Wed Mar 30 19:18:52 2022   CMC1   CMC1(config-router)#redistribute bgp 20 metric 100000 10 100 ?
+Wed Mar 30 19:19:05 2022   CMC1   CMC1(config-router)#redistribute bgp 20 metric 100000 10 100 100 1500
+Wed Mar 30 19:19:11 2022   CMC1   CMC1(config-router)#end
+Wed Mar 30 19:19:18 2022   CMC1   CMC1#show ip route
+Wed Mar 30 19:19:52 2022   CMC1   CMC1#ping 8.8.8.8
+Wed Mar 30 19:20:03 2022   CMC1   CMC1#ping 10.0.0.1
+Wed Mar 30 19:23:39 2022   CMC2   CMC2>en
+Wed Mar 30 19:23:40 2022   CMC2   CMC2#config t
+Wed Mar 30 19:23:48 2022   CMC2   CMC2(config)#int loopback 1
+Wed Mar 30 19:23:57 2022   CMC2   CMC2(config-if)#ip add 2.2.2.2 255.255.255.255
+Wed Mar 30 19:24:01 2022   CMC2   CMC2(config-if)#exit
+Wed Mar 30 19:24:08 2022   CMC2   CMC2(config)#router eigrp 100
+Wed Mar 30 19:24:25 2022   CMC2   CMC2(config-router)#network 20.0.0.0 0.0.0.255
+Wed Mar 30 19:24:40 2022   CMC2   CMC2(config-router)#network 20.1.1.0 0.0.0.3
+Wed Mar 30 19:24:50 2022   CMC2   CMC2(config-router)#end
+Wed Mar 30 19:24:56 2022   CMC2   CMC2#show ip route
+Wed Mar 30 19:25:50 2022   Viettel2   Viettel2>en
+Wed Mar 30 19:25:53 2022   Viettel2   Viettel2#show ip route
+Wed Mar 30 19:26:19 2022   VNIX   VNIX>en
+Wed Mar 30 19:26:22 2022   VNIX   VNIX#show ip route

@@ -1,0 +1,362 @@
+Use SSH to connect to the USG and configure the static route. The set protocol code below is from the above post and I have not tried it myself. 
+
+ 
+
+configure
+set protocols static route x.x.x.x/x next-hop y.y.y.y distance 1
+commit
+save
+Now dump the configuration to a file so the USG will load the changes on reboot. The > operator will cause the output do be dumped to a file for you. 
+
+mca-ctrl -t dump-cfg > config.gateway.json
+
+############################################
+configure
+
+set protocols static route 192.168.10.0/24 next-hop dev eth1 source 192.168.100.188
+
+commit
+
+save
+
+############################
+
+delete protocols static route 192.168.10.0/24 next-hop dev eth1 source 192.168.100.188
+
+##########################
+
+configure
+set protocols static route 192.168.10.0/8 next-hop 192.168.100.188
+commit
+save
+exit
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+http {
+  server {
+    listen 80 default_server;
+
+    root /var/www/html/site1;
+    index index.php index.html index.htm;
+
+
+    server_name _;
+
+#    sendfile off;
+
+    location / {
+       proxy_pass  http://127.0.0.1:6081;
+    }
+  }
+}
+
+######################################
+http {
+  server {
+    listen 80 default_server;
+
+    root /var/www/html/site1;
+    index index.php index.html index.htm;
+
+
+    server_name _;
+    # Disable sendfile as per https://docs.vagrantup.com/v2/synced-folders/virtualbox.html
+#    sendfile off;
+
+    # Proxy Pass to Varnish
+    # Add headers to recognize SSL
+     location / {
+       proxy_pass  http://127.0.0.1:6081;
+#       proxy_http_version 1.1;
+#       proxy_set_header Upgrade $http_upgrade;
+#       proxy_set_header Connection 'upgrade';
+#       proxy_set_header Host $host;
+#       proxy_set_header X-Real-IP $remote_addr;
+#       proxy_set_header X-Forwarded-For $remote_addr;
+#       proxy_cache_bypass $http_upgrade;
+     }
+  }
+}
+
+=================================================
+
+version: '3.5'
+services:
+ mysql-server:
+  image: mysql:8.0
+  networks:
+   - zbx_net
+  command:
+   - mysqld
+   - --character-set-server=utf8
+   - --collation-server=utf8_bin
+   - --default-authentication-plugin=mysql_native_password
+  environment:
+   - MYSQL_USER=zabbix
+   - MYSQL_DATABASE=zabbixdb05
+   - MYSQL_PASSWORD=PasswOrd
+   - MYSQL_ROOT_PASSWORD=StrongPassword
+   - ZBX_JAVAGATEWAY=zabbix-java-gateway
+  volumes:
+   - /zabbix-mysql:/var/lib/mysql:rw
+ zabbix-server-mysql:
+  image: zabbix/zabbix-server-mysql:alpine-latest
+  networks:
+   - zbx_net
+  ports:
+   - 10051:10051
+  volumes:
+   - /etc/localtime:/etc/localtime:ro
+   - /etc/timezone:/etc/timezone:ro 
+   - /zabbix-data/alertscripts:/usr/lib/zabbix/alertscripts:ro
+   - /zabbix-data/externalscripts:/usr/lib/zabbix/externalscripts:ro
+   - /zabbix-data/export:/var/lib/zabbix/export:rw
+   - /zabbix-data/modules:/var/lib/zabbix/modules:ro
+   - /zabbix-data/enc:/var/lib/zabbix/enc:ro
+   - /zabbix-data/ssh_keys:/var/lib/zabbix/ssh_keys:ro
+   - /zabbix-data/mibs:/var/lib/zabbix/mibs:ro
+   - /zabbix-data/snmptraps:/var/lib/zabbix/snmptraps:rw
+  environment:
+   - DB_SERVER_HOST=mysql-server
+   - MYSQL_DATABASE=zabbixdb05
+   - MYSQL_USER=zabbix
+   - MYSQL_PASSWORD=Passw0rd
+   - MYSQL_ROOT_PASSWORD=StrongPassword
+   - ZBX_JAVAGATEWAY=zabbix-java-gateway
+
+  depends_on:
+   - mysql-server
+
+ zabbix-web-nginx-mysql:
+  image: zabbix/zabbix-web-nginx-mysql:alpine-6.4-latest
+  networks:
+   - zbx_net
+  ports:
+   - 80:8080
+   - 443:8443
+  volumes:
+   - /etc/localtime:/etc/localtime:ro
+   - /etc/timezone:/etc/timezone:ro
+   - /zabbix-nginx/nginx:/etc/ssl/nginx:ro
+   - /zabbix-nginx/modules/:/usr/share/zabbix/modules/:ro
+  environment:
+   - ZBX_SERVER_HOST=zabbix-server-mysql
+   - DB_SERVER_HOST=mysql-server
+   - MYSQL_DATABASE=zabbixdb05
+   - MYSQL_USER=zabbix
+   - MYSQL_PASSWORD=Passw0rd
+   - MYSQL_ROOT_PASSWORD=StrongPassword
+  depends_on:
+   - mysql-server
+   - zabbix-server-mysql
+ zabbix-java-gateway:
+  image: zabbix/zabbix-java-gateway:alpine-6.4-latest
+  networks:
+   - zbx_net
+  ports:
+   - 10052:10052
+networks:
+ zbx_net:
+   driver: bridge
+ 
+=============================
+docker pull zabbix/zabbix-server-mysql:6.0.4-ubuntu
+
+docker pull zabbix/zabbix-web-nginx-mysql:6.0.4-ubuntu
+
+docker pull zabbix/zabbix-java-gateway:6.0.4-ubuntu
+
+==============================
+
+version: '3.5'
+services:
+ mysql-server:
+  image: mysql:8.0
+  networks:
+   - zbx_net
+  command:
+   - mysqld
+   - --character-set-server=utf8
+   - --collation-server=utf8_bin
+   - --default-authentication-plugin=mysql_native_password
+  environment:
+   - MYSQL_USER=zabbix
+   - MYSQL_DATABASE=zabbixdb05
+   - MYSQL_PASSWORD=PasswOrd
+   - MYSQL_ROOT_PASSWORD=StrongPassword
+   - ZBX_JAVAGATEWAY=zabbix-java-gateway
+  volumes:
+   - /zabbix-mysql05:/var/lib/mysql:rw
+ zabbix-server-mysql:
+  image: zabbix/zabbix-server-mysql:6.0.4-ubuntu
+  networks:
+   - zbx_net
+  ports:
+   - 10051:10051
+  volumes:
+   - /etc/localtime:/etc/localtime:ro
+   - /etc/timezone:/etc/timezone:ro 
+   - /zabbix-data05/alertscripts:/usr/lib/zabbix/alertscripts:ro
+   - /zabbix-data05/externalscripts:/usr/lib/zabbix/externalscripts:ro
+   - /zabbix-data05/export:/var/lib/zabbix/export:rw
+   - /zabbix-data05/modules:/var/lib/zabbix/modules:ro
+   - /zabbix-data05/enc:/var/lib/zabbix/enc:ro
+   - /zabbix-data05/ssh_keys:/var/lib/zabbix/ssh_keys:ro
+   - /zabbix-data05/mibs:/var/lib/zabbix/mibs:ro
+   - /zabbix-data05/snmptraps:/var/lib/zabbix/snmptraps:rw
+  environment:
+   - DB_SERVER_HOST=mysql-server
+   - MYSQL_DATABASE=zabbixdb05
+   - MYSQL_USER=zabbix
+   - MYSQL_PASSWORD=Passw0rd
+   - MYSQL_ROOT_PASSWORD=StrongPassword
+   - ZBX_JAVAGATEWAY=zabbix-java-gateway
+
+  depends_on:
+   - mysql-server
+
+ zabbix-web-nginx-mysql:
+  image: zabbix/zabbix-web-nginx-mysql:6.0.4-ubuntu
+  networks:
+   - zbx_net
+  ports:
+   - 80:8080
+   - 443:8443
+  volumes:
+   - /etc/localtime:/etc/localtime:ro
+   - /etc/timezone:/etc/timezone:ro
+   - /zabbix-nginx05/nginx:/etc/ssl/nginx:ro
+   - /zabbix-nginx05/modules/:/usr/share/zabbix/modules/:ro
+  environment:
+   - ZBX_SERVER_HOST=zabbix-server-mysql
+   - DB_SERVER_HOST=mysql-server
+   - MYSQL_DATABASE=zabbixdb05
+   - MYSQL_USER=zabbix
+   - MYSQL_PASSWORD=Passw0rd
+   - MYSQL_ROOT_PASSWORD=StrongPassword
+  depends_on:
+   - mysql-server
+   - zabbix-server-mysql
+ zabbix-java-gateway:
+  image: zabbix/zabbix-java-gateway:6.0.4-ubuntu
+  networks:
+   - zbx_net
+  ports:
+   - 10052:10052
+networks:
+ zbx_net:
+   driver: bridge
+   
+==========================================================
+docker pull zabbix/zabbix-server-mysql:5.0-ubuntu-latest
+
+docker pull zabbix/zabbix-web-nginx-mysql:5.0-ubuntu-latest
+
+docker pull zabbix/zabbix-java-gateway:5.0-ubuntu-latest
+
+=======================================================
+
+version: '3.5'
+services:
+ mysql-server:
+  image: mysql:8.0
+  networks:
+   - zbx_net
+  command:
+   - mysqld
+   - --character-set-server=utf8
+   - --collation-server=utf8_bin
+   - --default-authentication-plugin=mysql_native_password
+  environment:
+   - MYSQL_USER=zabbix
+   - MYSQL_DATABASE=zabbixdb05
+   - MYSQL_PASSWORD=PasswOrd
+   - MYSQL_ROOT_PASSWORD=StrongPassword
+   - ZBX_JAVAGATEWAY=zabbix-java-gateway
+  volumes:
+   - /zabbix-mysql05:/var/lib/mysql:rw
+ zabbix-server-mysql:
+  image: zabbix/zabbix-server-mysql:5.0-ubuntu-latest
+  networks:
+   - zbx_net
+  ports:
+   - 10051:10051
+  volumes:
+   - /etc/localtime:/etc/localtime:ro
+   - /etc/timezone:/etc/timezone:ro 
+   - /zabbix-data05/alertscripts:/usr/lib/zabbix/alertscripts:ro
+   - /zabbix-data05/externalscripts:/usr/lib/zabbix/externalscripts:ro
+   - /zabbix-data05/export:/var/lib/zabbix/export:rw
+   - /zabbix-data05/modules:/var/lib/zabbix/modules:ro
+   - /zabbix-data05/enc:/var/lib/zabbix/enc:ro
+   - /zabbix-data05/ssh_keys:/var/lib/zabbix/ssh_keys:ro
+   - /zabbix-data05/mibs:/var/lib/zabbix/mibs:ro
+   - /zabbix-data05/snmptraps:/var/lib/zabbix/snmptraps:rw
+  environment:
+   - DB_SERVER_HOST=mysql-server
+   - MYSQL_DATABASE=zabbixdb05
+   - MYSQL_USER=zabbix
+   - MYSQL_PASSWORD=Passw0rd
+   - MYSQL_ROOT_PASSWORD=StrongPassword
+   - ZBX_JAVAGATEWAY=zabbix-java-gateway
+
+  depends_on:
+   - mysql-server
+
+ zabbix-web-nginx-mysql:
+  image: zabbix/zabbix-web-nginx-mysql:5.0-ubuntu-latest
+  networks:
+   - zbx_net
+  ports:
+   - 80:8080
+   - 443:8443
+  volumes:
+   - /etc/localtime:/etc/localtime:ro
+   - /etc/timezone:/etc/timezone:ro
+   - /zabbix-nginx05/nginx:/etc/ssl/nginx:ro
+   - /zabbix-nginx05/modules/:/usr/share/zabbix/modules/:ro
+  environment:
+   - ZBX_SERVER_HOST=zabbix-server-mysql
+   - DB_SERVER_HOST=mysql-server
+   - MYSQL_DATABASE=zabbixdb05
+   - MYSQL_USER=zabbix
+   - MYSQL_PASSWORD=Passw0rd
+   - MYSQL_ROOT_PASSWORD=StrongPassword
+  depends_on:
+   - mysql-server
+   - zabbix-server-mysql
+ zabbix-java-gateway:
+  image: zabbix/zabbix-java-gateway:5.0-ubuntu-latest
+  networks:
+   - zbx_net
+  ports:
+   - 10052:10052
+networks:
+ zbx_net:
+   driver: bridge
+   
+ =====================================
+ 
+pc linux uubuntu 22 có 3 interfaces ens37 ip 192.168.10.4/24 gateway 192.168.10.4, ens38 ip 192.168.80.4/24 gateway 192.168.80.4, ens33 ip 192.168.100.4 gateway 192.168.100.1
+để pc windows ở network 192.168.10.230/24 với gateway 192.168.10.4 liên lạc được tới pc windows 192.168.80.8/24,gateway 192.168.80.4.
+Pc 192.168.100.200/24 gateway 192.168.100.1 có thể liên lạc được với PC 192.168.10.230/24 với gateway 192.168.10.4
+Hãy cấu hình định tuyến tĩnh route add trên pc linux uubuntu 22 
+
+======================================
+PC1 linux uubuntu 22 có interfaces ens37 ip 192.168.10.4/24 gateway 192.168.10.4, ens33 ip 192.168.100.4 gateway 192.168.100.1
+PC2 ip 192.168.10.230/24 gateway 192.168.10.4
+PC3 ip 192.168.100.200/24 gateway 192.168.100.1
+Hãy cấu hình định tuyến tĩnh route add trên PC1 để PC2 ping được PC3
+=====================================
+PC1 linux uubuntu 22 có interfaces ens33 ip 192.168.100.4/24 gateway 192.168.100.1, ens37 ip 192.168.10.4/24 gateway 192.168.10.4, 
+PC2 ip 192.168.100.200/24 gateway 192.168.100.1
+
+Hãy cấu hình định tuyến tĩnh route add trên PC1 để PC2 ping được 192.168.10.4
+
+
+
+ 
+ 
+ 
+ 

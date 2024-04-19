@@ -1,0 +1,99 @@
+Wed Apr 20 18:48:34 2022   Core   Switch>en
+Wed Apr 20 18:48:36 2022   Core   Switch#config t
+Wed Apr 20 18:48:45 2022   Core   Switch(config)#hostname Core
+Wed Apr 20 18:49:07 2022   Core   Core(config)#vlan 2
+Wed Apr 20 18:49:11 2022   Core   Core(config-vlan)#name app
+Wed Apr 20 18:49:13 2022   Core   Core(config-vlan)#vlan 3
+Wed Apr 20 18:49:18 2022   Core   Core(config-vlan)#name system
+Wed Apr 20 18:49:20 2022   Core   Core(config-vlan)#vlan 4
+Wed Apr 20 18:49:23 2022   Core   Core(config-vlan)#name dmz
+Wed Apr 20 18:49:25 2022   Core   Core(config-vlan)#vlan 5
+Wed Apr 20 18:49:28 2022   Core   Core(config-vlan)#name user
+Wed Apr 20 18:49:52 2022   Core   Core(config-vlan)#exit
+Wed Apr 20 18:50:22 2022   Core   Core(config)#int range g1/0/1,g1/0/8
+Wed Apr 20 18:50:31 2022   Core   Core(config-if-range)#switchport mode access
+Wed Apr 20 18:50:48 2022   Core   Core(config-if-range)#switchport access vlan 2
+Wed Apr 20 18:50:59 2022   Core   Core(config-if-range)#int range g1/0/2,g1/0/10
+Wed Apr 20 18:51:02 2022   Core   Core(config-if-range)#switchport mode access
+Wed Apr 20 18:51:06 2022   Core   Core(config-if-range)#switchport access vlan 3
+Wed Apr 20 18:51:16 2022   Core   Core(config-if-range)#int range g1/0/3,g1/0/12
+Wed Apr 20 18:51:20 2022   Core   Core(config-if-range)#switchport mode access
+Wed Apr 20 18:51:23 2022   Core   Core(config-if-range)#switchport access vlan 4
+Wed Apr 20 18:51:56 2022   Core   Core(config-if-range)#int range g1/0/4,g1/0/16-24
+Wed Apr 20 18:51:59 2022   Core   Core(config-if-range)#switchport mode access
+Wed Apr 20 18:52:03 2022   Core   Core(config-if-range)#switchport access vlan 5
+Wed Apr 20 18:58:37 2022   Core   Core(config-if-range)#end
+Wed Apr 20 18:58:42 2022   Core   Core#show vlan
+Wed Apr 20 18:59:27 2022   PNH   Router>en
+Wed Apr 20 18:59:29 2022   PNH   Router#config t
+Wed Apr 20 18:59:33 2022   PNH   Router(config)#hostname PNH
+Wed Apr 20 18:59:46 2022   PNH   PNH(config)#int f0/1
+Wed Apr 20 18:59:56 2022   PNH   PNH(config-if)#ip add 6.6.6.1 255.255.255.252
+Wed Apr 20 19:00:05 2022   PNH   PNH(config-if)#ip nat outside
+Wed Apr 20 19:00:08 2022   PNH   PNH(config-if)#no shut
+Wed Apr 20 19:00:16 2022   PNH   PNH(config-if)#int e0/0/0
+Wed Apr 20 19:00:30 2022   PNH   PNH(config-if)#ip add 10.2.2.1 255.255.255.0
+Wed Apr 20 19:00:36 2022   PNH   PNH(config-if)#ip nat inside
+Wed Apr 20 19:00:38 2022   PNH   PNH(config-if)#no shut
+Wed Apr 20 19:00:43 2022   PNH   PNH(config-if)#int e0/1/0
+Wed Apr 20 19:00:50 2022   PNH   PNH(config-if)#ip add 10.3.3.1 255.255.255.0
+Wed Apr 20 19:00:53 2022   PNH   PNH(config-if)#ip nat inside
+Wed Apr 20 19:00:55 2022   PNH   PNH(config-if)#no shut
+Wed Apr 20 19:01:01 2022   PNH   PNH(config-if)#int e0/2/0
+Wed Apr 20 19:01:08 2022   PNH   PNH(config-if)#ip add 10.4.4.1 255.255.255.0
+Wed Apr 20 19:01:13 2022   PNH   PNH(config-if)#ip nat inside
+Wed Apr 20 19:01:14 2022   PNH   PNH(config-if)#no shut
+Wed Apr 20 19:01:22 2022   PNH   PNH(config-if)#int e0/3/0
+Wed Apr 20 19:01:32 2022   PNH   PNH(config-if)#ip add 10.5.5.1 255.255.255.0
+Wed Apr 20 19:01:35 2022   PNH   PNH(config-if)#ip nat inside
+Wed Apr 20 19:01:50 2022   PNH   PNH(config-if)#ip helper-address 10.2.2.10
+Wed Apr 20 19:01:53 2022   PNH   PNH(config-if)#no shut
+Wed Apr 20 19:05:50 2022   PNH   PNH(config-if)#exit
+Wed Apr 20 19:06:07 2022   PNH   PNH(config)#ip route 0.0.0.0 0.0.0.0 6.6.6.2
+Wed Apr 20 19:06:21 2022   PNH   PNH(config)#access-list 1 permit any
+Wed Apr 20 19:06:35 2022   PNH   PNH(config)#ip nat inside source list 1 interface f0/1
+Wed Apr 20 19:09:25 2022   PNH   PNH(config)#end
+Wed Apr 20 19:09:30 2022   PNH   PNH#show ip int brief
+Wed Apr 20 19:20:26 2022   ISP   Router>en
+Wed Apr 20 19:20:29 2022   ISP   Router#config t
+Wed Apr 20 19:20:34 2022   ISP   Router(config)#hostname ISP
+Wed Apr 20 19:20:46 2022   ISP   ISP(config)#int f0/0
+Wed Apr 20 19:20:54 2022   ISP   ISP(config-if)#ip add 8.8.8.1 255.255.255.0
+Wed Apr 20 19:20:56 2022   ISP   ISP(config-if)#no shut
+Wed Apr 20 19:20:59 2022   ISP   ISP(config-if)#int f0/1
+Wed Apr 20 19:21:06 2022   ISP   ISP(config-if)#ip add 7.7.7.1 255.255.255.0
+Wed Apr 20 19:21:08 2022   ISP   ISP(config-if)#no shut
+Wed Apr 20 19:21:13 2022   ISP   ISP(config-if)#int f1/0
+Wed Apr 20 19:21:21 2022   ISP   ISP(config-if)#ip add 6.6.6.2 255.255.255.252
+Wed Apr 20 19:21:23 2022   ISP   ISP(config-if)#no shut
+Wed Apr 20 19:32:44 2022   PNH   PNH>en
+Wed Apr 20 19:32:47 2022   PNH   PNH#show run
+Wed Apr 20 19:33:22 2022   PNH   PNH#config t
+Wed Apr 20 19:33:27 2022   PNH   PNH(config)#int e0/3/0
+Wed Apr 20 19:33:32 2022   PNH   PNH(config-if)#no ip helper-address 10.2.2.10
+Wed Apr 20 19:35:02 2022   PNH   PNH(config-if)#ip helper-address 10.2.2.10
+Wed Apr 20 19:37:46 2022   PNH   PNH(config-if)#exit
+Wed Apr 20 19:37:54 2022   PNH   PNH(config)#line vty 0 4
+Wed Apr 20 19:37:57 2022   PNH   PNH(config-line)#pass cisco
+Wed Apr 20 19:37:58 2022   PNH   PNH(config-line)#login
+Wed Apr 20 19:38:04 2022   PNH   PNH(config-line)#enable pass ccna
+Wed Apr 20 19:38:55 2022   PNH   PNH>en
+Wed Apr 20 19:38:59 2022   PNH   PNH#exit
+Wed Apr 20 19:39:26 2022   Core   Core>en
+Wed Apr 20 19:39:28 2022   Core   Core#config t
+Wed Apr 20 19:39:32 2022   Core   Core(config)#line vty 0 4
+Wed Apr 20 19:39:35 2022   Core   Core(config-line)#pass cisco
+Wed Apr 20 19:39:37 2022   Core   Core(config-line)#login
+Wed Apr 20 19:39:41 2022   Core   Core(config-line)#enable pass ccna
+Wed Apr 20 19:40:07 2022   Core   Core(config)#end
+Wed Apr 20 19:40:09 2022   Core   Core#show run
+Wed Apr 20 19:40:56 2022   Core   Core#config t
+Wed Apr 20 19:42:26 2022   Core   Core(config)#interface vlan 3
+Wed Apr 20 19:43:14 2022   Core   Core(config-if)#ip address 10.3.3.254 255.255.255.0
+Wed Apr 20 19:44:28 2022   Core   Core>en
+Wed Apr 20 19:44:35 2022   Core   Core#show run
+Wed Apr 20 19:44:42 2022   Core   Core#exit
+Wed Apr 20 19:45:22 2022   PNH   PNH>exit
+Wed Apr 20 19:47:18 2022   Core   Core(config-if)#exit
+Wed Apr 20 19:47:43 2022   Core   Core(config)#ip default-gateway 10.3.3.1
+Wed Apr 20 19:48:49 2022   Core   Core>en

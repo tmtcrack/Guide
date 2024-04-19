@@ -1,0 +1,20 @@
+--DROP TABLE IF EXISTS #SQLErrorLog; --assuming SQL Server 2016+...otherwise use the typical if object exists drop
+
+CREATE TABLE #SQLErrorLog
+(
+LogDate DATETIME
+,ProcessInfo NVARCHAR(12)
+,LogText NVARCHAR(3999)
+)
+
+INSERT INTO #SQLErrorLog
+(
+LogDate
+,ProcessInfo
+,LogText
+)
+EXEC sp_readerrorlog;
+
+SELECT * FROM #SQLErrorLog
+where processinfo <>'logon'
+order by logdate desc

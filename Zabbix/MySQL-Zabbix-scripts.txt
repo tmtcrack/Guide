@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# Prompt the user for the MySQL root password
+read -sp "Enter MySQL root password: " mysql_root_password
+echo
+
+# Log in to MySQL as root
+mysql -u root -p$mysql_root_password <<EOF
+
+# Create a new MySQL user for zabbix
+CREATE USER 'zabbix'@'localhost' IDENTIFIED BY 'ZABBIX@1983zxcv';
+
+# Create a new MySQL database for zabbix
+CREATE DATABASE zabbix CHARACTER SET utf8 COLLATE utf8_bin;
+
+# Grant privileges for the zabbix user on the zabbix database
+GRANT ALL PRIVILEGES ON zabbix.* TO 'zabbix'@'localhost';
+
+# Exit MySQL
+exit
+
+EOF
+
+###########################################################################################################
+#mysql -u"root" -p"SML@1983zxcv" -e "create database zabbix character set utf8mb4 collate utf8mb4_bin;"
+#mysql -u"root" -p"SML@1983zxcv" -e "create user zabbix@localhost identified by 'SML@123zxc';"
+#mysql -u"root" -p"SML@1983zxcv" -e "grant all privileges on zabbix.* to zabbix@localhost;"
+#mysql -u"root" -p"SML@1983zxcv" -e "set global log_bin_trust_function_creators = 1;"
+#mysql -u"root" -p"SML@1983zxcv" -e "flush privileges;"
+###########################################################################################################
+#mysql> create database zabbix character set utf8mb4 collate utf8mb4_bin;
+#mysql> create user zabbix@localhost identified by 'SML@123zxc';
+#mysql> grant all privileges on zabbix.* to zabbix@localhost;
+#mysql> set global log_bin_trust_function_creators = 1;
+#mysql> quit;

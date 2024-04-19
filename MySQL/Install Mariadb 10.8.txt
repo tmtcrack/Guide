@@ -1,0 +1,285 @@
+https://computingforgeeks.com/mariadb-install-on-centos-rhel-7/
+
+=======================================================================
+
+
+Install MariaDB 10.8 on CentOS 7 / RHEL 7
+The steps provided in this section should help you with the installation, configuration and usage of MariaDB 10.8 on CentOS 7 / RHEL 7 Linux. The installation will fail if you have any other MySQL based database management system on your OS. Ensure the system is clean before you proceed with this guide.
+
+Update and reboot your system.
+
+sudo yum -y update
+sudo reboot -f
+Wait for your system to be rebooted then start the installation using the next step.
+
+Step 1) Add MariaDB YUM repository
+We’ll use official MariaDB YUM repository for RHEL based systems which is added by running the following commands.
+
+curl -LsS -O https://downloads.mariadb.com/MariaDB/mariadb_repo_setup
+sudo bash mariadb_repo_setup --mariadb-server-version=10.8
+The script automates the process of setting up repository and importing MariaDB GPG keys.
+
+[info] Checking for script prerequisites.
+[info] Repository file successfully written to /etc/yum.repos.d/mariadb.repo
+[info] Adding trusted package signing keys...
+/etc/pki/rpm-gpg ~
+~
+[info] Successfully added trusted package signing keys
+[info] Cleaning package cache...
+Loaded plugins: fastestmirror
+Cleaning repos: base droplet-agent extras mariadb-main mariadb-maxscale mariadb-tools updates
+Cleaning up list of fastest mirrors
+List all available repositories on the system
+
+$ sudo yum clean all
+$ sudo yum repolist
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: packages.oit.ncsu.edu
+ * extras: mirror.facebook.net
+ * updates: mirrors.tripadvisor.com
+repo id                                                                                      repo name                                                                                          status
+base/7/x86_64                                                                                CentOS-7 - Base                                                                                    10072
+droplet-agent/x86_64                                                                         DigitalOcean Droplet Agent                                                                            11
+extras/7/x86_64                                                                              CentOS-7 - Extras                                                                                    512
+mariadb-main                                                                                 MariaDB Server                                                                                        84
+mariadb-maxscale                                                                             MariaDB MaxScale                                                                                       4
+mariadb-tools                                                                                MariaDB Tools                                                                                         16
+updates/7/x86_64                                                                             CentOS-7 - Updates                                                                                  4050
+repolist: 14749
+Step 2) Install MariaDB 10.8 on CentOS 7 / RHEL 7
+MariaDB 10.8 packages are available on the repo we just added. Let’s install server and client packages.
+
+sudo yum install MariaDB-server MariaDB-client MariaDB-backup
+Confirm the version of MariaDB server and client packages being installed and proceed if okay.
+
+Dependencies Resolved
+
+======================================================================================================================================================================================================
+ Package                                                Arch                                  Version                                               Repository                                   Size
+======================================================================================================================================================================================================
+Installing:
+ MariaDB-backup                                         x86_64                                10.8.3-1.el7.centos                                   mariadb-main                                7.0 M
+ MariaDB-client                                         x86_64                                10.8.3-1.el7.centos                                   mariadb-main                                 15 M
+ MariaDB-compat                                         x86_64                                10.8.3-1.el7.centos                                   mariadb-main                                2.2 M
+     replacing  mariadb-libs.x86_64 1:5.5.68-1.el7
+ MariaDB-server                                         x86_64                                10.8.3-1.el7.centos                                   mariadb-main                                 26 M
+Installing for dependencies:
+ MariaDB-common                                         x86_64                                10.8.3-1.el7.centos                                   mariadb-main                                 81 k
+ boost-program-options                                  x86_64                                1.53.0-28.el7                                         base                                        156 k
+ galera-4                                               x86_64                                26.4.11-1.el7.centos                                  mariadb-main                                9.9 M
+ libaio                                                 x86_64                                0.3.109-13.el7                                        base                                         24 k
+ libpmem                                                x86_64                                1.5.1-2.1.el7                                         base                                         59 k
+ lsof                                                   x86_64                                4.87-6.el7                                            base                                        331 k
+ pcre2                                                  x86_64                                10.23-2.el7                                           base                                        201 k
+ perl                                                   x86_64                                4:5.16.3-299.el7_9                                    updates                                     8.0 M
+ perl-Carp                                              noarch                                1.26-244.el7                                          base                                         19 k
+ perl-Compress-Raw-Bzip2                                x86_64                                2.061-3.el7                                           base                                         32 k
+ perl-Compress-Raw-Zlib                                 x86_64                                1:2.061-4.el7                                         base                                         57 k
+ perl-DBI                                               x86_64                                1.627-4.el7                                           base                                        802 k
+ perl-Data-Dumper                                       x86_64                                2.145-3.el7                                           base                                         47 k
+ perl-Encode                                            x86_64                                2.51-7.el7                                            base                                        1.5 M
+ perl-Exporter                                          noarch                                5.68-3.el7                                            base                                         28 k
+ perl-File-Path                                         noarch                                2.09-2.el7                                            base                                         26 k
+ perl-File-Temp                                         noarch                                0.23.01-3.el7                                         base                                         56 k
+ perl-Filter                                            x86_64                                1.49-3.el7                                            base                                         76 k
+ perl-Getopt-Long                                       noarch                                2.40-3.el7                                            base                                         56 k
+ perl-HTTP-Tiny                                         noarch                                0.033-3.el7                                           base                                         38 k
+ perl-IO-Compress                                       noarch                                2.061-2.el7                                           base                                        260 k
+ perl-Net-Daemon                                        noarch                                0.48-5.el7                                            base                                         51 k
+ perl-PathTools                                         x86_64                                3.40-5.el7                                            base                                         82 k
+ perl-PlRPC                                             noarch                                0.2020-14.el7                                         base                                         36 k
+ perl-Pod-Escapes                                       noarch                                1:1.04-299.el7_9                                      updates                                      52 k
+ perl-Pod-Perldoc                                       noarch                                3.20-4.el7                                            base                                         87 k
+ perl-Pod-Simple                                        noarch                                1:3.28-4.el7                                          base                                        216 k
+ perl-Pod-Usage                                         noarch                                1.63-3.el7                                            base                                         27 k
+ perl-Scalar-List-Utils                                 x86_64                                1.27-248.el7                                          base                                         36 k
+ perl-Socket                                            x86_64                                2.010-5.el7                                           base                                         49 k
+ perl-Storable                                          x86_64                                2.45-3.el7                                            base                                         77 k
+ perl-Text-ParseWords                                   noarch                                3.29-4.el7                                            base                                         14 k
+ perl-Time-HiRes                                        x86_64                                4:1.9725-3.el7                                        base                                         45 k
+ perl-Time-Local                                        noarch                                1.2300-2.el7                                          base                                         24 k
+ perl-constant                                          noarch                                1.27-2.el7                                            base                                         19 k
+ perl-libs                                              x86_64                                4:5.16.3-299.el7_9                                    updates                                     690 k
+ perl-macros                                            x86_64                                4:5.16.3-299.el7_9                                    updates                                      44 k
+ perl-parent                                            noarch                                1:0.225-244.el7                                       base                                         12 k
+ perl-podlators                                         noarch                                2.5.1-3.el7                                           base                                        112 k
+ perl-threads                                           x86_64                                1.87-4.el7                                            base                                         49 k
+ perl-threads-shared                                    x86_64                                1.43-6.el7                                            base                                         39 k
+ socat                                                  x86_64                                1.7.3.2-2.el7                                         base                                        290 k
+
+Transaction Summary
+======================================================================================================================================================================================================
+Install  4 Packages (+42 Dependent packages)
+
+Total download size: 73 M
+Is this ok [y/d/N]: y
+With the rpm command package details can be queried.
+
+$ rpm -qi MariaDB-server
+Name        : MariaDB-server
+Version     : 10.8.3
+Release     : 1.el7.centos
+Architecture: x86_64
+Install Date: Wed Jul 13 22:21:21 2022
+Group       : Applications/Databases
+Size        : 129149443
+License     : GPLv2
+Signature   : DSA/SHA1, Thu May 19 12:55:05 2022, Key ID cbcb082a1bb943db
+Source RPM  : MariaDB-server-10.8.3-1.el7.centos.src.rpm
+Build Date  : Wed May 18 13:26:15 2022
+Build Host  : centos74-amd64
+....
+Step 3) Configure MariaDB 10.8 on CentOS 7 / RHEL 7
+Start and enable mariadb database service
+
+
+$ sudo systemctl enable --now mariadb
+Created symlink /etc/systemd/system/multi-user.target.wants/mariadb.service → /usr/lib/systemd/system/mariadb.service.
+Check service status if it’s indeed running.
+
+$ systemctl status mariadb
+● mariadb.service - MariaDB 10.8.3 database server
+   Loaded: loaded (/usr/lib/systemd/system/mariadb.service; enabled; vendor preset: disabled)
+  Drop-In: /etc/systemd/system/mariadb.service.d
+           └─migrated-from-my.cnf-settings.conf
+   Active: active (running) since Wed 2022-07-13 22:23:07 UTC; 24s ago
+     Docs: man:mariadbd(8)
+           https://mariadb.com/kb/en/library/systemd/
+  Process: 8189 ExecStartPost=/bin/sh -c systemctl unset-environment _WSREP_START_POSITION (code=exited, status=0/SUCCESS)
+  Process: 8163 ExecStartPre=/bin/sh -c [ ! -e /usr/bin/galera_recovery ] && VAR= ||   VAR=`cd /usr/bin/..; /usr/bin/galera_recovery`; [ $? -eq 0 ]   && systemctl set-environment _WSREP_START_POSITION=$VAR || exit 1 (code=exited, status=0/SUCCESS)
+  Process: 8161 ExecStartPre=/bin/sh -c systemctl unset-environment _WSREP_START_POSITION (code=exited, status=0/SUCCESS)
+ Main PID: 8174 (mariadbd)
+   Status: "Taking your SQL requests now..."
+   CGroup: /system.slice/mariadb.service
+           └─8174 /usr/sbin/mariadbd
+
+Jul 13 22:23:07 centos7.example.io mariadbd[8174]: 2022-07-13 22:23:07 0 [Note] InnoDB: File './ibtmp1' size is now 12.000MiB.
+Jul 13 22:23:07 centos7.example.io mariadbd[8174]: 2022-07-13 22:23:07 0 [Note] InnoDB: log sequence number 45505; transaction id 14
+Jul 13 22:23:07 centos7.example.io mariadbd[8174]: 2022-07-13 22:23:07 0 [Note] Plugin 'FEEDBACK' is disabled.
+Jul 13 22:23:07 centos7.example.io mariadbd[8174]: 2022-07-13 22:23:07 0 [Note] InnoDB: Loading buffer pool(s) from /var/lib/mysql/ib_buffer_pool
+Jul 13 22:23:07 centos7.example.io mariadbd[8174]: 2022-07-13 22:23:07 0 [Note] Server socket created on IP: '0.0.0.0'.
+Jul 13 22:23:07 centos7.example.io mariadbd[8174]: 2022-07-13 22:23:07 0 [Note] Server socket created on IP: '::'.
+Jul 13 22:23:07 centos7.example.io mariadbd[8174]: 2022-07-13 22:23:07 0 [Note] InnoDB: Buffer pool(s) load completed at 220713 22:23:07
+Jul 13 22:23:07 centos7.example.io mariadbd[8174]: 2022-07-13 22:23:07 0 [Note] /usr/sbin/mariadbd: ready for connections.
+Jul 13 22:23:07 centos7.example.io mariadbd[8174]: Version: '10.8.3-MariaDB'  socket: '/var/lib/mysql/mysql.sock'  port: 3306  MariaDB Server
+Jul 13 22:23:07 centos7.example.io systemd[1]: Started MariaDB 10.8.3 database server.
+...
+Client version checking with mariadb command:
+
+$ mariadb -V
+mariadb  Ver 15.1 Distrib 10.8.3-MariaDB, for Linux (x86_64) using readline 5.1
+Use the mariadb-secure-installation script to secure your MariaDB database server
+
+$ sudo mariadb-secure-installation
+
+NOTE: RUNNING ALL PARTS OF THIS SCRIPT IS RECOMMENDED FOR ALL MariaDB
+      SERVERS IN PRODUCTION USE!  PLEASE READ EACH STEP CAREFULLY!
+
+In order to log into MariaDB to secure it, we'll need the current
+password for the root user. If you've just installed MariaDB, and
+haven't set the root password yet, you should just press enter here.
+
+Enter current password for root (enter for none): <ENTER>
+OK, successfully used password, moving on...
+
+Setting the root password or using the unix_socket ensures that nobody
+can log into the MariaDB root user without the proper authorisation.
+
+You already have your root account protected, so you can safely answer 'n'.
+
+Switch to unix_socket authentication [Y/n] y
+Enabled successfully!
+Reloading privilege tables..
+ ... Success!
+
+
+You already have your root account protected, so you can safely answer 'n'.
+
+Change the root password? [Y/n] y
+New password: <INPUT-PASSWORD>
+Re-enter new password: <CONFIRM-PASSWORD>
+Password updated successfully!
+Reloading privilege tables..
+ ... Success!
+
+
+By default, a MariaDB installation has an anonymous user, allowing anyone
+to log into MariaDB without having to have a user account created for
+them.  This is intended only for testing, and to make the installation
+go a bit smoother.  You should remove them before moving into a
+production environment.
+
+Remove anonymous users? [Y/n] y
+ ... Success!
+
+Normally, root should only be allowed to connect from 'localhost'.  This
+ensures that someone cannot guess at the root password from the network.
+
+Disallow root login remotely? [Y/n] y
+ ... Success!
+
+By default, MariaDB comes with a database named 'test' that anyone can
+access.  This is also intended only for testing, and should be removed
+before moving into a production environment.
+
+Remove test database and access to it? [Y/n] y
+ - Dropping test database...
+ ... Success!
+ - Removing privileges on test database...
+ ... Success!
+
+Reloading the privilege tables will ensure that all changes made so far
+will take effect immediately.
+
+Reload privilege tables now? [Y/n] y
+ ... Success!
+
+Cleaning up...
+
+All done!  If you've completed all of the above steps, your MariaDB
+installation should now be secure.
+
+Thanks for using MariaDB!
+Access to MariaDB shell should only be possible with a password
+
+$ mysql -u root
+ERROR 1698 (28000): Access denied for user 'root'@'localhost'
+
+$ mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 14
+Server version: 10.8.3-MariaDB MariaDB Server
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> SELECT VERSION ();
++----------------+
+| VERSION ()     |
++----------------+
+| 10.8.3-MariaDB |
++----------------+
+1 row in set (0.000 sec)
+Step 4) Create a test database/user in MariaDB
+We can create a test database with the command below:
+
+MariaDB [(none)]> CREATE DATABASE mydb;
+Query OK, 1 row affected (0.001 sec)
+Check if the database has been created by showing all available databases.
+
+MariaDB [(none)]> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
+| mydb               |
++--------------------+
+5 rows in set (0.000 sec)
+If this setup process progressed as anticipated you should have MariaDB 10.8 installed and running on CentOS 7 / RHEL 7 server or Desktop machine. If you encounter any issues let us know in the comments section.
+

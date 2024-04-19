@@ -1,0 +1,26 @@
+
+Node Exporter for Prometheus Dashboard based on 15172
+https://grafana.com/grafana/dashboards/15172-node-exporter-for-prometheus-dashboard-based-on-11074/
+
+Node Exporter Full 1860
+https://grafana.com/grafana/dashboards/1860-node-exporter-full/
+
+
+Node Exporter Dashboard EN 20201010-StarsL.cn 11074
+https://grafana.com/grafana/dashboards/11074-node-exporter-for-prometheus-dashboard-en-v20201010/
+
+Docker monitoring 193
+https://grafana.com/grafana/dashboards/193-docker-monitoring/
+
+Docker monitoring with node selection 8321
+https://grafana.com/grafana/dashboards/8321-docker-monitoring-with-node-selection/
+
+Docker monitoring with service selection 15798
+https://grafana.com/grafana/dashboards/15798-docker-monitoring-with-service-selection/
+
+NGINX exporter 12708
+https://grafana.com/grafana/dashboards/12708-nginx/
+
+SNMP Stats 11169
+https://grafana.com/grafana/dashboards/11169-snmp-stats/
+

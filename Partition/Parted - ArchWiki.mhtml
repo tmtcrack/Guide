@@ -1,0 +1,3765 @@
+From: <Saved by Blink>
+Snapshot-Content-Location: https://wiki.archlinux.org/title/Parted#Growing_partitions
+Subject: Parted - ArchWiki
+Date: Tue, 27 Jun 2023 07:07:55 -0000
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----MultipartBoundary--cIS6rmp6eYBmgp7hrQSJNleA49WcbZYhnk1E0uPSX2----"
+
+
+------MultipartBoundary--cIS6rmp6eYBmgp7hrQSJNleA49WcbZYhnk1E0uPSX2----
+Content-Type: text/html
+Content-ID: <frame-68F4ACF54697F0139BEF89144D80E433@mhtml.blink>
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://wiki.archlinux.org/title/Parted#Growing_partitions
+
+<!DOCTYPE html><html class=3D"client-js vector-animations-ready" lang=3D"en=
+" dir=3D"ltr"><head><meta http-equiv=3D"Content-Type" content=3D"text/html;=
+ charset=3DUTF-8"><link rel=3D"stylesheet" type=3D"text/css" href=3D"cid:cs=
+s-22849f59-d2a4-4d7e-8d50-d187947a643f@mhtml.blink" />
+
+<title>Parted - ArchWiki</title>
+
+
+<link rel=3D"stylesheet" href=3D"https://wiki.archlinux.org/load.php?lang=
+=3Den&amp;modules=3Dext.DarkMode.styles%7Cmediawiki.ui.button%2Cicon%7Cskin=
+s.vector.icons%2Cstyles%7Czzz.ext.archLinux.styles&amp;only=3Dstyles&amp;sk=
+in=3Dvector-2022">
+
+<meta name=3D"ResourceLoaderDynamicStyles" content=3D"">
+<link rel=3D"stylesheet" href=3D"https://wiki.archlinux.org/load.php?lang=
+=3Den&amp;modules=3Dsite.styles&amp;only=3Dstyles&amp;skin=3Dvector-2022">
+<meta name=3D"generator" content=3D"MediaWiki 1.39.3">
+<meta name=3D"referrer" content=3D"no-referrer-when-downgrade">
+<meta name=3D"format-detection" content=3D"telephone=3Dno">
+<meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=3D1.=
+0, user-scalable=3Dyes, minimum-scale=3D0.25, maximum-scale=3D5.0">
+<link rel=3D"icon" href=3D"https://wiki.archlinux.org/favicon.ico">
+<link rel=3D"search" type=3D"application/opensearchdescription+xml" href=3D=
+"https://wiki.archlinux.org/opensearch_desc.php" title=3D"ArchWiki (en)">
+<link rel=3D"EditURI" type=3D"application/rsd+xml" href=3D"https://wiki.arc=
+hlinux.org/api.php?action=3Drsd">
+<link rel=3D"license" href=3D"https://www.gnu.org/copyleft/fdl.html">
+<link rel=3D"alternate" type=3D"application/atom+xml" title=3D"ArchWiki Ato=
+m feed" href=3D"https://wiki.archlinux.org/index.php?title=3DSpecial:Recent=
+Changes&amp;feed=3Datom">
+</head>
+<body class=3D"skin-vector skin-vector-search-vue mediawiki ltr sitedir-ltr=
+ mw-hide-empty-elt ns-0 ns-subject page-Parted rootpage-Parted skin-vector-=
+2022 action-view skin--responsive vector-feature-language-in-header-enabled=
+ vector-feature-language-in-main-page-header-disabled vector-feature-langua=
+ge-alert-in-sidebar-disabled vector-feature-sticky-header-disabled vector-f=
+eature-sticky-header-edit-disabled vector-feature-table-of-contents-disable=
+d vector-feature-visual-enhancement-next-disabled uls-dialog-sticky-hide ve=
+ctor-toc-not-collapsed vector-below-page-title"><div id=3D"archnavbar" clas=
+s=3D"noprint mw-no-invert">
+    <div id=3D"archnavbarlogo">
+        <p><a id=3D"logo" href=3D"https://archlinux.org/"></a></p>
+    </div>
+    <div id=3D"archnavbarmenu">
+        <ul id=3D"archnavbarlist">
+                        <li id=3D"anb-home"><a href=3D"https://archlinux.or=
+g/">Home</a></li>            <li id=3D"anb-packages"><a href=3D"https://arc=
+hlinux.org/packages/">Packages</a></li>            <li id=3D"anb-forums"><a=
+ href=3D"https://bbs.archlinux.org/">Forums</a></li>            <li id=3D"a=
+nb-wiki" class=3D"anb-selected"><a href=3D"https://wiki.archlinux.org/">Wik=
+i</a></li>            <li id=3D"anb-bugs"><a href=3D"https://bugs.archlinux=
+.org/">Bugs</a></li>            <li id=3D"anb-security"><a href=3D"https://=
+security.archlinux.org/">Security</a></li>            <li id=3D"anb-aur"><a=
+ href=3D"https://aur.archlinux.org/">AUR</a></li>            <li id=3D"anb-=
+download"><a href=3D"https://archlinux.org/download/">Download</a></li>    =
+    </ul>
+    </div>
+</div>
+<div class=3D"mw-page-container">
+	<span id=3D"top-page"></span>
+	<a class=3D"mw-jump-link" href=3D"https://wiki.archlinux.org/title/Parted#=
+content">Jump to content</a>
+	<div class=3D"mw-page-container-inner">
+		<input type=3D"checkbox" id=3D"mw-sidebar-checkbox" class=3D"mw-checkbox-=
+hack-checkbox">
+		<header class=3D"mw-header">
+			<div class=3D"mw-header-aside">
+			<label id=3D"mw-sidebar-button" class=3D"mw-checkbox-hack-button mw-ui-i=
+con mw-ui-button mw-ui-quiet mw-ui-icon-element" for=3D"mw-sidebar-checkbox=
+" role=3D"button" aria-controls=3D"mw-panel" data-event-name=3D"ui.sidebar"=
+ tabindex=3D"0" title=3D"Main menu" aria-expanded=3D"false">
+				<span>Toggle sidebar</span>
+			</label>
+		=09
+<a href=3D"https://wiki.archlinux.org/title/Main_page" class=3D"mw-logo">
+	<span class=3D"mw-logo-container">
+		<strong class=3D"mw-logo-wordmark">ArchWiki</strong>
+	</span>
+</a>
+
+			</div>
+			<div class=3D"mw-header-content">
+		=09
+<div id=3D"p-search" role=3D"search" class=3D"vector-search-box-vue  vector=
+-search-box-collapses  vector-search-box-show-thumbnail vector-search-box-a=
+uto-expand-width vector-search-box">
+	<a href=3D"https://wiki.archlinux.org/title/Special:Search" title=3D"Searc=
+h ArchWiki [alt-shift-f]" accesskey=3D"f" class=3D"mw-ui-button mw-ui-quiet=
+ mw-ui-icon mw-ui-icon-element mw-ui-icon-wikimedia-search search-toggle">
+		<span>Search</span>
+	</a>
+=09
+	<div>
+		<form action=3D"https://wiki.archlinux.org/index.php" id=3D"searchform" c=
+lass=3D"vector-search-box-form">
+			<div id=3D"simpleSearch" class=3D"vector-search-box-inner" data-search-l=
+oc=3D"header-moved">
+				<input class=3D"vector-search-box-input" type=3D"search" name=3D"search=
+" placeholder=3D"Search ArchWiki" aria-label=3D"Search ArchWiki" autocapita=
+lize=3D"sentences" title=3D"Search ArchWiki [alt-shift-f]" accesskey=3D"f" =
+id=3D"searchInput" autocomplete=3D"off">
+			=09
+				<input id=3D"mw-searchButton" class=3D"searchButton mw-fallbackSearchBu=
+tton" type=3D"submit" name=3D"fulltext" title=3D"Search the pages for this =
+text" value=3D"Search">
+				<input id=3D"searchButton" class=3D"searchButton" type=3D"submit" name=
+=3D"go" title=3D"Go to a page with this exact name if it exists" value=3D"G=
+o">
+			</div>
+		</form>
+	</div>
+</div>
+
+			<nav class=3D"vector-user-links" aria-label=3D"Personal tools" role=3D"n=
+avigation">
+=09
+
+<div id=3D"p-vector-user-menu-overflow" class=3D"vector-menu mw-portlet mw-=
+portlet-vector-user-menu-overflow vector-user-menu-overflow">
+	<div class=3D"vector-menu-content">
+	=09
+		<ul class=3D"vector-menu-content-list"><li id=3D"pt-createaccount-2" clas=
+s=3D"user-links-collapsible-item mw-list-item"><a href=3D"https://wiki.arch=
+linux.org/index.php?title=3DSpecial:CreateAccount&amp;returnto=3DParted" ti=
+tle=3D"You are encouraged to create an account and log in; however, it is n=
+ot mandatory"><span>Create account</span></a></li></ul>
+	=09
+	</div>
+</div>
+
+=09
+
+<div id=3D"p-personal" class=3D"vector-menu mw-portlet mw-portlet-personal =
+vector-user-menu vector-user-menu-logged-out vector-menu-dropdown" title=3D=
+"More options">
+	<input type=3D"checkbox" id=3D"p-personal-checkbox" role=3D"button" aria-h=
+aspopup=3D"true" data-event-name=3D"ui.dropdown-p-personal" class=3D"vector=
+-menu-checkbox">
+	<label id=3D"p-personal-label" for=3D"p-personal-checkbox" class=3D"vector=
+-menu-heading mw-ui-button mw-ui-quiet mw-ui-icon mw-ui-icon-element mw-ui-=
+icon-ellipsis mw-ui-icon-wikimedia-ellipsis">
+		<span class=3D"vector-menu-heading-label">Personal tools</span>
+	</label>
+	<div class=3D"vector-menu-content">
+		<div class=3D"vector-user-menu-create-account"><a href=3D"https://wiki.ar=
+chlinux.org/index.php?title=3DSpecial:CreateAccount&amp;returnto=3DParted" =
+class=3D"vector-menu-content-item user-links-collapsible-item" title=3D"You=
+ are encouraged to create an account and log in; however, it is not mandato=
+ry"><span class=3D"mw-ui-icon mw-ui-icon-userAdd mw-ui-icon-wikimedia-userA=
+dd"></span> <span>Create account</span></a></div>
+<div class=3D"vector-user-menu-login"><a href=3D"https://wiki.archlinux.org=
+/index.php?title=3DSpecial:UserLogin&amp;returnto=3DParted" class=3D"vector=
+-menu-content-item vector-menu-content-item-login" title=3D"You are encoura=
+ged to log in; however, it is not mandatory [alt-shift-o]" accesskey=3D"o">=
+<span class=3D"mw-ui-icon mw-ui-icon-logIn mw-ui-icon-wikimedia-logIn"></sp=
+an> <span>Log in</span></a></div>
+<div class=3D"vector-user-menu-anon-editor">
+	<p>
+		Pages for logged out editors <a href=3D"https://wiki.archlinux.org/title/=
+ArchWiki:Contributing" aria-label=3D"Learn more about editing"><span>learn =
+more</span></a>
+	</p>
+</div>
+
+		<ul class=3D"vector-menu-content-list"><li id=3D"pt-darkmode" class=3D"ex=
+t-darkmode-link mw-list-item"><a href=3D"https://wiki.archlinux.org/title/P=
+arted#"><span>Dark mode</span></a></li></ul>
+	=09
+	</div>
+</div>
+
+</nav>
+
+			</div>
+		</header>
+		<div class=3D"vector-sidebar-container ">
+			<div id=3D"mw-navigation">
+			=09
+
+<nav id=3D"mw-panel" class=3D"mw-sidebar" aria-label=3D"Site" role=3D"navig=
+ation">
+=09
+
+<div id=3D"p-navigation" class=3D"vector-menu mw-portlet mw-portlet-navigat=
+ion vector-menu-portal portal">
+	<div id=3D"p-navigation-label" class=3D"vector-menu-heading ">
+		<span class=3D"vector-menu-heading-label">Navigation</span>
+	</div>
+	<div class=3D"vector-menu-content">
+	=09
+		<ul class=3D"vector-menu-content-list"><li id=3D"n-mainpage-description" =
+class=3D"mw-list-item"><a href=3D"https://wiki.archlinux.org/title/Main_pag=
+e" title=3D"Visit the main page [alt-shift-z]" accesskey=3D"z"><span>Main p=
+age</span></a></li><li id=3D"n-Table-of-contents" class=3D"mw-list-item"><a=
+ href=3D"https://wiki.archlinux.org/title/Table_of_contents"><span>Table of=
+ contents</span></a></li><li id=3D"n-portal" class=3D"mw-list-item"><a href=
+=3D"https://wiki.archlinux.org/title/Getting_involved" title=3D"Various way=
+s Archers can contribute to the community"><span>Getting involved</span></a=
+></li><li id=3D"n-currentevents" class=3D"mw-list-item"><a href=3D"https://=
+wiki.archlinux.org/title/ArchWiki:News" title=3D"The latest lowdown on the =
+wiki"><span>Wiki news</span></a></li><li id=3D"n-randompage" class=3D"mw-li=
+st-item"><a href=3D"https://wiki.archlinux.org/title/Special:Random" title=
+=3D"Load a random page [alt-shift-x]" accesskey=3D"x"><span>Random page</sp=
+an></a></li></ul>
+	=09
+	</div>
+</div>
+
+=09
+=09
+
+<div id=3D"p-Interaction" class=3D"vector-menu mw-portlet mw-portlet-Intera=
+ction vector-menu-portal portal">
+	<div id=3D"p-Interaction-label" class=3D"vector-menu-heading ">
+		<span class=3D"vector-menu-heading-label">Interaction</span>
+	</div>
+	<div class=3D"vector-menu-content">
+	=09
+		<ul class=3D"vector-menu-content-list"><li id=3D"n-help" class=3D"mw-list=
+-item"><a href=3D"https://wiki.archlinux.org/title/Category:Help" title=3D"=
+Wiki navigation, reading, and editing help"><span>Help</span></a></li><li i=
+d=3D"n-Contributing" class=3D"mw-list-item"><a href=3D"https://wiki.archlin=
+ux.org/title/ArchWiki:Contributing"><span>Contributing</span></a></li><li i=
+d=3D"n-recentchanges" class=3D"mw-list-item"><a href=3D"https://wiki.archli=
+nux.org/title/Special:RecentChanges" title=3D"A list of recent changes in t=
+he wiki [alt-shift-r]" accesskey=3D"r"><span>Recent changes</span></a></li>=
+<li id=3D"n-Recent-talks" class=3D"mw-list-item"><a href=3D"https://wiki.ar=
+chlinux.org/index.php?title=3DSpecial:RecentChanges&amp;namespace=3Dall-dis=
+cussions" rel=3D"nofollow"><span>Recent talks</span></a></li><li id=3D"n-ne=
+wpages" class=3D"mw-list-item"><a href=3D"https://wiki.archlinux.org/title/=
+Special:NewPages"><span>New pages</span></a></li><li id=3D"n-Statistics" cl=
+ass=3D"mw-list-item"><a href=3D"https://wiki.archlinux.org/title/ArchWiki:S=
+tatistics"><span>Statistics</span></a></li><li id=3D"n-Requests" class=3D"m=
+w-list-item"><a href=3D"https://wiki.archlinux.org/title/ArchWiki_talk:Requ=
+ests"><span>Requests</span></a></li></ul>
+	=09
+	</div>
+</div>
+
+
+<div id=3D"p-tb" class=3D"vector-menu mw-portlet mw-portlet-tb vector-menu-=
+portal portal">
+	<div id=3D"p-tb-label" class=3D"vector-menu-heading ">
+		<span class=3D"vector-menu-heading-label">Tools</span>
+	</div>
+	<div class=3D"vector-menu-content">
+	=09
+		<ul class=3D"vector-menu-content-list"><li id=3D"t-whatlinkshere" class=
+=3D"mw-list-item"><a href=3D"https://wiki.archlinux.org/title/Special:WhatL=
+inksHere/Parted" title=3D"A list of all wiki pages that link here [alt-shif=
+t-j]" accesskey=3D"j"><span>What links here</span></a></li><li id=3D"t-rece=
+ntchangeslinked" class=3D"mw-list-item"><a href=3D"https://wiki.archlinux.o=
+rg/title/Special:RecentChangesLinked/Parted" rel=3D"nofollow" title=3D"Rece=
+nt changes in pages linked from this page [alt-shift-k]" accesskey=3D"k"><s=
+pan>Related changes</span></a></li><li id=3D"t-specialpages" class=3D"mw-li=
+st-item"><a href=3D"https://wiki.archlinux.org/title/Special:SpecialPages" =
+title=3D"A list of all special pages [alt-shift-q]" accesskey=3D"q"><span>S=
+pecial pages</span></a></li><li id=3D"t-print" class=3D"mw-list-item"><a re=
+l=3D"alternate" title=3D"Printable version of this page [alt-shift-p]" acce=
+sskey=3D"p"><span>Printable version</span></a></li><li id=3D"t-permalink" c=
+lass=3D"mw-list-item"><a href=3D"https://wiki.archlinux.org/index.php?title=
+=3DParted&amp;oldid=3D741594" title=3D"Permanent link to this revision of t=
+his page"><span>Permanent link</span></a></li><li id=3D"t-info" class=3D"mw=
+-list-item"><a href=3D"https://wiki.archlinux.org/index.php?title=3DParted&=
+amp;action=3Dinfo" title=3D"More information about this page"><span>Page in=
+formation</span></a></li></ul>
+	=09
+	</div>
+</div>
+
+=09
+</nav>
+
+			</div>
+		</div>
+		<div class=3D"vector-sitenotice-container">
+			<div id=3D"siteNotice"></div>
+		</div>
+		<input type=3D"checkbox" id=3D"vector-toc-collapsed-checkbox" class=3D"mw=
+-checkbox-hack-checkbox">
+		<div class=3D"mw-table-of-contents-container">
+			<div class=3D"vector-sticky-toc-container mw-sticky-header-element">
+				<nav id=3D"mw-panel-toc" class=3D"sidebar-toc" role=3D"navigation" aria=
+-labelledby=3D"sidebar-toc-label" data-event-name=3D"ui.sidebar-toc">
+	<div id=3D"sidebar-toc-label" class=3D"sidebar-toc-header">
+		<p class=3D"sidebar-toc-title">
+		Contents
+		<button class=3D"vector-toc-uncollapse-button">move to sidebar</button>
+		<button class=3D"vector-toc-collapse-button">hide</button>
+		</p>
+	</div>
+	<ul class=3D"sidebar-toc-contents" id=3D"mw-panel-toc-list">
+		<li id=3D"toc-mw-content-text" class=3D"sidebar-toc-list-item sidebar-toc=
+-level-1">
+			<a href=3D"https://wiki.archlinux.org/title/Parted#top-page" class=3D"si=
+debar-toc-link">
+				<div class=3D"sidebar-toc-text">Beginning</div>
+			</a>
+		</li>
+		<li id=3D"toc-Installation" class=3D"sidebar-toc-list-item sidebar-toc-le=
+vel-1">
+			<a class=3D"sidebar-toc-link" href=3D"https://wiki.archlinux.org/title/P=
+arted#Installation">
+				<div class=3D"sidebar-toc-text">
+				<span class=3D"sidebar-toc-numb">1</span>Installation</div>
+			</a>
+		=09
+			<ul id=3D"toc-Installation-sublist" class=3D"sidebar-toc-list">
+			</ul>
+		</li>
+		<li id=3D"toc-Usage" class=3D"sidebar-toc-list-item sidebar-toc-level-1">
+			<a class=3D"sidebar-toc-link" href=3D"https://wiki.archlinux.org/title/P=
+arted#Usage">
+				<div class=3D"sidebar-toc-text">
+				<span class=3D"sidebar-toc-numb">2</span>Usage</div>
+			</a>
+		=09
+				<button aria-controls=3D"toc-Usage-sublist" class=3D"mw-ui-icon mw-ui-i=
+con-wikimedia-expand mw-ui-icon-small sidebar-toc-toggle" aria-expanded=3D"=
+false">
+					Toggle Usage subsection
+				</button>
+		=09
+			<ul id=3D"toc-Usage-sublist" class=3D"sidebar-toc-list">
+				<li id=3D"toc-Command_line_mode" class=3D"sidebar-toc-list-item sidebar=
+-toc-level-2">
+			<a class=3D"sidebar-toc-link" href=3D"https://wiki.archlinux.org/title/P=
+arted#Command_line_mode">
+				<div class=3D"sidebar-toc-text">
+				<span class=3D"sidebar-toc-numb">2.1</span>Command line mode</div>
+			</a>
+		=09
+			<ul id=3D"toc-Command_line_mode-sublist" class=3D"sidebar-toc-list">
+			</ul>
+		</li>
+		<li id=3D"toc-Interactive_mode" class=3D"sidebar-toc-list-item sidebar-to=
+c-level-2">
+			<a class=3D"sidebar-toc-link" href=3D"https://wiki.archlinux.org/title/P=
+arted#Interactive_mode">
+				<div class=3D"sidebar-toc-text">
+				<span class=3D"sidebar-toc-numb">2.2</span>Interactive mode</div>
+			</a>
+		=09
+			<ul id=3D"toc-Interactive_mode-sublist" class=3D"sidebar-toc-list">
+			</ul>
+		</li>
+	</ul>
+		</li>
+		<li id=3D"toc-Rounding" class=3D"sidebar-toc-list-item sidebar-toc-level-=
+1">
+			<a class=3D"sidebar-toc-link" href=3D"https://wiki.archlinux.org/title/P=
+arted#Rounding">
+				<div class=3D"sidebar-toc-text">
+				<span class=3D"sidebar-toc-numb">3</span>Rounding</div>
+			</a>
+		=09
+			<ul id=3D"toc-Rounding-sublist" class=3D"sidebar-toc-list">
+			</ul>
+		</li>
+		<li id=3D"toc-Partitioning" class=3D"sidebar-toc-list-item sidebar-toc-le=
+vel-1 sidebar-toc-list-item-active">
+			<a class=3D"sidebar-toc-link" href=3D"https://wiki.archlinux.org/title/P=
+arted#Partitioning">
+				<div class=3D"sidebar-toc-text">
+				<span class=3D"sidebar-toc-numb">4</span>Partitioning</div>
+			</a>
+		=09
+				<button aria-controls=3D"toc-Partitioning-sublist" class=3D"mw-ui-icon =
+mw-ui-icon-wikimedia-expand mw-ui-icon-small sidebar-toc-toggle" aria-expan=
+ded=3D"false">
+					Toggle Partitioning subsection
+				</button>
+		=09
+			<ul id=3D"toc-Partitioning-sublist" class=3D"sidebar-toc-list">
+				<li id=3D"toc-Create_new_partition_table" class=3D"sidebar-toc-list-ite=
+m sidebar-toc-level-2">
+			<a class=3D"sidebar-toc-link" href=3D"https://wiki.archlinux.org/title/P=
+arted#Create_new_partition_table">
+				<div class=3D"sidebar-toc-text">
+				<span class=3D"sidebar-toc-numb">4.1</span>Create new partition table</=
+div>
+			</a>
+		=09
+			<ul id=3D"toc-Create_new_partition_table-sublist" class=3D"sidebar-toc-l=
+ist">
+			</ul>
+		</li>
+		<li id=3D"toc-Partition_schemes" class=3D"sidebar-toc-list-item sidebar-t=
+oc-level-2">
+			<a class=3D"sidebar-toc-link" href=3D"https://wiki.archlinux.org/title/P=
+arted#Partition_schemes">
+				<div class=3D"sidebar-toc-text">
+				<span class=3D"sidebar-toc-numb">4.2</span>Partition schemes</div>
+			</a>
+		=09
+			<ul id=3D"toc-Partition_schemes-sublist" class=3D"sidebar-toc-list">
+				<li id=3D"toc-UEFI/GPT_examples" class=3D"sidebar-toc-list-item sidebar=
+-toc-level-3">
+			<a class=3D"sidebar-toc-link" href=3D"https://wiki.archlinux.org/title/P=
+arted#UEFI/GPT_examples">
+				<div class=3D"sidebar-toc-text">
+				<span class=3D"sidebar-toc-numb">4.2.1</span>UEFI/GPT examples</div>
+			</a>
+		=09
+			<ul id=3D"toc-UEFI/GPT_examples-sublist" class=3D"sidebar-toc-list">
+			</ul>
+		</li>
+		<li id=3D"toc-BIOS/MBR_examples" class=3D"sidebar-toc-list-item sidebar-t=
+oc-level-3 sidebar-toc-list-item-active">
+			<a class=3D"sidebar-toc-link" href=3D"https://wiki.archlinux.org/title/P=
+arted#BIOS/MBR_examples">
+				<div class=3D"sidebar-toc-text">
+				<span class=3D"sidebar-toc-numb">4.2.2</span>BIOS/MBR examples</div>
+			</a>
+		=09
+			<ul id=3D"toc-BIOS/MBR_examples-sublist" class=3D"sidebar-toc-list">
+			</ul>
+		</li>
+	</ul>
+		</li>
+		<li id=3D"toc-Resizing_partitions" class=3D"sidebar-toc-list-item sidebar=
+-toc-level-2">
+			<a class=3D"sidebar-toc-link" href=3D"https://wiki.archlinux.org/title/P=
+arted#Resizing_partitions">
+				<div class=3D"sidebar-toc-text">
+				<span class=3D"sidebar-toc-numb">4.3</span>Resizing partitions</div>
+			</a>
+		=09
+			<ul id=3D"toc-Resizing_partitions-sublist" class=3D"sidebar-toc-list">
+				<li id=3D"toc-Growing_partitions" class=3D"sidebar-toc-list-item sideba=
+r-toc-level-3">
+			<a class=3D"sidebar-toc-link" href=3D"https://wiki.archlinux.org/title/P=
+arted#Growing_partitions">
+				<div class=3D"sidebar-toc-text">
+				<span class=3D"sidebar-toc-numb">4.3.1</span>Growing partitions</div>
+			</a>
+		=09
+			<ul id=3D"toc-Growing_partitions-sublist" class=3D"sidebar-toc-list">
+			</ul>
+		</li>
+		<li id=3D"toc-Shrinking_partitions" class=3D"sidebar-toc-list-item sideba=
+r-toc-level-3">
+			<a class=3D"sidebar-toc-link" href=3D"https://wiki.archlinux.org/title/P=
+arted#Shrinking_partitions">
+				<div class=3D"sidebar-toc-text">
+				<span class=3D"sidebar-toc-numb">4.3.2</span>Shrinking partitions</div>
+			</a>
+		=09
+			<ul id=3D"toc-Shrinking_partitions-sublist" class=3D"sidebar-toc-list">
+			</ul>
+		</li>
+	</ul>
+		</li>
+	</ul>
+		</li>
+		<li id=3D"toc-Warnings" class=3D"sidebar-toc-list-item sidebar-toc-level-=
+1">
+			<a class=3D"sidebar-toc-link" href=3D"https://wiki.archlinux.org/title/P=
+arted#Warnings">
+				<div class=3D"sidebar-toc-text">
+				<span class=3D"sidebar-toc-numb">5</span>Warnings</div>
+			</a>
+		=09
+				<button aria-controls=3D"toc-Warnings-sublist" class=3D"mw-ui-icon mw-u=
+i-icon-wikimedia-expand mw-ui-icon-small sidebar-toc-toggle" aria-expanded=
+=3D"false">
+					Toggle Warnings subsection
+				</button>
+		=09
+			<ul id=3D"toc-Warnings-sublist" class=3D"sidebar-toc-list">
+				<li id=3D"toc-Alignment" class=3D"sidebar-toc-list-item sidebar-toc-lev=
+el-2">
+			<a class=3D"sidebar-toc-link" href=3D"https://wiki.archlinux.org/title/P=
+arted#Alignment">
+				<div class=3D"sidebar-toc-text">
+				<span class=3D"sidebar-toc-numb">5.1</span>Alignment</div>
+			</a>
+		=09
+			<ul id=3D"toc-Alignment-sublist" class=3D"sidebar-toc-list">
+			</ul>
+		</li>
+	</ul>
+		</li>
+		<li id=3D"toc-Tips_and_tricks" class=3D"sidebar-toc-list-item sidebar-toc=
+-level-1">
+			<a class=3D"sidebar-toc-link" href=3D"https://wiki.archlinux.org/title/P=
+arted#Tips_and_tricks">
+				<div class=3D"sidebar-toc-text">
+				<span class=3D"sidebar-toc-numb">6</span>Tips and tricks</div>
+			</a>
+		=09
+				<button aria-controls=3D"toc-Tips_and_tricks-sublist" class=3D"mw-ui-ic=
+on mw-ui-icon-wikimedia-expand mw-ui-icon-small sidebar-toc-toggle" aria-ex=
+panded=3D"false">
+					Toggle Tips and tricks subsection
+				</button>
+		=09
+			<ul id=3D"toc-Tips_and_tricks-sublist" class=3D"sidebar-toc-list">
+				<li id=3D"toc-Check_alignment" class=3D"sidebar-toc-list-item sidebar-t=
+oc-level-2">
+			<a class=3D"sidebar-toc-link" href=3D"https://wiki.archlinux.org/title/P=
+arted#Check_alignment">
+				<div class=3D"sidebar-toc-text">
+				<span class=3D"sidebar-toc-numb">6.1</span>Check alignment</div>
+			</a>
+		=09
+			<ul id=3D"toc-Check_alignment-sublist" class=3D"sidebar-toc-list">
+			</ul>
+		</li>
+	</ul>
+		</li>
+		<li id=3D"toc-Troubleshooting" class=3D"sidebar-toc-list-item sidebar-toc=
+-level-1">
+			<a class=3D"sidebar-toc-link" href=3D"https://wiki.archlinux.org/title/P=
+arted#Troubleshooting">
+				<div class=3D"sidebar-toc-text">
+				<span class=3D"sidebar-toc-numb">7</span>Troubleshooting</div>
+			</a>
+		=09
+				<button aria-controls=3D"toc-Troubleshooting-sublist" class=3D"mw-ui-ic=
+on mw-ui-icon-wikimedia-expand mw-ui-icon-small sidebar-toc-toggle" aria-ex=
+panded=3D"false">
+					Toggle Troubleshooting subsection
+				</button>
+		=09
+			<ul id=3D"toc-Troubleshooting-sublist" class=3D"sidebar-toc-list">
+				<li id=3D"toc-gparted_on_Wayland_fails_with_&quot;cannot_open_display:_=
+:0&quot;" class=3D"sidebar-toc-list-item sidebar-toc-level-2">
+			<a class=3D"sidebar-toc-link" href=3D"https://wiki.archlinux.org/title/P=
+arted#gparted_on_Wayland_fails_with_%22cannot_open_display:_:0%22">
+				<div class=3D"sidebar-toc-text">
+				<span class=3D"sidebar-toc-numb">7.1</span>gparted on Wayland fails wit=
+h "cannot open display: :0"</div>
+			</a>
+		=09
+			<ul id=3D"toc-gparted_on_Wayland_fails_with_&quot;cannot_open_display:_:=
+0&quot;-sublist" class=3D"sidebar-toc-list">
+			</ul>
+		</li>
+	</ul>
+		</li>
+		<li id=3D"toc-See_also" class=3D"sidebar-toc-list-item sidebar-toc-level-=
+1">
+			<a class=3D"sidebar-toc-link" href=3D"https://wiki.archlinux.org/title/P=
+arted#See_also">
+				<div class=3D"sidebar-toc-text">
+				<span class=3D"sidebar-toc-numb">8</span>See also</div>
+			</a>
+		=09
+			<ul id=3D"toc-See_also-sublist" class=3D"sidebar-toc-list">
+			</ul>
+		</li>
+	</ul>
+</nav>
+
+			</div>
+		</div>
+		<div class=3D"mw-content-container">
+			<main id=3D"content" class=3D"mw-body" role=3D"main">
+				<a id=3D"top"></a>
+				<header class=3D"mw-body-header">
+				           =20
+           =20
+            <div id=3D"p-lang-btn" class=3D"vector-menu mw-portlet-empty ve=
+ctor-menu-dropdown">
+            	<input type=3D"checkbox" id=3D"p-lang-btn-checkbox" role=3D"bu=
+tton" aria-haspopup=3D"true" data-event-name=3D"ui.dropdown-p-lang-btn" cla=
+ss=3D"vector-menu-checkbox  mw-interlanguage-selector " aria-label=3D"Go to=
+ an article in another language. Available in 5 languages">
+            	<label id=3D"p-lang-btn-label" for=3D"p-lang-btn-checkbox" cla=
+ss=3D"vector-menu-heading mw-ui-progressive mw-portlet-lang-heading-5 mw-ui=
+-button mw-ui-quiet">
+            		<span class=3D"mw-ui-icon mw-ui-icon-language-progressive mw-=
+ui-icon-wikimedia-language-progressive"></span><span class=3D"vector-menu-h=
+eading-label">5 languages</span>
+            	</label>
+            	<div class=3D"vector-menu-content">
+            	=09
+            		<ul class=3D"vector-menu-content-list"><li class=3D"interlang=
+uage-link interwiki-de mw-list-item"><a href=3D"https://wiki.archlinux.de/t=
+itle/GParted" title=3D"GParted =E2=80=93 Deutsch" lang=3D"de" hreflang=3D"d=
+e" class=3D"interlanguage-link-target"><span>Deutsch</span></a></li><li cla=
+ss=3D"interlanguage-link interwiki-es mw-list-item"><a href=3D"https://wiki=
+.archlinux.org/title/Parted_(Espa%C3%B1ol)" title=3D"Parted =E2=80=93 espa=
+=C3=B1ol" lang=3D"es" hreflang=3D"es" class=3D"interlanguage-link-target"><=
+span>Espa=C3=B1ol</span></a></li><li class=3D"interlanguage-link interwiki-=
+ja mw-list-item"><a href=3D"https://wiki.archlinux.jp/index.php/Parted" tit=
+le=3D"Parted =E2=80=93 =E6=97=A5=E6=9C=AC=E8=AA=9E" lang=3D"ja" hreflang=3D=
+"ja" class=3D"interlanguage-link-target"><span>=E6=97=A5=E6=9C=AC=E8=AA=9E<=
+/span></a></li><li class=3D"interlanguage-link interwiki-ru mw-list-item"><=
+a href=3D"https://wiki.archlinux.org/title/Parted_(%D0%A0%D1%83%D1%81%D1%81=
+%D0%BA%D0%B8%D0%B9)" title=3D"Parted =E2=80=93 =D1=80=D1=83=D1=81=D1=81=D0=
+=BA=D0=B8=D0=B9" lang=3D"ru" hreflang=3D"ru" class=3D"interlanguage-link-ta=
+rget"><span>=D0=A0=D1=83=D1=81=D1=81=D0=BA=D0=B8=D0=B9</span></a></li><li c=
+lass=3D"interlanguage-link interwiki-zh-hans mw-list-item"><a href=3D"https=
+://wiki.archlinuxcn.org/wiki/Parted" title=3D"Parted =E2=80=93 =E4=B8=AD=E6=
+=96=87=EF=BC=88=E7=AE=80=E4=BD=93=EF=BC=89" lang=3D"zh-Hans" hreflang=3D"zh=
+-Hans" class=3D"interlanguage-link-target"><span>=E4=B8=AD=E6=96=87=EF=BC=
+=88=E7=AE=80=E4=BD=93=EF=BC=89</span></a></li></ul>
+            	=09
+            	</div>
+            </div>
+
+			=09
+					<label id=3D"vector-toc-collapsed-button" class=3D"mw-ui-button mw-ui-=
+quiet mw-ui-icon mw-ui-icon-element mw-ui-icon-wikimedia-listBullet mw-chec=
+kbox-hack-button" for=3D"vector-toc-collapsed-checkbox" role=3D"button" ari=
+a-controls=3D"toc-toggle-list" data-event-name=3D"vector.toc-toggle-list" t=
+abindex=3D"0" title=3D"Table of Contents" aria-expanded=3D"false">
+						Toggle the table of contents
+					</label>
+				    <h1 id=3D"firstHeading" class=3D"firstHeading mw-first-heading"><sp=
+an class=3D"mw-page-title-main">Parted</span></h1>
+				</header>
+				<nav class=3D"vector-article-toolbar" aria-label=3D"Tools" role=3D"navi=
+gation">
+					<div class=3D"mw-article-toolbar-container">
+						<div id=3D"left-navigation">
+						=09
+
+<div id=3D"p-associated-pages" class=3D"vector-menu mw-portlet mw-portlet-a=
+ssociated-pages vector-menu-tabs">
+	<div class=3D"vector-menu-content">
+	=09
+		<ul class=3D"vector-menu-content-list"><li id=3D"ca-nstab-main" class=3D"=
+selected mw-list-item"><a href=3D"https://wiki.archlinux.org/title/Parted" =
+title=3D"View the content page [alt-shift-c]" accesskey=3D"c"><span>Page</s=
+pan></a></li><li id=3D"ca-talk" class=3D"mw-list-item"><a href=3D"https://w=
+iki.archlinux.org/title/Talk:Parted" rel=3D"discussion" title=3D"Discussion=
+ about the content page [alt-shift-t]" accesskey=3D"t"><span>Discussion</sp=
+an></a></li></ul>
+	=09
+	</div>
+</div>
+
+						=09
+
+<div id=3D"p-variants" class=3D"vector-menu mw-portlet mw-portlet-variants =
+emptyPortlet vector-menu-dropdown">
+	<input type=3D"checkbox" id=3D"p-variants-checkbox" role=3D"button" aria-h=
+aspopup=3D"true" data-event-name=3D"ui.dropdown-p-variants" class=3D"vector=
+-menu-checkbox" aria-label=3D"Change language variant">
+	<label id=3D"p-variants-label" for=3D"p-variants-checkbox" class=3D"vector=
+-menu-heading ">
+		<span class=3D"vector-menu-heading-label">English</span>
+	</label>
+	<div class=3D"vector-menu-content">
+	=09
+		<ul class=3D"vector-menu-content-list"></ul>
+	=09
+	</div>
+</div>
+
+						</div>
+						<div id=3D"right-navigation" class=3D"vector-collapsible ">
+						=09
+
+<div id=3D"p-views" class=3D"vector-menu mw-portlet mw-portlet-views vector=
+-menu-tabs">
+	<div class=3D"vector-menu-content">
+	=09
+		<ul class=3D"vector-menu-content-list"><li id=3D"ca-view" class=3D"select=
+ed mw-list-item"><a href=3D"https://wiki.archlinux.org/title/Parted"><span>=
+Read</span></a></li><li id=3D"ca-viewsource" class=3D"mw-list-item"><a href=
+=3D"https://wiki.archlinux.org/index.php?title=3DParted&amp;action=3Dedit" =
+title=3D"This page is protected.
+You can view its source [alt-shift-e]" accesskey=3D"e"><span>View source</s=
+pan></a></li><li id=3D"ca-history" class=3D"mw-list-item"><a href=3D"https:=
+//wiki.archlinux.org/index.php?title=3DParted&amp;action=3Dhistory" title=
+=3D"Past revisions of this page [alt-shift-h]" accesskey=3D"h"><span>View h=
+istory</span></a></li></ul>
+	=09
+	</div>
+</div>
+
+						=09
+
+<div id=3D"p-cactions" class=3D"vector-menu mw-portlet mw-portlet-cactions =
+emptyPortlet vector-menu-dropdown vector-has-collapsible-items" title=3D"Mo=
+re options">
+	<input type=3D"checkbox" id=3D"p-cactions-checkbox" role=3D"button" aria-h=
+aspopup=3D"true" data-event-name=3D"ui.dropdown-p-cactions" class=3D"vector=
+-menu-checkbox">
+	<label id=3D"p-cactions-label" for=3D"p-cactions-checkbox" class=3D"vector=
+-menu-heading ">
+		<span class=3D"vector-menu-heading-label">More</span>
+	</label>
+	<div class=3D"vector-menu-content">
+	=09
+		<ul class=3D"vector-menu-content-list"><li id=3D"ca-more-view" class=3D"s=
+elected vector-more-collapsible-item mw-list-item"><a href=3D"https://wiki.=
+archlinux.org/title/Parted"><span>Read</span></a></li><li id=3D"ca-more-vie=
+wsource" class=3D"vector-more-collapsible-item mw-list-item"><a href=3D"htt=
+ps://wiki.archlinux.org/index.php?title=3DParted&amp;action=3Dedit"><span>V=
+iew source</span></a></li><li id=3D"ca-more-history" class=3D"vector-more-c=
+ollapsible-item mw-list-item"><a href=3D"https://wiki.archlinux.org/index.p=
+hp?title=3DParted&amp;action=3Dhistory"><span>View history</span></a></li><=
+/ul>
+	=09
+	</div>
+</div>
+
+						</div>
+					</div>
+				</nav>
+				<div id=3D"bodyContent" class=3D"vector-body" data-mw-ve-target-contain=
+er=3D"">
+					<div class=3D"mw-body-subheader">
+					        <div class=3D"mw-indicators">
+        </div>
+
+					    <div id=3D"siteSub" class=3D"noprint">From ArchWiki</div>
+					</div>
+				=09
+				=09
+				=09
+					<div id=3D"mw-content-text" class=3D"mw-body-content mw-content-ltr" l=
+ang=3D"en" dir=3D"ltr"><div class=3D"mw-parser-output"><div class=3D"archwi=
+ki-template-meta-related-articles-start"><p class=3D"mw-no-invert">Related =
+articles</p><ul>
+<li><a href=3D"https://wiki.archlinux.org/title/Fdisk" title=3D"Fdisk">fdis=
+k</a></li>
+<li><a href=3D"https://wiki.archlinux.org/title/Gdisk" class=3D"mw-redirect=
+" title=3D"Gdisk">gdisk</a></li>
+<li><a href=3D"https://wiki.archlinux.org/title/Partitioning" title=3D"Part=
+itioning">Partitioning</a></li>
+</ul></div>
+<p><a rel=3D"nofollow" class=3D"external text" href=3D"https://www.gnu.org/=
+software/parted/parted.html">GNU Parted</a> is a program for creating and m=
+anipulating partition tables. GParted is a GUI frontend.
+</p>
+<mw:tocplace></mw:tocplace>
+<h2><span class=3D"mw-headline" id=3D"Installation">Installation</span></h2=
+>
+<p><a href=3D"https://wiki.archlinux.org/title/Install" class=3D"mw-redirec=
+t" title=3D"Install">Install</a> the <span class=3D"plainlinks archwiki-tem=
+plate-pkg"><a rel=3D"nofollow" class=3D"external text" href=3D"https://arch=
+linux.org/packages/?name=3Dparted">parted</a></span> package. For a graphic=
+al interface, <a href=3D"https://wiki.archlinux.org/title/Install" class=3D=
+"mw-redirect" title=3D"Install">install</a> the <span class=3D"plainlinks a=
+rchwiki-template-pkg"><a rel=3D"nofollow" class=3D"external text" href=3D"h=
+ttps://archlinux.org/packages/?name=3Dgparted">gparted</a></span> package, =
+the graphical frontend to <i>parted</i>.
+</p>
+<h2><span class=3D"mw-headline" id=3D"Usage">Usage</span></h2>
+<p>Parted has two modes: command line and interactive. Parted should always=
+ be started with:
+</p>
+<pre># parted <i>device</i>
+</pre>
+<p>where <code><i>device</i></code> is the hard disk device to edit (for ex=
+ample <code>/dev/sda</code>). If you omit the <code><i>device</i></code> ar=
+gument, <i>parted</i> will attempt to guess which device you want.
+</p>
+<h3><span class=3D"mw-headline" id=3D"Command_line_mode">Command line mode<=
+/span></h3>
+<p>In command line mode, this is followed by one or more commands. For exam=
+ple:
+</p>
+<pre># parted /dev/sda mklabel gpt mkpart P1 ext3 1MiB 8MiB=20
+</pre>
+<div class=3D"archwiki-template-box archwiki-template-box-note"><strong>Not=
+e:</strong> Options (like <code>--help</code>) can only be specified on the=
+ command line.</div>
+<h3><span class=3D"mw-headline" id=3D"Interactive_mode">Interactive mode</s=
+pan></h3>
+<p>Interactive mode simplifies the partitioning process and reduces unneces=
+sary repetition by automatically applying all partitioning commands to the =
+specified device.=20
+</p><p>In order to start operating on a device, execute:
+</p>
+<pre># parted /dev/sd<i>x</i>
+</pre>
+<p>You will notice that the command-line prompt changes from a hash (<code>=
+#</code>) to <code>(parted)</code>: this also means that the new prompt is =
+not a command to be manually entered when running the commands in the examp=
+les.
+</p><p>To see a list of the available commands, enter:
+</p>
+<pre>(parted) help
+</pre>
+<p>When finished, or if wishing to implement a partition table or scheme fo=
+r another device, exit from parted with:
+</p>
+<pre>(parted) quit
+</pre>
+<p>After exiting, the command-line prompt will change back to <code>#</code=
+>.
+</p><p>If you do not give a parameter to a command, Parted will prompt you =
+for it. For example:
+</p>
+<pre>(parted) mklabel
+New disk label type? gpt
+</pre>
+<h2><span class=3D"mw-headline" id=3D"Rounding">Rounding</span></h2>
+<p>Since many partitioning systems have complicated constraints, Parted wil=
+l usually do something slightly different to what you asked. (For example, =
+create a partition starting at 10.352Mb, not 10.4Mb) If the calculated valu=
+es differ too much, Parted will ask you for confirmation.  If you know exac=
+tly what you want, or to see exactly what Parted is doing, it helps to spec=
+ify partition endpoints in sectors (with the "s" suffix) and give the "unit=
+ s" command so that the partition endpoints are displayed in sectors.
+</p><p>As of parted-2.4, when you specify start and/or end values using IEC=
+ binary units like =E2=80=9CMiB=E2=80=9D, =E2=80=9CGiB=E2=80=9D, =E2=80=9CT=
+iB=E2=80=9D, etc., parted treats those values as exact, and equivalent to t=
+he same number specified in bytes (i.e., with the =E2=80=9CB=E2=80=9D suffi=
+x), in that it provides no =E2=80=9Chelpful=E2=80=9D range of sloppiness. C=
+ontrast that with a partition start request of =E2=80=9C4GB=E2=80=9D, which=
+ may actually resolve to some sector up to 500MB before or after that point=
+. Thus, when creating a partition, you should prefer to specify units of by=
+tes (=E2=80=9CB=E2=80=9D), sectors (=E2=80=9Cs=E2=80=9D), or IEC binary uni=
+ts like =E2=80=9CMiB=E2=80=9D, but not =E2=80=9CMB=E2=80=9D, =E2=80=9CGB=E2=
+=80=9D, etc.
+</p>
+<h2><span class=3D"mw-headline" id=3D"Partitioning">Partitioning</span></h2=
+>
+<h3><span class=3D"mw-headline" id=3D"Create_new_partition_table">Create ne=
+w partition table</span></h3>
+<p>You need to (re)create the partition table of a device when it has never=
+ been partitioned before, or when you want to change the type of its partit=
+ion table. Recreating the partition table of a device is also useful when t=
+he partition scheme needs to be restructured from scratch.
+</p><p>Open each device whose partition table must be (re)created with:
+</p>
+<pre># parted /dev/sd<i>x</i>
+</pre>
+<p>To then create a new <a href=3D"https://wiki.archlinux.org/title/GUID_Pa=
+rtition_Table" class=3D"mw-redirect" title=3D"GUID Partition Table">GUID Pa=
+rtition Table</a>, use the following command:
+</p>
+<pre>(parted) mklabel gpt
+</pre>
+<p>To create a new <a href=3D"https://wiki.archlinux.org/title/Master_Boot_=
+Record" class=3D"mw-redirect" title=3D"Master Boot Record">Master Boot Reco=
+rd</a>/MS-DOS partition table instead, use:
+</p>
+<pre>(parted) mklabel msdos
+</pre>
+<h3><span class=3D"mw-headline" id=3D"Partition_schemes">Partition schemes<=
+/span></h3>
+<div class=3D"noprint archwiki-template-message">
+<p><a href=3D"https://wiki.archlinux.org/title/File:Tango-view-fullscreen.p=
+ng" class=3D"image"><img alt=3D"Tango-view-fullscreen.png" src=3D"https://w=
+iki.archlinux.org/images/3/38/Tango-view-fullscreen.png" decoding=3D"async"=
+ width=3D"48" height=3D"48"></a><b>This article or section needs expansion.=
+</b><a href=3D"https://wiki.archlinux.org/title/File:Tango-view-fullscreen.=
+png" class=3D"image"><img alt=3D"Tango-view-fullscreen.png" src=3D"https://=
+wiki.archlinux.org/images/3/38/Tango-view-fullscreen.png" decoding=3D"async=
+" width=3D"48" height=3D"48"></a></p>
+<div><b>Reason:</b> Replace all percentages with explicit MiB aligned sizes=
+ to prevent <a href=3D"https://wiki.archlinux.org/title/Advanced_Format#Par=
+tition_alignment" title=3D"Advanced Format">alignment issues</a>. Also warn=
+ about the issues. (Discuss in <a href=3D"https://wiki.archlinux.org/title/=
+Talk:Installation_guide#Remove_parted" title=3D"Talk:Installation guide">Ta=
+lk:Installation guide#Remove parted</a>)</div>
+</div>
+<p>You can decide the number and size of the partitions the devices should =
+be split into, and which directories will be used to mount the partitions i=
+n the installed system (also known as <i>mount points</i>). See <a href=3D"=
+https://wiki.archlinux.org/title/Partitioning#Partition_scheme" title=3D"Pa=
+rtitioning">Partitioning#Partition scheme</a> for the required partitions.
+</p><p>The following command will be used to create partitions:
+</p>
+<pre>(parted) mkpart <i>part-type-or-part-label</i> <i>fs-type</i> <i>start=
+</i> <i>end</i>
+</pre>
+<ul><li><code><i>part-type-or-part-label</i></code> is interpreted differen=
+tly based on the partition table:
+<ul><li>MBR: the parameter is interpreted as <code><i>part-type</i></code>,=
+ which can be one of <code>primary</code>, <code>extended</code> or <code>l=
+ogical</code>.</li>
+<li>GPT: the parameter is interpreted as <code><i>part-label</i></code>, wh=
+ich sets the <a href=3D"https://wiki.archlinux.org/title/PARTLABEL" class=
+=3D"mw-redirect" title=3D"PARTLABEL">PARTLABEL</a> attribute of the partiti=
+on. The partition label always has to be set, since <i>mkpart</i> does not =
+allow to create partitions with empty label. <div class=3D"archwiki-templat=
+e-box archwiki-template-box-note"><strong>Note:</strong> Many tutorials on =
+the web use commands which start with <code>mkpart primary</code> even for =
+GPT. They are wrong, this would set "primary" as the partition label.</div>=
+</li></ul></li>
+<li><code><i>fs-type</i></code> is an identifier chosen among those listed =
+by entering <code>help mkpart</code> as the closest match to the file syste=
+m that you will use. The <i>mkpart</i> command does not actually create the=
+ file system: the <code><i>fs-type</i></code> parameter will simply be used=
+ by <i>parted</i> to set a 1-byte code that is used by boot loaders to "pre=
+view" what kind of data is found in the partition, and act accordingly if n=
+ecessary. See also <a href=3D"https://en.wikipedia.org/wiki/Disk_partitioni=
+ng#PC_partition_types" class=3D"extiw" title=3D"wikipedia:Disk partitioning=
+">Wikipedia:Disk partitioning#PC partition types</a>.</li></ul>
+<dl><dd><div class=3D"archwiki-template-box archwiki-template-box-tip"><str=
+ong>Tip:</strong> Most <a href=3D"https://en.wikipedia.org/wiki/File_system=
+#Linux" class=3D"extiw" title=3D"wikipedia:File system">Linux native file s=
+ystems</a> map to the same MBR partition type code (<a href=3D"https://en.w=
+ikipedia.org/wiki/Partition_type#PID_83h" class=3D"extiw" title=3D"wikipedi=
+a:Partition type">0x83</a>), so it is perfectly safe to e.g. use <code>ext2=
+</code> for an <i>ext4</i>-formatted partition.</div></dd></dl>
+<ul><li><code><i>start</i></code> is the beginning of the partition from th=
+e start of the device. It consists of a number followed by a <a rel=3D"nofo=
+llow" class=3D"external text" href=3D"https://www.gnu.org/software/parted/m=
+anual/parted.html#unit">unit</a>, for example <code>1MiB</code> means start=
+ at 1 MiB.</li>
+<li><code><i>end</i></code> is the end of the partition from the start of t=
+he device (<i>not</i> from the <code><i>start</i></code> value). It has the=
+ same syntax as <code><i>start</i></code>, for example <code>100%</code> me=
+ans end at the end of the device (use all the remaining space).</li></ul>
+<div class=3D"archwiki-template-box archwiki-template-box-tip"><strong>Tip:=
+</strong> On a disk with a MBR partition table leave at least 33 512-byte s=
+ectors (16.5 KiB) of free unpartitioned space at the end of the disk to all=
+ow <a href=3D"https://wiki.archlinux.org/title/Gdisk#Convert_between_MBR_an=
+d_GPT" class=3D"mw-redirect" title=3D"Gdisk">converting between MBR and GPT=
+</a>.</div>
+<div class=3D"archwiki-template-box archwiki-template-box-warning"><strong>=
+Warning:</strong> It is important that the partitions do not overlap each o=
+ther: if you do not want to leave unused space in the device, make sure tha=
+t each partition starts where the previous one ends.</div>
+<div class=3D"archwiki-template-box archwiki-template-box-note"><strong>Not=
+e:</strong> <i>parted</i> may issue a warning like:
+<pre>Warning: The resulting partition is not properly aligned for best perf=
+ormance.
+Ignore/Cancel?
+</pre>
+In this case, read <a href=3D"https://wiki.archlinux.org/title/Partitioning=
+#Partition_alignment" title=3D"Partitioning">Partitioning#Partition alignme=
+nt</a> and follow <a href=3D"https://wiki.archlinux.org/title/Parted#Alignm=
+ent">#Alignment</a> to fix it.</div>
+<p>The following command will be used to flag the partition that contains t=
+he <code>/boot</code> directory as bootable:
+</p>
+<pre>(parted) set <i>partition</i> boot on
+</pre>
+<ul><li><code><i>partition</i></code> is the number of the partition to be =
+flagged (see the output of the <code>print</code> command).</li>
+<li><code>esp</code> is an alias for <code>boot</code> on GPT. <a rel=3D"no=
+follow" class=3D"external autonumber" href=3D"https://www.gnu.org/software/=
+parted/manual/html_node/set.html">[1]</a></li></ul>
+<div class=3D"noprint archwiki-template-message">
+<p><a href=3D"https://wiki.archlinux.org/title/File:Tango-view-fullscreen.p=
+ng" class=3D"image"><img alt=3D"Tango-view-fullscreen.png" src=3D"https://w=
+iki.archlinux.org/images/3/38/Tango-view-fullscreen.png" decoding=3D"async"=
+ width=3D"48" height=3D"48"></a><b>This article or section needs expansion.=
+</b><a href=3D"https://wiki.archlinux.org/title/File:Tango-view-fullscreen.=
+png" class=3D"image"><img alt=3D"Tango-view-fullscreen.png" src=3D"https://=
+wiki.archlinux.org/images/3/38/Tango-view-fullscreen.png" decoding=3D"async=
+" width=3D"48" height=3D"48"></a></p>
+<div><b>Reason:</b> Explain the <code>boot</code>, <code>legacy_boot</code>=
+ and <code>esp</code> flags and their different usage on MBR and GPT. (Disc=
+uss in <a rel=3D"nofollow" class=3D"external text" href=3D"https://wiki.arc=
+hlinux.org/title/Talk:Parted">Talk:Parted</a>)</div>
+</div>
+<h4><span id=3D"UEFI.2FGPT_examples"></span><span class=3D"mw-headline" id=
+=3D"UEFI/GPT_examples">UEFI/GPT examples</span></h4>
+<p>In every instance, a special bootable <a href=3D"https://wiki.archlinux.=
+org/title/EFI_system_partition" title=3D"EFI system partition">EFI system p=
+artition</a> is required.
+</p><p>If creating a new EFI system partition, use the following commands (=
+the recommended size is at least 300 MiB):
+</p>
+<pre>(parted) mkpart "EFI system partition" fat32 1MiB 301MiB
+(parted) set 1 esp on
+</pre>
+<p>The remaining partition scheme is entirely up to you. For one other part=
+ition using 100% of remaining space:
+</p>
+<pre>(parted) mkpart "<i>my partition label</i>" ext4 301MiB 100%
+</pre>
+<p>For separate <code>/</code> (20 GiB) and <code>/home</code> (all remaini=
+ng space) partitions:
+</p>
+<pre>(parted) mkpart "root partition" ext4 301MiB 20.5GiB
+(parted) mkpart "home partition" ext4 20.5GiB 100%
+</pre>
+<p>And for separate <code>/</code> (20 GiB), swap (4 GiB), and <code>/home<=
+/code> (all remaining space) partitions:
+</p>
+<pre>(parted) mkpart "root partition" ext4 301MiB 20.5GiB
+(parted) mkpart "swap partition" linux-swap 20.5GiB 24.5GiB
+(parted) mkpart "home partition" ext4 24.5GiB 100%
+</pre>
+<h4><span id=3D"BIOS.2FMBR_examples"></span><span class=3D"mw-headline" id=
+=3D"BIOS/MBR_examples">BIOS/MBR examples</span></h4>
+<p>For a minimum single primary partition using all available disk space, t=
+he following command would be used:
+</p>
+<pre>(parted) mkpart primary ext4 1MiB 100%
+(parted) set 1 boot on
+</pre>
+<p>In the following instance, a 20 GiB <code>/</code> partition will be cre=
+ated, followed by a <code>/home</code> partition using all the remaining sp=
+ace:
+</p>
+<pre>(parted) mkpart primary ext4 1MiB 20GiB
+(parted) set 1 boot on
+(parted) mkpart primary ext4 20GiB 100%
+</pre>
+<p>In the final example below, separate <code>/boot</code> (100 MiB), <code=
+>/</code> (20 GiB), swap (4 GiB), and <code>/home</code> (all remaining spa=
+ce) partitions will be created:
+</p>
+<pre>(parted) mkpart primary ext3 1MiB 100MiB
+(parted) set 1 boot on
+(parted) mkpart primary ext3 100MiB 20GiB
+(parted) mkpart primary linux-swap 20GiB 24GiB
+(parted) mkpart primary ext3 24GiB 100%
+</pre>
+<h3><span class=3D"mw-headline" id=3D"Resizing_partitions">Resizing partiti=
+ons</span></h3>
+<div class=3D"archwiki-template-box archwiki-template-box-warning"><strong>=
+Warning:</strong> ext2/3/4 partitions that are being resized must be unmoun=
+ted and not in use. It is difficult and hazardous to try to edit the root f=
+ilesystem on a running OS; use a live media/rescue system instead.</div>
+<div class=3D"archwiki-template-box archwiki-template-box-note"><strong>Not=
+e:</strong>=20
+<ul><li>You can only move the end of the partition with <code>parted</code>=
+.</li>
+<li>As of parted v4.2 <i>resizepart</i> may need the use of <a href=3D"http=
+s://wiki.archlinux.org/title/Parted#Interactive_mode">#Interactive mode</a>=
+.<a rel=3D"nofollow" class=3D"external autonumber" href=3D"https://bugs.lau=
+nchpad.net/ubuntu/+source/parted/+bug/1270203">[2]</a></li>
+<li>These instructions apply to partitions that have ext2, ext3, ext4, or b=
+trfs filesystems.</li></ul>
+</div>
+<p>If you are growing a partition, you have to first resize the partition a=
+nd then resize the filesystem on it, while for shrinking the filesystem mus=
+t be resized before the partition to avoid data loss.
+</p>
+<h4><span class=3D"mw-headline" id=3D"Growing_partitions">Growing partition=
+s</span></h4>
+<p>To grow a partition (in parted interactive mode):
+</p>
+<pre>(parted) resizepart <i>number</i> <i>end</i>
+</pre>
+<p>Where <code><i>number</i></code> is the number of the partition you are =
+growing, and <code><i>end</i></code> is the new end of the partition (which=
+ needs to be larger than the old end).
+</p><p>Then, to grow the (ext2/3/4) filesystem on the partition (if <code><=
+i>size</i></code> is not specified, it will default to the size of the part=
+ition):
+</p>
+<pre># resize2fs /dev/<i>sdaX</i> <i>size</i>
+</pre>
+<p>Or to grow a Btrfs filesystem:
+</p>
+<pre># btrfs filesystem resize <i>size</i> <i>/path/to/mount/point</i>
+</pre>
+<p>Where <code><i>/path/to/mount/point</i></code> stands for the mount poin=
+t of the partition you are growing, and <code><i>size</i></code> in the for=
+m <code>16G</code> or <code>+1G</code> is the new size or modification of t=
+he partition. Use <code>max</code> to fill the remaining space on the parti=
+tion.
+</p>
+<h4><span class=3D"mw-headline" id=3D"Shrinking_partitions">Shrinking parti=
+tions</span></h4>
+<p>To shrink an ext2/3/4 filesystem on the partition:
+</p>
+<pre># resize2fs /dev/<i>sdaX</i> <i>size</i>
+</pre>
+<div class=3D"archwiki-template-box archwiki-template-box-note"><strong>Not=
+e:</strong> In contrast to parted, <span class=3D"plainlinks archwiki-templ=
+ate-man" title=3D"$ man 8 resize2fs"><a rel=3D"nofollow" class=3D"external =
+text" href=3D"https://man.archlinux.org/man/resize2fs.8">resize2fs(8)</a></=
+span> uses K, M, G and T to mean KiB, MiB, GiB and TiB. Be aware that <span=
+ class=3D"plainlinks archwiki-template-pkg"><a rel=3D"nofollow" class=3D"ex=
+ternal text" href=3D"https://archlinux.org/packages/?name=3De2fsprogs">e2fs=
+progs</a></span> documentation misrefers to kibibytes, mebibytes, gibibytes=
+ and tebibytes as "power-of-two  kilobytes,  megabytes,  gigabytes,  teraby=
+tes".</div>
+<p>To shrink a Btrfs filesystem:
+</p>
+<pre># btrfs filesystem resize <i>size</i> <i>/path/to/mount/point</i>
+</pre>
+<p>Where <code><i>/path/to/mount/point</i></code> stands for the mount poin=
+t of the partition you are shrinking, and <code><i>size</i></code> is the n=
+ew size of the partition.
+</p><p>Then shrink the partition (in parted interactive mode):
+</p>
+<pre>(parted) resizepart <i>number</i> <i>end</i>
+</pre>
+<p>Where <code><i>number</i></code> is the number of the partition you are =
+shrinking, and <code><i>end</i></code> is the new end of the partition (whi=
+ch needs to be smaller than the old end).
+</p><p>When done, use the <i>resizepart</i> command from <span class=3D"pla=
+inlinks archwiki-template-pkg"><a rel=3D"nofollow" class=3D"external text" =
+href=3D"https://archlinux.org/packages/?name=3Dutil-linux">util-linux</a></=
+span> to tell the kernel about the new size:
+</p>
+<pre># resizepart <i>device</i> <i>number</i> <i>size</i>
+</pre>
+<p>Where <code><i>device</i></code> is the device that holds the partition,=
+ <code><i>number</i></code> is the number of the partition and <code><i>siz=
+e</i></code> is the new size of the partition, in 512-byte sectors.
+</p>
+<h2><span class=3D"mw-headline" id=3D"Warnings">Warnings</span></h2>
+<p>Parted will always warn you before doing something that is potentially d=
+angerous, unless the command is one of those that is inherently dangerous (=
+e.g. <i>rm</i>, <i>mklabel</i> and <i>mkpart</i>).
+</p>
+<h3><span class=3D"mw-headline" id=3D"Alignment">Alignment</span></h3>
+<div class=3D"archwiki-template-box archwiki-template-box-warning"><strong>=
+Warning:</strong> <i>parted</i> only aligns the partition start, but not th=
+e size. This is not enough for dm-crypt/LUKS, see <a href=3D"https://wiki.a=
+rchlinux.org/title/Advanced_Format#Partition_alignment" title=3D"Advanced F=
+ormat">Advanced Format#Partition alignment</a>.</div>
+<p>When creating a partition, <i>parted</i> might warn about improper parti=
+tion alignment but does not hint about proper alignment. For example:
+</p>
+<pre>(parted) mkpart primary fat16 0 32M
+Warning: The resulting partition is not properly aligned for best performan=
+ce.
+Ignore/Cancel?                                                    =20
+</pre>
+<p>The warning means the partition start is not aligned. Enter "Ignore" to =
+go ahead anyway, print the partition table in sectors to see where it start=
+s, and remove/recreate the partition with the start sector rounded up to in=
+creasing powers of 2 until the warning stops. As one example, on a flash dr=
+ive with 512B sectors, Parted wanted partitions to start on sectors that we=
+re a multiple of 2048, which is 1 MiB alignment.
+</p><p>If you want <i>parted</i> to attempt to calculate the correct alignm=
+ent for you, specify the start position as 0% instead of some concrete valu=
+e. To make one large ext4 partition, your command would look like this:
+</p>
+<pre>(parted) mkpart primary ext4 0% 100%
+</pre>
+<h2><span class=3D"mw-headline" id=3D"Tips_and_tricks">Tips and tricks</spa=
+n></h2>
+<h3><span class=3D"mw-headline" id=3D"Check_alignment">Check alignment</spa=
+n></h3>
+<div class=3D"archwiki-template-box archwiki-template-box-warning"><strong>=
+Warning:</strong> <i>parted</i> only verifies the alignment of a partition =
+start, but not the size. This is not enough for dm-crypt/LUKS, see <a href=
+=3D"https://wiki.archlinux.org/title/Advanced_Format#Partition_alignment" t=
+itle=3D"Advanced Format">Advanced Format#Partition alignment</a>.</div>
+<p>On an already partitioned disk, you can use <i>parted</i> to verify the =
+alignment of a partition on a device. For instance, to verify alignment of =
+partition 1 on <code>/dev/sda</code>:
+</p>
+<pre># parted /dev/sda
+(parted) align-check optimal 1
+1 aligned
+</pre>
+<h2><span class=3D"mw-headline" id=3D"Troubleshooting">Troubleshooting</spa=
+n></h2>
+<h3><span id=3D"gparted_on_Wayland_fails_with_.22cannot_open_display:_:0.22=
+"></span><span class=3D"mw-headline" id=3D"gparted_on_Wayland_fails_with_&q=
+uot;cannot_open_display:_:0&quot;">gparted on Wayland fails with "cannot op=
+en display: :0"</span></h3>
+<p>Install <span class=3D"plainlinks archwiki-template-pkg"><a rel=3D"nofol=
+low" class=3D"external text" href=3D"https://archlinux.org/packages/?name=
+=3Dxorg-xhost">xorg-xhost</a></span>.
+</p><p>This issue is caused by <code>xwayland</code> refusing access to gpa=
+rted running as <code>root</code>. gparted developers implemented <a rel=3D=
+"nofollow" class=3D"external autonumber" href=3D"http://gparted-forum.surf4=
+.info/viewtopic.php?id=3D17682">[3]</a> a small workaround which temporaril=
+y adds <code>root</code> to the list of users allowed to connect to <code>x=
+wayland</code> while the application is running.
+</p>
+<h2><span class=3D"mw-headline" id=3D"See_also">See also</span></h2>
+<ul><li><a rel=3D"nofollow" class=3D"external text" href=3D"https://www.gnu=
+.org/software/parted/manual/">GNU parted - Parted User's Manual</a></li>
+<li><a rel=3D"nofollow" class=3D"external text" href=3D"https://rainbow.cha=
+rd.org/2013/01/30/how-to-align-partitions-for-best-performance-using-parted=
+/">How to align partitions for best performance using parted</a></li>
+<li><a rel=3D"nofollow" class=3D"external text" href=3D"http://positon.org/=
+resize-an-ext3-ext4-partition">Resize an ext3/ext4 partition</a></li>
+<li><a rel=3D"nofollow" class=3D"external text" href=3D"http://gparted-foru=
+m.surf4.info/">Official GParted forums</a></li></ul>
+<!--=20
+NewPP limit report
+Cached time: 20230625131217
+Cache expiry: 86400
+Reduced expiry: false
+Complications: [show=E2=80=90toc]
+CPU time usage: 0.089 seconds
+Real time usage: 0.094 seconds
+Preprocessor visited node count: 729/1000000
+Post=E2=80=90expand include size: 7708/2097152 bytes
+Template argument size: 4023/2097152 bytes
+Highest expansion depth: 7/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post=E2=80=90expand size: 0/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   34.984      1 -total
+ 21.25%    7.436      5 Template:Note
+ 14.45%    5.057      1 Template:Man
+ 14.04%    4.913      2 Template:Expansion
+ 13.66%    4.780     62 Template:Ic
+ 12.00%    4.197      1 Template:Related_articles_start
+  7.33%    2.564      2 Template:META_Message
+  5.88%    2.058      5 Template:Pkg
+  5.39%    1.884      4 Template:Warning
+  5.18%    1.812      1 Template:META_Related_articles_start
+-->
+
+<!-- Saved in parser cache with key archwiki:pcache:idhash:18416-0!canonica=
+l and timestamp 20230625131217 and revision id 741594.
+ -->
+</div>
+<div class=3D"printfooter" data-nosnippet=3D"">Retrieved from "<a dir=3D"lt=
+r" href=3D"https://wiki.archlinux.org/index.php?title=3DParted&amp;oldid=3D=
+741594">https://wiki.archlinux.org/index.php?title=3DParted&amp;oldid=3D741=
+594</a>"</div></div>
+					<div id=3D"catlinks" class=3D"catlinks" data-mw=3D"interface"><div id=
+=3D"mw-normal-catlinks" class=3D"mw-normal-catlinks"><a href=3D"https://wik=
+i.archlinux.org/title/Special:Categories" title=3D"Special:Categories">Cate=
+gories</a>: <ul><li><a href=3D"https://wiki.archlinux.org/title/Category:Fi=
+le_systems" title=3D"Category:File systems">File systems</a></li><li><a hre=
+f=3D"https://wiki.archlinux.org/title/Category:System_recovery" title=3D"Ca=
+tegory:System recovery">System recovery</a></li><li><a href=3D"https://wiki=
+.archlinux.org/title/Category:Commands" title=3D"Category:Commands">Command=
+s</a></li><li><a href=3D"https://wiki.archlinux.org/title/Category:GNU" tit=
+le=3D"Category:GNU">GNU</a></li></ul></div><div id=3D"mw-hidden-catlinks" c=
+lass=3D"mw-hidden-catlinks mw-hidden-cats-hidden">Hidden category: <ul><li>=
+<a href=3D"https://wiki.archlinux.org/title/Category:Pages_or_sections_flag=
+ged_with_Template:Expansion" title=3D"Category:Pages or sections flagged wi=
+th Template:Expansion">Pages or sections flagged with Template:Expansion</a=
+></li></ul></div></div>
+				</div>
+			</main>
+		=09
+		</div>
+		<div class=3D"mw-footer-container">
+		=09
+<footer id=3D"footer" class=3D"mw-footer" role=3D"contentinfo">
+	<ul id=3D"footer-info">
+	<li id=3D"footer-info-lastmod"> This page was last edited on 14 August 202=
+2, at 17:53.</li>
+	<li id=3D"footer-info-copyright">Content is available under <a class=3D"ex=
+ternal" rel=3D"nofollow" href=3D"https://www.gnu.org/copyleft/fdl.html">GNU=
+ Free Documentation License 1.3 or later</a> unless otherwise noted.</li>
+</ul>
+
+	<ul id=3D"footer-places">
+	<li id=3D"footer-places-privacy"><a href=3D"https://terms.archlinux.org/do=
+cs/privacy-policy/">Privacy policy</a></li>
+	<li id=3D"footer-places-about"><a href=3D"https://wiki.archlinux.org/title=
+/ArchWiki:About">About ArchWiki</a></li>
+	<li id=3D"footer-places-disclaimer"><a href=3D"https://wiki.archlinux.org/=
+title/ArchWiki:General_disclaimer">Disclaimers</a></li>
+</ul>
+
+=09
+</footer>
+
+		</div>
+	</div>=20
+</div>=20
+
+
+
+
+<div id=3D"p-namespaces" style=3D"display: none;"><ul></ul></div></body><!-=
+- Cached/compressed 20230626041259 --></html>
+------MultipartBoundary--cIS6rmp6eYBmgp7hrQSJNleA49WcbZYhnk1E0uPSX2----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: cid:css-22849f59-d2a4-4d7e-8d50-d187947a643f@mhtml.blink
+
+@charset "utf-8";
+
+.oo-ui-icon-bright, .mw-ui-icon-bright::before { background-image: linear-g=
+radient(transparent, transparent), url("data:image/svg+xml,%3Csvg xmlns=3D%=
+22http://www.w3.org/2000/svg%22 width=3D%2220%22 height=3D%2220%22 viewBox=
+=3D%220 0 20 20%22%3E%3Ctitle%3E bright %3C/title%3E%3Cpath d=3D%22M17.07 7=
+.07V2.93h-4.14L10 0 7.07 2.93H2.93v4.14L0 10l2.93 2.93v4.14h4.14L10 20l2.93=
+-2.93h4.14v-4.14L20 10zM10 16a6 6 0 1 1 6-6 6 6 0 0 1-6 6z%22/%3E%3Ccircle =
+cx=3D%2210%22 cy=3D%2210%22 r=3D%224.5%22/%3E%3C/svg%3E"); }
+
+.oo-ui-image-invert.oo-ui-icon-bright, .mw-ui-icon-bright-invert::before { =
+background-image: linear-gradient(transparent, transparent), url("data:imag=
+e/svg+xml,%3Csvg xmlns=3D%22http://www.w3.org/2000/svg%22 width=3D%2220%22 =
+height=3D%2220%22 viewBox=3D%220 0 20 20%22%3E%3Ctitle%3E bright %3C/title%=
+3E%3Cg fill=3D%22%23fff%22%3E%3Cpath d=3D%22M17.07 7.07V2.93h-4.14L10 0 7.0=
+7 2.93H2.93v4.14L0 10l2.93 2.93v4.14h4.14L10 20l2.93-2.93h4.14v-4.14L20 10z=
+M10 16a6 6 0 1 1 6-6 6 6 0 0 1-6 6z%22/%3E%3Ccircle cx=3D%2210%22 cy=3D%221=
+0%22 r=3D%224.5%22/%3E%3C/g%3E%3C/svg%3E"); }
+
+.oo-ui-image-progressive.oo-ui-icon-bright, .mw-ui-icon-bright-progressive:=
+:before { background-image: linear-gradient(transparent, transparent), url(=
+"data:image/svg+xml,%3Csvg xmlns=3D%22http://www.w3.org/2000/svg%22 width=
+=3D%2220%22 height=3D%2220%22 viewBox=3D%220 0 20 20%22%3E%3Ctitle%3E brigh=
+t %3C/title%3E%3Cg fill=3D%22%2336c%22%3E%3Cpath d=3D%22M17.07 7.07V2.93h-4=
+.14L10 0 7.07 2.93H2.93v4.14L0 10l2.93 2.93v4.14h4.14L10 20l2.93-2.93h4.14v=
+-4.14L20 10zM10 16a6 6 0 1 1 6-6 6 6 0 0 1-6 6z%22/%3E%3Ccircle cx=3D%2210%=
+22 cy=3D%2210%22 r=3D%224.5%22/%3E%3C/g%3E%3C/svg%3E"); }
+
+.oo-ui-icon-halfBright, .mw-ui-icon-halfBright::before { background-image: =
+linear-gradient(transparent, transparent), url("data:image/svg+xml,%3Csvg x=
+mlns=3D%22http://www.w3.org/2000/svg%22 width=3D%2220%22 height=3D%2220%22 =
+viewBox=3D%220 0 20 20%22%3E%3Ctitle%3E half bright %3C/title%3E%3Cpath d=
+=3D%22M17 6.67V3h-4.2L9.87.07 6.94 3H3v3.67L.07 9.6 3 12.53V17h3.94l2.93 2.=
+93L12.8 17H17v-4.47l2.93-2.93zm-7 8.93v-12a6.21 6.21 0 0 1 6 6 6.21 6.21 0 =
+0 1-6 6z%22/%3E%3C/svg%3E"); }
+
+.oo-ui-image-invert.oo-ui-icon-halfBright, .mw-ui-icon-halfBright-invert::b=
+efore { background-image: linear-gradient(transparent, transparent), url("d=
+ata:image/svg+xml,%3Csvg xmlns=3D%22http://www.w3.org/2000/svg%22 width=3D%=
+2220%22 height=3D%2220%22 viewBox=3D%220 0 20 20%22%3E%3Ctitle%3E half brig=
+ht %3C/title%3E%3Cg fill=3D%22%23fff%22%3E%3Cpath d=3D%22M17 6.67V3h-4.2L9.=
+87.07 6.94 3H3v3.67L.07 9.6 3 12.53V17h3.94l2.93 2.93L12.8 17H17v-4.47l2.93=
+-2.93zm-7 8.93v-12a6.21 6.21 0 0 1 6 6 6.21 6.21 0 0 1-6 6z%22/%3E%3C/g%3E%=
+3C/svg%3E"); }
+
+.oo-ui-image-progressive.oo-ui-icon-halfBright, .mw-ui-icon-halfBright-prog=
+ressive::before { background-image: linear-gradient(transparent, transparen=
+t), url("data:image/svg+xml,%3Csvg xmlns=3D%22http://www.w3.org/2000/svg%22=
+ width=3D%2220%22 height=3D%2220%22 viewBox=3D%220 0 20 20%22%3E%3Ctitle%3E=
+ half bright %3C/title%3E%3Cg fill=3D%22%2336c%22%3E%3Cpath d=3D%22M17 6.67=
+V3h-4.2L9.87.07 6.94 3H3v3.67L.07 9.6 3 12.53V17h3.94l2.93 2.93L12.8 17H17v=
+-4.47l2.93-2.93zm-7 8.93v-12a6.21 6.21 0 0 1 6 6 6.21 6.21 0 0 1-6 6z%22/%3=
+E%3C/g%3E%3C/svg%3E"); }
+
+.oo-ui-icon-notBright, .mw-ui-icon-notBright::before { background-image: li=
+near-gradient(transparent, transparent), url("data:image/svg+xml,%3Csvg xml=
+ns=3D%22http://www.w3.org/2000/svg%22 width=3D%2220%22 height=3D%2220%22 vi=
+ewBox=3D%220 0 20 20%22%3E%3Ctitle%3E not bright %3C/title%3E%3Ccircle cx=
+=3D%229.85%22 cy=3D%2210%22 r=3D%229%22/%3E%3C/svg%3E"); }
+
+.oo-ui-image-invert.oo-ui-icon-notBright, .mw-ui-icon-notBright-invert::bef=
+ore { background-image: linear-gradient(transparent, transparent), url("dat=
+a:image/svg+xml,%3Csvg xmlns=3D%22http://www.w3.org/2000/svg%22 width=3D%22=
+20%22 height=3D%2220%22 viewBox=3D%220 0 20 20%22%3E%3Ctitle%3E not bright =
+%3C/title%3E%3Cg fill=3D%22%23fff%22%3E%3Ccircle cx=3D%229.85%22 cy=3D%2210=
+%22 r=3D%229%22/%3E%3C/g%3E%3C/svg%3E"); }
+
+.oo-ui-image-progressive.oo-ui-icon-notBright, .mw-ui-icon-notBright-progre=
+ssive::before { background-image: linear-gradient(transparent, transparent)=
+, url("data:image/svg+xml,%3Csvg xmlns=3D%22http://www.w3.org/2000/svg%22 w=
+idth=3D%2220%22 height=3D%2220%22 viewBox=3D%220 0 20 20%22%3E%3Ctitle%3E n=
+ot bright %3C/title%3E%3Cg fill=3D%22%2336c%22%3E%3Ccircle cx=3D%229.85%22 =
+cy=3D%2210%22 r=3D%229%22/%3E%3C/g%3E%3C/svg%3E"); }
+
+.oo-ui-icon-eye, .mw-ui-icon-eye::before { background-image: linear-gradien=
+t(transparent, transparent), url("data:image/svg+xml,%3Csvg xmlns=3D%22http=
+://www.w3.org/2000/svg%22 width=3D%2220%22 height=3D%2220%22 viewBox=3D%220=
+ 0 20 20%22%3E%3Ctitle%3E eye %3C/title%3E%3Cpath d=3D%22M10 14.5a4.5 4.5 0=
+ 1 1 4.5-4.5 4.5 4.5 0 0 1-4.5 4.5zM10 3C3 3 0 10 0 10s3 7 10 7 10-7 10-7-3=
+-7-10-7z%22/%3E%3Ccircle cx=3D%2210%22 cy=3D%2210%22 r=3D%222.5%22/%3E%3C/s=
+vg%3E"); }
+
+.oo-ui-image-invert.oo-ui-icon-eye, .mw-ui-icon-eye-invert::before { backgr=
+ound-image: linear-gradient(transparent, transparent), url("data:image/svg+=
+xml,%3Csvg xmlns=3D%22http://www.w3.org/2000/svg%22 width=3D%2220%22 height=
+=3D%2220%22 viewBox=3D%220 0 20 20%22%3E%3Ctitle%3E eye %3C/title%3E%3Cg fi=
+ll=3D%22%23fff%22%3E%3Cpath d=3D%22M10 14.5a4.5 4.5 0 1 1 4.5-4.5 4.5 4.5 0=
+ 0 1-4.5 4.5zM10 3C3 3 0 10 0 10s3 7 10 7 10-7 10-7-3-7-10-7z%22/%3E%3Ccirc=
+le cx=3D%2210%22 cy=3D%2210%22 r=3D%222.5%22/%3E%3C/g%3E%3C/svg%3E"); }
+
+.oo-ui-image-progressive.oo-ui-icon-eye, .mw-ui-icon-eye-progressive::befor=
+e { background-image: linear-gradient(transparent, transparent), url("data:=
+image/svg+xml,%3Csvg xmlns=3D%22http://www.w3.org/2000/svg%22 width=3D%2220=
+%22 height=3D%2220%22 viewBox=3D%220 0 20 20%22%3E%3Ctitle%3E eye %3C/title=
+%3E%3Cg fill=3D%22%2336c%22%3E%3Cpath d=3D%22M10 14.5a4.5 4.5 0 1 1 4.5-4.5=
+ 4.5 4.5 0 0 1-4.5 4.5zM10 3C3 3 0 10 0 10s3 7 10 7 10-7 10-7-3-7-10-7z%22/=
+%3E%3Ccircle cx=3D%2210%22 cy=3D%2210%22 r=3D%222.5%22/%3E%3C/g%3E%3C/svg%3=
+E"); }
+
+.oo-ui-icon-eyeClosed, .mw-ui-icon-eyeClosed::before { background-image: li=
+near-gradient(transparent, transparent), url("data:image/svg+xml,%3Csvg xml=
+ns=3D%22http://www.w3.org/2000/svg%22 width=3D%2220%22 height=3D%2220%22 vi=
+ewBox=3D%220 0 20 20%22%3E%3Ctitle%3E eye closed %3C/title%3E%3Cpath d=3D%2=
+2M12.49 9.94A2.5 2.5 0 0 0 10 7.5z%22/%3E%3Cpath d=3D%22M8.2 5.9a4.38 4.38 =
+0 0 1 1.8-.4 4.5 4.5 0 0 1 4.5 4.5 4.34 4.34 0 0 1-.29 1.55L17 14.14A14 14 =
+0 0 0 20 10s-3-7-10-7a9.63 9.63 0 0 0-4 .85zM2 2 1 3l2.55 2.4A13.89 13.89 0=
+ 0 0 0 10s3 7 10 7a9.67 9.67 0 0 0 4.64-1.16L18 19l1-1zm8 12.5A4.5 4.5 0 0 =
+1 5.5 10a4.45 4.45 0 0 1 .6-2.2l1.53 1.44a2.47 2.47 0 0 0-.13.76 2.49 2.49 =
+0 0 0 3.41 2.32l1.54 1.45a4.47 4.47 0 0 1-2.45.73z%22/%3E%3C/svg%3E"); }
+
+.oo-ui-image-invert.oo-ui-icon-eyeClosed, .mw-ui-icon-eyeClosed-invert::bef=
+ore { background-image: linear-gradient(transparent, transparent), url("dat=
+a:image/svg+xml,%3Csvg xmlns=3D%22http://www.w3.org/2000/svg%22 width=3D%22=
+20%22 height=3D%2220%22 viewBox=3D%220 0 20 20%22%3E%3Ctitle%3E eye closed =
+%3C/title%3E%3Cg fill=3D%22%23fff%22%3E%3Cpath d=3D%22M12.49 9.94A2.5 2.5 0=
+ 0 0 10 7.5z%22/%3E%3Cpath d=3D%22M8.2 5.9a4.38 4.38 0 0 1 1.8-.4 4.5 4.5 0=
+ 0 1 4.5 4.5 4.34 4.34 0 0 1-.29 1.55L17 14.14A14 14 0 0 0 20 10s-3-7-10-7a=
+9.63 9.63 0 0 0-4 .85zM2 2 1 3l2.55 2.4A13.89 13.89 0 0 0 0 10s3 7 10 7a9.6=
+7 9.67 0 0 0 4.64-1.16L18 19l1-1zm8 12.5A4.5 4.5 0 0 1 5.5 10a4.45 4.45 0 0=
+ 1 .6-2.2l1.53 1.44a2.47 2.47 0 0 0-.13.76 2.49 2.49 0 0 0 3.41 2.32l1.54 1=
+.45a4.47 4.47 0 0 1-2.45.73z%22/%3E%3C/g%3E%3C/svg%3E"); }
+
+.oo-ui-image-progressive.oo-ui-icon-eyeClosed, .mw-ui-icon-eyeClosed-progre=
+ssive::before { background-image: linear-gradient(transparent, transparent)=
+, url("data:image/svg+xml,%3Csvg xmlns=3D%22http://www.w3.org/2000/svg%22 w=
+idth=3D%2220%22 height=3D%2220%22 viewBox=3D%220 0 20 20%22%3E%3Ctitle%3E e=
+ye closed %3C/title%3E%3Cg fill=3D%22%2336c%22%3E%3Cpath d=3D%22M12.49 9.94=
+A2.5 2.5 0 0 0 10 7.5z%22/%3E%3Cpath d=3D%22M8.2 5.9a4.38 4.38 0 0 1 1.8-.4=
+ 4.5 4.5 0 0 1 4.5 4.5 4.34 4.34 0 0 1-.29 1.55L17 14.14A14 14 0 0 0 20 10s=
+-3-7-10-7a9.63 9.63 0 0 0-4 .85zM2 2 1 3l2.55 2.4A13.89 13.89 0 0 0 0 10s3 =
+7 10 7a9.67 9.67 0 0 0 4.64-1.16L18 19l1-1zm8 12.5A4.5 4.5 0 0 1 5.5 10a4.4=
+5 4.45 0 0 1 .6-2.2l1.53 1.44a2.47 2.47 0 0 0-.13.76 2.49 2.49 0 0 0 3.41 2=
+.32l1.54 1.45a4.47 4.47 0 0 1-2.45.73z%22/%3E%3C/g%3E%3C/svg%3E"); }
+
+.oo-ui-icon-moon, .mw-ui-icon-moon::before { background-image: linear-gradi=
+ent(transparent, transparent), url("data:image/svg+xml,%3Csvg xmlns=3D%22ht=
+tp://www.w3.org/2000/svg%22 width=3D%2220%22 height=3D%2220%22 viewBox=3D%2=
+20 0 20 20%22%3E%3Ctitle%3E moon %3C/title%3E%3Cpath d=3D%22M17.39 15.14A7.=
+33 7.33 0 0 1 11.75 1.6c.23-.11.56-.23.79-.34a8.19 8.19 0 0 0-5.41.45 9 9 0=
+ 1 0 7 16.58 8.42 8.42 0 0 0 4.29-3.84 5.3 5.3 0 0 1-1.03.69z%22/%3E%3C/svg=
+%3E"); }
+
+.oo-ui-image-invert.oo-ui-icon-moon, .mw-ui-icon-moon-invert::before { back=
+ground-image: linear-gradient(transparent, transparent), url("data:image/sv=
+g+xml,%3Csvg xmlns=3D%22http://www.w3.org/2000/svg%22 width=3D%2220%22 heig=
+ht=3D%2220%22 viewBox=3D%220 0 20 20%22%3E%3Ctitle%3E moon %3C/title%3E%3Cg=
+ fill=3D%22%23fff%22%3E%3Cpath d=3D%22M17.39 15.14A7.33 7.33 0 0 1 11.75 1.=
+6c.23-.11.56-.23.79-.34a8.19 8.19 0 0 0-5.41.45 9 9 0 1 0 7 16.58 8.42 8.42=
+ 0 0 0 4.29-3.84 5.3 5.3 0 0 1-1.03.69z%22/%3E%3C/g%3E%3C/svg%3E"); }
+
+.oo-ui-image-progressive.oo-ui-icon-moon, .mw-ui-icon-moon-progressive::bef=
+ore { background-image: linear-gradient(transparent, transparent), url("dat=
+a:image/svg+xml,%3Csvg xmlns=3D%22http://www.w3.org/2000/svg%22 width=3D%22=
+20%22 height=3D%2220%22 viewBox=3D%220 0 20 20%22%3E%3Ctitle%3E moon %3C/ti=
+tle%3E%3Cg fill=3D%22%2336c%22%3E%3Cpath d=3D%22M17.39 15.14A7.33 7.33 0 0 =
+1 11.75 1.6c.23-.11.56-.23.79-.34a8.19 8.19 0 0 0-5.41.45 9 9 0 1 0 7 16.58=
+ 8.42 8.42 0 0 0 4.29-3.84 5.3 5.3 0 0 1-1.03.69z%22/%3E%3C/g%3E%3C/svg%3E"=
+); }
+
+.oo-ui-icon-largerText, .mw-ui-icon-largerText::before { background-image: =
+linear-gradient(transparent, transparent), url("data:image/svg+xml,%3Csvg x=
+mlns=3D%22http://www.w3.org/2000/svg%22 width=3D%2220%22 height=3D%2220%22 =
+viewBox=3D%220 0 20 20%22%3E%3Ctitle%3E larger text %3C/title%3E%3Cpath d=
+=3D%22M17.66 18h-2a.85.85 0 0 1-.56-.17 1.11 1.11 0 0 1-.32-.43l-1.33-3.53h=
+-6.9L5.22 17.4a1.06 1.06 0 0 1-.31.41.83.83 0 0 1-.56.19h-2L8.68 2h2.63zm-4=
+.92-6-2.2-5.84A16.17 16.17 0 0 1 10 4.43q-.12.52-.27 1t-.27.77L7.26 12z%22/=
+%3E%3C/svg%3E"); }
+
+.oo-ui-image-invert.oo-ui-icon-largerText, .mw-ui-icon-largerText-invert::b=
+efore { background-image: linear-gradient(transparent, transparent), url("d=
+ata:image/svg+xml,%3Csvg xmlns=3D%22http://www.w3.org/2000/svg%22 width=3D%=
+2220%22 height=3D%2220%22 viewBox=3D%220 0 20 20%22%3E%3Ctitle%3E larger te=
+xt %3C/title%3E%3Cg fill=3D%22%23fff%22%3E%3Cpath d=3D%22M17.66 18h-2a.85.8=
+5 0 0 1-.56-.17 1.11 1.11 0 0 1-.32-.43l-1.33-3.53h-6.9L5.22 17.4a1.06 1.06=
+ 0 0 1-.31.41.83.83 0 0 1-.56.19h-2L8.68 2h2.63zm-4.92-6-2.2-5.84A16.17 16.=
+17 0 0 1 10 4.43q-.12.52-.27 1t-.27.77L7.26 12z%22/%3E%3C/g%3E%3C/svg%3E");=
+ }
+
+.oo-ui-image-progressive.oo-ui-icon-largerText, .mw-ui-icon-largerText-prog=
+ressive::before { background-image: linear-gradient(transparent, transparen=
+t), url("data:image/svg+xml,%3Csvg xmlns=3D%22http://www.w3.org/2000/svg%22=
+ width=3D%2220%22 height=3D%2220%22 viewBox=3D%220 0 20 20%22%3E%3Ctitle%3E=
+ larger text %3C/title%3E%3Cg fill=3D%22%2336c%22%3E%3Cpath d=3D%22M17.66 1=
+8h-2a.85.85 0 0 1-.56-.17 1.11 1.11 0 0 1-.32-.43l-1.33-3.53h-6.9L5.22 17.4=
+a1.06 1.06 0 0 1-.31.41.83.83 0 0 1-.56.19h-2L8.68 2h2.63zm-4.92-6-2.2-5.84=
+A16.17 16.17 0 0 1 10 4.43q-.12.52-.27 1t-.27.77L7.26 12z%22/%3E%3C/g%3E%3C=
+/svg%3E"); }
+
+.oo-ui-icon-smallerText, .mw-ui-icon-smallerText::before { background-image=
+: linear-gradient(transparent, transparent), url("data:image/svg+xml,%3Csvg=
+ xmlns=3D%22http://www.w3.org/2000/svg%22 width=3D%2220%22 height=3D%2220%2=
+2 viewBox=3D%220 0 20 20%22%3E%3Ctitle%3E smaller text %3C/title%3E%3Cpath =
+d=3D%22M15.75 18h-1.51a.64.64 0 0 1-.42-.13.83.83 0 0 1-.24-.32l-1-2.65H7.4=
+1l-1 2.65a.79.79 0 0 1-.23.31.62.62 0 0 1-.42.14H4.25L9 6h2zm-3.69-4.5L10.4=
+ 9.12a12.13 12.13 0 0 1-.4-1.3q-.09.39-.2.72t-.2.58L7.95 13.5z%22/%3E%3C/sv=
+g%3E"); }
+
+.oo-ui-image-invert.oo-ui-icon-smallerText, .mw-ui-icon-smallerText-invert:=
+:before { background-image: linear-gradient(transparent, transparent), url(=
+"data:image/svg+xml,%3Csvg xmlns=3D%22http://www.w3.org/2000/svg%22 width=
+=3D%2220%22 height=3D%2220%22 viewBox=3D%220 0 20 20%22%3E%3Ctitle%3E small=
+er text %3C/title%3E%3Cg fill=3D%22%23fff%22%3E%3Cpath d=3D%22M15.75 18h-1.=
+51a.64.64 0 0 1-.42-.13.83.83 0 0 1-.24-.32l-1-2.65H7.41l-1 2.65a.79.79 0 0=
+ 1-.23.31.62.62 0 0 1-.42.14H4.25L9 6h2zm-3.69-4.5L10.4 9.12a12.13 12.13 0 =
+0 1-.4-1.3q-.09.39-.2.72t-.2.58L7.95 13.5z%22/%3E%3C/g%3E%3C/svg%3E"); }
+
+.oo-ui-image-progressive.oo-ui-icon-smallerText, .mw-ui-icon-smallerText-pr=
+ogressive::before { background-image: linear-gradient(transparent, transpar=
+ent), url("data:image/svg+xml,%3Csvg xmlns=3D%22http://www.w3.org/2000/svg%=
+22 width=3D%2220%22 height=3D%2220%22 viewBox=3D%220 0 20 20%22%3E%3Ctitle%=
+3E smaller text %3C/title%3E%3Cg fill=3D%22%2336c%22%3E%3Cpath d=3D%22M15.7=
+5 18h-1.51a.64.64 0 0 1-.42-.13.83.83 0 0 1-.24-.32l-1-2.65H7.41l-1 2.65a.7=
+9.79 0 0 1-.23.31.62.62 0 0 1-.42.14H4.25L9 6h2zm-3.69-4.5L10.4 9.12a12.13 =
+12.13 0 0 1-.4-1.3q-.09.39-.2.72t-.2.58L7.95 13.5z%22/%3E%3C/g%3E%3C/svg%3E=
+"); }
+
+.oo-ui-icon-visionSimulator, .mw-ui-icon-visionSimulator::before { backgrou=
+nd-image: linear-gradient(transparent, transparent), url("data:image/svg+xm=
+l,%3Csvg xmlns=3D%22http://www.w3.org/2000/svg%22 width=3D%2220%22 height=
+=3D%2220%22 viewBox=3D%220 0 20 20%22%3E%3Ctitle%3E vision simulator %3C/ti=
+tle%3E%3Cpath d=3D%22M17.5 11.83a.79.79 0 0 1-.83.83h-3.34A1.49 1.49 0 0 1 =
+11.67 11V9.33a.79.79 0 0 1 .83-.83h4.17a.79.79 0 0 1 .83.83zM8.33 11a1.49 1=
+.49 0 0 1-1.67 1.67H3.33a.79.79 0 0 1-.83-.83V9.33a.79.79 0 0 1 .83-.83H7.5=
+a.79.79 0 0 1 .83.83zM0 6.2v6.28a.2.2 0 0 0 .2.2h1.72a1.61 1.61 0 0 0 1.42.=
+83h3.33A2.46 2.46 0 0 0 9.13 12a.19.19 0 0 1 .18-.13h1.39a.19.19 0 0 1 .18.=
+13 2.46 2.46 0 0 0 2.46 1.53h3.33c.55 0 1.1 0 1.37-.7a.2.2 0 0 1 .18-.13h1.=
+58a.2.2 0 0 0 .2-.2V6.2a.2.2 0 0 0-.2-.2H.2a.2.2 0 0 0-.2.2z%22/%3E%3C/svg%=
+3E"); }
+
+.oo-ui-image-invert.oo-ui-icon-visionSimulator, .mw-ui-icon-visionSimulator=
+-invert::before { background-image: linear-gradient(transparent, transparen=
+t), url("data:image/svg+xml,%3Csvg xmlns=3D%22http://www.w3.org/2000/svg%22=
+ width=3D%2220%22 height=3D%2220%22 viewBox=3D%220 0 20 20%22%3E%3Ctitle%3E=
+ vision simulator %3C/title%3E%3Cg fill=3D%22%23fff%22%3E%3Cpath d=3D%22M17=
+.5 11.83a.79.79 0 0 1-.83.83h-3.34A1.49 1.49 0 0 1 11.67 11V9.33a.79.79 0 0=
+ 1 .83-.83h4.17a.79.79 0 0 1 .83.83zM8.33 11a1.49 1.49 0 0 1-1.67 1.67H3.33=
+a.79.79 0 0 1-.83-.83V9.33a.79.79 0 0 1 .83-.83H7.5a.79.79 0 0 1 .83.83zM0 =
+6.2v6.28a.2.2 0 0 0 .2.2h1.72a1.61 1.61 0 0 0 1.42.83h3.33A2.46 2.46 0 0 0 =
+9.13 12a.19.19 0 0 1 .18-.13h1.39a.19.19 0 0 1 .18.13 2.46 2.46 0 0 0 2.46 =
+1.53h3.33c.55 0 1.1 0 1.37-.7a.2.2 0 0 1 .18-.13h1.58a.2.2 0 0 0 .2-.2V6.2a=
+.2.2 0 0 0-.2-.2H.2a.2.2 0 0 0-.2.2z%22/%3E%3C/g%3E%3C/svg%3E"); }
+
+.oo-ui-image-progressive.oo-ui-icon-visionSimulator, .mw-ui-icon-visionSimu=
+lator-progressive::before { background-image: linear-gradient(transparent, =
+transparent), url("data:image/svg+xml,%3Csvg xmlns=3D%22http://www.w3.org/2=
+000/svg%22 width=3D%2220%22 height=3D%2220%22 viewBox=3D%220 0 20 20%22%3E%=
+3Ctitle%3E vision simulator %3C/title%3E%3Cg fill=3D%22%2336c%22%3E%3Cpath =
+d=3D%22M17.5 11.83a.79.79 0 0 1-.83.83h-3.34A1.49 1.49 0 0 1 11.67 11V9.33a=
+.79.79 0 0 1 .83-.83h4.17a.79.79 0 0 1 .83.83zM8.33 11a1.49 1.49 0 0 1-1.67=
+ 1.67H3.33a.79.79 0 0 1-.83-.83V9.33a.79.79 0 0 1 .83-.83H7.5a.79.79 0 0 1 =
+.83.83zM0 6.2v6.28a.2.2 0 0 0 .2.2h1.72a1.61 1.61 0 0 0 1.42.83h3.33A2.46 2=
+.46 0 0 0 9.13 12a.19.19 0 0 1 .18-.13h1.39a.19.19 0 0 1 .18.13 2.46 2.46 0=
+ 0 0 2.46 1.53h3.33c.55 0 1.1 0 1.37-.7a.2.2 0 0 1 .18-.13h1.58a.2.2 0 0 0 =
+.2-.2V6.2a.2.2 0 0 0-.2-.2H.2a.2.2 0 0 0-.2.2z%22/%3E%3C/g%3E%3C/svg%3E"); =
+}
+
+.mw-ui-icon-wikimedia-speechBubbleAdd::before { background-image: linear-gr=
+adient(transparent, transparent), url("/load.php?modules=3Dskins.vector.ico=
+ns.js&image=3DspeechBubbleAdd&format=3Doriginal&lang=3Den&skin=3Dvector-202=
+2&version=3D10ele"); }
+
+.mw-ui-icon-wikimedia-speechBubbleAdd-progressive::before { background-imag=
+e: linear-gradient(transparent, transparent), url("/load.php?modules=3Dskin=
+s.vector.icons.js&image=3DspeechBubbleAdd&variant=3Dprogressive&format=3Dor=
+iginal&lang=3Den&skin=3Dvector-2022&version=3D10ele"); }
+
+.mw-ui-icon-wikimedia-speechBubbles::before { background-image: linear-grad=
+ient(transparent, transparent), url("/load.php?modules=3Dskins.vector.icons=
+.js&image=3DspeechBubbles&format=3Doriginal&lang=3Den&skin=3Dvector-2022&ve=
+rsion=3D10ele"); }
+
+.mw-ui-icon-wikimedia-speechBubbles-progressive::before { background-image:=
+ linear-gradient(transparent, transparent), url("/load.php?modules=3Dskins.=
+vector.icons.js&image=3DspeechBubbles&variant=3Dprogressive&format=3Dorigin=
+al&lang=3Den&skin=3Dvector-2022&version=3D10ele"); }
+
+.mw-ui-icon-wikimedia-article::before { background-image: linear-gradient(t=
+ransparent, transparent), url("/load.php?modules=3Dskins.vector.icons.js&im=
+age=3Darticle&format=3Doriginal&lang=3Den&skin=3Dvector-2022&version=3D10el=
+e"); }
+
+.mw-ui-icon-wikimedia-article-progressive::before { background-image: linea=
+r-gradient(transparent, transparent), url("/load.php?modules=3Dskins.vector=
+.icons.js&image=3Darticle&variant=3Dprogressive&format=3Doriginal&lang=3Den=
+&skin=3Dvector-2022&version=3D10ele"); }
+
+.mw-ui-icon-wikimedia-history::before { background-image: linear-gradient(t=
+ransparent, transparent), url("/load.php?modules=3Dskins.vector.icons.js&im=
+age=3Dhistory&format=3Doriginal&skin=3Dvector-2022&version=3D10ele"); }
+
+.mw-ui-icon-wikimedia-history-progressive::before { background-image: linea=
+r-gradient(transparent, transparent), url("/load.php?modules=3Dskins.vector=
+.icons.js&image=3Dhistory&variant=3Dprogressive&format=3Doriginal&skin=3Dve=
+ctor-2022&version=3D10ele"); }
+
+.mw-ui-icon-wikimedia-wikiText::before { background-image: linear-gradient(=
+transparent, transparent), url("/load.php?modules=3Dskins.vector.icons.js&i=
+mage=3DwikiText&format=3Doriginal&skin=3Dvector-2022&version=3D10ele"); }
+
+.mw-ui-icon-wikimedia-wikiText-progressive::before { background-image: line=
+ar-gradient(transparent, transparent), url("/load.php?modules=3Dskins.vecto=
+r.icons.js&image=3DwikiText&variant=3Dprogressive&format=3Doriginal&skin=3D=
+vector-2022&version=3D10ele"); }
+
+.mw-ui-icon-wikimedia-edit::before { background-image: linear-gradient(tran=
+sparent, transparent), url("/load.php?modules=3Dskins.vector.icons.js&image=
+=3Dedit&format=3Doriginal&skin=3Dvector-2022&version=3D10ele"); }
+
+.mw-ui-icon-wikimedia-edit-progressive::before { background-image: linear-g=
+radient(transparent, transparent), url("/load.php?modules=3Dskins.vector.ic=
+ons.js&image=3Dedit&variant=3Dprogressive&format=3Doriginal&skin=3Dvector-2=
+022&version=3D10ele"); }
+
+.mw-ui-icon-wikimedia-editLock::before { background-image: linear-gradient(=
+transparent, transparent), url("/load.php?modules=3Dskins.vector.icons.js&i=
+mage=3DeditLock&format=3Doriginal&skin=3Dvector-2022&version=3D10ele"); }
+
+.mw-ui-icon-wikimedia-editLock-progressive::before { background-image: line=
+ar-gradient(transparent, transparent), url("/load.php?modules=3Dskins.vecto=
+r.icons.js&image=3DeditLock&variant=3Dprogressive&format=3Doriginal&skin=3D=
+vector-2022&version=3D10ele"); }
+
+.mw-ui-icon-wikimedia-star::before { background-image: linear-gradient(tran=
+sparent, transparent), url("/load.php?modules=3Dskins.vector.icons.js&image=
+=3Dstar&format=3Doriginal&skin=3Dvector-2022&version=3D10ele"); }
+
+.mw-ui-icon-wikimedia-star-progressive::before { background-image: linear-g=
+radient(transparent, transparent), url("/load.php?modules=3Dskins.vector.ic=
+ons.js&image=3Dstar&variant=3Dprogressive&format=3Doriginal&skin=3Dvector-2=
+022&version=3D10ele"); }
+
+.mw-ui-icon-wikimedia-halfStar::before { background-image: linear-gradient(=
+transparent, transparent), url("/load.php?modules=3Dskins.vector.icons.js&i=
+mage=3DhalfStar&format=3Doriginal&lang=3Den&skin=3Dvector-2022&version=3D10=
+ele"); }
+
+.mw-ui-icon-wikimedia-halfStar-progressive::before { background-image: line=
+ar-gradient(transparent, transparent), url("/load.php?modules=3Dskins.vecto=
+r.icons.js&image=3DhalfStar&variant=3Dprogressive&format=3Doriginal&lang=3D=
+en&skin=3Dvector-2022&version=3D10ele"); }
+
+.mw-ui-icon-wikimedia-unStar::before { background-image: linear-gradient(tr=
+ansparent, transparent), url("/load.php?modules=3Dskins.vector.icons.js&ima=
+ge=3DunStar&format=3Doriginal&skin=3Dvector-2022&version=3D10ele"); }
+
+.mw-ui-icon-wikimedia-unStar-progressive::before { background-image: linear=
+-gradient(transparent, transparent), url("/load.php?modules=3Dskins.vector.=
+icons.js&image=3DunStar&variant=3Dprogressive&format=3Doriginal&skin=3Dvect=
+or-2022&version=3D10ele"); }
+
+@media screen {
+  .toctoggle { user-select: none; font-size: 94%; }
+}
+------MultipartBoundary--cIS6rmp6eYBmgp7hrQSJNleA49WcbZYhnk1E0uPSX2----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://wiki.archlinux.org/load.php?lang=en&modules=ext.DarkMode.styles%7Cmediawiki.ui.button%2Cicon%7Cskins.vector.icons%2Cstyles%7Czzz.ext.archLinux.styles&only=styles&skin=vector-2022
+
+@charset "utf-8";
+
+@media screen {
+  html { height: 100%; }
+  .ext-darkmode-link::before { content: "=E2=98=BE"; display: inline-block;=
+ }
+  .skin-vector-2022 .ext-darkmode-link::before { display: none; }
+  .client-darkmode { background: rgb(0, 0, 0); }
+  .client-darkmode .ext-darkmode-link::before { content: "=E2=98=BC"; }
+  .client-darkmode, .client-darkmode img, .client-darkmode video, .client-d=
+arkmode svg, .client-darkmode iframe, .client-darkmode .mw-no-invert, .clie=
+nt-darkmode td .diffchange, .client-darkmode .wvui-typeahead-suggestion__th=
+umbnail, .client-darkmode .skin-minerva .mw-notification-visible .mw-notifi=
+cation-content, .client-darkmode .cdx-menu-item__thumbnail, .client-darkmod=
+e .cx-slitem__image, .client-darkmode .mwe-math-element, .client-darkmode .=
+mw-mmv-overlay, .client-darkmode .mw-mmv-pre-image, .client-darkmode .mw-ka=
+rtographer-map, .client-darkmode .mw-kartographer-mapDialog-map, .client-da=
+rkmode .ext-related-articles-card-list .ext-related-articles-card-thumb { f=
+ilter: invert(1) hue-rotate(180deg); }
+  .client-darkmode .skin-vector .mw-logo-wordmark, .client-darkmode .skin-v=
+ector .mw-logo-tagline, .client-darkmode .skin-timeless .mw-wiki-title > im=
+g, .client-darkmode .wvui-icon svg { filter: none; }
+  .client-darkmode table, .client-darkmode table.ambox-content, .client-dar=
+kmode table.toccolours, .client-darkmode .mw-notification, .client-darkmode=
+ .mwe-popups, .client-darkmode .infobox, .client-darkmode .toc, .client-dar=
+kmode .thumbinner, .client-darkmode .wikitable, .client-darkmode .cbnnr-mai=
+n, .client-darkmode .cx-callout, .client-darkmode #simpleSearch, .client-da=
+rkmode #searchInput, .client-darkmode #centralNotice .cnotice { background-=
+color: rgb(221, 221, 221); }
+  .client-darkmode, .client-darkmode h1, .client-darkmode h2, .client-darkm=
+ode h3, .client-darkmode h4, .client-darkmode h5, .client-darkmode h6, .cli=
+ent-darkmode table.ambox-content, .client-darkmode table.toccolours, .clien=
+t-darkmode .mw-notification, .client-darkmode .infobox, .client-darkmode .t=
+oc, .client-darkmode .thumbinner, .client-darkmode #mw-head, .client-darkmo=
+de #mw-panel, .client-darkmode #content.mw-body, .client-darkmode #simpleSe=
+arch, .client-darkmode #searchInput, .client-darkmode #centralNotice .cnoti=
+ce { border-color: rgb(205, 203, 200); }
+  .client-darkmode a, .client-darkmode .vector-menu-tabs li a, .client-dark=
+mode .vectorTabs li a, .client-darkmode .toctogglelabel, .client-darkmode .=
+mw-parser-output a.external, .client-darkmode .mw-parser-output a.extiw, .c=
+lient-darkmode .mw-parser-output a.extiw:active, .client-darkmode #mw-panel=
+ .portal .body li a { color: rgb(51, 102, 204); }
+  .client-darkmode a:visited, .client-darkmode .mw-parser-output a.extiw:vi=
+sited, .client-darkmode #mw-panel .portal .body li a:visited { color: rgb(1=
+07, 75, 161); }
+  .client-darkmode a.new, .client-darkmode .vector-menu-tabs li.new a, .cli=
+ent-darkmode .vectorTabs li.new a { color: rgb(255, 110, 110); }
+  .client-darkmode .thumbimage { border: 0px; }
+  .client-darkmode .image img[src*=3D"svg"] { background-color: rgb(255, 25=
+5, 255); border-radius: 1px; }
+  .client-darkmode .mw-echo-ui-notificationItemWidget-icon img[src*=3D"svg"=
+], .client-darkmode .mbox-image .image img[src*=3D"svg"], .client-darkmode =
+.image img[alt^=3D"Symbol"] { background-color: transparent; }
+  .client-darkmode .mwe-popups { box-shadow: rgba(0, 0, 0, 0.3) 0px 30px 90=
+px -20px, rgb(0, 0, 0) 0px 0px 1px; }
+  .client-darkmode .mwe-popups.flipped-y::after, .client-darkmode .mwe-popu=
+ps.flipped-x-y::after { border-top: 11px solid rgb(221, 221, 221); }
+  .client-darkmode .mwe-popups.mwe-popups-no-image-pointer::after { border-=
+bottom: 11px solid rgb(221, 221, 221); }
+  .client-darkmode html .cx-callout-1::after { border-bottom-color: rgb(221=
+, 221, 221); }
+  .client-darkmode html .branding-box img { filter: brightness(0); }
+}
+
+.mw-ui-button { background-color: rgb(248, 249, 250); color: rgb(32, 33, 34=
+); display: inline-block; box-sizing: border-box; margin: 0px; border: 1px =
+solid rgb(162, 169, 177); border-radius: 2px; cursor: pointer; vertical-ali=
+gn: middle; font-family: inherit; font-size: 1em; font-weight: bold; line-h=
+eight: 1.28571em; text-align: center; appearance: none; }
+
+.mw-ui-button:not(.mw-ui-icon-element) { min-height: 32px; min-width: 4em; =
+max-width: 28.75em; padding: 5px 12px; }
+
+.mw-ui-button:not(:disabled) { transition-property: background-color, color=
+, border-color, box-shadow; transition-duration: 100ms; }
+
+.mw-ui-button:not(:disabled):visited { color: rgb(32, 33, 34); }
+
+.mw-ui-button:not(:disabled):hover { background-color: rgb(255, 255, 255); =
+color: rgb(64, 66, 68); border-color: rgb(162, 169, 177); }
+
+.mw-ui-button:not(:disabled):focus { color: rgb(32, 33, 34); border-color: =
+rgb(51, 102, 204); box-shadow: rgb(51, 102, 204) 0px 0px 0px 1px inset, rgb=
+(255, 255, 255) 0px 0px 0px 2px inset; outline-width: 0px; }
+
+.mw-ui-button:not(:disabled):active, .mw-ui-button:not(:disabled).is-on { b=
+ackground-color: rgb(200, 204, 209); color: rgb(0, 0, 0); border-color: rgb=
+(114, 119, 125); box-shadow: none; }
+
+.mw-ui-button:disabled { background-color: rgb(200, 204, 209); color: rgb(2=
+55, 255, 255); border-color: rgb(200, 204, 209); cursor: default; }
+
+.mw-ui-button.mw-ui-icon-element:not(.mw-ui-icon-with-label-desktop) { colo=
+r: transparent !important; }
+
+.mw-ui-button.mw-ui-icon-element:not(.mw-ui-icon-with-label-desktop) span {=
+ display: block; clip: rect(1px, 1px, 1px, 1px); width: 1px; height: 1px; m=
+argin: -1px; border: 0px; padding: 0px; overflow: hidden; position: absolut=
+e !important; }
+
+@media (max-width: 1000px) {
+  .mw-ui-button.mw-ui-icon-element.mw-ui-icon-with-label-desktop { color: t=
+ransparent !important; }
+  .mw-ui-button.mw-ui-icon-element span { display: block; clip: rect(1px, 1=
+px, 1px, 1px); width: 1px; height: 1px; margin: -1px; border: 0px; padding:=
+ 0px; overflow: hidden; position: absolute !important; }
+}
+
+.mw-ui-button.mw-ui-quiet, .mw-ui-button.mw-ui-quiet.mw-ui-progressive, .mw=
+-ui-button.mw-ui-quiet.mw-ui-destructive { background-color: transparent; c=
+olor: rgb(32, 33, 34); border-color: transparent; font-weight: bold; }
+
+.mw-ui-button.mw-ui-quiet:not(.mw-ui-icon-element), .mw-ui-button.mw-ui-qui=
+et.mw-ui-progressive:not(.mw-ui-icon-element), .mw-ui-button.mw-ui-quiet.mw=
+-ui-destructive:not(.mw-ui-icon-element) { min-height: 32px; }
+
+input[type=3D"checkbox"]:hover + .mw-ui-button.mw-ui-quiet, input[type=3D"c=
+heckbox"]:hover + .mw-ui-button.mw-ui-quiet.mw-ui-progressive, input[type=
+=3D"checkbox"]:hover + .mw-ui-button.mw-ui-quiet.mw-ui-destructive, .mw-ui-=
+button.mw-ui-quiet:hover, .mw-ui-button.mw-ui-quiet.mw-ui-progressive:hover=
+, .mw-ui-button.mw-ui-quiet.mw-ui-destructive:hover { background-color: rgb=
+a(0, 24, 73, 0.027); color: rgb(32, 33, 34); border-color: transparent; }
+
+input[type=3D"checkbox"]:focus + .mw-ui-button.mw-ui-quiet, input[type=3D"c=
+heckbox"]:focus + .mw-ui-button.mw-ui-quiet.mw-ui-progressive, input[type=
+=3D"checkbox"]:focus + .mw-ui-button.mw-ui-quiet.mw-ui-destructive, .mw-ui-=
+button.mw-ui-quiet:focus, .mw-ui-button.mw-ui-quiet.mw-ui-progressive:focus=
+, .mw-ui-button.mw-ui-quiet.mw-ui-destructive:focus { color: rgb(32, 33, 34=
+); border-color: rgb(51, 102, 204); box-shadow: rgb(51, 102, 204) 0px 0px 0=
+px 1px inset, rgb(255, 255, 255) 0px 0px 0px 2px inset; }
+
+input[type=3D"checkbox"]:active + .mw-ui-button.mw-ui-quiet, input[type=3D"=
+checkbox"]:active + .mw-ui-button.mw-ui-quiet.mw-ui-progressive, input[type=
+=3D"checkbox"]:active + .mw-ui-button.mw-ui-quiet.mw-ui-destructive, .mw-ui=
+-button.mw-ui-quiet:active, .mw-ui-button.mw-ui-quiet.mw-ui-progressive:act=
+ive, .mw-ui-button.mw-ui-quiet.mw-ui-destructive:active { background-color:=
+ rgba(0, 36, 73, 0.082); color: rgb(0, 0, 0); border-color: rgb(114, 119, 1=
+25); box-shadow: none; }
+
+.mw-ui-button.mw-ui-quiet:disabled, .mw-ui-button.mw-ui-quiet.mw-ui-progres=
+sive:disabled, .mw-ui-button.mw-ui-quiet.mw-ui-destructive:disabled, .mw-ui=
+-button.mw-ui-quiet:disabled:hover, .mw-ui-button.mw-ui-quiet.mw-ui-progres=
+sive:disabled:hover, .mw-ui-button.mw-ui-quiet.mw-ui-destructive:disabled:h=
+over, .mw-ui-button.mw-ui-quiet:disabled:active, .mw-ui-button.mw-ui-quiet.=
+mw-ui-progressive:disabled:active, .mw-ui-button.mw-ui-quiet.mw-ui-destruct=
+ive:disabled:active { background-color: transparent; color: rgb(114, 119, 1=
+25); border-color: transparent; }
+
+.mw-ui-button.mw-ui-progressive:not(:disabled) { background-color: rgb(51, =
+102, 204); color: rgb(255, 255, 255); border-color: rgb(51, 102, 204); }
+
+.mw-ui-button.mw-ui-progressive:not(:disabled):hover { background-color: rg=
+b(68, 127, 245); border-color: rgb(68, 127, 245); }
+
+.mw-ui-button.mw-ui-progressive:not(:disabled):focus { box-shadow: rgb(51, =
+102, 204) 0px 0px 0px 1px inset, rgb(255, 255, 255) 0px 0px 0px 2px inset; =
+}
+
+.mw-ui-button.mw-ui-progressive:not(:disabled):active, .mw-ui-button.mw-ui-=
+progressive:not(:disabled).is-on { background-color: rgb(42, 75, 141); bord=
+er-color: rgb(42, 75, 141); box-shadow: none; }
+
+.mw-ui-button.mw-ui-progressive:disabled { background-color: rgb(200, 204, =
+209); color: rgb(255, 255, 255); border-color: rgb(200, 204, 209); }
+
+.mw-ui-button.mw-ui-progressive.mw-ui-quiet { color: rgb(51, 102, 204); bac=
+kground-color: transparent; border-color: transparent; }
+
+input[type=3D"checkbox"]:hover + .mw-ui-button.mw-ui-progressive.mw-ui-quie=
+t, .mw-ui-button.mw-ui-progressive.mw-ui-quiet:hover { background-color: rg=
+ba(52, 123, 255, 0.2); border-color: transparent; color: rgb(68, 127, 245);=
+ }
+
+input[type=3D"checkbox"]:focus + .mw-ui-button.mw-ui-progressive.mw-ui-quie=
+t, .mw-ui-button.mw-ui-progressive.mw-ui-quiet:focus { color: rgb(51, 102, =
+204); border-color: rgb(51, 102, 204); }
+
+input[type=3D"checkbox"]:active + .mw-ui-button.mw-ui-progressive.mw-ui-qui=
+et, .mw-ui-button.mw-ui-progressive.mw-ui-quiet:active { color: rgb(255, 25=
+5, 255); background-color: rgb(42, 75, 141); border-color: rgb(42, 75, 141)=
+; }
+
+.mw-ui-button.mw-ui-destructive:not(:disabled) { background-color: rgb(221,=
+ 51, 51); color: rgb(255, 255, 255); border-color: rgb(221, 51, 51); }
+
+.mw-ui-button.mw-ui-destructive:not(:disabled):hover { background-color: rg=
+b(255, 66, 66); border-color: rgb(255, 66, 66); }
+
+.mw-ui-button.mw-ui-destructive:not(:disabled):focus { box-shadow: rgb(221,=
+ 51, 51) 0px 0px 0px 1px inset, rgb(255, 255, 255) 0px 0px 0px 2px inset; }
+
+.mw-ui-button.mw-ui-destructive:not(:disabled):active, .mw-ui-button.mw-ui-=
+destructive:not(:disabled).is-on { background-color: rgb(179, 36, 36); bord=
+er-color: rgb(179, 36, 36); box-shadow: none; }
+
+.mw-ui-button.mw-ui-destructive:disabled { background-color: rgb(200, 204, =
+209); color: rgb(255, 255, 255); border-color: rgb(200, 204, 209); }
+
+.mw-ui-button.mw-ui-destructive.mw-ui-quiet { color: rgb(221, 51, 51); back=
+ground-color: transparent; border-color: transparent; }
+
+input[type=3D"checkbox"]:hover + .mw-ui-button.mw-ui-destructive.mw-ui-quie=
+t, .mw-ui-button.mw-ui-destructive.mw-ui-quiet:hover { background-color: rg=
+ba(209, 29, 19, 0.2); border-color: transparent; color: rgb(255, 66, 66); }
+
+input[type=3D"checkbox"]:focus + .mw-ui-button.mw-ui-destructive.mw-ui-quie=
+t, .mw-ui-button.mw-ui-destructive.mw-ui-quiet:focus { color: rgb(221, 51, =
+51); border-color: rgb(221, 51, 51); }
+
+input[type=3D"checkbox"]:active + .mw-ui-button.mw-ui-destructive.mw-ui-qui=
+et, .mw-ui-button.mw-ui-destructive.mw-ui-quiet:active { color: rgb(255, 25=
+5, 255); background-color: rgb(179, 36, 36); border-color: rgb(179, 36, 36)=
+; }
+
+.mw-ui-button.mw-ui-big { font-size: 1.3em; }
+
+.mw-ui-button.mw-ui-block { display: block; width: 100%; margin-left: auto;=
+ margin-right: auto; }
+
+a.mw-ui-button { text-decoration: none; }
+
+a.mw-ui-button:hover, a.mw-ui-button:focus { text-decoration: none; }
+
+.mw-ui-button-group > * { min-width: 48px; border-radius: 0px; float: left;=
+ }
+
+.mw-ui-button-group > :first-child { border-top-left-radius: 2px; border-bo=
+ttom-left-radius: 2px; }
+
+.mw-ui-button-group > :not(:first-child) { border-left: 0px; }
+
+.mw-ui-button-group > :last-child { border-top-right-radius: 2px; border-bo=
+ttom-right-radius: 2px; }
+
+.mw-ui-button-group .is-on .button { cursor: default; }
+
+.mw-ui-icon { font-size: initial; position: relative; display: inline-block=
+; width: 1.25em; height: 1.25em; min-width: 1.25em; min-height: 1.25em; fle=
+x-basis: 1.25em; vertical-align: middle; line-height: 0; overflow: hidden; =
+text-overflow: ellipsis; white-space: nowrap; appearance: none; background-=
+color: transparent; margin: 0px; padding: 0px; box-sizing: content-box !imp=
+ortant; }
+
+.mw-ui-icon:not(.mw-ui-button) { border: 0px; }
+
+.mw-ui-icon::before { content: ""; display: block; width: 100%; height: 100=
+%; min-width: 1.25em; min-height: 1.25em; background-repeat: no-repeat; bac=
+kground-size: 1.25em 1.25em; background-position: center center; }
+
+.mw-ui-icon + span:not(:empty) { margin-left: 8px; }
+
+.mw-ui-icon-flush-top { margin-top: -0.75em; }
+
+.mw-ui-icon-flush-left { margin-left: -0.75em; }
+
+.mw-ui-icon-flush-right { margin-right: -0.75em; }
+
+.mw-ui-icon-element { border-radius: 2px; padding: 0.75em; transition: back=
+ground-color 100ms ease 0s; color: transparent; }
+
+.mw-ui-icon-element:focus, .mw-ui-icon-element:active, .mw-ui-icon-element:=
+visited { color: transparent; }
+
+.mw-ui-icon-element:active { background-color: rgba(0, 0, 0, 0.03); }
+
+@media (hover: hover) {
+  .mw-ui-icon-element:not(.disabled):hover { background-color: rgba(0, 0, 0=
+, 0.03); }
+}
+
+.mw-ui-icon-small { width: 1em; height: 1em; min-width: 1em; min-height: 1e=
+m; flex-basis: 1em; line-height: 1em; }
+
+.mw-ui-icon-small::before { content: ""; display: block; width: 100%; heigh=
+t: 100%; min-width: 1em; min-height: 1em; background-repeat: no-repeat; bac=
+kground-size: 1em 1em; background-position: center center; }
+
+.mw-ui-icon-small.mw-ui-icon-element { padding: 0.5625em; }
+
+.mw-ui-icon-small.mw-ui-icon-flush-left { margin-left: -0.5625em; }
+
+.mw-ui-icon-small.mw-ui-icon-flush-right { margin-right: -0.5625em; }
+
+.mw-ui-icon-small.mw-ui-icon-before::before { min-width: 1em; min-height: 1=
+em; margin-right: 0.5625em; }
+
+.mw-ui-icon-before { width: auto; max-width: 100%; }
+
+.mw-ui-icon-before::before { display: inline-block; font-size: initial; wid=
+th: auto; min-width: 1.25em; min-height: 1.25em; margin-right: 8px; vertica=
+l-align: middle; }
+
+.mw-ui-icon-before span { vertical-align: middle; }
+
+@media (min-width: 1000px) {
+  .mw-ui-icon-with-label-desktop { width: auto; line-height: inherit; flex-=
+basis: auto; color: rgb(84, 89, 93) !important; font-weight: 500 !important=
+; }
+  .mw-ui-icon-with-label-desktop:hover, .mw-ui-icon-with-label-desktop:focu=
+s, .mw-ui-icon-with-label-desktop:active, .mw-ui-icon-with-label-desktop:vi=
+sited { color: rgb(84, 89, 93); text-decoration: none; }
+  .mw-ui-icon-with-label-desktop::before { width: auto; display: inline-blo=
+ck; margin-right: 8px; vertical-align: text-bottom; }
+}
+
+.mw-ui-icon-wikimedia-labFlask::before { background-image: linear-gradient(=
+transparent, transparent), url("/load.php?modules=3Dskins.vector.icons&imag=
+e=3DlabFlask&format=3Doriginal&skin=3Dvector-2022&version=3D166rd"); }
+
+.mw-ui-icon-wikimedia-labFlask-progressive::before { background-image: line=
+ar-gradient(transparent, transparent), url("/load.php?modules=3Dskins.vecto=
+r.icons&image=3DlabFlask&variant=3Dprogressive&format=3Doriginal&skin=3Dvec=
+tor-2022&version=3D166rd"); }
+
+.mw-ui-icon-wikimedia-language::before { background-image: linear-gradient(=
+transparent, transparent), url("/load.php?modules=3Dskins.vector.icons&imag=
+e=3Dlanguage&format=3Doriginal&skin=3Dvector-2022&version=3D166rd"); }
+
+.mw-ui-icon-wikimedia-language-progressive::before { background-image: line=
+ar-gradient(transparent, transparent), url("/load.php?modules=3Dskins.vecto=
+r.icons&image=3Dlanguage&variant=3Dprogressive&format=3Doriginal&skin=3Dvec=
+tor-2022&version=3D166rd"); }
+
+.mw-ui-icon-wikimedia-sandbox::before { background-image: linear-gradient(t=
+ransparent, transparent), url("/load.php?modules=3Dskins.vector.icons&image=
+=3Dsandbox&format=3Doriginal&skin=3Dvector-2022&version=3D166rd"); }
+
+.mw-ui-icon-wikimedia-sandbox-progressive::before { background-image: linea=
+r-gradient(transparent, transparent), url("/load.php?modules=3Dskins.vector=
+.icons&image=3Dsandbox&variant=3Dprogressive&format=3Doriginal&skin=3Dvecto=
+r-2022&version=3D166rd"); }
+
+.mw-ui-icon-wikimedia-listBullet::before { background-image: linear-gradien=
+t(transparent, transparent), url("/load.php?modules=3Dskins.vector.icons&im=
+age=3DlistBullet&format=3Doriginal&lang=3Den&skin=3Dvector-2022&version=3D1=
+66rd"); }
+
+.mw-ui-icon-wikimedia-listBullet-progressive::before { background-image: li=
+near-gradient(transparent, transparent), url("/load.php?modules=3Dskins.vec=
+tor.icons&image=3DlistBullet&variant=3Dprogressive&format=3Doriginal&lang=
+=3Den&skin=3Dvector-2022&version=3D166rd"); }
+
+.mw-ui-icon-wikimedia-ellipsis::before { background-image: linear-gradient(=
+transparent, transparent), url("/load.php?modules=3Dskins.vector.icons&imag=
+e=3Dellipsis&format=3Doriginal&skin=3Dvector-2022&version=3D166rd"); }
+
+.mw-ui-icon-wikimedia-ellipsis-progressive::before { background-image: line=
+ar-gradient(transparent, transparent), url("/load.php?modules=3Dskins.vecto=
+r.icons&image=3Dellipsis&variant=3Dprogressive&format=3Doriginal&skin=3Dvec=
+tor-2022&version=3D166rd"); }
+
+.mw-ui-icon-wikimedia-logIn::before { background-image: linear-gradient(tra=
+nsparent, transparent), url("/load.php?modules=3Dskins.vector.icons&image=
+=3DlogIn&format=3Doriginal&lang=3Den&skin=3Dvector-2022&version=3D166rd"); =
+}
+
+.mw-ui-icon-wikimedia-logIn-progressive::before { background-image: linear-=
+gradient(transparent, transparent), url("/load.php?modules=3Dskins.vector.i=
+cons&image=3DlogIn&variant=3Dprogressive&format=3Doriginal&lang=3Den&skin=
+=3Dvector-2022&version=3D166rd"); }
+
+.mw-ui-icon-wikimedia-logOut::before { background-image: linear-gradient(tr=
+ansparent, transparent), url("/load.php?modules=3Dskins.vector.icons&image=
+=3DlogOut&format=3Doriginal&lang=3Den&skin=3Dvector-2022&version=3D166rd");=
+ }
+
+.mw-ui-icon-wikimedia-logOut-progressive::before { background-image: linear=
+-gradient(transparent, transparent), url("/load.php?modules=3Dskins.vector.=
+icons&image=3DlogOut&variant=3Dprogressive&format=3Doriginal&lang=3Den&skin=
+=3Dvector-2022&version=3D166rd"); }
+
+.mw-ui-icon-wikimedia-search::before { background-image: linear-gradient(tr=
+ansparent, transparent), url("/load.php?modules=3Dskins.vector.icons&image=
+=3Dsearch&format=3Doriginal&skin=3Dvector-2022&version=3D166rd"); }
+
+.mw-ui-icon-wikimedia-search-progressive::before { background-image: linear=
+-gradient(transparent, transparent), url("/load.php?modules=3Dskins.vector.=
+icons&image=3Dsearch&variant=3Dprogressive&format=3Doriginal&skin=3Dvector-=
+2022&version=3D166rd"); }
+
+.mw-ui-icon-wikimedia-settings::before { background-image: linear-gradient(=
+transparent, transparent), url("/load.php?modules=3Dskins.vector.icons&imag=
+e=3Dsettings&format=3Doriginal&skin=3Dvector-2022&version=3D166rd"); }
+
+.mw-ui-icon-wikimedia-settings-progressive::before { background-image: line=
+ar-gradient(transparent, transparent), url("/load.php?modules=3Dskins.vecto=
+r.icons&image=3Dsettings&variant=3Dprogressive&format=3Doriginal&skin=3Dvec=
+tor-2022&version=3D166rd"); }
+
+.mw-ui-icon-wikimedia-imageGallery::before { background-image: linear-gradi=
+ent(transparent, transparent), url("/load.php?modules=3Dskins.vector.icons&=
+image=3DimageGallery&format=3Doriginal&skin=3Dvector-2022&version=3D166rd")=
+; }
+
+.mw-ui-icon-wikimedia-imageGallery-progressive::before { background-image: =
+linear-gradient(transparent, transparent), url("/load.php?modules=3Dskins.v=
+ector.icons&image=3DimageGallery&variant=3Dprogressive&format=3Doriginal&sk=
+in=3Dvector-2022&version=3D166rd"); }
+
+.mw-ui-icon-wikimedia-unStar::before { background-image: linear-gradient(tr=
+ansparent, transparent), url("/load.php?modules=3Dskins.vector.icons&image=
+=3DunStar&format=3Doriginal&skin=3Dvector-2022&version=3D166rd"); }
+
+.mw-ui-icon-wikimedia-unStar-progressive::before { background-image: linear=
+-gradient(transparent, transparent), url("/load.php?modules=3Dskins.vector.=
+icons&image=3DunStar&variant=3Dprogressive&format=3Doriginal&skin=3Dvector-=
+2022&version=3D166rd"); }
+
+.mw-ui-icon-wikimedia-expand::before { background-image: linear-gradient(tr=
+ansparent, transparent), url("/load.php?modules=3Dskins.vector.icons&image=
+=3Dexpand&format=3Doriginal&skin=3Dvector-2022&version=3D166rd"); }
+
+.mw-ui-icon-wikimedia-expand-progressive::before { background-image: linear=
+-gradient(transparent, transparent), url("/load.php?modules=3Dskins.vector.=
+icons&image=3Dexpand&variant=3Dprogressive&format=3Doriginal&skin=3Dvector-=
+2022&version=3D166rd"); }
+
+.mw-ui-icon-wikimedia-userAdd::before { background-image: linear-gradient(t=
+ransparent, transparent), url("/load.php?modules=3Dskins.vector.icons&image=
+=3DuserAdd&format=3Doriginal&lang=3Den&skin=3Dvector-2022&version=3D166rd")=
+; }
+
+.mw-ui-icon-wikimedia-userAdd-progressive::before { background-image: linea=
+r-gradient(transparent, transparent), url("/load.php?modules=3Dskins.vector=
+.icons&image=3DuserAdd&variant=3Dprogressive&format=3Doriginal&lang=3Den&sk=
+in=3Dvector-2022&version=3D166rd"); }
+
+.mw-ui-icon-wikimedia-userAnonymous::before { background-image: linear-grad=
+ient(transparent, transparent), url("/load.php?modules=3Dskins.vector.icons=
+&image=3DuserAnonymous&format=3Doriginal&skin=3Dvector-2022&version=3D166rd=
+"); }
+
+.mw-ui-icon-wikimedia-userAnonymous-progressive::before { background-image:=
+ linear-gradient(transparent, transparent), url("/load.php?modules=3Dskins.=
+vector.icons&image=3DuserAnonymous&variant=3Dprogressive&format=3Doriginal&=
+skin=3Dvector-2022&version=3D166rd"); }
+
+.mw-ui-icon-wikimedia-userAvatar::before { background-image: linear-gradien=
+t(transparent, transparent), url("/load.php?modules=3Dskins.vector.icons&im=
+age=3DuserAvatar&format=3Doriginal&skin=3Dvector-2022&version=3D166rd"); }
+
+.mw-ui-icon-wikimedia-userAvatar-progressive::before { background-image: li=
+near-gradient(transparent, transparent), url("/load.php?modules=3Dskins.vec=
+tor.icons&image=3DuserAvatar&variant=3Dprogressive&format=3Doriginal&skin=
+=3Dvector-2022&version=3D166rd"); }
+
+.mw-ui-icon-wikimedia-userContributions::before { background-image: linear-=
+gradient(transparent, transparent), url("/load.php?modules=3Dskins.vector.i=
+cons&image=3DuserContributions&format=3Doriginal&lang=3Den&skin=3Dvector-20=
+22&version=3D166rd"); }
+
+.mw-ui-icon-wikimedia-userContributions-progressive::before { background-im=
+age: linear-gradient(transparent, transparent), url("/load.php?modules=3Dsk=
+ins.vector.icons&image=3DuserContributions&variant=3Dprogressive&format=3Do=
+riginal&lang=3Den&skin=3Dvector-2022&version=3D166rd"); }
+
+.mw-ui-icon-wikimedia-userGroup::before { background-image: linear-gradient=
+(transparent, transparent), url("/load.php?modules=3Dskins.vector.icons&ima=
+ge=3DuserGroup&format=3Doriginal&lang=3Den&skin=3Dvector-2022&version=3D166=
+rd"); }
+
+.mw-ui-icon-wikimedia-userGroup-progressive::before { background-image: lin=
+ear-gradient(transparent, transparent), url("/load.php?modules=3Dskins.vect=
+or.icons&image=3DuserGroup&variant=3Dprogressive&format=3Doriginal&lang=3De=
+n&skin=3Dvector-2022&version=3D166rd"); }
+
+.mw-ui-icon-wikimedia-userTalk::before { background-image: linear-gradient(=
+transparent, transparent), url("/load.php?modules=3Dskins.vector.icons&imag=
+e=3DuserTalk&format=3Doriginal&lang=3Den&skin=3Dvector-2022&version=3D166rd=
+"); }
+
+.mw-ui-icon-wikimedia-userTalk-progressive::before { background-image: line=
+ar-gradient(transparent, transparent), url("/load.php?modules=3Dskins.vecto=
+r.icons&image=3DuserTalk&variant=3Dprogressive&format=3Doriginal&lang=3Den&=
+skin=3Dvector-2022&version=3D166rd"); }
+
+.mw-ui-icon-wikimedia-watchlist::before { background-image: linear-gradient=
+(transparent, transparent), url("/load.php?modules=3Dskins.vector.icons&ima=
+ge=3Dwatchlist&format=3Doriginal&lang=3Den&skin=3Dvector-2022&version=3D166=
+rd"); }
+
+.mw-ui-icon-wikimedia-watchlist-progressive::before { background-image: lin=
+ear-gradient(transparent, transparent), url("/load.php?modules=3Dskins.vect=
+or.icons&image=3Dwatchlist&variant=3Dprogressive&format=3Doriginal&lang=3De=
+n&skin=3Dvector-2022&version=3D166rd"); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after { animation-delay: -0.01ms !important; animation-dur=
+ation: 0.01ms !important; animation-iteration-count: 1 !important; scroll-b=
+ehavior: auto !important; transition-duration: 0ms !important; }
+}
+
+body { margin: 0px; }
+
+main { display: block; }
+
+hr { box-sizing: content-box; height: 0px; overflow: visible; }
+
+abbr[title] { border-bottom: 1px dotted; cursor: help; }
+
+@supports (text-decoration:underline dotted) {
+  abbr[title] { border-bottom: 0px; text-decoration: underline dotted; }
+}
+
+pre, code, tt, kbd, samp { font-family: monospace, monospace; }
+
+sub, sup { line-height: 1; }
+
+img { border: 0px; }
+
+button, input, optgroup, select, textarea { margin: 0px; }
+
+legend { color: inherit; padding: 0px; }
+
+div.tright, div.floatright, table.floatright { clear: right; float: right; =
+}
+
+div.tleft, div.floatleft, table.floatleft { float: left; clear: left; }
+
+div.floatright, table.floatright { margin: 0px 0px 0.5em 0.5em; }
+
+div.floatleft, table.floatleft { margin: 0px 0.5em 0.5em 0px; }
+
+div.thumb { width: auto; background-color: transparent; margin-bottom: 0.5e=
+m; }
+
+div.tleft { margin: 0.5em 1.4em 1.3em 0px; }
+
+div.tright { margin: 0.5em 0px 1.3em 1.4em; }
+
+.thumbcaption { text-align: left; line-height: 1.4em; padding: 3px; }
+
+div.thumbinner { padding: 3px; text-align: center; overflow: hidden; }
+
+.mw-message-box { color: rgb(0, 0, 0); box-sizing: border-box; margin-botto=
+m: 16px; border: 1px solid rgb(162, 169, 177); padding: 12px 24px; overflow=
+-wrap: break-word; overflow: hidden; background-color: rgb(234, 236, 240); =
+}
+
+.mw-message-box > :only-child { margin: 0px; }
+
+.mw-message-box h2 { color: inherit; display: block; border: 0px; font-size=
+: 1em; font-weight: bold; }
+
+.mw-message-box .mw-logevent-loglines li { font-size: 90%; }
+
+.mw-message-box-error { background-color: rgb(254, 231, 230); border-color:=
+ rgb(221, 51, 51); }
+
+.mw-message-box-warning { background-color: rgb(254, 246, 231); border-colo=
+r: rgb(255, 204, 51); }
+
+.mw-message-box-success { background-color: rgb(213, 253, 244); border-colo=
+r: rgb(20, 134, 109); }
+
+@media screen {
+  html, body { height: 100%; }
+  :focus { outline-color: rgb(51, 102, 204); }
+  html { font-size: 100%; }
+  html, body { font-family: sans-serif; }
+  ul { list-style-image: url("/skins/Vector/resources/common/images/bullet-=
+icon.svg?d4515"); }
+  pre, .mw-code { line-height: 1.3; }
+  .mw-jump-link:not(:focus) { display: block; clip: rect(1px, 1px, 1px, 1px=
+); width: 1px; height: 1px; margin: -1px; border: 0px; padding: 0px; overfl=
+ow: hidden; position: absolute !important; }
+  .mw-editsection, .mw-editsection-like { font-family: sans-serif; }
+  .mw-body h1, .mw-body-content h1, .mw-body-content h2 { margin-bottom: 0.=
+25em; padding: 0px; font-family: "Linux Libertine", Georgia, Times, serif; =
+line-height: 1.3; }
+  .mw-body h1:lang(ja), .mw-body-content h1:lang(ja), .mw-body-content h2:l=
+ang(ja), .mw-body h1:lang(he), .mw-body-content h1:lang(he), .mw-body-conte=
+nt h2:lang(he), .mw-body h1:lang(ko), .mw-body-content h1:lang(ko), .mw-bod=
+y-content h2:lang(ko) { font-family: sans-serif; }
+  .mw-body h1:lang(my), .mw-body-content h1:lang(my), .mw-body-content h2:l=
+ang(my) { line-height: normal; }
+  .mw-body h1, .mw-body-content h1 { font-size: 1.8em; }
+  .vector-body { font-size: calc(0.875em); line-height: 1.6; }
+  .vector-body #siteSub { font-size: 12.8px; }
+  .vector-body h1 { margin-top: 1em; }
+  .vector-body h2 { margin-top: 1em; font-size: 1.5em; }
+  .vector-body h3, .vector-body h4, .vector-body h5, .vector-body h6 { marg=
+in-top: 0.3em; margin-bottom: 0px; padding-bottom: 0px; line-height: 1.6; }
+  .vector-body h3 { font-size: 1.2em; }
+  .vector-body h3, .vector-body h4 { font-weight: bold; }
+  .vector-body h4, .vector-body h5, .vector-body h6 { font-size: 100%; }
+  .vector-body .toc h2 { font-family: sans-serif; font-size: 100%; }
+  .vector-body p { margin: 0.5em 0px; }
+  .vector-body blockquote { border-left: 4px solid rgb(234, 236, 240); padd=
+ing: 8px 32px; }
+  .vector-body blockquote > :first-child { margin-top: 0px; }
+  .vector-body blockquote > :last-child { margin-bottom: 0px; }
+  .mw-parser-output a.external { background-image: url("/skins/Vector/resou=
+rces/common/images/link-external-small-ltr-progressive.svg?14604"); backgro=
+und-position: right center; background-repeat: no-repeat; background-size: =
+0.857em; padding-right: 1em; }
+  .mw-indicators { font-size: 0.875em; line-height: 1.6; position: relative=
+; float: right; }
+  .mw-indicator { display: inline-block; }
+  #localNotice { margin-bottom: 0.9em; }
+  #siteNotice { font-size: 0.8em; margin: 24px 0px; position: relative; tex=
+t-align: center; }
+  .mw-portlet .vector-menu-heading { display: none; }
+  .mw-portlet ul { list-style: none; margin: 0px; }
+  .vector-menu-dropdown { position: relative; }
+  .vector-menu-dropdown .vector-menu-content { position: absolute; top: 100=
+%; left: -1px; opacity: 0; height: 0px; visibility: hidden; overflow: hidde=
+n; min-width: 100%; margin: 0px; padding: 0px; z-index: 3; }
+  .vector-menu-dropdown .vector-menu-content-list { list-style: none; }
+  .vector-menu-dropdown .mw-list-item { padding: 0px; margin: 0px; }
+  .vector-menu-dropdown .mw-list-item a { display: block; white-space: nowr=
+ap; cursor: pointer; }
+  .vector-menu-dropdown .selected a, .vector-menu-dropdown .selected a:visi=
+ted { color: rgb(32, 33, 34); text-decoration: none; }
+  .vector-menu-checkbox { cursor: pointer; position: absolute; top: 0px; le=
+ft: 0px; z-index: 1; opacity: 0; width: 100%; height: 100%; margin: 0px; pa=
+dding: 0px; display: none; }
+  .vector-menu-checkbox:checked ~ .vector-menu-content { opacity: 1; visibi=
+lity: visible; height: auto; }
+  :not(:checked) > .vector-menu-checkbox { display: block; }
+  .vector-menu-checkbox:focus + .vector-menu-heading { outline: -webkit-foc=
+us-ring-color auto; }
+  .vector-menu-portal { margin: 0px 0.6em 0px 0.7em; padding: 0.25em 0px; d=
+irection: ltr; }
+  .vector-menu-portal .vector-menu-heading { display: block; color: rgb(84,=
+ 89, 93); margin: 0.5em 0px 0px 0.666667em; border: 0px; padding: 0.25em 0p=
+x; font-size: 0.75em; font-weight: normal; cursor: default; }
+  .vector-menu-portal .vector-menu-content { margin-left: 0.5em; padding-to=
+p: 0px; }
+  .vector-menu-portal .vector-menu-content ul { list-style: none; margin: 0=
+px; padding-top: 0.3em; }
+  .vector-menu-portal .vector-menu-content li { margin: 0px; padding: 0.25e=
+m 0px; font-size: 0.75em; line-height: 1.125em; overflow-wrap: break-word; =
+}
+  .vector-menu-portal .vector-menu-content li a { color: rgb(51, 102, 204);=
+ }
+  .vector-menu-portal .vector-menu-content li a:visited { color: rgb(121, 9=
+2, 178); }
+  .vector-search-box-inner { position: relative; height: 100%; }
+  .vector-search-box-input { background-color: rgba(255, 255, 255, 0.5); co=
+lor: rgb(0, 0, 0); width: 100%; height: 2.15385em; box-sizing: border-box; =
+border: 1px solid rgb(162, 169, 177); border-radius: 2px; padding: 5px 2.15=
+385em 5px 0.4em; box-shadow: transparent 0px 0px 0px 1px inset; font-family=
+: inherit; font-size: 0.8125em; direction: ltr; transition-property: border=
+-color, box-shadow; transition-duration: 250ms; appearance: none; }
+  .vector-search-box-inner:hover .vector-search-box-input { border-color: r=
+gb(114, 119, 125); }
+  .vector-search-box-input:focus, .vector-search-box-inner:hover .vector-se=
+arch-box-input:focus { outline: 0px; border-color: rgb(51, 102, 204); box-s=
+hadow: rgb(51, 102, 204) 0px 0px 0px 1px inset; }
+  .vector-search-box-input::-webkit-input-placeholder { color: rgb(114, 119=
+, 125); opacity: 1; }
+  .vector-search-box-input::placeholder { color: rgb(114, 119, 125); opacit=
+y: 1; }
+  .vector-search-box-input::-webkit-search-decoration, .vector-search-box-i=
+nput::-webkit-search-cancel-button, .vector-search-box-input::-webkit-searc=
+h-results-button, .vector-search-box-input::-webkit-search-results-decorati=
+on { display: none; }
+  .searchButton { background-color: transparent; position: absolute; top: 1=
+px; bottom: 1px; right: 1px; min-width: 28px; width: 2.15385em; border: 0px=
+; padding: 0px; cursor: pointer; font-size: 0.8125em; direction: ltr; text-=
+indent: -99999px; white-space: nowrap; overflow: hidden; z-index: 1; }
+  .searchButton[name=3D"go"] { background: url("/skins/Vector/resources/com=
+mon/images/search.svg?bbf78") center center / 1.23077em no-repeat; opacity:=
+ 0.67; }
+  .search-toggle { display: block; float: right; }
+  .vector-search-box-collapses > div { display: none; }
+  #p-logo { width: 10em; height: 160px; margin-bottom: 1em; }
+  #p-logo a { background-position: center center; background-repeat: no-rep=
+eat; display: block; width: 10em; height: 160px; text-decoration: none; }
+  .mw-footer { direction: ltr; }
+  .mw-footer ul { list-style: none; margin: 0px; padding: 0px; }
+  .mw-footer li { color: rgb(32, 33, 34); margin: 0px; padding: 0.5em 0px; =
+font-size: 0.75em; }
+  #footer-icons { float: right; }
+  #footer-icons li { float: left; margin-left: 0.5em; line-height: 2; text-=
+align: right; }
+  #footer-info li { line-height: 1.4; }
+  #footer-places li { float: left; margin-right: 1em; line-height: 2; }
+}
+
+@media screen and (min-width: 1000px) {
+  .search-toggle { display: none; }
+}
+
+@media screen and (min-width: 1000px) {
+  .vector-search-box-collapses > div { display: block; }
+}
+
+@media print {
+  .toc, body { padding: 10px; font-family: "Linux Libertine", Georgia, Time=
+s, serif; }
+  .printfooter, .mw-footer, .thumb, figure, table, ol, dl, ul, h3, h4, h5, =
+h6 { font-family: sans-serif; }
+  img { font-family: "Linux Libertine", Georgia, Times, serif; }
+  .mw-body a:not(.image) { border-bottom: 1px solid rgb(170, 170, 170); }
+  .firstHeading { font-size: 25pt; line-height: 28pt; margin-bottom: 20px; =
+padding-bottom: 5px; }
+  .firstHeading, h2 { overflow: hidden; border-bottom: 2px solid rgb(0, 0, =
+0); }
+  h3, h4, h5, h6 { margin: 30px 0px 0px; }
+  h2, h3, h4, h5, h6 { padding: 0px; position: relative; }
+  h2 { font-size: 18pt; line-height: 24pt; margin-bottom: 0.25em; }
+  h3 { font-size: 14pt; line-height: 20pt; }
+  h4, h5, h6 { font-size: 12pt; line-height: 16pt; }
+  p { font-size: 12pt; line-height: 16pt; margin-top: 5px; text-align: just=
+ify; }
+  p::before { content: ""; display: block; width: 120pt; overflow: hidden; =
+}
+  blockquote { border-left: 2px solid rgb(0, 0, 0); padding-left: 20px; }
+  ol, ul { margin: 10px 0px 0px 1.6em; padding: 0px; }
+  ol li, ul li { padding: 2px 0px; font-size: 12pt; }
+  table ol li, table ul li { font-size: inherit; }
+  .toc { break-before: avoid; break-after: avoid; background: none; border:=
+ 0px; display: table; }
+  .toc a { border: 0px; font-weight: normal; }
+  .toc > ul > li { margin-bottom: 4px; font-weight: bold; }
+  .toc ul { margin: 0px; list-style: none; }
+  .toc ul ul { padding-left: 30px; }
+  .toc li.toclevel-1 > a { font-size: 12pt; font-weight: bold; }
+  #mw-navigation, .noprint, .mw-jump-link, .mw-portlet-lang, .toc .tocnumbe=
+r, .mw-checkbox-hack-checkbox, .mw-checkbox-hack-button { display: none; }
+  .printfooter { margin-top: 10px; border-top: 3px solid rgb(0, 0, 0); padd=
+ing-top: 10px; font-size: 10pt; clear: both; }
+  .mw-footer { margin-top: 12px; border-top: 1px solid rgb(238, 238, 238); =
+padding-top: 5px; }
+  #footer-info { margin: 0px; padding: 0px; }
+  #footer-info li { color: rgb(153, 153, 153); list-style: none; display: b=
+lock; padding-bottom: 10px; font-size: 10pt; }
+  #footer-info li a { color: rgb(153, 153, 153) !important; }
+  #footer-info-lastmod { color: rgb(0, 0, 0); font-size: 12pt; font-weight:=
+ bold; }
+}
+
+@media screen {
+  body { background-color: rgb(248, 249, 250); color: rgb(32, 33, 34); over=
+flow-y: scroll; }
+  .mw-body, .parsoid-body { direction: ltr; }
+  .mw-body { border-top: 1px solid transparent; margin-top: -1px; padding: =
+0.5em 0.5em 1.5em; }
+  .mw-body .firstHeading { overflow: visible; margin-bottom: 0px; }
+  .mw-header { position: relative; z-index: 4; }
+  .mw-body-content { margin-top: 16px; }
+  .mw-body, #mw-data-after-content, .mw-footer { margin-left: 0px; }
+  .mw-indicators { z-index: 1; }
+  .mw-body-header::after, .mw-body-subheader::after { clear: both; content:=
+ ""; display: block; }
+  .mw-body .mw-portlet-lang { float: right; }
+  #siteSub { display: none; }
+  .vector-body { position: relative; z-index: 0; }
+  .vector-body #siteSub { margin-top: 8px; }
+  .vector-body #contentSub, .vector-body #contentSub2 { font-size: 84%; lin=
+e-height: 1.2em; margin: 8px 0px 0px; color: rgb(84, 89, 93); width: auto; =
+}
+  #left-navigation { float: left; margin-left: -8px; }
+  #right-navigation { float: right; margin-right: -8px; }
+  #right-navigation .vector-menu-content { left: auto; right: -1px; }
+  .parsoid-body { padding: 0.5em 0.5em 1.5em; }
+  .mw-footer { border-top: 1px solid rgb(162, 169, 177); padding: 0.75em; }
+  .mw-page-container { position: relative; z-index: 0; max-width: 94.625em;=
+ min-height: 100%; margin-left: auto; margin-right: auto; padding: 0.05px 1=
+em; background-color: rgb(255, 255, 255); min-width: 26.25em; }
+  .skin--responsive .mw-page-container { min-width: auto; }
+  .mw-content-container { max-width: 60em; }
+  .skin-vector-disable-max-width .mw-content-container { max-width: none !i=
+mportant; width: 100% !important; }
+  #mw-sidebar-checkbox:not(:checked) ~ .vector-sidebar-container-no-toc ~ .=
+mw-content-container { grid-column: sidebar / content; margin-left: auto; m=
+argin-right: auto; width: 100%; box-sizing: border-box; max-width: 60em; }
+  .vector-toc-collapsed #mw-sidebar-checkbox:not(:checked) ~ .mw-content-co=
+ntainer, .vector-toc-collapsed #mw-sidebar-checkbox:not(:checked) ~ .mw-tab=
+le-of-contents-container { grid-column: sidebar / content; margin-left: aut=
+o; margin-right: auto; width: 100%; box-sizing: border-box; max-width: 60em=
+; }
+  .mw-article-toolbar-container { display: flow-root; border-bottom: 1px so=
+lid rgb(234, 236, 240); }
+  .mw-article-toolbar-container > div { font-size: 0.8125em; }
+  .mw-article-toolbar-container .mw-portlet-views { display: none; }
+  .mw-article-toolbar-container .vector-more-collapsible-item { display: bl=
+ock; }
+  .search-form__loader::after { content: attr(data-loading-msg); display: f=
+lex; flex-direction: column; justify-content: center; position: absolute; t=
+op: 100%; width: 100%; height: calc(59px); box-sizing: border-box; border-w=
+idth: 0px 1px 1px; border-style: solid; border-color: rgb(162, 169, 177); b=
+order-image: initial; border-radius: 0px 0px 2px 2px; box-shadow: transpare=
+nt 0px 0px 0px 1px inset; padding-left: 36px; overflow: hidden; white-space=
+: nowrap; text-overflow: ellipsis; z-index: 1; background: linear-gradient(=
+90deg, rgb(51, 102, 204) 0%, rgb(51, 102, 204) 100%) -10% 0px / 0px 2px no-=
+repeat, rgb(255, 255, 255); animation: 1200ms linear 500ms infinite alterna=
+te none running search-loader-progress-bar; }
+  @keyframes search-loader-progress-bar {=20
+  0% { background-size: 0px 2px; background-position: -10% 0px; }
+  30% { background-size: 30% 2px; background-position: -10% 0px; }
+  70% { background-size: 30% 2px; background-position: 110% 0px; }
+  100% { background-size: 0px 2px; background-position: 110% 0px; }
+}
+  .vector-search-box { font-size: calc(0.875em); flex-grow: 1; }
+  .vector-search-box > div { max-width: 35.7143em; }
+  .vector-search-box-vue .vector-search-box-input, .vector-search-box-vue .=
+searchButton { font-size: inherit; }
+  .vector-search-box-vue .vector-search-box-input { height: 32px; }
+  .vector-search-box-vue .searchButton { background-size: 1.42857em; }
+  .client-js .vector-search-box-vue .cdx-typeahead-search .cdx-search-input=
+__end-button { opacity: 0; transition: opacity 250ms ease 0s; }
+  .client-js .vector-search-box-vue .cdx-typeahead-search .cdx-search-input=
+__end-button:focus { opacity: 1; }
+  .client-js .vector-search-box-vue .cdx-typeahead-search .cdx-text-input__=
+input:not(:hover):not(:focus) { border-right-color: transparent; }
+  .client-js .vector-search-box-vue .cdx-typeahead-search--active .cdx-sear=
+ch-input__end-button, .client-js .vector-search-box-vue .cdx-typeahead-sear=
+ch:hover .cdx-search-input__end-button { opacity: 1; }
+  .client-js .vector-search-box-vue .cdx-typeahead-search--active .cdx-text=
+-input, .client-js .vector-search-box-vue .cdx-typeahead-search:hover .cdx-=
+text-input { z-index: 1; }
+  .client-js .vector-search-box-vue .cdx-typeahead-search--active .cdx-text=
+-input__input, .client-js .vector-search-box-vue .cdx-typeahead-search:hove=
+r .cdx-text-input__input { border-top-right-radius: 0px; border-bottom-righ=
+t-radius: 0px; }
+  .client-js .vector-search-box-vue .cdx-typeahead-search .cdx-menu-item { =
+margin-bottom: 0px; }
+  .client-js .vector-search-box-vue .cdx-typeahead-search .cdx-menu-item a =
+{ text-decoration: none; }
+  .client-js .vector-search-box-vue .cdx-typeahead-search.vector-search-box=
+-disable-transitions .cdx-text-input__input:enabled, .client-js .vector-sea=
+rch-box-vue .cdx-typeahead-search.vector-search-box-disable-transitions .cd=
+x-text-input__start-icon { transition: none 0s ease 0s; }
+  .client-js .vector-search-box-vue .vector-search-box-input { padding-left=
+: 36px; padding-right: 8px; }
+  .client-js .vector-search-box-vue .searchButton { pointer-events: none; i=
+nset: 0px auto 0px 1px; width: 36px; opacity: 0.51; }
+  .client-js .vector-search-box-vue .vector-search-box-input:focus ~ .searc=
+hButton { opacity: 0.87; }
+  .client-js .vector-search-box-vue.vector-search-box-show-thumbnail > div =
+{ max-width: 37.4286em; }
+  .client-js .vector-search-box-vue.vector-search-box-show-thumbnail.vector=
+-search-box-auto-expand-width .searchButton { left: 25px; }
+  .client-js .vector-search-box-vue.vector-search-box-show-thumbnail.vector=
+-search-box-auto-expand-width .vector-search-box-input { margin-left: 24px;=
+ width: calc(100% - 24px); }
+  .client-js .vector-search-box-vue.vector-search-box-show-thumbnail:not(.v=
+ector-search-box-auto-expand-width) .vector-search-box-input, .client-js .v=
+ector-search-box-vue.vector-search-box-show-thumbnail.vector-search-box-aut=
+o-expand-width .vector-search-box-input:focus { margin-left: 0px; padding-l=
+eft: calc(60px); width: 100%; }
+  .client-js .vector-search-box-vue.vector-search-box-show-thumbnail:not(.v=
+ector-search-box-auto-expand-width) .vector-search-box-input ~ .searchButto=
+n, .client-js .vector-search-box-vue.vector-search-box-show-thumbnail.vecto=
+r-search-box-auto-expand-width .vector-search-box-input:focus ~ .searchButt=
+on { left: 14px; }
+  .mw-checkbox-hack-checkbox { display: none; }
+  .mw-checkbox-hack-button { display: inline-block; cursor: pointer; }
+  .mw-sidebar, .sidebar-toc, .sidebar-toc::after { width: 220px; margin-lef=
+t: 0px; }
+  .sidebar-toc, .sidebar-toc::after { margin-left: -0.75em; }
+  .mw-sidebar { box-sizing: border-box; padding: 12px 19px 12px 9px; backgr=
+ound-image: none; background-color: rgb(248, 249, 250); }
+  #mw-sidebar-checkbox:not(:checked) ~ .vector-sidebar-container .mw-sideba=
+r { display: none; }
+  .mw-sidebar #p-navigation .vector-menu-heading { display: none; }
+  .mw-sidebar-action .mw-sidebar-action-item { margin-top: 4px; margin-bott=
+om: 4px; }
+  .mw-sidebar-action .mw-sidebar-action-item .mw-sidebar-action-heading { m=
+argin-bottom: 0.75em; }
+  .mw-sidebar-action .mw-sidebar-action-item .mw-sidebar-action-content > *=
+ { font-size: 0.75em; }
+  .mw-sidebar-action .mw-sidebar-action-item .mw-sidebar-action-content > a=
+ { font-weight: bold; }
+  .mw-sidebar-action .mw-sidebar-action-item .vector-language-sidebar-alert=
+ { padding: 0.75em; }
+  #mw-sidebar-button::before { opacity: 0.67; background-image: url("data:i=
+mage/svg+xml,%3Csvg xmlns=3D%22http://www.w3.org/2000/svg%22 width=3D%2220%=
+22 height=3D%2220%22 viewBox=3D%220 0 20 20%22%3E %3Ctitle%3E chevron %3C/t=
+itle%3E %3Cpath d=3D%22m9 2 1.3 1.3L3.7 10l6.6 6.7L9 18l-8-8 8-8zm8.5 0L19 =
+3.3 12.2 10l6.7 6.7-1.4 1.3-8-8 8-8z%22/%3E %3C/svg%3E"); }
+  #mw-sidebar-checkbox:not(:checked) ~ .mw-header #mw-sidebar-button::befor=
+e { background-image: url("data:image/svg+xml,%3Csvg xmlns=3D%22http://www.=
+w3.org/2000/svg%22 width=3D%2220%22 height=3D%2220%22 viewBox=3D%220 0 20 2=
+0%22%3E %3Ctitle%3E menu %3C/title%3E %3Cpath d=3D%22M1 3v2h18V3zm0 8h18V9H=
+1zm0 6h18v-2H1z%22/%3E %3C/svg%3E"); }
+  #mw-sidebar-button:hover::before { opacity: 1; }
+  .mw-body-header .mw-portlet-lang { margin-top: 2px; box-sizing: border-bo=
+x; height: 2em; }
+  .mw-body-header .mw-portlet-lang .mw-ui-icon::before { opacity: 0.87; }
+  .client-nojs .mw-body-header .mw-portlet-lang .mw-portlet-lang-heading-0 =
+{ display: none; }
+  .mw-body-header .mw-portlet-lang .vector-menu-heading { user-select: none=
+; opacity: 1; }
+  .mw-body-header .mw-portlet-lang .vector-menu-heading .vector-menu-headin=
+g-label { font-size: 0.875em; }
+  .mw-body-header .mw-portlet-lang .vector-menu-heading.mw-ui-progressive.m=
+w-ui-quiet .mw-ui-icon::before { opacity: 1; }
+  .mw-body-header .mw-portlet-lang .vector-menu-heading.mw-ui-progressive.m=
+w-ui-quiet::after { background-image: url("/skins/Vector/resources/common/i=
+mages/arrow-down-progressive.svg?f0b59"); opacity: 1; }
+  .mw-body-header .mw-portlet-lang input:active + .vector-menu-heading.mw-u=
+i-progressive.mw-ui-quiet .mw-ui-icon { filter: brightness(0) invert(1); }
+  .mw-body-header .mw-portlet-lang input:active + .vector-menu-heading.mw-u=
+i-progressive.mw-ui-quiet::after { background-image: url("/skins/Vector/res=
+ources/common/images/arrow-down-invert.svg?e24ea"); }
+  .mw-body-header .mw-portlet-lang .vector-menu-content { top: auto; left: =
+-1px; right: -1px; box-sizing: border-box; max-height: 65vh; overflow: auto=
+; display: none; }
+  .mw-body-header .mw-portlet-lang .vector-menu-content li a { font-size: i=
+nherit; }
+  .mw-body-header .mw-portlet-lang .vector-menu-checkbox:checked ~ .vector-=
+menu-content { display: block; }
+  .mw-body-header .mw-portlet-lang .after-portlet { margin-top: 10px; }
+  #p-lang-btn.mw-portlet-empty { display: none; }
+  .vector-user-links { display: flex; align-items: center; position: relati=
+ve; justify-content: flex-end; flex-shrink: 1; font-size: 0.875em; }
+  .vector-user-links .mw-ui-button { display: flex; align-items: center; }
+  .vector-user-links .mw-list-item { margin: 0px; }
+  .vector-user-menu .vector-menu-content { left: auto; right: 0px; min-widt=
+h: 200px; }
+  .vector-user-menu-more .vector-menu-content-list, .vector-user-menu-overf=
+low .vector-menu-content-list { display: flex; align-items: center; }
+  .vector-user-menu-more a:not(.mw-ui-button):not(.mw-echo-notifications-ba=
+dge), .vector-user-menu-overflow a:not(.mw-ui-button):not(.mw-echo-notifica=
+tions-badge) { margin: 0px 8px; }
+  .vector-user-menu-logged-in .vector-menu-heading { width: auto; }
+  .vector-user-menu-logged-in .vector-menu-heading::before { width: auto; }
+  .vector-user-menu-anon-editor { min-height: 32px; display: flex; align-it=
+ems: center; padding: 0px 12px; color: rgb(84, 89, 93); }
+  .vector-user-menu-anon-editor:visited { color: rgb(51, 102, 204); }
+  .vector-user-menu-anon-editor.selected a, .vector-user-menu-anon-editor.s=
+elected a:visited { color: rgb(32, 33, 34); }
+  .vector-user-menu-anon-editor a::before { content: "("; }
+  .vector-user-menu-anon-editor a::after { content: ")"; }
+  .vector-user-menu-login { border-bottom: 1px solid rgb(234, 236, 240); }
+  .vector-user-menu-logout { border-top: 1px solid rgb(234, 236, 240); }
+  #pt-userpage-2 { max-width: 11.0714em; }
+  #pt-userpage-2 a { color: rgb(51, 102, 204); }
+  #pt-userpage-2 span { overflow: hidden; text-overflow: ellipsis; white-sp=
+ace: nowrap; }
+  .mw-header { min-height: 3.125em; padding: 8px 0px; display: flex; flex-w=
+rap: nowrap; align-items: center; }
+  .vector-layout-legacy .mw-header { margin: 0.5em 0px 2em; padding: 0px; }
+  .mw-header #mw-sidebar-button { margin-right: 0.75em; }
+  .mw-header-content, .mw-header-aside { display: flex; align-items: center=
+; }
+  .mw-header-aside { float: left; }
+  .mw-header-content { flex-grow: 1; }
+  .mw-footer-container { padding-top: 50px; padding-bottom: 82px; }
+  .vector-menu-dropdown .vector-menu-heading, .mw-interlanguage-selector { =
+display: flex; }
+  .vector-menu-dropdown .vector-menu-heading::after, .mw-interlanguage-sele=
+ctor::after { content: ""; background: url("/skins/Vector/resources/common/=
+images/arrow-down.svg?9426f") 100% 50% no-repeat; width: 1.23077em; height:=
+ 1.23077em; }
+  .vector-menu-dropdown .vector-menu-content { background-color: rgb(255, 2=
+55, 255); border: 1px solid rgb(162, 169, 177); box-shadow: rgba(0, 0, 0, 0=
+.1) 0px 1px 1px 0px; transition-property: opacity; transition-duration: 100=
+ms; }
+  .vector-user-menu-logout a, .vector-user-menu-create-account a, .vector-u=
+ser-menu-login a, .vector-menu-dropdown .mw-list-item a { min-height: 32px;=
+ display: flex; align-items: center; padding: 0px 12px; white-space: nowrap=
+; color: rgb(51, 102, 204); }
+  .vector-user-menu-logout a:visited, .vector-user-menu-create-account a:vi=
+sited, .vector-user-menu-login a:visited, .vector-menu-dropdown .mw-list-it=
+em a:visited { color: rgb(51, 102, 204); }
+  .vector-user-menu-logout a.selected a, .vector-user-menu-create-account a=
+.selected a, .vector-user-menu-login a.selected a, .vector-menu-dropdown .m=
+w-list-item a.selected a, .vector-user-menu-logout a.selected a:visited, .v=
+ector-user-menu-create-account a.selected a:visited, .vector-user-menu-logi=
+n a.selected a:visited, .vector-menu-dropdown .mw-list-item a.selected a:vi=
+sited { color: rgb(32, 33, 34); }
+  .vector-menu-tabs { float: left; }
+  .vector-menu-tabs .mw-list-item a { color: rgb(51, 102, 204); }
+  .vector-menu-tabs .mw-list-item a:focus, .vector-menu-tabs .mw-list-item =
+a:hover { text-decoration: none; border-bottom: 1px solid; }
+  .vector-menu-tabs .mw-list-item.new a, .vector-menu-tabs .mw-list-item.ne=
+w a:visited { color: rgb(221, 51, 51); }
+  .vector-menu-tabs .mw-list-item.selected a, .vector-menu-tabs .mw-list-it=
+em.selected a:visited { color: rgb(32, 33, 34); border-bottom: 1px solid; }
+  .vector-menu-tabs .mw-list-item, .mw-article-toolbar-container .vector-me=
+nu-dropdown { float: left; white-space: nowrap; margin: 0px 8px; }
+  .vector-menu-tabs .mw-list-item > a, .mw-article-toolbar-container .vecto=
+r-menu-dropdown > a, .vector-menu-tabs .mw-list-item .vector-menu-heading, =
+.mw-article-toolbar-container .vector-menu-dropdown .vector-menu-heading { =
+display: inline-flex; position: relative; padding: 18px 0px 7px; margin-bot=
+tom: -1px; cursor: pointer; border-bottom: 1px solid transparent; max-heigh=
+t: 3.15385em; box-sizing: border-box; font-size: inherit; font-weight: norm=
+al; }
+  .vector-menu-portal .vector-menu-heading { border-bottom: 1px solid rgb(2=
+00, 204, 209); }
+  .vector-sticky-header { width: 100%; height: 3.125rem; position: fixed; t=
+op: 0px; left: 0px; right: 0px; z-index: 4; transition: transform 250ms lin=
+ear 0s; display: none; align-items: center; margin: 0px auto; background: r=
+gba(255, 255, 255, 0.97); border-bottom: 1px solid rgb(234, 236, 240); padd=
+ing: 6px 8px 6px 10px; justify-content: space-between; box-sizing: border-b=
+ox; }
+  .client-js.vector-sticky-header-enabled :not(.vector-sticky-header-visibl=
+e) .vector-sticky-header { transform: translateY(-100%); }
+  .client-js.vector-sticky-header-enabled :not(.vector-sticky-header-visibl=
+e) .vector-sticky-header > div { display: none; }
+  .client-nojs .vector-sticky-header { display: none; }
+  .vector-sticky-header-start, .vector-sticky-header-end, .vector-sticky-he=
+ader-icons, .vector-sticky-header-context-bar { display: flex; align-items:=
+ center; }
+  .vector-sticky-header-start { flex-grow: 1; min-width: 0px; }
+  .vector-sticky-header-context-bar { border-left: 1px solid rgb(200, 200, =
+200); margin: 0px 15px; padding-left: 30px; white-space: nowrap; min-width:=
+ 0px; }
+  .vector-sticky-header-toc-container { display: none; }
+  .vector-toc-collapsed .vector-sticky-header-toc-container { display: bloc=
+k; position: relative; margin-left: -0.75em; }
+  .vector-toc-collapsed .vector-sticky-header-toc-container .sidebar-toc { =
+margin: 0px; }
+  .vector-sticky-header-context-bar-primary { overflow: hidden; font-family=
+: "Linux Libertine", Georgia, Times, serif; font-size: 1.5em; text-overflow=
+: ellipsis; }
+  .vector-sticky-header-context-bar-primary wbr { display: none; }
+  .vector-sticky-header-icons { font-size: 0.875em; }
+  .vector-sticky-header .vector-search-box { display: none; }
+  .vector-sticky-header.vector-header-search-toggled .vector-sticky-header-=
+search-toggle, .vector-sticky-header.vector-header-search-toggled .vector-s=
+ticky-header-context-bar { display: none; }
+  .vector-sticky-header.vector-header-search-toggled .vector-search-box { d=
+isplay: block; margin-left: 4px; }
+  .vector-sticky-header.vector-header-search-toggled .vector-search-box-sho=
+w-thumbnail { margin-left: -9px; }
+  .vector-sticky-header.vector-header-search-toggled .vector-search-box-sho=
+w-thumbnail .cdx-text-input__start-icon { color: rgb(32, 33, 34); }
+  @keyframes rotate {=20
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+  .vector-menu-tabs .mw-watchlink.icon a { overflow: hidden; text-indent: -=
+99999px; color: transparent; }
+  .vector-menu-tabs .mw-watchlink.icon a::before { content: ""; display: bl=
+ock; width: 1.23077em; height: 1.23077em; }
+  .vector-menu-tabs #ca-unwatch.icon a::before { background-image: url("/sk=
+ins/Vector/resources/common/images/unwatch-icon.svg?4152f"); }
+  .vector-menu-tabs #ca-unwatch.mw-watchlink-temp.icon a::before { backgrou=
+nd-image: url("/skins/Vector/resources/common/images/unwatch-temp-icon.svg?=
+195f5"); }
+  .vector-menu-tabs #ca-watch.icon a::before { background-image: url("/skin=
+s/Vector/resources/common/images/watch-icon.svg?6ab6f"); }
+  .vector-menu-tabs #ca-unwatch.icon a:hover::before, .vector-menu-tabs #ca=
+-unwatch.icon a:focus::before { background-image: url("/skins/Vector/resour=
+ces/common/images/unwatch-icon-hl.svg?a4731"); }
+  .vector-menu-tabs #ca-unwatch.mw-watchlink-temp.icon a:hover::before, .ve=
+ctor-menu-tabs #ca-unwatch.mw-watchlink-temp.icon a:focus::before { backgro=
+und-image: url("/skins/Vector/resources/common/images/unwatch-temp-icon-hl.=
+svg?f3db6"); }
+  .vector-menu-tabs #ca-watch.icon a:hover::before, .vector-menu-tabs #ca-w=
+atch.icon a:focus::before { background-image: url("/skins/Vector/resources/=
+common/images/watch-icon-hl.svg?9bf90"); }
+  .vector-menu-tabs #ca-unwatch.icon .loading::before, .vector-menu-tabs #c=
+a-watch.icon .loading::before { animation: 700ms linear 0s infinite normal =
+none running rotate; outline: 0px; cursor: default; pointer-events: none; t=
+ransform-origin: 50% 50%; }
+  .mw-table-of-contents-container { align-self: start; height: 100%; }
+  .mw-table-of-contents-container.mw-sticky-header-element { position: stic=
+ky; top: 0px; align-self: start; height: unset; }
+  .vector-sticky-toc-container { position: sticky; top: 0px; }
+  .mw-table-of-contents-container > .sidebar-toc { margin-top: 1.5em; }
+  .sidebar-toc { max-height: 75vh; padding: 20px 12px 20px calc(15px + 0.75=
+em); box-sizing: border-box; overflow: auto; background-color: rgb(255, 255=
+, 255); }
+  .sidebar-toc .sidebar-toc-header { padding-bottom: 12px; }
+  .sidebar-toc .sidebar-toc-title { color: rgb(84, 89, 93); font-size: 0.87=
+5em; margin: 0px; padding: 0px; border: 0px; }
+  .sidebar-toc .sidebar-toc-numb { display: none; }
+  .sidebar-toc .sidebar-toc-toggle { display: none; position: absolute; top=
+: 1px; left: calc(-1.834em - 1px); width: 1.834em; height: 1.834em; font-si=
+ze: 0.75em; transition: all 100ms ease 0s; cursor: pointer; }
+  .sidebar-toc .sidebar-toc-link { word-break: break-word; color: rgb(51, 1=
+02, 204); display: block; }
+  .sidebar-toc .sidebar-toc-list-item-active > .sidebar-toc-link { color: r=
+gb(32, 33, 34); font-weight: bold; width: calc(100% + 12px); }
+  .sidebar-toc .sidebar-toc-text { padding: 4px 0px; }
+  .sidebar-toc .sidebar-toc-contents, .sidebar-toc .sidebar-toc-list { marg=
+in: 0px; list-style: none; line-height: 18px; }
+  .sidebar-toc .sidebar-toc-list-item { display: block; position: relative;=
+ list-style-type: none; padding-left: 8px; }
+  .sidebar-toc .sidebar-toc-list-item.sidebar-toc-level-1 { padding-left: 0=
+px; }
+  .sidebar-toc .sidebar-toc-list-item a { font-size: 0.875em; }
+  .client-js .sidebar-toc .sidebar-toc-level-1 .sidebar-toc-list-item { dis=
+play: none; }
+  .client-js .sidebar-toc .sidebar-toc-level-1.sidebar-toc-list-item-expand=
+ed .sidebar-toc-list-item { display: block; }
+  .client-js .sidebar-toc .sidebar-toc-toggle { display: block; }
+  .client-js .sidebar-toc .sidebar-toc-level-1.sidebar-toc-list-item-expand=
+ed .sidebar-toc-toggle { transform: rotate(0deg); }
+  .client-js body.ltr .sidebar-toc .sidebar-toc-toggle { transform: rotate(=
+-90deg); }
+  .client-js body.rtl .sidebar-toc .sidebar-toc-toggle { transform: rotate(=
+90deg); }
+  body.rtl .sidebar-toc { padding: 20px calc(15px + 0.75em) 20px 12px; }
+  #vector-toc-collapsed-button { display: none; float: left; margin-right: =
+4px; margin-left: -0.75em; padding: 7px 10px; background-color: rgb(255, 25=
+5, 255); }
+  #vector-toc-collapsed-button:hover, #vector-toc-collapsed-button:active {=
+ background-color: rgb(248, 249, 250); }
+  #vector-toc-collapsed-button, .sidebar-toc { z-index: 3; }
+  .ve-active #vector-toc-collapsed-button { display: none !important; }
+  .vector-toc-collapse-button, .vector-toc-uncollapse-button { display: non=
+e; border: 0px; padding: 0px; background-color: transparent; color: rgb(51,=
+ 102, 204); cursor: pointer; }
+  .vector-toc-collapse-button:hover, .vector-toc-uncollapse-button:hover { =
+color: rgb(68, 127, 245); }
+  .vector-toc-collapse-button::before, .vector-toc-uncollapse-button::befor=
+e { content: "["; color: rgb(84, 89, 93); }
+  .vector-toc-collapse-button::after, .vector-toc-uncollapse-button::after =
+{ content: "]"; color: rgb(84, 89, 93); }
+}
+
+@media screen and (min-width: 1000px) {
+  .mw-page-container { padding-left: 2em; padding-right: 2em; }
+}
+
+@media screen and (min-width: 1200px) {
+  .mw-page-container { padding-left: 2.5em; padding-right: 2.5em; }
+}
+
+@media screen and (min-width: 1000px) {
+  .mw-page-container-inner { display: grid; width: 100%; grid-template: "he=
+ader header header" min-content "sitenotice sitenotice sitenotice" min-cont=
+ent "sidebar gutter content" min-content "toc gutter content" 1fr "footer f=
+ooter footer" min-content / 232px 20px minmax(0px, 1fr); }
+  .mw-body { padding-left: 0px; }
+  .mw-page-container-inner > #siteNotice, .vector-sitenotice-container { gr=
+id-area: sitenotice / sitenotice / sitenotice / sitenotice; }
+  .mw-table-of-contents-container { grid-area: toc / toc / toc / toc; }
+  .mw-header { grid-area: header / header / header / header; }
+  .vector-sidebar-container { grid-area: sidebar / sidebar / sidebar / side=
+bar; }
+  .mw-content-container { grid-area: content / content / content / content;=
+ }
+  #mw-sidebar-checkbox:not(:checked) ~ .vector-sidebar-container-no-toc ~ .=
+mw-content-container { padding-left: 8px; }
+  .mw-footer-container { grid-area: footer / footer / footer / footer; }
+}
+
+@media screen and (min-width: 1200px) {
+  .mw-page-container-inner { grid-template-columns: 284px 20px minmax(0px, =
+1fr); }
+}
+
+@media screen and (min-width: 720px) {
+  .mw-article-toolbar-container .mw-portlet-views:not(.emptyPortlet) { disp=
+lay: block; }
+}
+
+@media screen and (min-width: 720px) {
+  .mw-article-toolbar-container .vector-more-collapsible-item { display: no=
+ne; }
+}
+
+@media screen and (max-width: 719px) {
+  .mw-article-toolbar-container .vector-has-collapsible-items { display: bl=
+ock; }
+}
+
+@media screen and (min-width: 1200px) {
+  .mw-sidebar, .sidebar-toc, .sidebar-toc::after { width: 244px; margin-lef=
+t: 0.75em; }
+}
+
+@media screen and (min-width: 1200px) {
+  .sidebar-toc, .sidebar-toc::after { margin-left: 0px; }
+}
+
+@media screen and (max-width: 999px) {
+  .mw-sidebar { width: 100%; }
+}
+
+@media screen and (min-width: 720px) {
+  .vector-user-menu .user-links-collapsible-item { display: none; }
+}
+
+@media screen and (max-width: 719px) {
+  .vector-user-menu-more .user-links-collapsible-item, .vector-user-menu-ov=
+erflow .user-links-collapsible-item { display: none; }
+}
+
+@media screen and (min-width: 1200px) {
+  #pt-userpage-2 { max-width: 14.2857em; }
+}
+
+@media screen and (min-width: 1200px) {
+  .mw-header .vector-search-box:not(.vector-search-box-auto-expand-width), =
+html:not(.client-js) .mw-header .vector-search-box { padding-left: 24px; }
+}
+
+@media screen and (min-width: 1000px) {
+  .mw-header .vector-search-box { margin-right: 12px; }
+}
+
+@media screen and (max-width: 999px) {
+  .mw-header.vector-header-search-toggled #mw-sidebar-button, .mw-header.ve=
+ctor-header-search-toggled .mw-logo, .mw-header.vector-header-search-toggle=
+d .search-toggle { display: none; }
+  .mw-header.vector-header-search-toggled .vector-search-box-collapses > di=
+v { display: block; }
+  .mw-header.vector-header-search-toggled .vector-search-box { position: re=
+lative; margin-left: 8px; margin-right: 12px; }
+  .mw-header.vector-header-search-toggled .vector-search-box > div { max-wi=
+dth: none; }
+  .mw-header.vector-header-search-toggled .cdx-search-input__input-wrapper =
+{ position: static; }
+  .mw-header.vector-header-search-toggled .cdx-typeahead-search--expanded .=
+cdx-search-input__end-button { border-bottom-right-radius: 0px; }
+}
+
+@media screen and (min-width: 1000px) {
+  .vector-sticky-header { padding: 6px 25px; max-width: 98.625em; }
+}
+
+@media screen and (min-width: 1200px) {
+  .vector-sticky-header { padding: 6px 25px; max-width: 99.625em; }
+}
+
+@media screen and (min-width: 1000px) {
+  .vector-sticky-header { display: flex; }
+}
+
+@media screen and (min-width: 720px) {
+  .client-js.vector-sticky-header-enabled { scroll-padding-top: 3.125rem; }
+}
+
+@media screen and (min-width: 1000px) {
+  .client-js .vector-sticky-header-visible .mw-sticky-header-element, .clie=
+nt-js .vector-sticky-header-visible .charts-stickyhead th { top: 3.125rem !=
+important; }
+}
+
+@media screen and (min-width: 1000px) {
+  .vector-toc-not-collapsed #mw-sidebar-checkbox:not(:checked) ~ .mw-table-=
+of-contents-container.mw-sticky-header-element { margin-top: 1.5em; }
+}
+
+@media screen and (min-width: 1000px) {
+  .vector-toc-not-collapsed .vector-sticky-toc-container { padding-top: 1.5=
+em; }
+  .vector-toc-not-collapsed #mw-sidebar-checkbox:not(:checked) ~ .mw-table-=
+of-contents-container .vector-sticky-toc-container { margin-top: 1.5em; }
+}
+
+@media screen and (min-width: 1000px) {
+  .vector-toc-not-collapsed .sidebar-toc::after { content: ""; display: blo=
+ck; position: absolute; bottom: 0px; left: 0px; right: 0px; height: 30px; b=
+ackground: linear-gradient(rgba(255, 255, 255, 0), rgb(255, 255, 255)) -12p=
+x center no-repeat; pointer-events: none; }
+}
+
+@media screen and (max-width: 999px) {
+  #vector-toc-collapsed-button { display: block; }
+  .mw-table-of-contents-container.mw-sticky-header-element, .vector-sticky-=
+toc-container { position: relative; }
+  .mw-table-of-contents-container .sidebar-toc { display: none; position: a=
+bsolute; margin: 0px; border: 1px solid rgb(162, 169, 177); }
+  #vector-toc-collapsed-checkbox:checked ~ .mw-table-of-contents-container =
+.sidebar-toc { display: block; }
+  .mw-table-of-contents-container .sidebar-toc { top: calc(44px); left: -4p=
+x; }
+  .vector-below-page-title #vector-toc-collapsed-button, .vector-below-page=
+-title .sidebar-toc { position: fixed; }
+  .vector-below-page-title #vector-toc-collapsed-button { top: 0px; left: 0=
+px; margin: 0px; }
+  .vector-below-page-title .sidebar-toc { top: 36px; left: 6px; }
+}
+
+@media screen and (min-width: 1000px) {
+  @supports (display:grid) {
+  .client-js .vector-toc-collapsed #vector-toc-collapsed-button { display: =
+block; }
+  .client-js .vector-toc-collapsed .mw-table-of-contents-container.mw-stick=
+y-header-element, .client-js .vector-toc-collapsed .vector-sticky-toc-conta=
+iner { position: relative; }
+  .client-js .vector-toc-collapsed .mw-table-of-contents-container .sidebar=
+-toc { display: none; position: absolute; margin: 0px; border: 1px solid rg=
+b(162, 169, 177); }
+  .client-js .vector-toc-collapsed #vector-toc-collapsed-checkbox:checked ~=
+ .mw-table-of-contents-container .sidebar-toc { display: block; }
+  .client-js .vector-toc-collapsed .mw-table-of-contents-container { grid-a=
+rea: content / content / content / content; }
+  .client-js .vector-toc-collapsed .mw-table-of-contents-container .sidebar=
+-toc { top: calc(44px); left: -0.75em; }
+  body:not(.vector-sticky-header-visible).vector-below-page-title.client-js=
+ .vector-toc-collapsed #vector-toc-collapsed-button, body:not(.vector-stick=
+y-header-visible).vector-below-page-title.client-js .vector-toc-collapsed .=
+sidebar-toc { position: fixed; }
+  body:not(.vector-sticky-header-visible).vector-below-page-title.client-js=
+ .vector-toc-collapsed #vector-toc-collapsed-button { top: 0px; left: 0px; =
+margin: 0px; }
+  body:not(.vector-sticky-header-visible).vector-below-page-title.client-js=
+ .vector-toc-collapsed .sidebar-toc { top: 36px; left: 6px; }
+  .client-js .vector-toc-collapsed .vector-toc-uncollapse-button { display:=
+ inline-block; }
+  .client-js .vector-toc-not-collapsed .vector-toc-collapse-button { displa=
+y: inline-block; }
+}
+}
+
+@media all {
+  .mw-logo { display: flex; height: 100%; align-items: center; min-width: 1=
+3.875em; }
+  .mw-logo-icon { float: left; margin-right: 10px; display: none; width: 3.=
+125em; height: 3.125em; }
+  .mw-logo-container { float: left; max-width: 120px; }
+  .mw-logo-container img { width: 100%; }
+  .mw-logo-wordmark { display: block; margin: 0px auto; }
+  .mw-logo-tagline { display: block; margin: 5px auto 0px; }
+}
+
+@media (min-width: 720px) {
+  .mw-logo-icon { display: block; }
+}
+
+@media (min-width: 720px) {
+  .mw-logo-container { max-width: none; }
+  .mw-logo-container img { width: auto; }
+}
+
+@media print {
+  .vector-article-toolbar, #mw-sidebar-checkbox, .mw-header-aside > :not(.m=
+w-logo), .mw-header-content, #mw-panel-toc, #vector-sticky-header, #p-lang-=
+btn, #footer { display: none; }
+}
+
+.mw-table-of-contents-container { display: none; }
+
+@supports (display:grid) {
+  .mw-table-of-contents-container { display: block; }
+}
+
+@media screen {
+  div.thumbinner { border: 1px solid rgb(200, 204, 209); background-color: =
+rgb(248, 249, 250); font-size: 94%; }
+  .thumbimage { background-color: rgb(255, 255, 255); border: 1px solid rgb=
+(200, 204, 209); }
+  .thumbcaption { border: 0px; font-size: 94%; }
+  .thumbborder { border: 1px solid rgb(234, 236, 240); }
+  .magnify { float: right; margin-left: 3px; }
+  .magnify a { display: block; text-indent: 15px; white-space: nowrap; over=
+flow: hidden; width: 15px; height: 11px; background-image: url("/resources/=
+src/mediawiki.skinning/images/magnify-clip-ltr.svg?8330e"); user-select: no=
+ne; }
+  .mw-content-ltr .thumbcaption { text-align: left; }
+  .mw-content-rtl .thumbcaption { text-align: right; }
+  .mw-content-ltr .magnify { margin-left: 3px; margin-right: 0px; float: ri=
+ght; }
+  .mw-content-ltr .magnify a { background-image: url("/resources/src/mediaw=
+iki.skinning/images/magnify-clip-ltr.svg?8330e"); }
+  .mw-content-rtl .magnify { margin-left: 0px; margin-right: 3px; float: le=
+ft; }
+  .mw-content-rtl .magnify a { background-image: url("/resources/src/mediaw=
+iki.skinning/images/magnify-clip-rtl.svg?38fd5"); }
+  a.new { color: rgb(221, 51, 51); }
+  a.mw-selflink { color: inherit; font-weight: bold; text-decoration: inher=
+it; }
+  a.mw-selflink:hover { cursor: inherit; text-decoration: inherit; }
+  a.mw-selflink:active, a.mw-selflink:visited { color: inherit; }
+  a.new:visited { color: rgb(165, 88, 88); }
+  .mw-parser-output a.extiw, .mw-parser-output a.external { color: rgb(51, =
+102, 204); }
+  .mw-parser-output a.extiw:visited, .mw-parser-output a.external:visited {=
+ color: rgb(121, 92, 178); }
+  .mw-parser-output a.extiw:active, .mw-parser-output a.external:active { c=
+olor: rgb(250, 167, 0); }
+  .mw-underline-always a { text-decoration: underline; }
+  .mw-underline-never a { text-decoration: none; }
+  .plainlinks a.external { background: none !important; padding: 0px !impor=
+tant; }
+  .mw-body-content::after { clear: both; content: ""; display: block; }
+  .mw-body-content a.external.free { overflow-wrap: break-word; }
+  .mw-body-content .error { font-size: larger; color: rgb(221, 51, 51); }
+  .rtl .mw-parser-output a.external.free, .rtl .mw-parser-output a.external=
+.autonumber { direction: ltr; unicode-bidi: embed; }
+  .mw-hide-empty-elt .mw-parser-output:not(.mw-show-empty-elt) .mw-empty-el=
+t { display: none; }
+  .wikitable { background-color: rgb(248, 249, 250); color: rgb(32, 33, 34)=
+; margin: 1em 0px; border: 1px solid rgb(162, 169, 177); border-collapse: c=
+ollapse; }
+  .wikitable > tr > th, .wikitable > tr > td, .wikitable > * > tr > th, .wi=
+kitable > * > tr > td { border: 1px solid rgb(162, 169, 177); padding: 0.2e=
+m 0.4em; }
+  .wikitable > tr > th, .wikitable > * > tr > th { background-color: rgb(23=
+4, 236, 240); text-align: center; }
+  .wikitable > caption { font-weight: bold; }
+  #catlinks { text-align: left; }
+  .catlinks { border: 1px solid rgb(162, 169, 177); background-color: rgb(2=
+48, 249, 250); padding: 5px; margin-top: 1em; clear: both; }
+  .catlinks ul { display: inline; margin: 0px; padding: 0px; list-style: no=
+ne; }
+  .catlinks li { display: inline-block; line-height: 1.25em; border-left: 1=
+px solid rgb(162, 169, 177); margin: 0.125em 0px; padding: 0px 0.5em; }
+  .catlinks li:first-child { padding-left: 0.25em; border-left: 0px; }
+  .catlinks li a.mw-redirect { font-style: italic; }
+  .mw-hidden-cats-hidden, .catlinks-allhidden { display: none; }
+  .emptyPortlet { display: none; }
+  .printfooter, .client-nojs #t-print { display: none; }
+  .mw-editsection { user-select: none; }
+  .mw-editsection, .mw-editsection-like { font-size: small; font-weight: no=
+rmal; margin-left: 1em; vertical-align: baseline; line-height: 1em; }
+  .mw-content-ltr .mw-editsection, .mw-content-rtl .mw-content-ltr .mw-edit=
+section, .mw-content-ltr .mw-editsection-like, .mw-content-rtl .mw-content-=
+ltr .mw-editsection-like { margin-left: 1em; margin-right: 0px; }
+  .mw-content-rtl .mw-editsection, .mw-content-ltr .mw-content-rtl .mw-edit=
+section, .mw-content-rtl .mw-editsection-like, .mw-content-ltr .mw-content-=
+rtl .mw-editsection-like { margin-right: 1em; margin-left: 0px; }
+  .usermessage { background-color: rgb(254, 246, 231); border: 1px solid rg=
+b(255, 204, 51); color: rgb(0, 0, 0); font-weight: bold; margin: 2em 0px 1e=
+m; padding: 0.5em 1em; vertical-align: middle; }
+  a { text-decoration: none; color: rgb(51, 102, 204); background: none; }
+  a:not([href]) { cursor: pointer; }
+  a:visited { color: rgb(121, 92, 178); }
+  a:active { color: rgb(250, 167, 0); }
+  a:hover, a:focus { text-decoration: underline; }
+  a:lang(ar), a:lang(kk-arab), a:lang(mzn), a:lang(ps), a:lang(ur) { text-d=
+ecoration: none; }
+  img { border: 0px; vertical-align: middle; }
+  hr { height: 1px; background-color: rgb(162, 169, 177); border: 0px; marg=
+in: 0.2em 0px; }
+  h1, h2, h3, h4, h5, h6 { color: rgb(0, 0, 0); margin: 0px; padding-top: 0=
+.5em; padding-bottom: 0.17em; overflow: hidden; }
+  h1, h2 { margin-bottom: 0.6em; border-bottom: 1px solid rgb(162, 169, 177=
+); }
+  h3, h4, h5 { margin-bottom: 0.3em; }
+  h1 { font-size: 188%; font-weight: normal; }
+  h2 { font-size: 150%; font-weight: normal; }
+  h3 { font-size: 128%; }
+  h4 { font-size: 116%; }
+  h5 { font-size: 108%; }
+  h6 { font-size: 100%; }
+  p { margin: 0.4em 0px 0.5em; }
+  p img { margin: 0px; }
+  ul { margin: 0.3em 0px 0px 1.6em; padding: 0px; }
+  ol { margin: 0.3em 0px 0px 3.2em; padding: 0px; list-style-image: none; }
+  li { margin-bottom: 0.1em; }
+  dt { font-weight: bold; margin-bottom: 0.1em; }
+  dl { margin-top: 0.2em; margin-bottom: 0.5em; }
+  dd { margin-left: 1.6em; margin-bottom: 0.1em; }
+  pre, code, tt, kbd, samp, .mw-code { font-family: monospace, monospace; }
+  pre, code, .mw-code { background-color: rgb(248, 249, 250); color: rgb(0,=
+ 0, 0); border: 1px solid rgb(234, 236, 240); }
+  code { border-radius: 2px; padding: 1px 4px; }
+  pre, .mw-code { padding: 1em; white-space: pre-wrap; overflow-x: hidden; =
+overflow-wrap: break-word; }
+  table { font-size: 100%; }
+  fieldset { border: 1px solid rgb(42, 75, 141); margin: 1em 0px; padding: =
+0px 1em 1em; }
+  legend { padding: 0.5em; }
+  form { border: 0px; margin: 0px; }
+  textarea { display: block; box-sizing: border-box; width: 100%; border: 1=
+px solid rgb(200, 204, 209); padding: 0.1em; }
+  .center { width: 100%; text-align: center; }
+  .center * { margin-left: auto; margin-right: auto; }
+  .small { font-size: 94%; }
+  table.small { font-size: 100%; }
+  @counter-style meetei { system: numeric; symbols: "=EA=AF=B0" "=EA=AF=B1"=
+ "=EA=AF=B2" "=EA=AF=B3" "=EA=AF=B4" "=EA=AF=B5" "=EA=AF=B6" "=EA=AF=B7" "=
+=EA=AF=B8" "=EA=AF=B9"; suffix: ") "; }
+  @counter-style santali { system: numeric; symbols: "=E1=B1=90" "=E1=B1=91=
+" "=E1=B1=92" "=E1=B1=93" "=E1=B1=94" "=E1=B1=95" "=E1=B1=96" "=E1=B1=97" "=
+=E1=B1=98" "=E1=B1=99"; }
+  @counter-style myanmar_with_period { system: numeric; symbols: "=E1=81=80=
+" "=E1=81=81" "=E1=81=82" "=E1=81=83" "=E1=81=84" "=E1=81=85" "=E1=81=86" "=
+=E1=81=87" "=E1=81=88" "=E1=81=89"; suffix: "=E1=81=8B "; }
+  ol:lang(azb) li, ol:lang(bcc) li, ol:lang(bgn) li, ol:lang(bqi) li, ol:la=
+ng(fa) li, ol:lang(glk) li, ol:lang(kk-arab) li, ol:lang(lrc) li, ol:lang(l=
+uz) li, ol:lang(mzn) li { list-style-type: persian; }
+  ol:lang(ckb) li, ol:lang(sdh) li { list-style-type: arabic-indic; }
+  ol:lang(hi) li, ol:lang(mai) li, ol:lang(mr) li, ol:lang(ne) li { list-st=
+yle-type: devanagari; }
+  ol:lang(as) li, ol:lang(bn) li { list-style-type: bengali; }
+  ol:lang(mni) li { list-style-type: meetei; }
+  ol:lang(or) li { list-style-type: oriya; }
+  ol:lang(sat) li { list-style-type: santali; }
+  ol:lang(blk) li, ol:lang(kjp) li, ol:lang(ksw) li, ol:lang(mnw) li, ol:la=
+ng(my) li, ol:lang(shn) li { list-style-type: myanmar_with_period; }
+  .mw-content-ltr ul, .mw-content-rtl .mw-content-ltr ul { margin: 0.3em 0p=
+x 0px 1.6em; padding: 0px; }
+  .mw-content-rtl ul, .mw-content-ltr .mw-content-rtl ul { margin: 0.3em 1.=
+6em 0px 0px; padding: 0px; }
+  .mw-content-ltr ol, .mw-content-rtl .mw-content-ltr ol { margin: 0.3em 0p=
+x 0px 3.2em; padding: 0px; }
+  .mw-content-rtl ol, .mw-content-ltr .mw-content-rtl ol { margin: 0.3em 3.=
+2em 0px 0px; padding: 0px; }
+  .mw-content-ltr dd, .mw-content-rtl .mw-content-ltr dd { margin-left: 1.6=
+em; margin-right: 0px; }
+  .mw-content-rtl dd, .mw-content-ltr .mw-content-rtl dd { margin-right: 1.=
+6em; margin-left: 0px; }
+  h1:lang(anp), h1:lang(as), h1:lang(bh), h1:lang(bho), h1:lang(blk), h1:la=
+ng(bn), h1:lang(gu), h1:lang(hi), h1:lang(kjp), h1:lang(kn), h1:lang(ks), h=
+1:lang(ksw), h1:lang(ml), h1:lang(mr), h1:lang(my), h1:lang(mai), h1:lang(m=
+nw), h1:lang(ne), h1:lang(new), h1:lang(or), h1:lang(pa), h1:lang(pi), h1:l=
+ang(sa), h1:lang(shn), h1:lang(syl), h1:lang(ta), h1:lang(te) { line-height=
+: 1.6em !important; }
+  h2:lang(anp), h2:lang(as), h2:lang(bh), h2:lang(bho), h2:lang(blk), h2:la=
+ng(bn), h2:lang(gu), h2:lang(hi), h2:lang(kjp), h2:lang(kn), h2:lang(ks), h=
+2:lang(ksw), h2:lang(ml), h2:lang(mr), h2:lang(my), h2:lang(mai), h2:lang(m=
+nw), h2:lang(ne), h2:lang(new), h2:lang(or), h2:lang(pa), h2:lang(pi), h2:l=
+ang(sa), h2:lang(shn), h2:lang(syl), h2:lang(ta), h2:lang(te), h3:lang(anp)=
+, h3:lang(as), h3:lang(bh), h3:lang(bho), h3:lang(blk), h3:lang(bn), h3:lan=
+g(gu), h3:lang(hi), h3:lang(kjp), h3:lang(kn), h3:lang(ks), h3:lang(ksw), h=
+3:lang(ml), h3:lang(mr), h3:lang(my), h3:lang(mai), h3:lang(mnw), h3:lang(n=
+e), h3:lang(new), h3:lang(or), h3:lang(pa), h3:lang(pi), h3:lang(sa), h3:la=
+ng(shn), h3:lang(syl), h3:lang(ta), h3:lang(te), h4:lang(anp), h4:lang(as),=
+ h4:lang(bh), h4:lang(bho), h4:lang(blk), h4:lang(bn), h4:lang(gu), h4:lang=
+(hi), h4:lang(kjp), h4:lang(kn), h4:lang(ks), h4:lang(ksw), h4:lang(ml), h4=
+:lang(mr), h4:lang(my), h4:lang(mai), h4:lang(mnw), h4:lang(ne), h4:lang(ne=
+w), h4:lang(or), h4:lang(pa), h4:lang(pi), h4:lang(sa), h4:lang(shn), h4:la=
+ng(syl), h4:lang(ta), h4:lang(te), h5:lang(anp), h5:lang(as), h5:lang(bh), =
+h5:lang(bho), h5:lang(blk), h5:lang(bn), h5:lang(gu), h5:lang(hi), h5:lang(=
+kjp), h5:lang(kn), h5:lang(ks), h5:lang(ksw), h5:lang(ml), h5:lang(mr), h5:=
+lang(my), h5:lang(mai), h5:lang(mnw), h5:lang(ne), h5:lang(new), h5:lang(or=
+), h5:lang(pa), h5:lang(pi), h5:lang(sa), h5:lang(shn), h5:lang(syl), h5:la=
+ng(ta), h5:lang(te), h6:lang(anp), h6:lang(as), h6:lang(bh), h6:lang(bho), =
+h6:lang(blk), h6:lang(bn), h6:lang(gu), h6:lang(hi), h6:lang(kjp), h6:lang(=
+kn), h6:lang(ks), h6:lang(ksw), h6:lang(ml), h6:lang(mr), h6:lang(my), h6:l=
+ang(mai), h6:lang(mnw), h6:lang(ne), h6:lang(new), h6:lang(or), h6:lang(pa)=
+, h6:lang(pi), h6:lang(sa), h6:lang(shn), h6:lang(syl), h6:lang(ta), h6:lan=
+g(te) { line-height: 1.4em; }
+  h2:lang(th) { line-height: 1.6; }
+}
+
+@media print {
+  table.floatright, div.floatright { border: 0px; }
+  table.floatleft, div.floatleft { border: 0px; }
+  div.thumb { break-inside: avoid; }
+  div.thumb a { border-bottom: 0px; }
+  div.thumbinner { border: 1px; background-color: rgb(255, 255, 255); font-=
+size: 10pt; color: rgb(102, 102, 102); border-radius: 2px; min-width: 100px=
+; }
+  .thumbborder { border: 1pt solid rgb(221, 221, 221); }
+  .magnify { display: none; }
+  .mw-parser-output a.external { }
+  .mw-parser-output a.external.text::after, .mw-parser-output a.external.au=
+tonumber::after { content: " (" attr(href) ")"; word-break: break-all; over=
+flow-wrap: break-word; }
+  .mw-parser-output a.external.text[href^=3D"//"]::after, .mw-parser-output=
+ a.external.autonumber[href^=3D"//"]::after { content: " (https:" attr(href=
+) ")"; }
+  .wikitable { background: rgb(255, 255, 255); margin: 1em 0px; border: 1pt=
+ solid rgb(170, 170, 170); border-collapse: collapse; font-size: 10pt; brea=
+k-inside: avoid; }
+  .wikitable > caption { padding: 5px; font-size: 10pt; }
+  .wikitable > tr > th, .wikitable > tr > td, .wikitable > * > tr > th, .wi=
+kitable > * > tr > td { border: 1pt solid rgb(170, 170, 170); padding: 0.4e=
+m 0.6em; background: rgb(255, 255, 255) !important; color: rgb(0, 0, 0) !im=
+portant; }
+  .wikitable > tr > th, .wikitable > * > tr > th { text-align: center; }
+  table.listing, table.listing td { border: 1pt solid rgb(0, 0, 0); border-=
+collapse: collapse; }
+  .catlinks ul { display: inline; padding: 0px; list-style: none; }
+  .catlinks li { display: inline-block; line-height: 1.15; margin: 0.1em 0p=
+x; border-left: 1pt solid rgb(170, 170, 170); padding: 0px 0.4em; }
+  .catlinks li:first-child { border-left: 0px; padding-left: 0.2em; }
+  .mw-hidden-catlinks, .catlinks { display: none; }
+  .mw-editsection, .mw-editsection-like, .mw-indicators, #siteNotice, .user=
+message { display: none; }
+  .printfooter { padding: 1em 0px; }
+  .center { text-align: center; }
+  a { background: none !important; padding: 0px !important; }
+  a, a.external, a.new, a.stub { color: inherit !important; text-decoration=
+: inherit !important; }
+  dt { font-weight: bold; }
+  h1, h2, h3, h4, h5, h6 { font-weight: bold; break-after: avoid; break-bef=
+ore: avoid; }
+  p { margin: 1em 0px; line-height: 1.2; orphans: 3; widows: 3; }
+  img, figure { break-inside: avoid; }
+  img { border: 0px; vertical-align: middle; }
+  pre, .mw-code { background: rgb(255, 255, 255); color: rgb(0, 0, 0); bord=
+er: 1pt dashed rgb(0, 0, 0); padding: 1em; font-size: 8pt; white-space: pre=
+-wrap; overflow-x: hidden; overflow-wrap: break-word; }
+  ul { list-style-type: square; }
+}
+
+#archnavbar { height: 40px !important; padding: 10px 15px !important; backg=
+round: rgb(51, 51, 51) !important; border-bottom: 5px solid rgb(0, 136, 204=
+) !important; }
+
+#archnavbarlogo { float: left !important; margin: 0px !important; padding: =
+0px !important; height: 40px !important; width: 190px !important; }
+
+html > body #archnavbarlogo { background: url("/extensions/ArchLinux/module=
+s/archnavbar/archlogo.svg?29b1c") 0% 0% / 190px 40px no-repeat !important; =
+}
+
+#archnavbarlogo p { margin: 0px !important; padding: 0px !important; text-i=
+ndent: -9999px !important; }
+
+#archnavbarlogo h1 { margin: 0px !important; padding: 0px !important; text-=
+indent: -9999px !important; }
+
+#archnavbarlogo a { display: block !important; height: 40px !important; wid=
+th: 190px !important; }
+
+#archnavbar ul { display: inline !important; float: right !important; list-=
+style: none !important; margin: 0px !important; padding: 0px !important; }
+
+#archnavbar ul li { float: left !important; font-size: 14px !important; fon=
+t-family: sans-serif !important; line-height: 45px !important; padding-righ=
+t: 15px !important; padding-left: 15px !important; }
+
+#archnavbar ul#archnavbarlist li a { color: rgb(153, 153, 153); font-weight=
+: bold !important; text-decoration: none !important; }
+
+#archnavbar ul li a:hover { color: white !important; text-decoration: under=
+line !important; }
+
+#archnavbar ul li.anb-selected a { color: white !important; }
+
+@media (max-width: 600px) {
+  #anb-wiki { display: none; }
+}
+
+@media (max-width: 680px) {
+  html > body #archnavbarlogo { width: 40px !important; margin-right: 5px !=
+important; background: url("/extensions/ArchLinux/modules/archnavbar/archic=
+on.svg?0c6bc") 0% 0% / 40px 40px no-repeat !important; }
+  #archnavbar ul { justify-content: space-between; flex-wrap: nowrap; overf=
+low: hidden; display: flex !important; float: none !important; }
+  #archnavbar ul li { padding: 0px !important; float: none !important; }
+}
+
+@media (max-width: 845px) {
+  #anb-home, #anb-start { display: none; }
+  html > body #archnavbarlogo { padding-right: 15px !important; }
+  #archnavbar { padding-left: 5px !important; padding-right: 5px !important=
+; }
+  #archnavbar ul li { padding-left: 5px !important; padding-right: 5px !imp=
+ortant; }
+}
+
+body { background: rgb(246, 249, 252); }
+
+#content { background: rgb(255, 255, 255); border: 1px solid rgb(204, 204, =
+204); }
+
+#content table, #content h1, #content h2, #content h3, #content h4, #conten=
+t h5, #content pre, #content code, #content tt { color: rgb(34, 34, 34); }
+
+#content ul { list-style-image: none; }
+
+#content table { border-collapse: collapse; padding: 2px; }
+
+#content td { padding: 2px; }
+
+#content pre:not([class*=3D"CodeMirror"]) { border: 1px solid rgb(187, 204,=
+ 221); overflow: auto; word-break: break-all; white-space: pre-wrap !import=
+ant; }
+
+#content pre:not([class*=3D"CodeMirror"]), #content code, #content tt { bac=
+kground-color: rgb(235, 241, 245); font-family: monospace, monospace; }
+
+#content code, #content tt { display: inline-block; padding: 0px 0.3em; bor=
+der-width: 0px; border-radius: 0px; }
+
+#footer-icons { display: none; }
+
+#footer { color: rgb(51, 51, 51); }
+
+#toc, .toc, .mw-warning, .toccolours { background-color: rgb(249, 250, 255)=
+; border: 1px solid rgb(215, 223, 227); }
+
+#bodyContent > div.mw-content-ltr a, #bodyContent > div.mw-content-rtl a, #=
+wikiPreview > div.mw-content-ltr a, #wikiPreview > div.mw-content-rtl a { f=
+ont-weight: bold; }
+
+#bodyContent #toc a, #bodyContent .special li > a, #bodyContent .special li=
+ span a, #bodyContent #pagehistory a { font-weight: normal; }
+
+#content a:not(.new), header.mw-header li:not(.new) a:not(.new), #mw-naviga=
+tion li:not(.new) a:not(.new), #mw-panel li:not(.new) a:not(.new), #column-=
+one li:not(.new) a:not(.new), #footer a:not(.new) { text-decoration: none; =
+color: rgb(0, 119, 187) !important; }
+
+#content a:not(.new):hover, header.mw-header li:not(.new) a:not(.new):hover=
+, #mw-navigation li:not(.new) a:not(.new):hover, #mw-panel li:not(.new) a:n=
+ot(.new):hover, #column-one li:not(.new) a:not(.new):hover, #footer a:not(.=
+new):hover { text-decoration: underline; background-color: transparent; col=
+or: rgb(153, 153, 153) !important; }
+
+#content a:active, header.mw-header li:not(.new) a:active, #mw-navigation l=
+i:not(.new) a:active, #mw-panel li:not(.new) a:active, #column-one li:not(.=
+new) a:active, #footer a:active, #content a:focus, header.mw-header li:not(=
+.new) a:focus, #mw-navigation li:not(.new) a:focus, #mw-panel li:not(.new) =
+a:focus, #column-one li:not(.new) a:focus, #footer a:focus, #content a:acti=
+ve:hover, header.mw-header li:not(.new) a:active:hover, #mw-navigation li:n=
+ot(.new) a:active:hover, #mw-panel li:not(.new) a:active:hover, #column-one=
+ li:not(.new) a:active:hover, #footer a:active:hover, #content a:focus:hove=
+r, header.mw-header li:not(.new) a:focus:hover, #mw-navigation li:not(.new)=
+ a:focus:hover, #mw-panel li:not(.new) a:focus:hover, #column-one li:not(.n=
+ew) a:focus:hover, #footer a:focus:hover { color: rgb(238, 153, 0) !importa=
+nt; }
+
+#content a:not(.new):visited, #mw-panel li:not(.new) a:not(.new):visited, #=
+p-navigation li:not(.new) a:not(.new):visited, #p-tb li:not(.new) a:not(.ne=
+w):visited { color: rgb(102, 102, 102) !important; }
+
+a.new, a.new:visited, #mw-navigation li.new a, #mw-navigation li.new a:visi=
+ted { color: rgb(187, 0, 0) !important; }
+
+.mw-body-content a.external, .mw-body-content a.extiw { background: url("/r=
+esources/src/mediawiki.skinning/images/external-ltr.svg?59558") right cente=
+r no-repeat; padding-right: 13px; }
+
+#p-logo, .mw-logo { display: none; }
+
+.mw-body h1, .mw-body-content h1, .mw-body-content h2 { font-family: sans-s=
+erif; }
+
+nav.vector-menu-tabs { padding-left: 0px; }
+
+nav.vector-menu-tabs ul, nav.vector-menu-tabs ul li { background: none; }
+
+nav.vector-menu-tabs li.selected { border-width: 1px; border-style: solid; =
+border-color: rgb(204, 204, 204) rgb(204, 204, 204) rgb(255, 255, 255); bor=
+der-image: initial; background-color: rgb(255, 255, 255); }
+
+nav.vector-menu-tabs li.selected a { background: none !important; }
+
+nav.vector-menu-tabs ul li { border: 1px; }
+
+body.skin-vector.skin--responsive nav.vector-menu-tabs li.selected { margin=
+-top: -1px; border-bottom: none; }
+
+body.skin-vector.skin--responsive li:not(:first-child).selected { margin-le=
+ft: -1px; }
+
+body.skin-vector div.mw-page-container { background-color: rgb(246, 249, 25=
+2); }
+
+body.skin-vector div#mw-panel { background-image: none; }
+
+body.skin-vector-2022 .vector-sticky-header { background: rgb(246, 249, 252=
+); }
+
+body.skin-vector-2022 .vector-sticky-header-context-bar-primary { font-fami=
+ly: sans-serif; }
+
+@media screen and (min-width: 1000px) {
+  body.skin-vector-2022 .mw-body { padding-left: 0.5em; }
+}
+
+body.skin-vector-2022 #p-personal.emptyPortlet { display: block; }
+
+body.skin-vector-2022 #vector-toc-collapsed-button { margin-left: 0px; }
+
+body.skin-vector-2022 #mw-panel-toc { left: auto; }
+
+body.skin-vector-2022 #p-lang-btn.mw-portlet-empty { display: block; float:=
+ right; }
+
+body.skin-vector-legacy div#mw-head, body.skin-vector-legacy .mw-header { t=
+op: 65px; }
+
+body.skin-vector-legacy div#mw-panel { top: 65px; margin-top: 1em; }
+
+body.skin-vector-legacy #mw-page-base { background: none; }
+
+body.skin-vector-legacy nav.vector-menu-tabs, body.skin-vector-legacy nav.v=
+ector-menu { margin-top: -2px; }
+
+body.skin-vector-legacy nav.vector-menu-tabs li:not(:first-child).selected =
+{ margin-left: -2px; }
+
+@media screen and (max-width: 720px) {
+  body.skin-vector-legacy div#p-personal { top: unset; }
+  body.skin-vector-legacy div#mw-panel { padding-top: 0px; }
+}
+------MultipartBoundary--cIS6rmp6eYBmgp7hrQSJNleA49WcbZYhnk1E0uPSX2----
+Content-Type: image/svg+xml
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://wiki.archlinux.org/load.php?modules=skins.vector.icons&image=language&variant=progressive&format=original&skin=vector-2022&version=166rd
+
+<?xml version=3D"1.0" encoding=3D"UTF-8"?>
+<svg xmlns=3D"http://www.w3.org/2000/svg" width=3D"20" height=3D"20" viewBo=
+x=3D"0 0 20 20"><title>
+		language
+	</title><g fill=3D"#36c"><path d=3D"M20 18h-1.44a.61.61 0 0 1-.4-.12.81.81=
+ 0 0 1-.23-.31L17 15h-5l-1 2.54a.77.77 0 0 1-.22.3.59.59 0 0 1-.4.14H9l4.55=
+-11.47h1.89zm-3.53-4.31L14.89 9.5a11.62 11.62 0 0 1-.39-1.24q-.09.37-.19.69=
+l-.19.56-1.58 4.19zm-6.3-1.58a13.43 13.43 0 0 1-2.91-1.41 11.46 11.46 0 0 0=
+ 2.81-5.37H12V4H7.31a4 4 0 0 0-.2-.56C6.87 2.79 6.6 2 6.6 2l-1.47.5s.4.89.6=
+ 1.5H0v1.33h2.15A11.23 11.23 0 0 0 5 10.7a17.19 17.19 0 0 1-5 2.1q.56.82.87=
+ 1.38a23.28 23.28 0 0 0 5.22-2.51 15.64 15.64 0 0 0 3.56 1.77zM3.63 5.33h4.=
+91a8.11 8.11 0 0 1-2.45 4.45 9.11 9.11 0 0 1-2.46-4.45z"/></g></svg>=0A
+------MultipartBoundary--cIS6rmp6eYBmgp7hrQSJNleA49WcbZYhnk1E0uPSX2----
+Content-Type: image/svg+xml
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://wiki.archlinux.org/load.php?modules=skins.vector.icons&image=ellipsis&format=original&skin=vector-2022&version=166rd
+
+<?xml version=3D"1.0" encoding=3D"UTF-8"?>
+<svg xmlns=3D"http://www.w3.org/2000/svg" width=3D"20" height=3D"20" viewBo=
+x=3D"0 0 20 20"><title>
+		ellipsis
+	</title><g fill=3D"#000"><circle cx=3D"10" cy=3D"10" r=3D"2"/><circle cx=
+=3D"3" cy=3D"10" r=3D"2"/><circle cx=3D"17" cy=3D"10" r=3D"2"/></g></svg>=0A
+------MultipartBoundary--cIS6rmp6eYBmgp7hrQSJNleA49WcbZYhnk1E0uPSX2----
+Content-Type: image/svg+xml
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://wiki.archlinux.org/load.php?modules=skins.vector.icons&image=logIn&format=original&lang=en&skin=vector-2022&version=166rd
+
+<?xml version=3D"1.0" encoding=3D"UTF-8"?>
+<svg xmlns=3D"http://www.w3.org/2000/svg" width=3D"20" height=3D"20" viewBo=
+x=3D"0 0 20 20"><title>
+		log in
+	</title><g fill=3D"#000"><path d=3D"M1 11v6c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-=
+2V3c0-1.1-.9-2-2-2H3c-1.1 0-2 .9-2 2v6h8V5l4.75 5L9 15v-4H1z"/></g></svg>=0A
+------MultipartBoundary--cIS6rmp6eYBmgp7hrQSJNleA49WcbZYhnk1E0uPSX2----
+Content-Type: image/svg+xml
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://wiki.archlinux.org/load.php?modules=skins.vector.icons&image=expand&format=original&skin=vector-2022&version=166rd
+
+<?xml version=3D"1.0" encoding=3D"UTF-8"?>
+<svg xmlns=3D"http://www.w3.org/2000/svg" width=3D"20" height=3D"20" viewBo=
+x=3D"0 0 20 20"><title>
+		expand
+	</title><g fill=3D"#000"><path d=3D"m17.5 4.75-7.5 7.5-7.5-7.5L1 6.25l9 9 =
+9-9z"/></g></svg>=0A
+------MultipartBoundary--cIS6rmp6eYBmgp7hrQSJNleA49WcbZYhnk1E0uPSX2----
+Content-Type: image/svg+xml
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://wiki.archlinux.org/skins/Vector/resources/common/images/search.svg?bbf78
+
+<?xml version=3D"1.0" encoding=3D"UTF-8"?>
+<svg xmlns=3D"http://www.w3.org/2000/svg" width=3D"20" height=3D"20" viewBo=
+x=3D"0 0 20 20">
+	<title>
+		search
+	</title>
+	<path fill-rule=3D"evenodd" d=3D"M12.2 13.6a7 7 0 1 1 1.4-1.4l5.4 5.4-1.4 =
+1.4-5.4-5.4zM13 8A5 5 0 1 1 3 8a5 5 0 0 1 10 0z"/>
+</svg>=0A
+------MultipartBoundary--cIS6rmp6eYBmgp7hrQSJNleA49WcbZYhnk1E0uPSX2----
+Content-Type: image/svg+xml
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://wiki.archlinux.org/skins/Vector/resources/common/images/arrow-down.svg?9426f
+
+<?xml version=3D"1.0" encoding=3D"UTF-8"?>
+<svg xmlns=3D"http://www.w3.org/2000/svg" width=3D"12" height=3D"12" viewBo=
+x=3D"0 0 12 12">
+	<path fill=3D"#202122" d=3D"m11.05 3.996-.965-1.053-4.035 3.86-3.947-3.86L=
+1.05 3.996l5 5 5-5"/>
+</svg>=0A
+------MultipartBoundary--cIS6rmp6eYBmgp7hrQSJNleA49WcbZYhnk1E0uPSX2----
+Content-Type: image/svg+xml
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://wiki.archlinux.org/extensions/ArchLinux/modules/archnavbar/archlogo.svg?29b1c
+
+<svg xmlns=3D"http://www.w3.org/2000/svg" version=3D"1" width=3D"600" heigh=
+t=3D"126"><path d=3D"M159.568 34.427c-8.89-.014-16.267 1.809-19.12 2.803l-2=
+.937 15.857c-.007.058 14.617-3.9 21.059-3.667 10.665.383 11.646 4.076 11.46=
+ 9.06.182.292-2.752-4.503-11.979-4.664-11.64-.2-28.069 4.122-28.046 21.692-=
+.314 19.765 14.764 25.579 25.032 25.686 9.232-.168 13.563-3.496 15.934-5.28=
+ 3.115-3.257 6.679-6.532 10.078-10.462-3.216 5.844-6.005 9.884-8.907 12.977=
+v2.611l14.033-2.361.096-38.144c-.143-5.399 3.096-26.057-26.703-26.108zm-2.0=
+16 33.21c5.817.08 12.488 2.948 12.497 9.849.03 6.277-7.863 9.651-12.996 9.5=
+98-5.135-.053-11.949-4.036-11.979-10.155.099-5.47 6.426-9.432 12.478-9.291z=
+m37.972-29.685l-.095 63.166 16.348-3.15.027-35.814c.004-5.333 7.62-11.564 1=
+7.178-11.464 2.028-3.67 5.84-13.05 6.77-15.183-21.351-.051-21.623 6.137-25.=
+336 9.18-.04-5.806-.013-9.292-.013-9.292l-14.879 2.557zm92.002 8.292c-.158-=
+.074-8.526-9.788-25.35-9.864-15.758-.262-33.433 5.847-33.716 32.27.138 23.2=
+32 16.979 32.311 33.805 32.488 18.007.187 25.172-11.26 25.602-11.543-2.149-=
+1.863-10.196-9.837-10.196-9.837s-5.027 7.157-14.779 7.248c-9.755.093-18.234=
+-7.54-18.354-18.189-.125-10.65 7.795-16.419 18.427-16.885 9.205-.002 14.516=
+ 5.943 14.516 5.943zm20.606-30.399l-15.434 3.628.115 82.277 15.204-2.745.17=
+2-38.72c.033-4.06 5.874-10.295 15.626-10.097 9.325.097 11.41 6.215 11.384 6=
+.988l.269 44.824 14.993-2.65.057-47.53c.099-4.574-10.018-14.233-26.28-14.30=
+2-7.729.012-12.009 1.762-14.187 3.052-3.726 2.879-7.985 5.637-12.17 9.157 3=
+.869-4.97 7.117-8.407 10.29-10.961l-.04-22.921z" fill=3D"#fff" fill-rule=3D=
+"evenodd"/><path d=3D"M360.136 17.218l6.962-1.742.33 82.95-7.074 1.204zm18.=
+928 24.757l6.101-2.716.052 59.478-5.892 1.217zm-1.45-21.448l4.92-4.015 4.08=
+6 4.547-4.921 4.121zm19.024 20.365l6.962-1.421.033 12.434c.001.534 3.823-13=
+.89 22.258-13.57 17.9.1 20.827 13.957 20.73 17.064l.221 43.725-6.102 1.324-=
+.035-43.189c.07-1.261-2.79-11.927-15.439-11.966-12.646-.037-21.409 9.186-21=
+.393 15.078l.1 38.047-7.07 1.847zm110.954 58.546l-6.962 1.42-.033-12.433c-.=
+001-.534-3.825 13.89-22.258 13.57-17.9-.1-20.827-13.957-20.73-17.064l-.221-=
+43.725 7.397-1.494.114 43.19c.003 1.18 1.416 12.096 14.065 12.135 12.646.03=
+7 21.506-7.616 21.569-19.139l-.09-34.076 6.885-1.757zm13.645-59.037l-4.882 =
+3.82 18.717 24.494-19.963 28.3 5.179 3.843 18.766-26.28 19.368 26.902 4.791=
+-3.82-20.757-28.765 16.56-23.262-5.092-4.305-15.085 21.525zM61.88 1.778c-5.=
+385 13.203-8.633 21.839-14.629 34.649 3.676 3.896 8.188 8.434 15.516 13.559=
+-7.878-3.242-13.252-6.497-17.267-9.874-7.673 16.011-19.695 38.818-44.09 82.=
+65 19.174-11.068 34.037-17.893 47.889-20.497a35.103 35.103 0 0 1-.91-8.213l=
+.023-.614c.304-12.284 6.694-21.73 14.264-21.09 7.57.642 13.454 11.126 13.15=
+ 23.41-.058 2.312-.319 4.536-.774 6.598 13.701 2.68 28.405 9.487 47.32 20.4=
+07-3.73-6.866-7.059-13.056-10.238-18.95-5.007-3.882-10.23-8.933-20.884-14.4=
+02 7.323 1.903 12.566 4.099 16.653 6.552C75.58 35.786 72.963 27.79 61.88 1.=
+778z" fill=3D"#1793d1" fill-rule=3D"evenodd"/><path d=3D"M576.771 93.265V80=
+.603h-4.73v-1.695h11.38v1.695h-4.75v12.662h-1.9m8.629 0V78.908h2.859l3.398 =
+10.166c.314.947.542 1.655.686 2.125.163-.522.418-1.29.764-2.301l3.437-9.99h=
+2.556v14.357h-1.831V81.25l-4.172 12.016h-1.714l-4.152-12.222v12.222h-1.832"=
+ font-weight=3D"400" font-size=3D"8.441" font-family=3D"DejaVu Sans Mono" f=
+ill=3D"gray"/></svg>
+------MultipartBoundary--cIS6rmp6eYBmgp7hrQSJNleA49WcbZYhnk1E0uPSX2----
+Content-Type: image/svg+xml
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://wiki.archlinux.org/resources/src/mediawiki.skinning/images/external-ltr.svg?59558
+
+<?xml version=3D"1.0" encoding=3D"UTF-8"?>
+<svg xmlns=3D"http://www.w3.org/2000/svg" width=3D"13" height=3D"13">
+	<path fill=3D"#36b" d=3D"M5.002 1.01h7v7l-2-2-3 2v-1l3-2.25 1 1V2.01h-3.75=
+l1 1-2.25 3h-1l2-3z"/>
+	<path fill=3D"#36b" d=3D"M7.002 3.01h-5v8h8v-5h-1v4h-6v-6h4z"/>
+	<path fill=3D"#15a5ea" d=3D"M4.082 5.51c0-.621.621-.621.621-.621 1.864.621=
+ 3.107 1.864 3.728 3.728 0 0 0 .621-.62.621-1.245-1.864-1.866-2.485-3.73-3.=
+728z"/>
+</svg>=0A
+------MultipartBoundary--cIS6rmp6eYBmgp7hrQSJNleA49WcbZYhnk1E0uPSX2----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://wiki.archlinux.org/load.php?lang=en&modules=site.styles&only=styles&skin=vector-2022
+
+@charset "utf-8";
+
+pre, .mw-code { white-space: pre; }
+
+.mw-body-content a.external[href^=3D"http://wiki.archlinux.org"], .mw-body-=
+content a.external[href^=3D"https://wiki.archlinux.org"] { background: none=
+; padding-right: 0px; }
+
+span.archwiki-template-pkg, span.archwiki-template-man { font-family: monos=
+pace, monospace; }
+
+div.archwiki-template-box { padding: 5px; border: thin solid black; margin:=
+ 0.5em 0px; overflow: hidden; }
+
+div.archwiki-template-box.archwiki-template-box-note { background-color: rg=
+b(221, 221, 255); border-color: rgb(187, 187, 221); }
+
+div.archwiki-template-box.archwiki-template-box-warning { background-color:=
+ rgb(255, 221, 221); border-color: rgb(221, 187, 187); }
+
+div.archwiki-template-box.archwiki-template-box-tip { background-color: rgb=
+(221, 255, 221); border-color: rgb(187, 221, 187); }
+
+div.archwiki-template-message { position: relative; overflow: hidden; min-h=
+eight: 4.6em; margin-bottom: 1em; background-color: rgb(249, 250, 255); bor=
+der: 1px solid rgb(215, 223, 227); padding: 0px 100px; text-align: center; =
+}
+
+div.archwiki-template-message > p > a { display: block; position: absolute;=
+ top: 5px; }
+
+div.archwiki-template-message > p > a:first-of-type { left: 26px; }
+
+div.archwiki-template-message > p > a:last-of-type { right: 26px; }
+
+div.archwiki-template-message > div { font-size: 90%; }
+
+div.archwiki-template-message ul, div.archwiki-template-message ol { text-a=
+lign: left; }
+
+div.archwiki-template-meta-related-articles-start { float: right; clear: ri=
+ght; width: 25%; margin: 0px 0px 0.5em 0.5em; }
+
+div.archwiki-template-meta-related-articles-start > p { background: rgb(51,=
+ 51, 51); color: white; padding: 0.2em; border-bottom: 5px solid rgb(0, 136=
+, 204); margin: 0px; text-align: center; font-weight: bold; }
+
+div.archwiki-template-meta-related-articles-start > ul { list-style-type: n=
+one; list-style-image: none; margin: 0px; padding: 0.3em; }
+
+div.archwiki-template-meta-related-articles-start > ul > li { padding: 0.4e=
+m 0px; line-height: 1; }
+
+@media screen and (min-width: 721px) {
+  div.archwiki-main-page-columns { column-count: 2; }
+  div.archwiki-main-page-columns > * { break-inside: avoid; display: inline=
+-block; width: 100%; }
+}
+
+#content .CodeMirror pre { line-height: 1.5em; }
+
+#content pre.cm-mw-section-1, #content pre.cm-mw-section-2 { line-height: 1=
+.5em; font-size: inherit; font-weight: bold; }
+
+#content .cm-mw-pagename { text-decoration: unset; }
+
+.mw-body-content h1 { font-size: 188%; }
+
+.mw-body-content h2 { font-size: 150%; }
+
+.mw-body-content h3 { font-size: 128%; }
+
+.mw-body-content h4 { font-size: 116%; }
+
+.mw-body-content h5 { font-size: 108%; }
+
+.mw-body-content h6 { font-size: 100%; }
+
+body { counter-reset: h2-section 0 h3-section 0 h4-section 0 h5-section 0 h=
+6-section 0; }
+
+h2 > .mw-headline { counter-increment: h2-section 1; counter-set: h3-sectio=
+n 0 h4-section 0 h5-section 0 h6-section 0; }
+
+h3 > .mw-headline { counter-increment: h3-section 1; counter-set: h4-sectio=
+n 0 h5-section 0 h6-section 0; }
+
+h4 > .mw-headline { counter-increment: h4-section 1; counter-set: h5-sectio=
+n 0 h6-section 0; }
+
+h5 > .mw-headline { counter-increment: h5-section 1; counter-set: h6-sectio=
+n 0; }
+
+h6 > .mw-headline { counter-increment: h6-section 1; }
+
+h2 > .mw-headline::before { content: counter(h2-section); }
+
+h3 > .mw-headline::before { content: counter(h2-section) "." counter(h3-sec=
+tion); }
+
+h4 > .mw-headline::before { content: counter(h2-section) "." counter(h3-sec=
+tion) "." counter(h4-section); }
+
+h5 > .mw-headline::before { content: counter(h2-section) "." counter(h3-sec=
+tion) "." counter(h4-section) "." counter(h5-section); }
+
+h6 > .mw-headline::before { content: counter(h2-section) "." counter(h3-sec=
+tion) "." counter(h4-section) "." counter(h5-section) "." counter(h6-sectio=
+n); }
+
+h2 > .mw-headline::before, h3 > .mw-headline::before, h4 > .mw-headline::be=
+fore, h5 > .mw-headline::before, h6 > .mw-headline::before { color: rgb(107=
+, 62, 38); font-style: italic; margin-right: 1ex; }
+
+.skin-vector-2022 .sidebar-toc .sidebar-toc-numb { display: inline; padding=
+-right: 0.5em; }
+
+body:not(.page-Main_page) #bodyContent { display: flex; flex-direction: col=
+umn; }
+
+body:not(.page-Main_page) #contentSub { order: -2; margin-bottom: 0px; }
+
+body:not(.page-Main_page) #catlinks { order: -1; margin: 0.5em 0px 1em; }
+
+body:not(.page-Main_page) p:first-child, .archwiki-template-meta-related-ar=
+ticles-start + p { margin-top: 0px; }
+
+#contentSub:empty, #contentSub2:empty { display: none; }
+
+.mw-first-heading .pacman-wrapper { display: flex; align-items: center; ove=
+rflow: hidden; width: 80%; }
+
+.mw-first-heading .pacman { position: relative; background: transparent; z-=
+index: 1; height: 36px; }
+
+.mw-first-heading .pacman::before, .mw-first-heading .pacman::after { posit=
+ion: absolute; display: block; border-radius: 50%; content: ""; height: 0px=
+; width: 0px; }
+
+.mw-first-heading .pacman::before { animation: 0.5s ease 0.1s infinite norm=
+al none running pacman-jaw-top; border-width: 18px; border-style: solid; bo=
+rder-color: rgb(255, 204, 0) rgb(255, 204, 0) transparent transparent; bord=
+er-image: initial; }
+
+.mw-first-heading .pacman::after { animation: 0.5s ease 0.1s infinite norma=
+l none running pacman-jaw-bottom; border-width: 18px; border-style: solid; =
+border-color: transparent transparent rgb(255, 204, 0) rgb(255, 204, 0); bo=
+rder-image: initial; }
+
+.mw-first-heading .food { display: flex; justify-content: space-around; ani=
+mation: 0.5s linear 0s infinite normal none running pacman-food-translation=
+; width: 100%; }
+
+.mw-first-heading .food::before { background: rgb(255, 255, 255); border: 1=
+px solid; border-radius: 50%; content: ""; height: 1rem; width: 1rem; }
+
+@keyframes pacman-jaw-top {=20
+  0%, 100% { transform: rotate(-45deg); }
+  50% { transform: rotate(-80deg); }
+}
+
+@keyframes pacman-jaw-bottom {=20
+  0%, 100% { transform: rotate(-45deg); }
+  50% { transform: rotate(0deg); }
+}
+
+@keyframes pacman-food-translation {=20
+  0% { transform: translateX(60%); }
+  100% { transform: translateX(-40%); }
+}
+
+@media screen {
+  html.client-darkmode { background-color: rgb(246, 249, 252); }
+}
+------MultipartBoundary--cIS6rmp6eYBmgp7hrQSJNleA49WcbZYhnk1E0uPSX2----
+Content-Type: image/png
+Content-Transfer-Encoding: base64
+Content-Location: https://wiki.archlinux.org/images/3/38/Tango-view-fullscreen.png
+
+iVBORw0KGgoAAAANSUhEUgAAADAAAAAwEAYAAAAHkiXEAAAABmJLR0QAAAAAAAD5Q7t/AAAACXBI
+WXMAAABIAAAASABGyWs+AAAACXZwQWcAAAAwAAAAMADO7oxXAAAInklEQVR42u1bW2wUVRj+Z2Z3
+Zy/d7W4pFVIXW1I1tOCFbSGYoEGeSAit3HwixUuMxMT4wqNP+kYsPjak6gPQh0IBExVjIELp0qZ2
+FXrRFGshqQoK3Uu33e5lZtaH39+zO2XZ2+zOGvolmz9z5sx//vP95/znugArWMHjDC7Ti2PHjh37
+6KPGRp43mSyWL7+UpHg8Hm9pSSaTyWSS5/U2vNLBcRzHcYpiMJhMJtPkpKLE40tL7e1Hjx49+uGH
+t29TPkMmBYIgilZrX197e3v7vn0bNzY2ut3r1nH/Qu/qVT4SCVmWZZ4fGfnpJ59v48aRkaGhwcG+
+Pnzb1kb5DJkVxGKx2ObNDQ1I/L17oVAoBCDLiqIoelev8uF02mw2G0Bz84YNLS0c5/VeuXL58ubN
+6nwZHaAONfgMsH37oUMnTpTO8DfeeO01jwfgzTf37vV4tNf/+efnzvl8AF98cf68z1e6eoyN9fd/
+8AEAz2PEyBS6KyaWl5p4Aumn8vSG7g4oF/FqVIojdHMAEVBu4ivNDkOuGbWa+VBMNJtNJoNBO73F
+guwh+xQFx7xika1+ZesBgsDzHAfgdDocZjPAt996vb/+CnDx4rVrt26Vy4rloPLJHrKP7C018ugB
+hc3/BcFg4HkAp7OqymzGClosAC4XyuHhsbHZWQCXq7raagXYtu35593u0ld8aOjmzdlZVn5NDZZP
+9SQZDC4sRKMAsixJ+Uy/iatk8tG85eyAfGEwGAyCgMSLIiPe6bTb0RHp6VNTMzN//83eb9iwfv3q
+1drb9csvMzP377PyqCEwkjD00DPJYHBhIRYDkCRJkmUNecqWId9WbzQajUg8EW23E/GiyCpcXY3p
+Lhfmq65G+ddfc3MLCwA1NRgK1qyprbXbi6/ovXsPHoTDTD85Xt3ieR5DD7Vb9h7Tg8FwOBoFSCQS
+iVwckY0/zXrAO+/s39/WBlBT43RarQDnzl26NDnJHJFKPDkmPR17hMuFxMdiWMFoNB6XJDZI5gv6
+nvSRY3FxxAgnqpYTzyQAwFtv7d3b2grg9weDkQjAiRNnz/7wQ+G8FT0LevfdAwfa2gA6O9vbUxfa
+DofNJooAV6+Ojt6+nd4TzGZGBDnE5aL3zFGiCGCxFEY8gb6nnsbzWBcmqeWzeqb+CB0dr77a3Ayw
+Y0dbW2MjSyf3dXefOZPqCDYGaOQA1gaI+IMHt2xZTjxhx44tW9avB3A4sGVPTExPY8ylHpA+JqjT
+7XZ0oFagkMfzPI/kU20o5GA6vaGQs327x/PUUwAeT3Nzff1yvZ2dHR24fsDvurv7+kZGMvNWsANI
+yZEjr7++dStAZ+eePS++mP271lY0nIi+e/f+/XB4+RhA0z+73WrVkng1qGdmCjXUoltamprq6gCa
+mtzuVauy6z18GBuierao2RhAig4fzo14NZ5+GitSXY3T0Xg8FpMk1uKrqqxWk6l0xKvhcKCjU0MS
+AMDatbW1VVUAdXUul82Wv17ipwQhSBtQxRKJREKScNZUTIwvFuR4UTQaeb789pR8IZYJJpPJZDSW
+r6Llt4dC26O3NHTfDX3cUfbNuMcFuY4BKz1AZ+g2BjwuyMbbSg/QGStjQIlQ8WNAIqHttu7/1Z6y
+jwEPHgQCi4sAS0vxuCyzrYhyr4QJCwuRSDwOEAjgNrPFYjIJAkBtbWEr4XTGNFwHEPmnTn399c2b
+yw8sssmZmdlZvx/g55/xICQYnJ+PRFAuLSERsVj+eguVVB6VT/aQfWRvvnqJHzVvRTuA0NV18uTg
+IMDJk199deNG9vw3bkxN3b0LMDDw44937gD4/Vhhvz8UQonPgcD8fDQKMD+/uBiL5WtV7iD9VF4m
+e8hesj8biA/iJ1cUPAh3dZ065fWy9EOHdu9+4QX2fmDA57tzB+C774aHp6fZbijdsMN7BwB0BEjp
+ySRLB2AHNcUiFMIjxUCAHB4OU8unBkDp0Sh77u/Hg6VwGL9/+WWPp6HhYcQjH2q+SnYeQPjkEyyY
+CKQTsd7eixfHx9lRJBlC561M0tU9ipksHQBAFDEmm82iWMheTTQaiyUSAH4/Eh4KEcHLZWrPoKNH
+ckR3d3//6CjA/DyGLjoR6+o6ffr69fx5y9sB2WIZGWI2i6LBgAcxZjO2c0VJdQAblNJlag6AurpV
+q2w2AIulMOIJ9L0o4lm134+xnoimnsB6wMN7AoWmjz/u6blyBR0rScXzpvnGKxkmy7K8tISzAEYr
+gKJgiKFnJjH92WcbGmprAerrV692OLSzi/RRrP/tNxxkMxFNPUAdorSerpZsIUaGzs1hi2MtP/3a
+Bz1v27Zpk9sN8NxzTU1PPKFdBdUg/YEAOuKbbwYHp6aYI9SEU+iSpELvBT06Xx6zoMLWAWT43Fx6
+C5ubC4UiEYCtW5H4V15pbcXD7tTDwtJJKo/KJ3uYfSjzJT5fvvJeBxQKWZZlRcEQEIkA7Nr10kvP
+PAOwb9/OnS0t5Zv/qyWVT/aQfWRvsaiYu6EEWcZYX667l7mC7CH7ygXdNuOOH+/tvX4dY2QyCfD2
+2x0dra3lqzihp+fChdFRgE8/7e0dGtJOr+brgFKdB1DFOY7jeB4dUY57+j09Fy74fNoTr8b/5jzg
++PHTp71eRkypQPqpPL2RoQcYjfQ/V3xmfy6bnDxz5v339Ta7cFAPK3VPo5Yvy7Isy+x/w/iW+FQU
+lQPohc3G84IgCBMTf/zx55+//75p05NP1te73ZU0bFY2FAX/zjs+PjExNpZMCoIgCML4OL6lje5w
+WOUANkkbGPj++8HB995DRZ99hgumpqaVf8rnBtbiOY7jpqeHh73ekZEjR+jtf/ke/jntP1ZVpUur
+FaXFkp6PFFbSVatygEIKSdodisdRRiIoFxfTZThM+bOEFCLWbEZJxNPZFV3iox6h5yVDPUCTTCKe
+HJFIoFQ7gp4ZNI7pgqA3Jfqg8O25fwAhdAiqcg3jQgAAAABJRU5ErkJggg==
+
+------MultipartBoundary--cIS6rmp6eYBmgp7hrQSJNleA49WcbZYhnk1E0uPSX2------

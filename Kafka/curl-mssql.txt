@@ -1,0 +1,8 @@
+#!/bin/bash
+
+curl -i -X POST -H "Accept:application/json" -H "Content-Type:application/json" localhost:8083/connectors/ -d '{ "name": "test-connector", "config": { "connector.class": "io.debezium.connector.sqlserver.SqlServerConnector", "database.hostname": "192.168.137.191", "database.port": "1433", "database.user": "sa", "database.password": "SML@123zxc", "database.dbname": "testDB", "database.server.name": "testDB", "table.whitelist": "dbo.fruit", "database.history.kafka.bootstrap.servers": "localhost:9092", "database.history.kafka.topic": "dbhistory.fulfillment",  "include.schema.changes": "true" } }';
+
+
+curl -i -X POST -H "Accept:application/json" -H "Content-Type:application/json" localhost:8083/connectors/ -d '{ "name": "test-connector", "config": { "connector.class": "io.debezium.connector.sqlserver.SqlServerConnector", "database.hostname": "192.168.137.191", "database.port": "1433", "database.user": "sa", "database.password": "SML@123zxc", "database.dbname": "testDB", "database.server.name": "testDB", "table.whitelist": "dbo.fruit", "database.history.kafka.bootstrap.servers": "localhost:9092", "database.server.id": "8115", "database.allowPublicKeyRetrieval":"true", "database.server.name": "fruitserver", "database.whitelist": "testDB", "database.history.kafka.bootstrap.servers": "localhost:9092", "database.history.kafka.topic": "dbhistory.fulfillment", "include.schema.changes": "true"  } }';
+
+"database.server.id": "8115", "database.allowPublicKeyRetrieval":"true", "database.server.name": "fruitserver", "database.whitelist": "testDB", "database.history.kafka.bootstrap.servers": "localhost:9092", "database.history.kafka.topic": "dbhistory.fulfillment", "include.schema.changes": "true"

@@ -1,0 +1,3 @@
+.\winlogbeat.exe setup --index-management -E output.logstash.enabled=false -E 'output.elasticsearch.hosts=["192.168.12.240:9200"]'
+
+.\winlogbeat.exe setup -e -E output.logstash.enabled=false -E output.elasticsearch.hosts=['192.168.12.240:9200']

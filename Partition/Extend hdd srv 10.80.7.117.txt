@@ -1,0 +1,10 @@
+# HISTORY command sv gitlab 10.80.7.117
+pvdisplay
+pvresize /dev/sdb
+lvdisplay
+lvextend -l +100%FREE /dev/data/data-lv
+resize2fs /dev/data/data-lv      ##(File system EXT4)
+############################################
+
+
+

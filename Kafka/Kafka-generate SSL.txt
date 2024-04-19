@@ -1,0 +1,277 @@
+
+Generate new Authority
+
+Generate new private key
+
+openssl genrsa -out root.key
+
+Generate certificate authority
+
+openssl req -new -x509 -key root.key -out root.crt
+
+Create Java Truststore and Keystore
+
+Generate truststore
+
+keytool -keystore kafka.truststore.jks -alias CARoot -import -file root.crt
+
+Generate keystore
+
+keytool -keystore kafka01.keystore.jks -alias localhost -validity 365 -genkey -keyalg RSA -ext SAN=IP:172.17.0.2,IP:172.17.0.3,IP:172.17.0.4,IP:172.17.0.5,IP:172.17.0.6,IP:10.80.7.145
+
+Export certificate broker
+
+keytool -keystore kafka01.keystore.jks -alias localhost -certreq -file kafka01.unsigned.crt
+
+Sign certificate with CA
+
+openssl x509 -req -CA root.crt -CAkey root.key -in kafka01.unsigned.crt -out kafka01.signed.crt -days 365 -CAcreateserial
+
+NOTE: "-days 365" set validity of certificate in this case for 1 year
+
+Import CA certificate on Broker Keystore
+
+keytool -keystore kafka01.keystore.jks -alias CARoot -import -file root.crt
+
+Import certificate on Broker Keystore
+
+keytool -keystore kafka01.keystore.jks -alias localhost -import -file kafka01.signed.crt
+
+======AAA=====================================================================================================================
+
+Broker configuration
+When certificates are correctly available, you must configure Kafka Broker.
+If you have multiple Broker the same procedure must be applied on all configurations server files.
+This example is based as explained in the introduction (P. 2) on single cluster and one broker server.
+NOTE: the procedure is made on Linux and It’s comparable to Windows
+1. Stop Kafka
+sudo systemctl stop kafka
+2. Edit server configurations file, for example
+sudo nano /usr/local/kafka/config/server.properties
+3. Set the parameters
+listeners=SSL://:9093
+advertised.listeners=SSL://:9093
+security.inter.broker.protocol=SSL
+ssl.truststore.location=/home/fabri/kafka.truststore.jks
+ssl.truststore.password=123456789
+ssl.keystore.location=/home/fabri/kafka01.keystore.jks
+ssl.keystore.password=123456789
+ssl.key.password=123456789
+ssl.enabled.protocols=TLSv1.2,TLSv1.1,TLSv1
+ssl.client.auth=required
+ssl.endpoint.identification.algorithm=
+ssl.keystore.type=JKS
+ssl.truststore.type=JKS
+4. Windows version
+listeners=SSL://:9093
+advertised.listeners=SSL://:9093
+security.inter.broker.protocol=SSL
+ssl.truststore.location= C://kafka//ssl//kafka.truststore.jks
+ssl.truststore.password=123456789
+ssl.keystore.location= C://kafka//ssl//kafka01.keystore.jks
+ssl.keystore.password=123456789
+ssl.key.password=123456789
+ssl.enabled.protocols=TLSv1.2,TLSv1.1,TLSv1
+ssl.client.auth=required
+ssl.endpoint.identification.algorithm=
+ssl.keystore.type=JKS
+ssl.truststore.type=JKS
+9
+5. Start Kafka
+sudo systemctl start kafka
+After with this configuration, broker will accept only secure connection on 9093 port.
+If you want It’s possible enable another instance without SSL on different port, for example
+listeners=PLAINTEXT://:9092,SSL://:9093
+advertised.listeners=PLAINTEXT://:9092,SSL://:9093
+CLI SSL – Command Line Interface SSL
+Here are some examples for CLI connections with SSL
+Create a new file for example client-ssl.properties and set parameters
+bootstrap.servers=192.168.1.61:9093
+security.protocol=SSL
+ssl.truststore.location=/home/fabri/ssl3/kafka.truststore.jks
+ssl.truststore.password=123456
+ssl.keystore.location=/home/fabri/ssl4/client.keystore.jks
+ssl.keystore.password=123456
+ssl.key.password=123456
+ssl.enabled.protocols=TLSv1.2
+ssl.client.auth=required
+ssl.endpoint.identification.algorithm=
+ssl.keystore.type=JKS
+ssl.truststore.type=JKS
+NOTE: on windows certificate paths must be set with escape, for example
+bootstrap.servers=192.168.1.61:9093
+security.protocol=SSL
+ssl.truststore.location= C:\\Users\\Fabrizio\\Desktop\\client.truststore.jks
+ssl.truststore.password=123456
+ssl.keystore.location= C:\\Users\\Fabrizio\\Desktop\\client.keystore.jks
+ssl.keystore.password=123456
+ssl.key.password=123456
+ssl.enabled.protocols=TLSv1.2
+ssl.client.auth=required
+ssl.endpoint.identification.algorithm=
+ssl.keystore.type=JKS
+ssl.truststore.type=JKS
+
+Producer
+bin/kafka-console-producer --broker-list kafka1:9093 --topic test --producer.config client-ssl.properties
+Consumer
+bin/kafka-console-consumer --bootstrap-server kafka1:9093 --topic test --consumer.config client-ssl.properties --from-beginning
+
+=============================================================================================
+
+Script for generate certificates
+You can find on the shared folder two scripts for generate certificates with the same commands shown.
+Script for Windows: https://github.com/Fabrizio04/Kafka/tree/main/SSL_Generate_Windows
+Script for Linux: https://github.com/Fabrizio04/Kafka/tree/main/SSL_Generate_Linux
+SASL SSL
+Here are the procedure to enable SASL Authentication with SSL.
+The procedure for generate SSL certificates is the same of previous chapter.
+You can also enable only SASL without SSL (SASL PLAINTEXT).
+This part is based on this guide: https://bit.ly/3cSYFub
+NOTE: the procedure is made on Linux and It’s comparable to Windows.
+1. Stop Kafka and Zookeeper
+sudo systemctl stop kafka
+sudo systemctl stop zookeeper
+2. Edit zookeeper.properties file and set
+authProvider.1=org.apache.zookeeper.server.auth.SASLAuthenticationProvider
+requireClientAuthScheme=sasl
+3. Create on config folder a new file zookeeper_jaas.conf and set
+Server {
+ org.apache.zookeeper.server.auth.DigestLoginModule required
+ user_:super="admin-secret"
+ user_kafka="kafka-secret";
+};
+4. Create on config folder a new file kafka_server_jaas.conf and set
+KafkaServer {
+ org.apache.kafka.common.security.plain.PlainLoginModule required
+ username="admin"
+ password="admin-secret"
+ user_admin="admin-secret";
+};
+Client {
+ org.apache.zookeeper.server.auth.DigestLoginModule required
+ username="kafka"
+ password="kafka-secret";
+};
+--------------------------------------------------------------------------
+8. Edits server properties configuration file and set
+listeners=PLAINTEXT://:9092,SASL_PLAINTEXT://:9093,SASL_SSL://:9094
+advertised.listeners=PLAINTEXT://:9092,SASL_PLAINTEXT://:9093,SASL_SSL://:9094
+security.inter.broker.protocol=SASL_SSL
+sasl.enabled.mechanisms=PLAIN
+sasl.mechanism.inter.broker.protocol=PLAIN
+authorizer.class.name=kafka.security.authorizer.AclAuthorizer
+allow.everyone.if.no.acl.found=true
+auto.create.topics.enable=false
+9. Start Zookeeper and Kafka
+sudo systemctl start zookeeper
+sudo systemctl start kafka
+CLI SASL SSL - Command Line Interface SASL SSL
+Here an example for CLI connections with SASL SSL.
+Remember to set environment variable as explained previously.
+Create a new file for example client-ssl-sasl.properties and set parameters
+bootstrap.servers=192.168.1.61:9094
+sasl.mechanism=PLAIN
+security.protocol=SASL_SSL
+sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required \
+ username="admin" \
+ password="admin-secret";
+ssl.truststore.location=/home/fabri/ssl3/kafka.truststore.jks
+ssl.truststore.password=123456
+ssl.keystore.location=/home/fabri/ssl4/client.keystore.jks
+ssl.keystore.password=123456
+ssl.key.password=123456
+ssl.enabled.protocols=TLSv1.2
+ssl.client.auth=required
+ssl.endpoint.identification.algorithm=
+ssl.keystore.type=JKS
+ssl.truststore.type=JKS
+
+--------------------------------------------------------------------------------
+
+3. Create on config folder a new file zookeeper_jaas.conf and set
+Server {
+ org.apache.zookeeper.server.auth.DigestLoginModule required
+ user_super="admin-secret"
+ user_kafka="kafka-secret";
+};
+4. Create on config folder a new file kafka_server_jaas.conf and set
+KafkaServer {
+ org.apache.kafka.common.security.plain.PlainLoginModule required
+ username="admin"
+ password="admin-secret"
+ user_admin="admin-secret";
+};
+Client {
+ org.apache.zookeeper.server.auth.DigestLoginModule required
+ username="kafka"
+ password="kafka-secret";
+};
+
+
+Create a new file kafka_client_jaas.conf and set
+KafkaClient {
+ org.apache.kafka.common.security.plain.PlainLoginModule required
+ username="admin"
+ password="admin-secret";
+};
+Client {
+org.apache.zookeeper.server.auth.DigestLoginModule required
+ username="kafka"
+ password="kafka-secret";
+};
+
+-------------------------------------------
+
+Producer
+export KAFKA_OPTS="-Djava.security.auth.login.config=/usr/local/kafka/config/kafka_client_jaas.conf"
+bin/kafka-console-producer --broker-list localhost:9094 --topic test --producer.config config/client-ssl-sasl.properties 
+Consumer
+export KAFKA_OPTS="-Djava.security.auth.login.config=/usr/local/kafka/config/kafka_client_jaas.conf"
+bin/kafka-console-consumer --bootstrap-server localhost:9094 --topic test --consumer.config client-ssl-sasl.properties --from-beginning
+Remember on Windows to use
+set "KAFKA_OPTS=-Djava.security.auth.login.config=c:\kafka\config\kafka_client_jaas.conf"
+
+---------------------------
+export KAFKA_OPTS="-Djava.security.auth.login.config=/opt/kafka_2.13-3.5.0/config/kafka_client_jaas.conf"
+export KAFKA_OPTS="-Djava.security.auth.login.config=/opt/kafka_2.13-3.5.0/config/kafka_client_jaas.conf"
+
+------------------
+5. Edit zookeeper service and set environment variable KAFKA_OPTS
+[Unit]
+Description=Apache Zookeeper server
+Documentation=http://zookeeper.apache.org
+Requires=network.target remote-fs.target
+After=network.target remote-fs.target
+[Service]
+Type=simple
+Environment="KAFKA_OPTS=-Djava.security.auth.login.config=/usr/local/kafka/config/zookeeper_jaas.conf"
+ExecStart=/usr/local/kafka/bin/zookeeper-server-start.sh /usr/local/kafka/config/zookeeper.properties
+ExecStop=/usr/local/kafka/bin/zookeeper-server-stop.sh
+Restart=on-abnormal
+[Install]
+WantedBy=multi-user.target
+6. Edit kafka service and set environment variable KAFKA_OPTS
+[Unit]
+Description=Apache Kafka Server
+Documentation=http://kafka.apache.org/documentation.html
+Requires=zookeeper.service
+After=zookeeper.service
+[Service]
+Type=simple
+Environment="JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64"
+Environment="KAFKA_OPTS=-Djava.security.auth.login.config=/usr/local/kafka/config/kafka_server_jaas.conf"
+ExecStart=/usr/local/kafka/bin/kafka-server-start.sh /usr/local/kafka/config/server.properties
+ExecStop=/usr/local/kafka/bin/kafka-server-stop.sh
+[Install]
+WantedBy=multi-user.target
+NOTE: if you run manually zookeeper and kafka, you must export the two variables before execute 
+script, for example on Linux:
+export KAFKA_OPTS="-Djava.security.auth.login.config=/KAFKA_HOME/config/zookeeper_jaas.conf"
+zookeeper-server-start.sh
+export KAFKA_OPTS="-Djava.security.auth.login.config=/KAFKA_HOME/config/kafka_server_jaas.conf"
+kafka-server-start.sh
+--------------------------
+
+
+

@@ -1,0 +1,22 @@
+On an Aruba HPE 2920-24G switch running ArubaOS-Switch, you can check the IP configuration using the following commands in the switch's CLI:
+
+To view the IP address configuration of a specific interface (e.g., VLAN interface or management interface), use the following command:
+
+bash
+Copy code
+show ip interface vlan <VLAN_ID>
+Replace <VLAN_ID> with the VLAN ID or interface name you want to check.
+
+To see the IP routing table, use:
+
+bash
+Copy code
+show ip route
+This command will display the routing table on the switch.
+
+To check the IP address assigned to the management interface, use:
+
+bash
+Copy code
+show management
+This command should display information about the management interface, including its IP address.

@@ -1,0 +1,141 @@
+Fri Apr 8 19:01:10 2022   pnh2   Router>en
+Fri Apr 8 19:01:17 2022   pnh2   Router#conf t
+Fri Apr 8 19:01:23 2022   pnh2   Router(config)#h pnh2
+Fri Apr 8 19:01:42 2022   pnh2   pnh2(config)#int f0/0
+Fri Apr 8 19:01:56 2022   pnh2   pnh2(config-if)#ip add 172.16.0.1 255.255.255.0
+Fri Apr 8 19:01:58 2022   pnh2   pnh2(config-if)#no shutdown 
+Fri Apr 8 19:02:05 2022   pnh2   pnh2(config-if)#int f0/1
+Fri Apr 8 19:03:06 2022   pnh2   pnh2(config-if)#ip address 10.0.0.0 255.255.255.248
+Fri Apr 8 19:03:14 2022   pnh2   pnh2(config-if)#ip address 10.0.0.2 255.255.255.248
+Fri Apr 8 19:03:18 2022   pnh2   pnh2(config-if)#no shutdown 
+Fri Apr 8 19:03:49 2022   pnh3   Router>en
+Fri Apr 8 19:03:51 2022   pnh3   Router#conf t
+Fri Apr 8 19:03:57 2022   pnh3   Router(config)#h pnh 3
+Fri Apr 8 19:04:00 2022   pnh3   Router(config)#h pnh3
+Fri Apr 8 19:04:09 2022   pnh3   pnh3(config)#int f0/1
+Fri Apr 8 19:05:28 2022   pnh3   pnh3(config-if)#ip add 10.0.0.3 255.255.255.248
+Fri Apr 8 19:05:37 2022   pnh3   pnh3(config-if)#no sh
+Fri Apr 8 19:05:46 2022   pnh3   pnh3(config-if)#int e0/0/0
+Fri Apr 8 19:05:58 2022   pnh3   pnh3(config-if)#ip address 192.168.0.1 255.255.255.0
+Fri Apr 8 19:06:00 2022   pnh3   pnh3(config-if)#no shutdown 
+Fri Apr 8 19:06:06 2022   pnh3   pnh3(config-if)#int e0/1/0
+Fri Apr 8 19:06:12 2022   pnh3   pnh3(config-if)#ip address 192.168.1.1 255.255.255.0
+Fri Apr 8 19:06:14 2022   pnh3   pnh3(config-if)#no shutdown 
+Fri Apr 8 19:06:20 2022   pnh3   pnh3(config-if)#int e0/2/0
+Fri Apr 8 19:06:26 2022   pnh3   pnh3(config-if)#ip address 192.168.2.1 255.255.255.0
+Fri Apr 8 19:06:28 2022   pnh3   pnh3(config-if)#no shutdown 
+Fri Apr 8 19:06:41 2022   pnh1   Router>en
+Fri Apr 8 19:06:42 2022   pnh1   Router#conf t
+Fri Apr 8 19:06:45 2022   pnh1   Router(config)#h pnh1
+Fri Apr 8 19:06:51 2022   pnh1   pnh1(config)#int f0/0
+Fri Apr 8 19:07:03 2022   pnh1   pnh1(config-if)#ip address 10.0.0.1 255.255.255.248
+Fri Apr 8 19:07:05 2022   pnh1   pnh1(config-if)#no shutdown 
+Fri Apr 8 19:07:14 2022   pnh1   pnh1(config-if)#int f0/1
+Fri Apr 8 19:07:28 2022   pnh1   pnh1(config-if)#ip address 6.6.6.1 255.255.255.252
+Fri Apr 8 19:07:33 2022   pnh1   pnh1(config-if)#no sh
+Fri Apr 8 19:07:48 2022   pnh1   pnh1#conf t
+Fri Apr 8 19:08:03 2022   pnh1   pnh1(config)#ip route 0.0.0.0 0.0.0.0 6.6.6.2
+Fri Apr 8 19:08:12 2022   isp   Router>en
+Fri Apr 8 19:08:14 2022   isp   Router#conf t
+Fri Apr 8 19:08:19 2022   isp   Router(config)#h isp
+Fri Apr 8 19:08:25 2022   isp   isp(config)#int f1/0
+Fri Apr 8 19:08:43 2022   isp   isp(config-if)#ip address 6.6.6.2 255.255.255.252
+Fri Apr 8 19:08:45 2022   isp   isp(config-if)#no shutdown 
+Fri Apr 8 19:08:52 2022   isp   isp(config-if)#int f0/0
+Fri Apr 8 19:09:10 2022   isp   isp(config-if)#ip address 7.7.7.1 255.255.255.0
+Fri Apr 8 19:09:12 2022   isp   isp(config-if)#no shutdown 
+Fri Apr 8 19:09:19 2022   isp   isp(config-if)#int f0/1
+Fri Apr 8 19:09:28 2022   isp   isp(config-if)#ip address 8.8.8.1 255.255.255.0
+Fri Apr 8 19:09:30 2022   isp   isp(config-if)#no shutdown 
+Fri Apr 8 19:09:34 2022   isp   isp(config-if)#exit
+Fri Apr 8 19:09:48 2022   isp   isp(config)#ip route 0.0.0.0 0.0.0.0 6.6.6.1
+Fri Apr 8 19:10:11 2022   pnh3   pnh3(config-if)#exit
+Fri Apr 8 19:10:24 2022   pnh3   pnh3(config)#ip dhcp pool user
+Fri Apr 8 19:10:33 2022   pnh3   pnh3(dhcp-config)#network 192.168.0.0 255.255.255.0
+Fri Apr 8 19:10:40 2022   pnh3   pnh3(dhcp-config)#default-router 192.168.0.1
+Fri Apr 8 19:10:55 2022   pnh3   pnh3(dhcp-config)#dns-server 172.16.0.20
+Fri Apr 8 19:10:58 2022   pnh3   pnh3(dhcp-config)#exit
+Fri Apr 8 19:11:49 2022   pnh3   pnh3(config)#ip dhcp pool partner
+Fri Apr 8 19:12:07 2022   pnh3   pnh3(dhcp-config)#network 192.168.1.0 255.255.255.0
+Fri Apr 8 19:13:23 2022   pnh3   pnh3(dhcp-config)#default-router 192.168.1.1
+Fri Apr 8 19:13:48 2022   pnh3   pnh3(dhcp-config)#dns-server 172.16.0.20
+Fri Apr 8 19:14:52 2022   pnh3   pnh3(dhcp-config)#exit
+Fri Apr 8 19:15:18 2022   pnh3   pnh3(config)#ip dhcp pool guest
+Fri Apr 8 19:15:52 2022   pnh3   pnh3(dhcp-config)#network 192.168.2.0 255.255.255.0
+Fri Apr 8 19:15:58 2022   pnh3   pnh3(dhcp-config)#default-router 192.168.2.1
+Fri Apr 8 19:16:08 2022   pnh3   pnh3(dhcp-config)#dns-server 172.16.0.20
+Fri Apr 8 19:24:34 2022   pnh2   pnh2>en
+Fri Apr 8 19:26:55 2022   pnh1   pnh1>en
+Fri Apr 8 19:26:57 2022   pnh1   pnh1#conf t
+Fri Apr 8 19:27:07 2022   pnh1   pnh1(config)#int loopback 1
+Fri Apr 8 19:27:24 2022   pnh1   pnh1(config-if)#ip address 1.1.1.1 255.255.255.255
+Fri Apr 8 19:27:27 2022   pnh1   pnh1(config-if)#exit
+Fri Apr 8 19:27:34 2022   pnh1   pnh1(config)#router ospf 1
+Fri Apr 8 19:28:00 2022   pnh1   pnh1(config-router)#network 10.0.0.0 0.0.0.7 area 0
+Fri Apr 8 19:28:09 2022   pnh1   pnh1(config-router)#default-information originate 
+Fri Apr 8 19:28:36 2022   pnh2   pnh2#conf t
+Fri Apr 8 19:28:41 2022   pnh2   pnh2(config)#int loopback 1
+Fri Apr 8 19:29:01 2022   pnh2   pnh2(config-if)#ip address 2.2.2.2 255.255.255.255
+Fri Apr 8 19:29:04 2022   pnh2   pnh2(config-if)#exit
+Fri Apr 8 19:29:10 2022   pnh2   pnh2(config)#router ospf 1
+Fri Apr 8 19:29:26 2022   pnh2   pnh2(config-router)#network 10.0.0.0 0.0.0.7 area 0
+Fri Apr 8 19:30:05 2022   pnh2   pnh2(config-router)#network 172.16.0.0 0.0.0.255 area 1
+Fri Apr 8 19:30:28 2022   pnh3   pnh3(dhcp-config)#exit
+Fri Apr 8 19:30:36 2022   pnh3   pnh3(config)#int loopback 1
+Fri Apr 8 19:30:47 2022   pnh3   pnh3(config-if)#ip address 3.3.3.3 255.255.255.255
+Fri Apr 8 19:30:49 2022   pnh3   pnh3(config-if)#ex
+Fri Apr 8 19:30:55 2022   pnh3   pnh3(config)#router ospf 1
+Fri Apr 8 19:31:15 2022   pnh3   pnh3(config-router)#network 10.0.0.0 0.0.0.7 area 0
+Fri Apr 8 19:31:42 2022   pnh3   pnh3(config-router)#network 192.168.0.0 0.0.0.255 area
+Fri Apr 8 19:31:48 2022   pnh3   pnh3(config-router)#network 192.168.0.0 0.0.0.255 area 2
+Fri Apr 8 19:32:09 2022   pnh3   pnh3#show ip route 
+Fri Apr 8 19:33:42 2022   pnh3   pnh3#ping 8.8.8.1
+Fri Apr 8 19:33:52 2022   pnh3   pnh3#ping 7.7.7.1
+Fri Apr 8 19:34:03 2022   pnh3   pnh3#ping 172.16.0.1
+Fri Apr 8 19:35:50 2022   isp   isp>en
+Fri Apr 8 19:35:51 2022   isp   isp#conf t
+Fri Apr 8 19:35:56 2022   isp   isp(config)#int loopback ?
+Fri Apr 8 19:39:16 2022   pnh3   pnh3#conf t
+Fri Apr 8 19:39:25 2022   pnh3   pnh3(config)#router ospf 1
+Fri Apr 8 19:39:47 2022   pnh3   pnh3(config-router)#network 192.168.1.0 0.0.0.255
+Fri Apr 8 19:40:56 2022   pnh3   pnh3(config-router)#network 192.168.1.0 0.0.0.255 area 2
+Fri Apr 8 19:41:01 2022   pnh3   pnh3(config-router)#network 192.168.2.0 0.0.0.255 area 2
+Fri Apr 8 19:50:20 2022   pnh3   pnh3>en
+Fri Apr 8 19:50:22 2022   pnh3   pnh3#config t
+Fri Apr 8 19:51:04 2022   pnh3   pnh3(config)#ip access-list extended deny-user
+Fri Apr 8 19:51:54 2022   pnh3   pnh3(config-ext-nacl)#permit ip 192.168.0.0 0.0.0.255 172.16.0.0 0.0.0.255
+Fri Apr 8 19:52:20 2022   pnh3   pnh3(config-ext-nacl)#deny tcp 192.168.0.0 0.0.0.255 any eq 80
+Fri Apr 8 19:52:29 2022   pnh3   pnh3(config-ext-nacl)#deny tcp 192.168.0.0 0.0.0.255 any eq 443
+Fri Apr 8 19:52:37 2022   pnh3   pnh3(config-ext-nacl)#permit ip any any
+Fri Apr 8 19:52:42 2022   pnh3   pnh3(config-ext-nacl)#int e0/0/0
+Fri Apr 8 19:53:00 2022   pnh3   pnh3(config-if)#ip access-group deny-user in
+Fri Apr 8 19:54:45 2022   pnh3   pnh3(config-if)#exit
+Fri Apr 8 19:55:24 2022   pnh3   pnh3(config)#ip access-list extended deny-partner
+Fri Apr 8 19:56:22 2022   pnh3   pnh3(config-ext-nacl)#permit ip 192.168.1.0 0.0.0.255 172.16.0.32 0.0.0.31
+Fri Apr 8 19:56:51 2022   pnh3   pnh3(config-ext-nacl)#deny ip 192.168.1.0 0.0.0.255 172.16.0.0 0.0.0.255
+Fri Apr 8 19:57:09 2022   pnh3   pnh3(config-ext-nacl)#permit ip any any
+Fri Apr 8 19:57:14 2022   pnh3   pnh3(config-ext-nacl)#exit
+Fri Apr 8 19:57:28 2022   pnh3   pnh3(config)#int e0/1/0
+Fri Apr 8 19:57:49 2022   pnh3   pnh3(config-if)#ip access-group deny-partner in
+Fri Apr 8 19:57:52 2022   pnh3   pnh3(config-if)#exit
+Fri Apr 8 19:58:12 2022   pnh3   pnh3(config)#ip access-list extended deny-guest
+Fri Apr 8 19:58:40 2022   pnh3   pnh3(config-ext-nacl)#permit ip 192.168.2.0 0.0.0.255 172.16.0.0 0.0.0.31
+Fri Apr 8 19:58:55 2022   pnh3   pnh3(config-ext-nacl)#deny ip 192.168.2.0 0.0.0.255 172.16.0.0 0.0.0.255
+Fri Apr 8 19:59:07 2022   pnh3   pnh3(config-ext-nacl)#permit ip any any
+Fri Apr 8 19:59:09 2022   pnh3   pnh3(config-ext-nacl)#exit
+Fri Apr 8 19:59:14 2022   pnh3   pnh3(config)#int e0/2/0
+Fri Apr 8 19:59:30 2022   pnh3   pnh3(config-if)#ip access-group deny-guest in
+Fri Apr 8 20:03:53 2022   pnh2   pnh2>en
+Fri Apr 8 20:03:58 2022   pnh2   pnh2#config t
+Fri Apr 8 20:04:29 2022   pnh2   pnh2(config)#ip access-list extended deny-server
+Fri Apr 8 20:05:11 2022   pnh2   pnh2(config-ext-nacl)#permit tcp any host 172.16.0.10 eq 80
+Fri Apr 8 20:05:15 2022   pnh2   pnh2(config-ext-nacl)#permit tcp any host 172.16.0.10 eq 443
+Fri Apr 8 20:05:45 2022   pnh2   pnh2(config-ext-nacl)#permit udp any host 172.16.0.20 eq 53 
+Fri Apr 8 20:06:12 2022   pnh2   pnh2(config-ext-nacl)#permit tcp any host 172.16.0.40 eq 20
+Fri Apr 8 20:06:15 2022   pnh2   pnh2(config-ext-nacl)#permit tcp any host 172.16.0.40 eq 21
+Fri Apr 8 20:06:42 2022   pnh2   pnh2(config-ext-nacl)#permit udp any host 172.16.0.100 eq 67
+Fri Apr 8 20:06:45 2022   pnh2   pnh2(config-ext-nacl)#permit udp any host 172.16.0.100 eq 68
+Fri Apr 8 20:06:53 2022   pnh2   pnh2(config-ext-nacl)#deny ip any any
+Fri Apr 8 20:07:03 2022   pnh2   pnh2(config-ext-nacl)#exit
+Fri Apr 8 20:07:07 2022   pnh2   pnh2(config)#int f0/0
+Fri Apr 8 20:07:19 2022   pnh2   pnh2(config-if)#ip access-group deny-server out

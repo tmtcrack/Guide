@@ -1,0 +1,122 @@
+https://serverok.in/error-1118-row-size-too-large
+
+
+ERROR 1118 Row size too large Changing some columns to TEXT or BLOB may help.
+When restoring a MySQL database, i get error
+
+root@server:~# mysql production < db.sql
+ERROR 1118 (42000) at line 733: Row size too large (> 8126). Changing some columns to TEXT or BLOB may help. In current row format, BLOB prefix of 0 bytes is stored inline.
+root@server:~# 
+1
+2
+3
+root@server:~# mysql production < db.sql
+ERROR 1118 (42000) at line 733: Row size too large (> 8126). Changing some columns to TEXT or BLOB may help. In current row format, BLOB prefix of 0 bytes is stored inline.
+root@server:~# 
+I installed exactly same MraiaDB version on both source and destination server. But still restring failed.
+
+This is due to default Engine. On old server, i had
+
+MariaDB [adrymmls]>  show engines;
++--------------------+---------+----------------------------------------------------------------------------------+--------------+------+------------+
+| Engine             | Support | Comment                                                                          | Transactions | XA   | Savepoints |
++--------------------+---------+----------------------------------------------------------------------------------+--------------+------+------------+
+| MRG_MyISAM         | YES     | Collection of identical MyISAM tables                                            | NO           | NO   | NO         |
+| MyISAM             | DEFAULT | Non-transactional engine with good performance and small data footprint          | NO           | NO   | NO         |
+| CSV                | YES     | Stores tables as CSV files                                                       | NO           | NO   | NO         |
+| MEMORY             | YES     | Hash based, stored in memory, useful for temporary tables                        | NO           | NO   | NO         |
+| Aria               | YES     | Crash-safe tables with MyISAM heritage                                           | NO           | NO   | NO         |
+| InnoDB             | YES     | Supports transactions, row-level locking, foreign keys and encryption for tables | YES          | YES  | YES        |
+| PERFORMANCE_SCHEMA | YES     | Performance Schema                                                               | NO           | NO   | NO         |
+| SEQUENCE           | YES     | Generated tables filled with sequential values                                   | YES          | NO   | YES        |
++--------------------+---------+----------------------------------------------------------------------------------+--------------+------+------------+
+8 rows in set (0.000 sec)
+
+MariaDB [adrymmls]> 
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+MariaDB [adrymmls]>  show engines;
++--------------------+---------+----------------------------------------------------------------------------------+--------------+------+------------+
+| Engine             | Support | Comment                                                                          | Transactions | XA   | Savepoints |
++--------------------+---------+----------------------------------------------------------------------------------+--------------+------+------------+
+| MRG_MyISAM         | YES     | Collection of identical MyISAM tables                                            | NO           | NO   | NO         |
+| MyISAM             | DEFAULT | Non-transactional engine with good performance and small data footprint          | NO           | NO   | NO         |
+| CSV                | YES     | Stores tables as CSV files                                                       | NO           | NO   | NO         |
+| MEMORY             | YES     | Hash based, stored in memory, useful for temporary tables                        | NO           | NO   | NO         |
+| Aria               | YES     | Crash-safe tables with MyISAM heritage                                           | NO           | NO   | NO         |
+| InnoDB             | YES     | Supports transactions, row-level locking, foreign keys and encryption for tables | YES          | YES  | YES        |
+| PERFORMANCE_SCHEMA | YES     | Performance Schema                                                               | NO           | NO   | NO         |
+| SEQUENCE           | YES     | Generated tables filled with sequential values                                   | YES          | NO   | YES        |
++--------------------+---------+----------------------------------------------------------------------------------+--------------+------+------------+
+8 rows in set (0.000 sec)
+ 
+MariaDB [adrymmls]> 
+On new server, it had InnoDB was set as default.
+
+MariaDB [production]> show engines;
++--------------------+---------+----------------------------------------------------------------------------------+--------------+------+------------+
+| Engine             | Support | Comment                                                                          | Transactions | XA   | Savepoints |
++--------------------+---------+----------------------------------------------------------------------------------+--------------+------+------------+
+| MRG_MyISAM         | YES     | Collection of identical MyISAM tables                                            | NO           | NO   | NO         |
+| CSV                | YES     | Stores tables as CSV files                                                       | NO           | NO   | NO         |
+| MEMORY             | YES     | Hash based, stored in memory, useful for temporary tables                        | NO           | NO   | NO         |
+| MyISAM             | YES     | Non-transactional engine with good performance and small data footprint          | NO           | NO   | NO         |
+| Aria               | YES     | Crash-safe tables with MyISAM heritage                                           | NO           | NO   | NO         |
+| InnoDB             | DEFAULT | Supports transactions, row-level locking, foreign keys and encryption for tables | YES          | YES  | YES        |
+| PERFORMANCE_SCHEMA | YES     | Performance Schema                                                               | NO           | NO   | NO         |
+| SEQUENCE           | YES     | Generated tables filled with sequential values                                   | YES          | NO   | YES        |
++--------------------+---------+----------------------------------------------------------------------------------+--------------+------+------------+
+8 rows in set (0.000 sec)
+
+MariaDB [production]> 
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+MariaDB [production]> show engines;
++--------------------+---------+----------------------------------------------------------------------------------+--------------+------+------------+
+| Engine             | Support | Comment                                                                          | Transactions | XA   | Savepoints |
++--------------------+---------+----------------------------------------------------------------------------------+--------------+------+------------+
+| MRG_MyISAM         | YES     | Collection of identical MyISAM tables                                            | NO           | NO   | NO         |
+| CSV                | YES     | Stores tables as CSV files                                                       | NO           | NO   | NO         |
+| MEMORY             | YES     | Hash based, stored in memory, useful for temporary tables                        | NO           | NO   | NO         |
+| MyISAM             | YES     | Non-transactional engine with good performance and small data footprint          | NO           | NO   | NO         |
+| Aria               | YES     | Crash-safe tables with MyISAM heritage                                           | NO           | NO   | NO         |
+| InnoDB             | DEFAULT | Supports transactions, row-level locking, foreign keys and encryption for tables | YES          | YES  | YES        |
+| PERFORMANCE_SCHEMA | YES     | Performance Schema                                                               | NO           | NO   | NO         |
+| SEQUENCE           | YES     | Generated tables filled with sequential values                                   | YES          | NO   | YES        |
++--------------------+---------+----------------------------------------------------------------------------------+--------------+------+------------+
+8 rows in set (0.000 sec)
+ 
+MariaDB [production]> 
+Solution
+
+Edit the SQL file in a text editor. Go to the line in the error message. 
+In this case line 733, you will see a create table statement.
+Go to end of this table create statement. You will see ENGINE=InnoDB, replace it with ENGINE=MyISAM.

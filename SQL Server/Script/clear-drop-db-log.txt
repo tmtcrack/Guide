@@ -1,0 +1,11 @@
+-- clear tran log by backing up
+BACKUP LOG [WhoDroppedTheObject] 
+TO  DISK = N'D:\Backups\WhoDroppedTheObject_tran1.trn' 
+WITH NOFORMAT, 
+INIT,  
+COMPRESSION,  
+STATS = 10
+GO
+ 
+-- manually checkpoint to clear tran log
+CHECKPOINT

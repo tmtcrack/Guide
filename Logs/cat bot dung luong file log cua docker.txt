@@ -1,0 +1,20 @@
+##server gitlab 7.117:
+
+find /data/docker-run/containers/64be1dc708c546ab0f7a0aabb064e40d4b41f13497f8f8be10bff019f05b0a18/ -type f -name "*.log" -mtime +30 -exec rm {}\;
+find /data/docker-run/containers/64be1dc708c546ab0f7a0aabb064e40d4b41f13497f8f8be10bff019f05b0a18/ -type f -name "*.log" -mtime +30 -exec rm {} \;
+ll
+ls -lah
+df -h
+ll
+find /data/docker-run/containers/64be1dc708c546ab0f7a0aabb064e40d4b41f13497f8f8be10bff019f05b0a18/ -type f -name "*.log" -mtime +30 -exec rm {} \;
+ll
+
+truncate -s 50G /data/docker-run/containers/64be1dc708c546ab0f7a0aabb064e40d4b41f13497f8f8be10bff019f05b0a18/64be1dc708c546ab0f7a0aabb064e40d4b41f13497f8f8be10bff019f05b0a18-json.log
+
+########################################
+
+
+
+
+
+

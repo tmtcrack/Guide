@@ -1,0 +1,78 @@
+{
+  "annotations": [],
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": null,
+  "iteration": 1587016978662,
+  "links": [],
+  "panels": [
+    {
+      "datasource": "$datasource",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "showHeader": true
+      },
+      "pluginVersion": "7.4.3",
+      "targets": [
+        {
+          "bucketAggs": [],
+          "metrics": [
+            {
+              "params": ["bytes_total"],
+              "type": "field"
+            }
+          ],
+          "orderByTime": "ASC",
+          "policy": "default",
+          "queryType": "field",
+          "rawQuery": false,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [[{"params": ["bytes_total"], "type": "field"}]],
+          "timeField": "time",
+          "timeInterval": "10s",
+          "where": [{"name": "$__timeFilter", "params": [], "type": "macro"}]
+        }
+      ],
+      "title": "iftop - Total Bytes",
+      "type": "timeseries"
+    }
+  ],
+  "schemaVersion": 27,
+  "style": "dark",
+  "tags": [],
+  "templating": {"list": []},
+  "time": {"from": "now-6h", "to": "now"},
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": ["5m", "15m", "1h", "6h", "12h", "24h", "2d", "7d", "30d"]
+  },
+  "timezone": "",
+  "title": "iftop Dashboard",
+  "uid": "iftop-dashboard",
+  "version": 2
+}

@@ -1,0 +1,111 @@
+
+
+docker network create bridge500 --drive bridge --subnet=172.31.0.0/24
+docker network inspect bridge500
+
+docker volume create sqlvolume
+=========================================================
+--01---mysql docker-compose----
+-------------------------------
+
+version: '3.5'
+volumes:
+ sqlvolume:
+  external: true
+
+services:
+ mysql-server:
+  image: mysql
+  container_name: mysql-db
+  volumes:
+   - sqlvolume:/var/lib/mysql
+  ports:
+   - "3306:3306"
+  environment:
+   - MYSQL_ROOT_PASSWORD=a123456
+   - MYSQL_DATABASE=userapidb
+   - MYSQL_ROOT_HOST=%
+  networks:
+   bridge500:
+    ipv4_address: 172.31.0.2
+
+networks:
+ bridge500:
+  external: true
+
+=======================================================
+--02---nodejsmysql----------
+----------------------------
+
+git clone https://gitlab.com/xzhoang/nodejsmysql.git . 
+(chú ý dấu . để clone luôn về thư mục này)
+----------------------------
+vi dockercompose.yml
+----------------------------
+version: '3.5'
+
+services:
+  webapi:
+    environment:
+      - DB_HOST=172.31.0.2
+      - DB_USER=root
+      - DB_PASS=123456
+    build: .
+    container_name: nodejs-api-dev
+    ports:
+      - "3000:3000"
+    networks:
+      - bridge500
+networks:
+  bridge500:
+    external: true
+---------------------------
+====================================================
+--docker-compose.yml run 02 services
+------------------------------------
+
+
+version: 3.5'
+
+volumes:
+  sqlvolume:
+    external: true
+
+services:
+  mysql-server:
+    image: mysql
+    container_name: mysql-db-dev
+    restart: always
+    volumes:
+      - sqlvolume:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_DATABASE=userapidb
+    networks:
+      - bridge500
+    healthcheck:
+      test: "/etc/init.d/mysql status"
+      interval: 1s
+      retries: 120
+
+  webapi:
+    environment:
+      - DB_HOST=mysql-server
+    build: ./apiusers
+    container_name: notes-api-dev
+    restart: always
+    ports:
+      - "3000:3000"
+    networks:
+      - bridge500
+    depends_on:
+      - mysql-server
+
+networks:
+  bridge500:
+    external: true
+
+============================================================
+

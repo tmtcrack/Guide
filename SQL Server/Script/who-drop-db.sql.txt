@@ -1,0 +1,10 @@
+-- query tran log for 'DROPOBJ' with fn_dblog
+SELECT [Begin Time]
+      ,[Transaction Name]
+      ,SUSER_SNAME ([Transaction SID]) AS [User]
+FROM fn_dblog (NULL, NULL)
+WHERE [Transaction Name] = N'test246';
+GO
+
+-- Name DB : test246
+-- Name DB : SQLTestDB  

@@ -1,0 +1,2 @@
+https://github.com/remcorakers/docker-compose-elasticsearch-kibana/blob/master/kibana/config/kibana.yml
+

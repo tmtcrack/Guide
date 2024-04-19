@@ -1,0 +1,144 @@
+----------------------------------------------------------------
+set nocount off;
+ 
+DECLARE @ver nvarchar(128);
+ 
+declare @edition varchar(128);
+declare @prodlvl varchar(128);
+ 
+ 
+set @ver = cast(serverproperty('ProductVersion') AS nvarchar(128));
+set @edition = cast(SERVERPROPERTY('edition') as varchar(128));
+set @prodlvl = cast(SERVERPROPERTY('productlevel') as varchar(128));
+ 
+declare @subver nvarchar(128);
+ 
+set @subver = SUBSTRING(@ver, CHARINDEX('.', @ver) + 1, 1);
+set @ver = left(@ver, CHARINDEX('.', @ver) - 1);
+ 
+declare @rgedition INTEGER;
+declare @rgversion VARCHAR(16);
+declare @rgserialnumber VARCHAR(30);
+ 
+ 
+if exists (select top 1 1 from master.dbo.sysobjects where xtype = 'X' and name = 'sqbutility')
+exec master..sqbutility 21, @rgedition OUTPUT, @rgversion OUTPUT, @rgserialnumber OUTPUT;
+ 
+declare @physicalmemory DECIMAL(7,1);
+declare @sqltext NVARCHAR(4000);
+ 
+if cast(@ver as int) >= 11 --for SQL 2012 or higher?
+set @sqltext = 'select @pm = cast(round(physical_memory_kb / 1024 / 1024.0 , 1)as decimal(7, 1)) from sys.dm_os_sys_info';
+if cast(@ver as int) < 11 --for SQL before 2012
+set @sqltext = 'select @pm = cast(round(physical_memory_in_bytes / 1024 / 1024 / 1024.0 , 1)as decimal(7, 1)) from sys.dm_os_sys_info';
+ 
+exec sp_executesql @sqltext, N'@pm DECIMAL(7,1) OUTPUT', @pm = @physicalmemory OUTPUT;
+ 
+declare @bulocation varchar(256);
+ 
+--if object_id('master.dbo.SQLBackupOptions') is not null
+--begin
+-- select top 1
+-- @bulocation = REPLACE( case when RIGHT(BackupPath, 1) = '\' then LEFT(BackupPath, LEN(BackupPath) - 1) else BackupPath end,
+-- '\' + CAST(SERVERPROPERTY('servername') as varchar(128)), '')
+-- from
+-- [master].[dbo].[SQLBackupOptions];
+--end
+ 
+DECLARE
+@MaxDoP Varchar(2),
+@CostThresholdForParallelism Varchar(20);
+ 
+SELECT
+@MaxDoP = CAST(value_in_use AS Varchar(2))
+FROM
+sys.configurations
+WHERE
+name = 'max degree of parallelism';
+ 
+SELECT
+@CostThresholdForParallelism = CAST(value_in_use AS Varchar(20))
+FROM
+sys.configurations
+WHERE
+name = 'cost threshold for parallelism';
+ 
+WITH
+ServiceInfo AS
+(
+SELECT
+@@SERVERNAME AS ServerName,
+MIN(CASE LEFT(ServerServices.servicename, CHARINDEX(' (', ServerServices.servicename) - 1) WHEN 'SQL Server' THEN ServerServices.is_clustered END) IsClustered,
+MIN(CASE LEFT(ServerServices.servicename, CHARINDEX(' (', ServerServices.servicename) - 1) WHEN 'SQL Server' THEN ServerServices.cluster_nodename END) ClusterNodeName,
+MIN(CASE LEFT(ServerServices.servicename, CHARINDEX(' (', ServerServices.servicename) - 1) WHEN 'SQL Server' THEN ServerServices.service_account END) SQLServerServiceAccount,
+MIN(CASE LEFT(ServerServices.servicename, CHARINDEX(' (', ServerServices.servicename) - 1) WHEN 'SQL Server' THEN ServerServices.startup_type_desc END) SQLServerStartupType,
+MIN(CASE LEFT(ServerServices.servicename, CHARINDEX(' (', ServerServices.servicename) - 1) WHEN 'SQL Server' THEN ServerServices.status_desc END) SQLServerStatus,
+MIN(CASE LEFT(ServerServices.servicename, CHARINDEX(' (', ServerServices.servicename) - 1) WHEN 'SQL Server Agent' THEN ServerServices.service_account END) SQLAgentServiceAccount,
+MIN(CASE LEFT(ServerServices.servicename, CHARINDEX(' (', ServerServices.servicename) - 1) WHEN 'SQL Server Agent' THEN ServerServices.startup_type_desc END) SQLAgentStartupType,
+MIN(CASE LEFT(ServerServices.servicename, CHARINDEX(' (', ServerServices.servicename) - 1) WHEN 'SQL Server Agent' THEN ServerServices.status_desc END) SQLAgentStatus,
+MIN(CASE LEFT(ServerServices.servicename, CHARINDEX(' (', ServerServices.servicename) - 1) WHEN 'SQL Full-text Filter Daemon Launcher' THEN ServerServices.service_account END) SQLFullTextServiceAccount,
+MIN(CASE LEFT(ServerServices.servicename, CHARINDEX(' (', ServerServices.servicename) - 1) WHEN 'SQL Full-text Filter Daemon Launcher' THEN ServerServices.startup_type_desc END) SQLFullTextStartupType,
+MIN(CASE LEFT(ServerServices.servicename, CHARINDEX(' (', ServerServices.servicename) - 1) WHEN 'SQL Full-text Filter Daemon Launcher' THEN ServerServices.status_desc END) SQLFullTextStatus--,
+FROM
+sys.dm_server_services ServerServices
+)
+ 
+SELECT
+SERVERPROPERTY('machinename') as "Server",
+ISNULL(SERVERPROPERTY('InstanceName'), 'MSSQLSERVER') as "Instance", --select SERVERPROPERTY('ServerName')
+(select local_net_address from sys.dm_exec_connections where session_id = @@SPID) as "IP",
+(select local_tcp_port from sys.dm_exec_connections where session_id = @@SPID) as "Port",
+cast(serverproperty('ProductVersion') AS nvarchar(128)) as "Version Number",
+CASE @ver
+WHEN '7'THEN '7'
+WHEN '8'THEN '2000'
+WHEN '9'THEN '2005'
+WHEN '10'THEN '2008'
+WHEN '11'THEN '2012'
+WHEN '12'THEN '2014'
+WHEN '13'THEN '2016'
+WHEN '14'THEN '2017'
+ELSE CAST(((CAST(@ver AS INT) - 14) * 2 + 2017) AS NVARCHAR(128)) + '?' --'UNKNOWN' - this formula assumes a new release every 2 years
+END +
+CASE @subver
+WHEN '5'THEN 'R2'
+ELSE ''
+END as "Version",
+left(@edition, charindex(' ', @edition) - 1) as "Edition",
+REPLACE(REPLACE(@prodlvl, 'SP', ''), 'RTM', '0') as "SP", --@prodlvl AS SP,
+--case when right(@edition, 8) = '(64-bit)' then 64 else 32 end as "Bits",
+(select count(*) from sys.sysdatabases where dbid > 4 /*and name not in ('SQLPERF', 'SQLCARE')*/) as "# of DBs",
+(select cpu_count /*/ hyperthread_ratio*/ from sys.dm_os_sys_info) as "CPUs",
+--(select hyperthread_ratio from sys.dm_os_sys_info) as "Hyperthread Ratio",
+@physicalmemory as "Mem(GB)",
+(SELECT cast(round(cast(value as int) / 1024.0, 1) as decimal(12, 1))
+FROM sys.configurations
+WHERE name like 'max server memory%') as "SQL Mem(GB)",
+RIGHT(@@version, LEN(@@version)- 3 - charindex (' ON ', UPPER(@@VERSION))) as "Windows Version",
+@MaxDoP AS MaxDoP,
+@CostThresholdForParallelism AS CostThreshold,
+servinfo.IsClustered,
+servinfo.ClusterNodeName,
+servinfo.SQLServerServiceAccount,
+servinfo.SQLServerStartupType,
+servinfo.SQLServerStatus,
+servinfo.SQLAgentServiceAccount,
+servinfo.SQLAgentStartupType,
+servinfo.SQLAgentStatus,
+servinfo.SQLFullTextServiceAccount,
+servinfo.SQLFullTextStartupType,
+servinfo.SQLFullTextStatus,
+--@bulocation as "Backup Location",
+case when (select top 1 1 from master.dbo.sysobjects where xtype = 'X' and name = 'sqlbackup') = 1 then 'Red-Gate'
+else 'Native' end as "Backup Type",
+case @rgedition
+when 0 THEN 'Trial: Expired'
+when 1 THEN 'Trial'
+when 2 THEN 'Standard'
+when 3 THEN 'Professional'
+when 6 THEN 'Lite'
+else '' end as "Red Gate Edition",
+isnull(@rgversion, '') as "Red Gate Version",
+isnull(@rgserialnumber, '') as "Red Gate License"
+FROM
+ServiceInfo servinfo;

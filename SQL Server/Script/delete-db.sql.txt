@@ -1,0 +1,6 @@
+USE master;
+GO
+-- Kết thúc các phiên làm việc đang kết nối đến cơ sở dữ liệu
+ALTER DATABASE SQLTestDB SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+-- Xóa cơ sở dữ liệu
+DROP DATABASE SQLTestDB;

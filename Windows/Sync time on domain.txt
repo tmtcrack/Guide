@@ -1,0 +1,70 @@
+HOW TO SYNC CLIENT TIME WITH DOMAIN CONTROLLER on command promt
+
+
+Assistant
+
+Poe
+To sync the client time with the domain controller using the Command Prompt, you can follow these steps:
+
+Open the Command Prompt as an administrator. You can do this by searching for "Command Prompt" in the Start menu, right-clicking on it, and selecting "Run as administrator."
+
+In the Command Prompt, enter the following command and press Enter:
+
+Copy
+
+w32tm /resync /rediscover
+```
+This command tells the Windows Time service (w32time) to resynchronize the time with the domain controller and rediscover the time source.
+
+Wait for the command to complete. The Windows Time service will contact the domain controller and update the client's time.
+
+Verify the time synchronization by running the following command:
+
+Copy
+w32tm /query /status
+This command displays the current status of the Windows Time service. Look for the "Last Successful Sync Time" to ensure that the time synchronization was successful.
+
+By following these steps, you can use the Command Prompt to sync the client time with the domain controller on Windows. It's important to have a properly configured and synchronized domain controller to ensure accurate timekeeping throughout the domain.
+
+HOW TO SYNC CLIENT TIME WITH specify DOMAIN CONTROLLER on command promt
+
+
+Assistant
+
+Poe
+=============================================================================================================================
+To sync the client time with a specific domain controller using the Command Prompt, you can follow these steps:
+
+Open the Command Prompt as an administrator. 
+You can do this by searching for "Command Prompt" in the Start menu, right-clicking on it, and selecting "Run as administrator."
+
+Identify the specific domain controller you want to sync with. You will need the IP address or hostname of the domain controller.
+
+In the Command Prompt, enter the following command and press Enter:
+
+scheme
+Copy
+w32tm /config /syncfromflags:manual /manualpeerlist:<domain_controller_address> /update
+```
+Replace `<domain_controller_address>` with the IP address or hostname of the specific domain controller you want to sync with. 
+For example, if the domain controller's IP address is 192.168.1.100, the command will be:
+````
+w32tm /config /syncfromflags:manual /manualpeerlist:192.168.1.100 /update
+````
+
+Next, enter the following command and press Enter:
+
+Copy
+w32tm /resync
+This command tells the Windows Time service (w32time) to initiate a resynchronization with the specified domain controller.
+
+Wait for the command to complete. The Windows Time service will contact the specified domain controller and update the client's time.
+
+Verify the time synchronization by running the following command:
+
+Copy
+w32tm /query /status
+This command displays the current status of the Windows Time service. Look for the "Last Successful Sync Time" to ensure that the time synchronization was successful.
+
+=========================================================
+

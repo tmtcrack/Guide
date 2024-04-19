@@ -1,0 +1,1 @@
+(Get-ADComputer -Filter *).Name | Foreach-Object {Get-CimInstance Win32_Bios -ComputerName $_ -ErrorAction SilentlyContinue | Select-Object @{n='Computername'; e={$_.PSComputerName}},SerialNumber}

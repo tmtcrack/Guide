@@ -1,0 +1,1 @@
+mysql -u "$MYSQL_ROOT" -p"$MYSQL_PASS" -e "SHOW DATABASES"

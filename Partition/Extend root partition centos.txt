@@ -1,0 +1,126 @@
+
+# yum install cloud-utils-growpart -y
+
+Steps I ran:
+
+fdisk -l
+
+growpart /dev/sda 2  (Physical partition)
+
+pvresize /dev/sda2    (Instruct LVM that disk size has changed)
+
+pvdisplay    (  check physical drive if has changed  )
+
+Resize the PV (Ex: sudo pvresize /dev/sda2)
+sudo pvresize <PV name from above step> 
+
+lvdisplay    (# View starting LV)
+  
+Run below command to get root logical volume name (Filesystem value of / row; ex: /dev/mapper/centos_cent7--247-root)
+df -h
+
+Expand logical volume (ex : sudo lvextend -r -l +100%FREE /dev/mapper/centos_cent7--247-root):
+sudo lvextend -r -l +100%FREE <root logical volume name from above step>  
+
+==============================================================
+
+Installed:
+  cloud-utils-growpart.noarch 0:0.29-5.el7
+
+Complete!
+[root@cent7-247 ~]# growpart /dev/sda 2
+CHANGED: partition=2 start=2099200 old: size=18872320 end=20971520 new: size=29358047 end=31457247
+[root@cent7-247 ~]# pvdisplay
+  --- Physical volume ---
+  PV Name               /dev/sda2
+  VG Name               centos_cent7-247
+  PV Size               <9.00 GiB / not usable 3.00 MiB
+  Allocatable           yes (but full)
+  PE Size               4.00 MiB
+  Total PE              2303
+  Free PE               0
+  Allocated PE          2303
+  PV UUID               dG53Qr-uJNs-63Bn-WkTi-Egd2-19HX-5vDN9y
+
+[root@cent7-247 ~]# pvresize /dev/sda2
+  Physical volume "/dev/sda2" changed
+  1 physical volume(s) resized or updated / 0 physical volume(s) not resized
+[root@cent7-247 ~]# pvdisplay
+  --- Physical volume ---
+  PV Name               /dev/sda2
+  VG Name               centos_cent7-247
+  PV Size               <14.00 GiB / not usable 1.98 MiB
+  Allocatable           yes
+  PE Size               4.00 MiB
+  Total PE              3583
+  Free PE               1280
+  Allocated PE          2303
+  PV UUID               dG53Qr-uJNs-63Bn-WkTi-Egd2-19HX-5vDN9y
+
+[root@cent7-247 ~]# lvdisplay
+  --- Logical volume ---
+  LV Path                /dev/centos_cent7-247/swap
+  LV Name                swap
+  VG Name                centos_cent7-247
+  LV UUID                KsYmPP-iLGa-Ts8O-njIg-xb3b-Ue8h-jszHUk
+  LV Write Access        read/write
+  LV Creation host, time cent7-247.local, 2023-05-05 17:24:29 +0700
+  LV Status              available
+  # open                 2
+  LV Size                1.00 GiB
+  Current LE             256
+  Segments               1
+  Allocation             inherit
+  Read ahead sectors     auto
+  - currently set to     8192
+  Block device           253:1
+
+  --- Logical volume ---
+  LV Path                /dev/centos_cent7-247/root
+  LV Name                root
+  VG Name                centos_cent7-247
+  LV UUID                Oxpxln-7gzQ-MSYe-OzwJ-H9P2-KKC8-f16UJ1
+  LV Write Access        read/write
+  LV Creation host, time cent7-247.local, 2023-05-05 17:24:29 +0700
+  LV Status              available
+  # open                 1
+  LV Size                <8.00 GiB
+  Current LE             2047
+  Segments               1
+  Allocation             inherit
+  Read ahead sectors     auto
+  - currently set to     8192
+  Block device           253:0
+
+[root@cent7-247 ~]# df -h
+Filesystem                          Size  Used Avail Use% Mounted on
+devtmpfs                            908M     0  908M   0% /dev
+tmpfs                               919M     0  919M   0% /dev/shm
+tmpfs                               919M  8.9M  911M   1% /run
+tmpfs                               919M     0  919M   0% /sys/fs/cgroup
+/dev/mapper/centos_cent7--247-root  8.0G  1.5G  6.6G  18% /
+/dev/sda1                          1014M  153M  862M  16% /boot
+tmpfs                               184M     0  184M   0% /run/user/0
+[root@cent7-247 ~]# lvextend -r -l +100%FREE /dev/mapper/centos_cent7--247-root
+  Size of logical volume centos_cent7-247/root changed from <8.00 GiB (2047 extents) to <13.00 GiB (3327 extents).
+  Logical volume centos_cent7-247/root successfully resized.
+meta-data=/dev/mapper/centos_cent7--247-root isize=512    agcount=4, agsize=524032 blks
+         =                       sectsz=512   attr=2, projid32bit=1
+         =                       crc=1        finobt=0 spinodes=0
+data     =                       bsize=4096   blocks=2096128, imaxpct=25
+         =                       sunit=0      swidth=0 blks
+naming   =version 2              bsize=4096   ascii-ci=0 ftype=1
+log      =internal               bsize=4096   blocks=2560, version=2
+         =                       sectsz=512   sunit=0 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+data blocks changed from 2096128 to 3406848
+[root@cent7-247 ~]# df -h
+Filesystem                          Size  Used Avail Use% Mounted on
+devtmpfs                            908M     0  908M   0% /dev
+tmpfs                               919M     0  919M   0% /dev/shm
+tmpfs                               919M  8.9M  911M   1% /run
+tmpfs                               919M     0  919M   0% /sys/fs/cgroup
+/dev/mapper/centos_cent7--247-root   13G  1.5G   12G  11% /
+/dev/sda1                          1014M  153M  862M  16% /boot
+tmpfs                               184M     0  184M   0% /run/user/0
+[root@cent7-247 ~]#

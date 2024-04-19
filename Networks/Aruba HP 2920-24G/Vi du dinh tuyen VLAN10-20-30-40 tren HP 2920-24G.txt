@@ -1,0 +1,45 @@
+Để định tuyến giữa các VLAN 10, VLAN 20 và VLAN 30 trên switch HP 2920-24G (J9726A), 
+nhưng không cho phép thông tin đến VLAN 40, bạn có thể sử dụng các bước sau:
+
+Tạo và cấu hình các VLAN: Đầu tiên, tạo và cấu hình các VLAN bằng cách sử dụng lệnh sau:
+
+configure
+vlan 10 name "VLAN10"
+vlan 20 name "VLAN20"
+vlan 30 name "VLAN30"
+vlan 40 name "VLAN40"
+
+Gán cổng vào các VLAN: Gán các cổng vào từng VLAN bằng cách sử dụng lệnh sau:
+
+interface <interface_id>
+untagged vlan <vlan_id>
+
+Ví dụ, để gán cổng 1 vào VLAN 10:
+
+interface 1
+untagged vlan 10
+
+Cấu hình định tuyến tĩnh: Thiết lập định tuyến tĩnh giữa các VLAN bằng cách sử dụng lệnh sau:
+
+ip route <destination_network> <subnet_mask> <next_hop>
+Trong trường hợp này, chúng ta sẽ cấu hình định tuyến giữa VLAN 10, VLAN 20 và VLAN 30. 
+Tuy nhiên, chúng ta sẽ không cấu hình định tuyến cho VLAN 40. Ví dụ:
+
+vlan 10
+ip address 10.0.0.1 255.255.255.0
+
+vlan 20
+ip address 10.0.1.1 255.255.255.0
+
+vlan 30
+ip address 10.0.2.1 255.255.255.0
+
+ip route 10.0.1.0 255.255.255.0 10.0.0.2
+ip route 10.0.2.0 255.255.255.0 10.0.0.2
+
+Trong ví dụ trên, các VLAN 10, 20 và 30 được cấu hình địa chỉ IP tương ứng. 
+Các định tuyến tĩnh được thiết lập để cho phép thông tin truyền qua VLAN 10 để đi đến VLAN 20 và VLAN 30 thông qua next hop 10.0.0.2.
+
+Lưu cấu hình: Lưu các cấu hình đã thay đổi vào bộ nhớ flash của switch bằng lệnh:
+
+write memory

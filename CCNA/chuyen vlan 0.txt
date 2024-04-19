@@ -1,0 +1,78 @@
+SVNNX0009##show int
+SVNNX0009#config t
+Enter configuration commands, one per line.  End with CNTL/Z.
+SVNNX0009(config)#int Gi1/0/8
+SVNNX0009(config-if)#sw acc vla 111
+SVNNX0009(config-if)#int Gi1/0/19
+SVNNX0009(config-if)#sw acc vla 111
+SVNNX0009(config-if)#
+SVNNX0009(config-if)#end
+SVNNX0009#show int status
+
+Port      Name               Status       Vlan       Duplex  Speed Type
+Gi1/0/1                      notconnect   16           auto   auto 10/100/1000BaseTX
+Gi1/0/2                      connected    16         a-full  a-100 10/100/1000BaseTX
+Gi1/0/3                      connected    16         a-full a-1000 10/100/1000BaseTX
+Gi1/0/4                      notconnect   16           auto   auto 10/100/1000BaseTX
+Gi1/0/5                      connected    16         a-full a-1000 10/100/1000BaseTX
+Gi1/0/6                      notconnect   16           auto   auto 10/100/1000BaseTX
+Gi1/0/7                      connected    16         a-full a-1000 10/100/1000BaseTX
+Gi1/0/8                      notconnect   111          auto   auto 10/100/1000BaseTX
+Gi1/0/9                      connected    16         a-full a-1000 10/100/1000BaseTX
+Gi1/0/10                     connected    16         a-full a-1000 10/100/1000BaseTX
+Gi1/0/11                     notconnect   16           auto   auto 10/100/1000BaseTX
+
+Port      Name               Status       Vlan       Duplex  Speed Type
+Gi1/0/12                     connected    16         a-full a-1000 10/100/1000BaseTX
+Gi1/0/13                     connected    16         a-full a-1000 10/100/1000BaseTX
+Gi1/0/14                     connected    16         a-full a-1000 10/100/1000BaseTX
+Gi1/0/15                     notconnect   16           auto   auto 10/100/1000BaseTX
+Gi1/0/16                     connected    16         a-full a-1000 10/100/1000BaseTX
+Gi1/0/17                     notconnect   16           auto   auto 10/100/1000BaseTX
+Gi1/0/18                     connected    16         a-full a-1000 10/100/1000BaseTX
+Gi1/0/19                     connected    111        a-full a-1000 10/100/1000BaseTX
+Gi1/0/20                     connected    16         a-full a-1000 10/100/1000BaseTX
+Gi1/0/21                     connected    16         a-full a-1000 10/100/1000BaseTX
+Gi1/0/22                     connected    16         a-full a-1000 10/100/1000BaseTX
+Gi1/0/23                     connected    16         a-full a-1000 10/100/1000BaseTX
+ --More-
+
+cach chuyển vlan
+
+SVNNX0006#config t
+Enter configuration commands, one per line.  End with CNTL/Z.
+SVNNX0006(config)#int Gi1/0/34
+SVNNX0006(config-if)#sw acc vla 16
+SVNNX0006(config-if)#sw acc vla 16
+SVNNX0006(config-if)#end
+SVNNX0006#wr
+Building configuration...
+[OK]
+SVNNX0006#int t
+           ^
+% Invalid input detected at '^' marker.
+
+SVNNX0006#config t
+Enter configuration commands, one per line.  End with CNTL/Z.
+SVNNX0006(config)#int Gi1/0/36
+SVNNX0006(config-if)#sw acc vla 16
+SVNNX0006(config-if)#end
+SVNNX0006#wr
+Building configuration...
+[OK]
+SVNNX0006#show int status
+
+Port      Name               Status       Vlan       Duplex  Speed Type
+Gi1/0/1                      connected    111        a-full a-1000 10/100/1000BaseTX
+Gi1/0/2                      notconnect   111          auto   auto 10/100/1000BaseTX
+Gi1/0/3                      connected    111        a-full a-1000 10/100/1000BaseTX
+Gi1/0/4                      connected    16         a-full a-1000 10/100/1000BaseTX
+Gi1/0/5                      connected    111        a-full a-1000 10/100/1000BaseTX
+Gi1/0/6                      connected    16         a-full a-1000 10/100/1000BaseTX
+Gi1/0/7                      connected    111        a-full a-1000 10/100/1000BaseTX
+Gi1/0/8                      connected    16         a-full a-1000 10/100/1000BaseTX
+Gi1/0/9                      connected    111        a-full a-1000 10/100/1000BaseTX
+Gi1/0/10                     notconnect   111          auto   auto 10/100/1000BaseTX
+Gi1/0/11                     notconnect   111          auto   auto 10/100/1000BaseTX
+
+Port      Name     
